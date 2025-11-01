@@ -1,8 +1,12 @@
 {
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "nodeVersion": "22.11.0",
   "redirects": [
     {
-      "source": "ronchy2000.top",
-      "destination": "www.ronchy2000.top",
+      "source": "$host",
+      "destination": "$wwwhost",
       "statusCode": 301
     }
   ]
