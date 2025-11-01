@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { siteConfig } from "@/data/site";
 
 export default function Footer() {
@@ -14,9 +12,9 @@ export default function Footer() {
             {siteConfig.email}
           </a>
           {siteConfig.socials.map((social) => (
-            <Link key={social.label} href={social.href} className="hover:text-brand" target="_blank">
+            <a key={social.label} href={social.href} className="hover:text-brand" target="_blank" rel="noreferrer">
               {social.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { siteConfig } from "@/data/site";
 
@@ -28,12 +27,12 @@ export default function Hero() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <Link
+          <a
             href={siteConfig.resume}
             className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
           >
             Download CV
-          </Link>
+          </a>
           <a
             href={`mailto:${siteConfig.email}`}
             className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-brand dark:border-slate-700 dark:text-slate-200 dark:hover:border-slate-600"
@@ -41,14 +40,15 @@ export default function Hero() {
             Contact
           </a>
           {siteConfig.socials.map((social) => (
-            <Link
+            <a
               key={social.label}
               href={social.href}
               target="_blank"
+              rel="noreferrer"
               className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-brand dark:border-slate-700 dark:text-slate-200 dark:hover:border-slate-600"
             >
               {social.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>
