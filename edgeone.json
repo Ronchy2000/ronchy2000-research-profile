@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "$host",
-      "destination": "$wwwhost",
+      "source": "ronchy2000.top",
+      "destination": "$www.ronchy2000.top",
       "statusCode": 301
     }
   ]
