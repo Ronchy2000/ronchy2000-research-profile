@@ -56,7 +56,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
     }
 
     return {
-      width: sidebarCollapsed ? 0 : 280,
+      width: sidebarCollapsed ? 0 : 260,
       opacity: sidebarCollapsed ? 0 : 1,
       transform: sidebarCollapsed ? "translateX(-24px)" : "translateX(0)",
       pointerEvents: sidebarCollapsed ? ("none" as const) : undefined

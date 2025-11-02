@@ -13,7 +13,7 @@ export default function ContactPage() {
         eyebrow="Connect"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <div className="space-y-3 text-base text-slate-600 dark:text-slate-300">
             <p>Email: <a href={`mailto:${profile.email}`} className="font-medium text-brand hover:text-brand-foreground">{profile.email}</a></p>
             <p>GitHub: <a href="#" className="text-brand hover:text-brand-foreground">@Ronchy2000</a></p>
             <p>Google Scholar: <a href="#" className="text-brand hover:text-brand-foreground">scholar profile</a></p>

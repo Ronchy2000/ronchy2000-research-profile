@@ -22,7 +22,7 @@ export default function ResearchPage() {
           {interests.map((interest) => (
             <article key={interest.title} className="rounded-2xl border border-slate-200 bg-white/90 p-5 dark:border-slate-800 dark:bg-slate-900/70">
               <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{interest.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{interest.description}</p>
+              <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">{interest.description}</p>
             </article>
           ))}
         </div>
@@ -40,7 +40,7 @@ export default function ResearchPage() {
             details: [item.summary, ...item.bullets]
           }))}
         />
-        <p className="mt-6 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-6 text-base text-slate-600 dark:text-slate-400">
           Interested in collaboration? Feel free to reach out via the Contact page.
         </p>
       </Section>

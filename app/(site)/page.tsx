@@ -64,7 +64,7 @@ export default function HomePage() {
                     {update.type} · {update.date}
                   </p>
                   <h3 className="text-base font-semibold leading-snug text-slate-900 dark:text-slate-50">{update.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{update.summary}</p>
+                  <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{update.summary}</p>
                 </div>
                 <a href={update.link} className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-foreground transition-colors">
                   View details
@@ -109,7 +109,7 @@ export default function HomePage() {
         eyebrow="Recognition"
         actions={<Link href="/cv" className="text-sm font-medium text-brand hover:text-brand-foreground">Full CV</Link>}
       >
-        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+        <ul className="space-y-2 text-base text-slate-600 dark:text-slate-300">
           {awards.map((award) => (
             <li key={`${award.title}-${award.year}`} className="leading-relaxed">
               <span className="font-medium text-slate-900 dark:text-slate-50">{award.title}</span>

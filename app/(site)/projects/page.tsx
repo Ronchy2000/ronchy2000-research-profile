@@ -47,7 +47,7 @@ export default function ProjectsPage() {
                 <h3 className="text-base font-medium text-slate-900 dark:text-slate-50 group-hover:text-brand transition-colors">
                   {update.title}
                 </h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{update.summary}</p>
+                <p className="mt-1 text-base text-slate-600 dark:text-slate-400">{update.summary}</p>
               </div>
               <span className="flex-shrink-0 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">→</span>
             </a>

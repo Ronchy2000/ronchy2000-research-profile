@@ -39,7 +39,7 @@ export default function BlogPage() {
                   {post.title}
                 </Link>
               </h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{post.summary}</p>
+              <p className="mt-2 text-base text-slate-600 dark:text-slate-300">{post.summary}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
                   <Tag key={tag} label={tag} />

@@ -22,7 +22,7 @@ export default function CVPage() {
           </a>
         }
       >
-        <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+        <div className="space-y-3 text-base text-slate-600 dark:text-slate-300">
           <p>{profile.title}</p>
           <p>{profile.affiliation}</p>
           <p>
@@ -59,7 +59,7 @@ export default function CVPage() {
       </Section>
 
       <Section title="Additional Links" eyebrow="CV">
-        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+        <ul className="space-y-2 text-base text-slate-600 dark:text-slate-300">
           <li>
             <Link href="/publications" className="text-brand hover:text-brand-foreground">
               Publications overview
