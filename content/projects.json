@@ -35,6 +35,33 @@
           "role": "Team Lead",
           "tags": ["ROS", "SLAM"],
           "links": [{ "label": "Report", "href": "#" }]
+        },
+        {
+          "name": "Flocking Formation Control",
+          "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
+          "period": "2024",
+          "role": "Developer",
+          "tags": ["MATLAB", "UAV", "Formation"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Flocking-Formation-Control" }],
+          "metrics": { "stars": 0 }
+        },
+        {
+          "name": "Quadrangular Formation Control",
+          "summary": "UAV square formation control using artificial potential fields with autonomous organization.",
+          "period": "2024",
+          "role": "Developer",
+          "tags": ["MATLAB", "UAV", "APF"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular" }],
+          "metrics": { "stars": 0 }
+        },
+        {
+          "name": "Circular Formation Control",
+          "summary": "Distributed UAV formation control based on ring topology for 2D/3D spatial formations.",
+          "period": "2024",
+          "role": "Developer",
+          "tags": ["MATLAB", "UAV", "Distributed"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Formation_control_Circular" }],
+          "metrics": { "stars": 0 }
         }
       ]
     },
@@ -52,9 +79,27 @@
           "metrics": { "stars": 224 }
         },
         {
+          "name": "wiki-SICNU",
+          "summary": "Knowledge wiki and resource guide for SICNU students.",
+          "period": "2022",
+          "role": "Contributor",
+          "tags": ["Documentation", "Community"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/SICNU-Application/wiki-SICNU" }],
+          "metrics": { "stars": 0 }
+        },
+        {
+          "name": "Gator Investment Research",
+          "summary": "Macroeconomic cycle analysis, industry research reports and asset allocation strategies.",
+          "period": "2025 – Present",
+          "role": "Author",
+          "tags": ["Finance", "Research"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Gator-Investment-Research" }],
+          "metrics": { "stars": 0 }
+        },
+        {
           "name": "Raspi-ImmortalWrt",
           "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
-          "period": "2024",
+          "period": "2025",
           "role": "Author",
           "tags": ["Networking", "OpenWrt"],
           "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt" }],
@@ -63,10 +108,28 @@
         {
           "name": "Dynamic-Proxy-Pool",
           "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
-          "period": "2024 – Present",
+          "period": "2025 – Present",
           "role": "Maintainer",
           "tags": ["Python", "Automation"],
           "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool" }],
+          "metrics": { "stars": 0 }
+        },
+        {
+          "name": "Visitor Counter Cheater",
+          "summary": "Tool for testing web analytics and visitor counters on CSDN, GitHub and blogs.",
+          "period": "2025",
+          "role": "Developer",
+          "tags": ["Python", "Testing"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Visitor-Counter-Cheater" }],
+          "metrics": { "stars": 0 }
+        },
+        {
+          "name": "Windows Network Icon Fix",
+          "summary": "Registry fix for Windows 10 network icon showing as unconnected despite working internet.",
+          "period": "2024",
+          "role": "Developer",
+          "tags": ["Windows", "Registry"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Windows-Network-Icon-Fix" }],
           "metrics": { "stars": 0 }
         }
       ]

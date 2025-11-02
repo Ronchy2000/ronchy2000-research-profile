@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+#### 新增项目
+- **学术项目**
+  - `Flocking-Formation-Control` - 基于群集算法的多无人机编队控制
+  - `Formation_Control_quadrangular` - 人工势场法的四边形编队控制
+  - `Formation_control_Circular` - 环形拓扑的分布式编队控制
+
+- **开源与个人项目**
+  - `wiki-SICNU` - SICNU 学生知识库和资源指南
+  - `Gator-Investment-Research` - 宏观经济周期分析与投资研究
+  - `Visitor-Counter-Cheater` - 网页访问量测试工具
+  - `Windows-Network-Icon-Fix` - Windows 10 网络图标修复工具
+
+#### 其他新增
+- Footer 添加个人主页 GitHub 仓库链接
+- GitHub Actions 自动生成详细的 commit 信息，区分更新类型
+
+### Changed
+
+#### GitHub Actions 优化
+- **定时任务时间调整** - 从 UTC 01:00 改为 UTC 23:30（北京时间 7:30-8:30）
+- **智能 commit 信息** - 自动检测更改内容并生成相应的 commit 信息：
+  - "update latest activities and GitHub stars" - 同时更新
+  - "update latest activities" - 仅更新动态
+  - "update GitHub project stars" - 仅更新 stars
+
+#### 项目配置
+- 所有新增 GitHub 项目均配置了 `stars` 字段
+- 优化了项目描述，更加清晰简洁
+
 ### Fixed
 
 #### GitHub Actions

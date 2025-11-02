@@ -2,7 +2,7 @@ name: Refresh Recent Updates
 
 on:
   schedule:
-    - cron: "0 1 * * *" # daily at 01:00 UTC
+    - cron: "30 23 * * *" # daily at 23:30 UTC (Beijing 7:30 AM, considering GitHub queue delay)
   workflow_dispatch:
 
 permissions:
@@ -43,8 +43,23 @@ jobs:
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            
+            # Check which files changed
+            UPDATES_CHANGED=$(git diff --name-only | grep -c "updates.json" || true)
+            PROJECTS_CHANGED=$(git diff --name-only | grep -c "projects.json" || true)
+            
+            # Build commit message
+            COMMIT_MSG="chore: refresh content data"
+            if [[ $UPDATES_CHANGED -gt 0 ]] && [[ $PROJECTS_CHANGED -gt 0 ]]; then
+              COMMIT_MSG="chore: update latest activities and GitHub stars"
+            elif [[ $UPDATES_CHANGED -gt 0 ]]; then
+              COMMIT_MSG="chore: update latest activities"
+            elif [[ $PROJECTS_CHANGED -gt 0 ]]; then
+              COMMIT_MSG="chore: update GitHub project stars"
+            fi
+            
             git add content/updates.json content/projects.json
-            git commit -m "chore: refresh content data"
+            git commit -m "$COMMIT_MSG"
             git push
           else
             echo "No changes to commit"
