@@ -57,7 +57,8 @@
           "period": "2024",
           "role": "Author",
           "tags": ["Networking", "OpenWrt"],
-          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt" }]
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt" }],
+          "metrics": { "stars": 0 }
         },
         {
           "name": "Dynamic-Proxy-Pool",
@@ -65,7 +66,8 @@
           "period": "2024 – Present",
           "role": "Maintainer",
           "tags": ["Python", "Automation"],
-          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool" }]
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool" }],
+          "metrics": { "stars": 0 }
         }
       ]
     }

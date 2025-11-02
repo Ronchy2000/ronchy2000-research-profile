@@ -93,7 +93,7 @@ export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocal
           <ThemeToggle variant="subtle" />
         </div>
       </div>
-      <nav className="flex items-center gap-2 overflow-x-auto border-t border-slate-200 px-4 py-2 md:hidden dark:border-slate-800">
+      <nav className="flex items-center gap-2 overflow-x-auto border-t border-slate-200 px-4 py-2 scrollbar-hide md:hidden dark:border-slate-800">
         {navItems.map((item) => renderLink(item, "mobile"))}
       </nav>
     </header>

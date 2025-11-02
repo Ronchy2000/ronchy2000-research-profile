@@ -31,6 +31,16 @@ a:focus-visible {
   @apply outline-none ring-2 ring-brand/60 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
 }
 
+/* Hide scrollbar for mobile navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @media print {
   body {
     @apply bg-white text-black;

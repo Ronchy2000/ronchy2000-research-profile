@@ -29,20 +29,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       ) : null}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
-        {project.metrics?.stars ? (
-          <div className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
-            <span aria-hidden="true">★</span>
-            <span>{project.metrics.stars}</span>
-          </div>
-        ) : (
-          <span />
-        )}
-        {otherMetrics.length ? (
-          <div className="text-xs text-slate-500 dark:text-slate-400">
-            {otherMetrics.map(([key, value]) => `${key}: ${value}`).join(" · ")}
-          </div>
-        ) : null}
+      <div className="mt-4 flex flex-col gap-3 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-2">
+          {project.metrics?.stars !== undefined ? (
+            <div className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
+              <span aria-hidden="true">★</span>
+              <span>{project.metrics.stars}</span>
+            </div>
+          ) : null}
+          {otherMetrics.length ? (
+            <div className="text-xs text-slate-500 dark:text-slate-400">
+              {otherMetrics.map(([key, value]) => `${key}: ${value}`).join(" · ")}
+            </div>
+          ) : null}
+        </div>
         <div className="flex flex-wrap gap-2">
           {(project.links ?? [{ label: "Repository", href: "#" }]).map((link) => (
             <a

@@ -35,14 +35,14 @@ export default function HomePage() {
             <Tag key={keyword} label={keyword} />
           ))}
         </div>
-        <div className="flex flex-wrap gap-3 text-sm font-medium">
-          <Link href="/cv" className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
+        <div className="flex flex-col gap-3 text-sm font-medium sm:flex-row sm:flex-wrap">
+          <Link href="/cv" className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
             View CV
           </Link>
-          <Link href="/publications" className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200">
+          <Link href="/publications" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200">
             View Publications
           </Link>
-          <Link href="/projects" className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200">
+          <Link href="/projects" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200">
             Explore Projects
           </Link>
         </div>
