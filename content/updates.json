@@ -9,6 +9,13 @@
     {
       "date": "2025-11-02",
       "type": "Commit",
+      "title": "chore: update latest activities and GitHub stars",
+      "summary": "Authored by github-actions[bot]",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81a9c6a3b2941860d2adedded04c21acc973b66f"
+    },
+    {
+      "date": "2025-11-02",
+      "type": "Commit",
       "title": "[feat]: recent update 滑动",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
@@ -47,13 +54,6 @@
       "title": "[fix]: github actions and 移动端布局优化",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/80d6d02da0df3a8feda5aeae60243390a8275b2b"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[fix] :github action",
-      "summary": "Authored by ronchy",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/914fb6f1a32ac422393cee589c779e30e3de323d"
     }
   ]
 }
