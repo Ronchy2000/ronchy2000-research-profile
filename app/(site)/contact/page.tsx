@@ -57,12 +57,12 @@ export default function ContactPage() {
               type="button"
               className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
             >
-              Send Message (placeholder)
+              Send Message
             </button>
           </form>
         </div>
-        <Callout title="Heads up">
-          This form is a visual placeholder and does not send messages. Please use the email link on the left to contact me directly or replace this block with a real service (Formspree, Resend, etc.).
+        <Callout title="Preferred Contact">
+          For the fastest response, please reach out via the email link above. I typically respond within 1-2 business days.
         </Callout>
       </Section>
     </div>

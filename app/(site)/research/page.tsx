@@ -9,16 +9,14 @@ export default function ResearchPage() {
     <div className="space-y-16">
       <section className="space-y-4 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 shadow-[0_24px_60px_-45px_rgba(30,64,175,0.45)] dark:border-slate-800 dark:bg-gradient-to-br dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40">
         <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">Research Overview</h1>
-        <p className="text-sm leading-relaxed text-blue-900/70 dark:text-slate-300">
-          My work blends multi-agent reinforcement learning, distributed robotics, and embedded autonomy. The sections below capture
-          focus areas and representative collaborations. Update field descriptions in <span className="font-mono text-xs">content/research.json</span>.
+        <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">
+          My work blends multi-agent reinforcement learning, distributed robotics, and embedded autonomy, focusing on reliable coordination strategies for autonomous robot teams.
         </p>
       </section>
 
       <Section
         title="Research Interests"
-        description="Focus areas I am currently exploring. Each interest card can expand into dedicated subprojects or collaborations."
-        eyebrow="Overview"
+        eyebrow="Focus Areas"
       >
         <div className="grid gap-4 md:grid-cols-2">
           {interests.map((interest) => (
@@ -32,7 +30,6 @@ export default function ResearchPage() {
 
       <Section
         title="Research Experience"
-        description="Projects and collaborations ordered chronologically."
         eyebrow="Experience"
       >
         <Timeline
@@ -43,8 +40,8 @@ export default function ResearchPage() {
             details: [item.summary, ...item.bullets]
           }))}
         />
-        <p className="text-sm text-slate-500">
-          Interested in collaboration? Reach out via the Contact page; I am especially keen on joint work in multi-agent reinforcement learning and deployable robotics.
+        <p className="mt-6 text-sm text-slate-600 dark:text-slate-400">
+          Interested in collaboration? Feel free to reach out via the Contact page.
         </p>
       </Section>
     </div>

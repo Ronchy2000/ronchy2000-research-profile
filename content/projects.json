@@ -20,13 +20,13 @@
       "kind": "academic",
       "items": [
         {
-          "name": "PACE Multi-agent Framework",
-          "summary": "Adaptive communication strategy for pursuit–evasion benchmarks.",
-          "period": "2024 – Present",
+          "name": "Multi-agent-RL",
+          "summary": "Pursuit-evasion benchmarks with MADDPG, MATD3 implementations.",
+          "period": "2023 – 2025",
           "role": "Core Researcher",
-          "tags": ["PyTorch", "MARL"],
-          "links": [{ "label": "Overview", "href": "#" }],
-          "metrics": { "status": "In revision" }
+          "tags": ["Python", "RL", "MARL"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Multi-agent-RL" }],
+          "metrics": { "stars": 224 }
         },
         {
           "name": "Visual-Inertial UAV Navigation",
@@ -69,15 +69,6 @@
       "title": "Open-source & Personal Projects",
       "kind": "open-source",
       "items": [
-        {
-          "name": "Multi-agent-RL",
-          "summary": "Pursuit-evasion benchmarks with MADDPG, MATD3 implementations.",
-          "period": "2023 – 2025",
-          "role": "Maintainer",
-          "tags": ["Python", "RL"],
-          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Multi-agent-RL" }],
-          "metrics": { "stars": 224 }
-        },
         {
           "name": "wiki-SICNU",
           "summary": "Knowledge wiki and resource guide for SICNU students.",

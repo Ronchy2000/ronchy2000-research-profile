@@ -40,15 +40,14 @@ export default function CVPage() {
         <Timeline items={timeline.experience} />
       </Section>
 
-      <Section title="Selected Honors" eyebrow="CV">
+      <Section title="Selected Honors" eyebrow="Recognition">
         <Table
           headers={["Year", "Award", "Issuer"]}
           rows={awards.map((award) => [award.year, award.title, award.issuer])}
-          caption="Maintain this table via content/awards.json"
         />
       </Section>
 
-      <Section title="Skills & Coursework" eyebrow="CV" description="Placeholder entries; customize as needed.">
+      <Section title="Skills & Coursework" eyebrow="CV">
         <Table
           headers={["Category", "Items"]}
           rows={[
@@ -57,9 +56,6 @@ export default function CVPage() {
             ["Courses", "Optimal Control, Multi-agent Systems, Embedded Systems"]
           ]}
         />
-        <p className="text-xs text-slate-500">
-          Print tips: use the browser print dialog (Ctrl/Cmd+P). Navigation and ambient elements are hidden automatically.
-        </p>
       </Section>
 
       <Section title="Additional Links" eyebrow="CV">

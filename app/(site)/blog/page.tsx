@@ -3,19 +3,19 @@ import Link from "next/link";
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
 
-const placeholderPosts = [
+const examplePosts = [
   {
     slug: "sample-research-note",
     title: "Sample Research Note",
     date: "2025-02-01",
-    summary: "Placeholder MDX entry demonstrating the blog layout.",
-    tags: ["Research", "Placeholder"]
+    summary: "An example of research notes and technical documentation.",
+    tags: ["Research", "Example"]
   },
   {
     slug: "reading-notes",
     title: "Reading Notes on Multi-agent Exploration",
     date: "2024-12-15",
-    summary: "Example summary showcasing how reading notes can be listed.",
+    summary: "Insights from recent papers on decentralized coordination strategies.",
     tags: ["Notes"]
   }
 ];
@@ -29,7 +29,7 @@ export default function BlogPage() {
         eyebrow="Writing"
       >
         <div className="space-y-6">
-          {placeholderPosts.map((post) => (
+          {examplePosts.map((post) => (
             <article key={post.slug} className="rounded-2xl border border-slate-200 bg-white/90 p-6 dark:border-slate-800 dark:bg-slate-900/70">
               <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
                 <span>{post.date}</span>

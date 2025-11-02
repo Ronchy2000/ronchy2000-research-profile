@@ -7,6 +7,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 2025.11.03Changed
+
+#### 内容清理 - 移除所有技术性说明文字
+
+**背景**：遵循 Apple 设计理念，所有开发者配置说明移至 `docs/` 文档目录，用户界面保持极致简洁。
+
+**清理的页面**：
+1. **Publications 页面** (`app/(site)/publications/publications-client.tsx`)
+   - 移除："Entries are maintained via content/publications.json"
+   - 改为："Conference papers, journal articles, and patent applications."
+
+2. **Research 页面** (`app/(site)/research/page.tsx`)
+   - 移除："Update field descriptions in content/research.json"
+   - 移除："Projects and collaborations ordered chronologically"
+   - 简化描述，提升文字可读性（text-sm → text-base）
+
+3. **CV 页面** (`app/(site)/cv/page.tsx`)
+   - 移除："Maintain this table via content/awards.json"
+   - 移除："Placeholder entries; customize as needed"
+   - 移除：打印提示段落（Ctrl/Cmd+P 说明）
+
+4. **Projects 页面** (`app/(site)/projects/page.tsx`)
+   - 移除："Reorder or annotate items in content/projects.json"
+   - 移除重复的技术性说明
+   - 保持简洁的"Recent Project Updates"区域
+
+5. **Blog 页面** (`app/(site)/blog/page.tsx`, `app/(site)/blog/[slug]/page.tsx`)
+   - 替换 "Placeholder" → "Example"
+   - 移除："Replace it with an MDX loader or hardcoded content when ready"
+   - 改为用户友好的描述
+
+6. **Contact 页面** (`app/(site)/contact/page.tsx`)
+   - 移除："This form is a visual placeholder and does not send messages. Please use the email link on the left or replace this block with a real service (Formspree, Resend, etc.)"
+   - 改为："For the fastest response, please reach out via the email link above. I typically respond within 1-2 business days."
+   - 按钮文本："Send Message (placeholder)" → "Send Message"
+
+**新增文档**：
+- 创建 `docs/CONTENT-MANAGEMENT.md` - 完整的内容管理指南
+  - 所有 JSON 配置说明
+  - GitHub Action 设置步骤
+  - 打印优化技巧
+  - 表单实现方案
+  - 故障排查指南
+
+#### 用户体验优化（Apple 风格设计）
+
+- **字体优化**
+  - 采用 Apple 系统字体栈（SF Pro, -apple-system 等）
+  - 基础字号提升到 16px，改善可读性
+  - 行高调整为 1.6，字间距优化为 -0.011em（Apple 风格）
+  - 移除过宽的大写字母间距，提升视觉舒适度
+
+- **Recent Updates 横向滚动**
+  - 从 3 条扩展到 7 条更新
+  - 改为横向滚动展示，支持触摸滑动
+  - 卡片尺寸响应式：移动端全宽，平板 50%，桌面 33%
+  - 添加渐变遮罩提示更多内容
+  - 卡片悬停效果优化
+
+- **Project 页面改进**
+  - 添加"Recent Project Updates"专区，显示近 7 条更新
+  - 更新列表采用简洁的时间轴样式，无边框设计
+  - 项目描述更加用户友好
+
+- **内容清理**
+  - 移除首页各 Section 的技术性描述
+  - 删除 "Project log" 重复链接
+  - 所有描述面向最终用户，技术配置移至文档
+
+#### 项目调整
+- 将 `Multi-agent-RL` 从开源项目移至学术项目首位
+- 更新标签为 ["Python", "RL", "MARL"]
+
+#### 其他优化
+- Footer 日期改为动态获取当前日期
+- Actions 更新数量从 5 条增加到 7 条
+
 ### Added
 
 #### 新增项目
@@ -93,7 +170,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.1.0] - 2025-02-20
+## [0.1.0] - 2025-11-02
 
 ### Added
 - 初始项目结构

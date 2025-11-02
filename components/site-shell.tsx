@@ -84,7 +84,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         </div>
         <main className="flex-1 space-y-16">
           {children}
-          <SiteFooter lastUpdated="2025-02-20" />
+          <SiteFooter lastUpdated={new Date().toISOString().split('T')[0]} />
         </main>
       </div>
     </div>

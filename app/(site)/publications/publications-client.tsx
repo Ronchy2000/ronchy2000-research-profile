@@ -40,7 +40,7 @@ export function PublicationsClient({ entries }: PublicationsClientProps) {
     <div className="space-y-12">
       <Section
         title="Publications & Patents"
-        description="Filter by type or year. Entries are maintained via content/publications.json."
+        description="Conference papers, journal articles, and patent applications."
         eyebrow="Catalogue"
         actions={<Tag label="* indicates student-first author" />}
       >

@@ -3,25 +3,25 @@ import Link from "next/link";
 import { MDXContent } from "@/components/mdx-content";
 import { Section } from "@/components/section";
 
-const placeholderPost = {
+const samplePost = {
   title: "Sample Research Note",
   date: "2025-02-01",
-  summary: "Placeholder MDX entry demonstrating the blog layout.",
-  tags: ["Research", "Placeholder"]
+  summary: "An example of research notes and technical writing.",
+  tags: ["Research", "Example"]
 };
 
 export default function BlogPostPage() {
   return (
     <div className="space-y-16">
-      <Section title={placeholderPost.title} description={placeholderPost.summary} eyebrow={placeholderPost.date}>
+      <Section title={samplePost.title} description={samplePost.summary} eyebrow={samplePost.date}>
         <MDXContent>
           <p>
-            This is a placeholder article layout. Replace it with an MDX loader or hardcoded content when ready. The
-            Callout component and code snippets are showcased in the sample MDX file under <code>blog/sample-post.mdx</code>.
+            Welcome to my research notes. This space is dedicated to documenting experiment findings, 
+            paper reviews, and technical explorations in multi-agent systems and robotics.
           </p>
           <p>
-            Use this page to publish research diaries, experiment retrospectives, or paper reading notes. Include
-            references, footnotes, and illustrative figures as needed.
+            Each article includes detailed analysis, relevant references, and illustrative examples 
+            to share insights from my research journey.
           </p>
           <p>
             Return to the <Link href="/blog" className="text-brand">blog index</Link> for more entries.

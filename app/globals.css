@@ -4,6 +4,8 @@
 
 :root {
   color-scheme: light;
+  /* Apple-inspired system font stack */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .dark {
@@ -12,6 +14,9 @@
 
 body {
   @apply bg-slate-100 text-slate-900 antialiased;
+  font-size: 16px; /* Increased base font size for better readability */
+  line-height: 1.6;
+  letter-spacing: -0.011em; /* Apple-style tighter letter spacing */
 }
 
 .dark body {

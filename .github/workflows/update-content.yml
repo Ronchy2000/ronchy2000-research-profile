@@ -31,7 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          UPDATES_LIMIT: 5
+          UPDATES_LIMIT: 7
 
       - name: Refresh project GitHub stars
         run: node scripts/update-project-stars.mjs

@@ -12,7 +12,7 @@ export default function HomePage() {
   const publications = [...getPublicationsContent().entries]
     .sort((a, b) => Number(b.year) - Number(a.year))
     .slice(0, 2);
-  const updates = getUpdatesContent().updates.slice(0, 3);
+  const updates = getUpdatesContent().updates.slice(0, 7);
   const awards = getAwardsContent().awards.slice(0, 6);
 
   return (
@@ -23,7 +23,7 @@ export default function HomePage() {
           {profile.nativeName ? <span>{profile.nativeName}</span> : null}
         </div>
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 lg:text-4xl">
-          Designing reliable multi-agent intelligence for autonomous robot teams.
+          Designing Reliable Multi-agent Intelligence for Autonomous Robot Teams.
         </h1>
         <p className="max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
           I’m Rongqi Lu (陆荣琦), a graduate student in Control Engineering at Xidian University.
@@ -50,31 +50,35 @@ export default function HomePage() {
 
       <Section
         title="Recent Updates"
-        description="Automatically refreshed via GitHub Actions; shows the three latest commits/releases or manual highlights."
         eyebrow="Activity"
-        actions={<Link href="/projects" className="text-sm font-medium text-brand hover:text-brand-foreground">Project log</Link>}
       >
-        <div className="grid gap-4 md:grid-cols-3">
-          {updates.map((update) => (
-            <article key={update.title} className="flex h-full flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-[0_24px_60px_-45px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/70">
-              <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
-                  {update.type} · {update.date}
-                </p>
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-50">{update.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300">{update.summary}</p>
-              </div>
-              <a href={update.link} className="text-sm font-medium text-brand hover:text-brand-foreground">
-                Details
-              </a>
-            </article>
-          ))}
+        <div className="relative">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {updates.map((update) => (
+              <article 
+                key={update.title} 
+                className="flex-shrink-0 w-[calc(100%-2rem)] sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)] flex flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.3)] transition-all hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.4)] dark:border-slate-800 dark:bg-slate-900/70 snap-start"
+              >
+                <div className="space-y-3">
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    {update.type} · {update.date}
+                  </p>
+                  <h3 className="text-base font-semibold leading-snug text-slate-900 dark:text-slate-50">{update.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{update.summary}</p>
+                </div>
+                <a href={update.link} className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-foreground transition-colors">
+                  View details
+                  <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))}
+          </div>
+          <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-slate-100 to-transparent dark:from-slate-950 pointer-events-none" />
         </div>
       </Section>
 
       <Section
         title="Highlighted Projects"
-        description="Selected academic and open-source efforts. Explore the Projects page for the full catalogue."
         eyebrow="Projects"
         actions={<Link href="/projects" className="text-sm font-medium text-brand hover:text-brand-foreground">All projects</Link>}
       >
@@ -90,7 +94,6 @@ export default function HomePage() {
 
       <Section
         title="Latest Writing"
-        description="Automatically lists the two most recent items from the publications catalogue."
         eyebrow="Publications"
         actions={<Link href="/publications" className="text-sm font-medium text-brand hover:text-brand-foreground">All entries</Link>}
       >
@@ -103,7 +106,6 @@ export default function HomePage() {
 
       <Section
         title="Honors & Awards"
-        description="Expanded list available on the CV page."
         eyebrow="Recognition"
         actions={<Link href="/cv" className="text-sm font-medium text-brand hover:text-brand-foreground">Full CV</Link>}
       >
