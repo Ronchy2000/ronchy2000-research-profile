@@ -15,7 +15,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -28,14 +29,14 @@ jobs:
       - name: Refresh recent updates data
         run: node scripts/update-recent-updates.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           UPDATES_LIMIT: 5
 
       - name: Refresh project GitHub stars
         run: node scripts/update-project-stars.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Commit and push changes
         run: |
