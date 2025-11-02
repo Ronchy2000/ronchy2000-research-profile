@@ -129,4 +129,4 @@ npm run build    # 发布前验证（postbuild 会自动复制 edgeone.json）
 ### 其他提示
 - Footer 当前仅显示版权和更新时间，如需 Sitemap/RSS，可在 `components/site-footer.tsx` 恢复链接并生成文件。
 - Contact 表单仍为占位；若要启用可接入 Formspree、Resend 等第三方服务或自建 API。
-- `.github/workflows/update-content.yml` 每日运行更新脚本（Recent Updates + GitHub stars）；确保仓库 token 拥有推送权限，建议配置 `GH_PAT`。
+- `.github/workflows/update-content.yml` 每日运行更新脚本（Recent Updates + GitHub stars）；确保仓库 token 拥有推送权限，建议配置 `GH_PAT`。工作流使用 `npm install --no-audit` 安装依赖，以避免 `npm ci` 对锁文件的要求。

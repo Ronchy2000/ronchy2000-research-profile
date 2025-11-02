@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --progress=false
 
       - name: Refresh recent updates data
         run: node scripts/update-recent-updates.mjs

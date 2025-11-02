@@ -53,7 +53,7 @@ Vercel automatically enables preview deployments on each pull request and produc
 - 样式：调节 `tailwind.config.ts`（brand 色）、`app/globals.css`（背景/打印样式）。
 - 组件：`Section`、`Timeline`、`ProjectCard` 等均有简洁 props 注释，方便快速复用。
 - 如果需要新增页面或模块，先在 `content/` 增加数据，再在 `lib/content.ts` & `app/(site)` 中接入。
-- Workflow (`.github/workflows/update-content.yml`) 每日运行，需仓库具有推送权限；可在 Secrets 中配置 `GH_PAT` 以避免速率限制。
+- Workflow (`.github/workflows/update-content.yml`) 每日运行，需仓库具有推送权限；可在 Secrets 中配置 `GH_PAT` 以避免速率限制。工作流内使用 `npm install --no-audit` 安装依赖，适合无 `npm ci` 锁文件的情况。
 
 ### 🧪 Recommended Next Steps
 - Run `npm run lint` to verify code style before committing.
