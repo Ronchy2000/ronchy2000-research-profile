@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "description": "Education and professional experience timeline entries.",
+    "fields": {
+      "education": "Array of education entries",
+      "experience": "Array of industry internship or employment entries",
+      "TimelineItem": {
+        "title": "Institution or role title",
+        "period": "Date range",
+        "location": "City, Country",
+        "details": "Bullet strings"
+      }
+    }
+  },
+  "education": [
+    {
+      "title": "M.Eng. Control Engineering · Xidian University",
+      "period": "2023 – 2026 (expected)",
+      "location": "Xi'an, China",
+      "details": [
+        "Research: multi-agent communication for aerial-ground fleets.",
+        "Coursework: Matrix Theory, Stochastic Processes, Optimal Control."
+      ]
+    },
+    {
+      "title": "B.Eng. Electronic Information Engineering · Sichuan Normal University",
+      "period": "2019 – 2023",
+      "location": "Chengdu, China",
+      "details": [
+        "Graduated first in cohort; thesis on UAV SLAM navigation.",
+        "Focus: embedded systems, data acquisition, communication networks."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "AI Software Development Engineer Intern · Huawei",
+      "period": "2025 Summer",
+      "location": "Xi'an, China",
+      "details": [
+        "Refactored NE log pipeline, improving throughput by 15%.",
+        "Standardised web-to-server orchestration, cutting query latency by 30%."
+      ]
+    },
+    {
+      "title": "Embedded Software Engineer Intern · Xi'an Jutong Magnetic Tech",
+      "period": "2023 Summer",
+      "location": "Xi'an, China",
+      "details": [
+        "Optimised SPI stack across STM32 and C8051 controllers.",
+        "Reduced motor control response latency from 15 ms to 3 ms."
+      ]
+    }
+  ]
+}

@@ -38,29 +38,37 @@ function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ThemeToggle() {
+type ThemeToggleProps = {
+  variant?: "default" | "subtle";
+};
+
+export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   const isDark = resolvedTheme === "dark";
+  const baseClasses =
+    variant === "subtle"
+      ? "inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white/70 text-slate-700 shadow-sm transition hover:border-slate-400 hover:text-slate-900 dark:border-slate-600 dark:bg-slate-800/70 dark:text-slate-100 dark:hover:border-slate-500 dark:hover:text-white"
+      : "inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-brand dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-slate-600 dark:hover:text-brand";
 
   return (
     <button
       aria-label="Toggle dark mode"
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-brand dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-slate-600 dark:hover:text-brand"
+      className={baseClasses}
     >
       {mounted ? (
         isDark ? (
           <SunIcon className="h-5 w-5" />
         ) : (
-          <MoonIcon className="h-5 w-5" />
+          <MoonIcon className="h-5 w-5 -translate-x-[1px]" />
         )
       ) : (
-        <MoonIcon className="h-5 w-5" />
+        <MoonIcon className="h-5 w-5 -translate-x-[1px]" />
       )}
     </button>
   );

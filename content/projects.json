@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "description": "Academic and open-source projects for the Projects page.",
+    "fields": {
+      "groups": "Array of { title, kind, items }",
+      "ProjectItem": {
+        "name": "Project title",
+        "summary": "One-sentence description",
+        "period": "Time range string",
+        "role": "Your role",
+        "tags": "Array of short tag strings",
+        "links": "Array of { label, href }",
+        "metrics": "Optional stats e.g. stars, downloads"
+      }
+    }
+  },
+  "groups": [
+    {
+      "title": "Academic Projects",
+      "kind": "academic",
+      "items": [
+        {
+          "name": "PACE Multi-agent Framework",
+          "summary": "Adaptive communication strategy for pursuit–evasion benchmarks.",
+          "period": "2024 – Present",
+          "role": "Core Researcher",
+          "tags": ["PyTorch", "MARL"],
+          "links": [{ "label": "Overview", "href": "#" }],
+          "metrics": { "status": "In revision" }
+        },
+        {
+          "name": "Visual-Inertial UAV Navigation",
+          "summary": "VI-SLAM with obstacle-aware planning for warehouse drones.",
+          "period": "2022 – 2023",
+          "role": "Team Lead",
+          "tags": ["ROS", "SLAM"],
+          "links": [{ "label": "Report", "href": "#" }]
+        }
+      ]
+    },
+    {
+      "title": "Open-source & Personal Projects",
+      "kind": "open-source",
+      "items": [
+        {
+          "name": "Multi-agent-RL",
+          "summary": "Pursuit-evasion benchmarks with MADDPG, MATD3 implementations.",
+          "period": "2023 – 2025",
+          "role": "Maintainer",
+          "tags": ["Python", "RL"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Multi-agent-RL" }],
+          "metrics": { "stars": 224 }
+        },
+        {
+          "name": "Raspi-ImmortalWrt",
+          "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
+          "period": "2024",
+          "role": "Author",
+          "tags": ["Networking", "OpenWrt"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt" }]
+        },
+        {
+          "name": "Dynamic-Proxy-Pool",
+          "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
+          "period": "2024 – Present",
+          "role": "Maintainer",
+          "tags": ["Python", "Automation"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool" }]
+        }
+      ]
+    }
+  ]
+}

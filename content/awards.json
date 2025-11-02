@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "description": "Awards and honors list for the Honors section. Add new entries as needed.",
+    "fields": {
+      "awards": "Array of award entries sorted by year desc",
+      "AwardItem": {
+        "title": "Award name",
+        "issuer": "Issuing body",
+        "year": "Year string",
+        "notes": "Optional extra note"
+      }
+    }
+  },
+  "awards": [
+    {
+      "title": "Graduate Scholarship (First Prize)",
+      "issuer": "Xidian University",
+      "year": "2025",
+      "notes": ""
+    },
+    {
+      "title": "Outstanding Graduate",
+      "issuer": "Sichuan Provincial Department of Education",
+      "year": "2023"
+    },
+    {
+      "title": "National Scholarship",
+      "issuer": "Ministry of Education of China",
+      "year": "2022"
+    },
+    {
+      "title": "Texas Instruments Electronic Design Cup · Provincial Second Prize",
+      "issuer": "Texas Instruments & CIE",
+      "year": "2021"
+    }
+  ]
+}

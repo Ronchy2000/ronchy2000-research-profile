@@ -1,0 +1,49 @@
+{
+  "_meta": {
+    "description": "Profile information in English and Chinese. Update both locales for consistency.",
+    "fields": {
+      "name": "Full name string",
+      "nativeName": "Optional Chinese name",
+      "title": "Short professional title",
+      "affiliation": "Current institution or lab",
+      "location": "City, Country",
+      "email": "Primary contact email",
+      "keywords": "Array of research keywords (2-4)",
+      "social": "Array of { label, href } links",
+      "cvLink": "Relative URL to downloadable CV",
+      "avatar": "Optional path to profile image relative to /public"
+    }
+  },
+  "en": {
+    "name": "Rongqi Lu",
+    "nativeName": "陆荣琦",
+    "title": "Control Engineering Graduate Student",
+    "affiliation": "Xidian University",
+    "location": "Xi'an, China",
+    "email": "ronchy_lu@163.com",
+    "keywords": ["Multi-robot Systems", "Reinforcement Learning", "Embedded Autonomy"],
+    "social": [
+      { "label": "GitHub", "href": "https://github.com/Ronchy2000" },
+      { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=I8gQIVAAAAAJ&hl=zh-CN" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/ronchy-lu" }
+    ],
+    "avatar": "/images/profile.jpeg",
+    "cvLink": "/files/Ronchy_CV.pdf"
+  },
+  "zh": {
+    "name": "陆荣琦",
+    "nativeName": "Rongqi Lu",
+    "title": "控制工程硕士研究生",
+    "affiliation": "西安电子科技大学",
+    "location": "中国·西安",
+    "email": "ronchy_lu@163.com",
+    "keywords": ["多机器人系统", "强化学习", "嵌入式"],
+    "social": [
+      { "label": "GitHub", "href": "https://github.com/Ronchy2000" },
+      { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=I8gQIVAAAAAJ&hl=zh-CN" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/ronchy-lu" }
+    ],
+    "avatar": "/images/profile.jpeg",
+    "cvLink": "/files/Ronchy_CV.pdf"
+  }
+}

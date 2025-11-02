@@ -11,7 +11,7 @@
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-slate-100 text-slate-900 antialiased;
 }
 
 .dark body {
@@ -24,4 +24,29 @@ a {
 
 section {
   @apply scroll-mt-24;
+}
+
+button:focus-visible,
+a:focus-visible {
+  @apply outline-none ring-2 ring-brand/60 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+}
+
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  header,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
 }

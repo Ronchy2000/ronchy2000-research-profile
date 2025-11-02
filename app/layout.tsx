@@ -3,9 +3,6 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap"
@@ -14,7 +11,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Rongqi Lu | Research Profile",
   description:
-    "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information."
+    "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
+  openGraph: {
+    title: "Rongqi Lu | Research Profile",
+    description:
+      "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
+    url: "https://www.ronchy2000.top",
+    siteName: "Rongqi Lu Research Profile",
+    locale: "en_US",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rongqi Lu | Research Profile",
+    description:
+      "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information."
+  }
 };
 
 export default function RootLayout({
@@ -26,11 +38,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <Navbar />
-          <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-28 sm:px-10">
-            {children}
-          </main>
-          <Footer />
+          {children}
         </Providers>
       </body>
     </html>

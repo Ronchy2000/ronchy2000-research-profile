@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "Recent updates shown on the Home page quick feed.",
+    "fields": {
+      "updates": "Array of { date, type, title, summary, link }"
+    }
+  },
+  "updates": [
+    {
+      "date": "2025-02-18",
+      "type": "Publication",
+      "title": "PACE manuscript entered revision",
+      "summary": "Updated experiments with new ablations on communication budgets.",
+      "link": "#"
+    },
+    {
+      "date": "2025-01-12",
+      "type": "Project",
+      "title": "Multi-agent-RL toolkit refreshed",
+      "summary": "Added MATD3 baseline and reproducible configs.",
+      "link": "https://github.com/Ronchy2000/Multi-agent-RL"
+    },
+    {
+      "date": "2024-12-08",
+      "type": "Award",
+      "title": "Graduate Scholarship (First Prize)",
+      "summary": "Recognised for research performance at Xidian University.",
+      "link": "#"
+    }
+  ]
+}

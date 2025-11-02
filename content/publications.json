@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "description": "Publications and patents with metadata for the Publications page. Supports type, tags, and external links.",
+    "fields": {
+      "entries": "Array of publication items",
+      "PublicationItem": {
+        "id": "Short identifier such as C.1",
+        "type": "C|J|P|S",
+        "title": "Title string",
+        "authors": "Author list, highlight yourself with *",
+        "venue": "Conference/Journal/Patent info",
+        "year": "Year string",
+        "tags": "Array of topic tags",
+        "links": "Array of { label, href }",
+        "notes": "Optional short note e.g. student-first author"
+      }
+    }
+  },
+  "entries": [
+    {
+      "id": "S.1",
+      "type": "S",
+      "title": "Cooperative Exploration and Control in Pursuit–Evasion Games with Reinforcement Learning",
+      "authors": "Rongqi Lu*, et al.",
+      "venue": "Manuscript in revision",
+      "year": "2025",
+      "tags": ["MARL", "Pursuit-Evasion"],
+      "links": [{ "label": "Draft", "href": "#" }],
+      "notes": "Student first author"
+    },
+    {
+      "id": "C.1",
+      "type": "C",
+      "title": "TOTAL: Multi-Corner Timing Optimization Based on Transfer and Active Learning",
+      "authors": "Wei W. Xing, Zheng Xing, Rongqi Lu*, et al.",
+      "venue": "ACM/IEEE DAC",
+      "year": "2023",
+      "tags": ["EDA", "Timing Analysis"],
+      "links": [{ "label": "DOI", "href": "#" }]
+    },
+    {
+      "id": "P.1",
+      "type": "P",
+      "title": "Intelligent Cooperative Pursuit Method Under Incomplete Information",
+      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
+      "venue": "CN Patent 202510738071.X",
+      "year": "2025",
+      "tags": ["Patent", "Cooperative Control"],
+      "links": [{ "label": "Patent", "href": "#" }]
+    },
+    {
+      "id": "P.2",
+      "type": "P",
+      "title": "Cooperative Pursuit Planning of Heterogeneous UAVs Under Local Observation",
+      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
+      "venue": "CN Patent 202511338072.1",
+      "year": "2025",
+      "tags": ["Patent", "UAV"],
+      "links": [{ "label": "Patent", "href": "#" }]
+    },
+    {
+      "id": "P.3",
+      "type": "P",
+      "title": "Collaborative Target Network-Based Multi-agent Cooperative Exploration",
+      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
+      "venue": "CN Patent 202511464448.3",
+      "year": "2025",
+      "tags": ["Patent", "Exploration"],
+      "links": [{ "label": "Patent", "href": "#" }]
+    }
+  ]
+}
