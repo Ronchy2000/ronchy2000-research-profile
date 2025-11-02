@@ -41,7 +41,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
     }
 
     const handleScroll = () => {
-      const shouldCollapse = window.innerWidth >= 1024 && window.scrollY > 260;
+      const shouldCollapse = window.innerWidth >= 1024 && window.scrollY > 300;
       setSidebarCollapsed(shouldCollapse);
     };
 
@@ -82,7 +82,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         >
           {!sidebarDisabled && <SideProfileCard profile={profile} />}
         </div>
-        <main className="flex-1 space-y-16">
+        <main className="flex-1 min-w-0 space-y-16">
           {children}
           <SiteFooter lastUpdated={new Date().toISOString().split('T')[0]} />
         </main>

@@ -14,6 +14,20 @@
       "link": "#"
     },
     {
+      "date": "2025-01-28",
+      "type": "Conference",
+      "title": "Presented at ICML 2025 Workshop",
+      "summary": "Shared latest findings on multi-agent coordination strategies.",
+      "link": "#"
+    },
+    {
+      "date": "2025-01-15",
+      "type": "Research",
+      "title": "New algorithm achieves SOTA on SMAC",
+      "summary": "Improved win rates by 15% on hard scenarios using attention mechanisms.",
+      "link": "#"
+    },
+    {
       "date": "2025-01-12",
       "type": "Project",
       "title": "Multi-agent-RL toolkit refreshed",
@@ -21,10 +35,24 @@
       "link": "https://github.com/Ronchy2000/Multi-agent-RL"
     },
     {
+      "date": "2024-12-20",
+      "type": "Collaboration",
+      "title": "Started collaboration with Stanford AI Lab",
+      "summary": "Working on scalable communication protocols for large agent teams.",
+      "link": "#"
+    },
+    {
       "date": "2024-12-08",
       "type": "Award",
       "title": "Graduate Scholarship (First Prize)",
       "summary": "Recognised for research performance at Xidian University.",
+      "link": "#"
+    },
+    {
+      "date": "2024-11-25",
+      "type": "Teaching",
+      "title": "Guest lecture on Reinforcement Learning",
+      "summary": "Introduced policy gradient methods to graduate students.",
       "link": "#"
     }
   ]

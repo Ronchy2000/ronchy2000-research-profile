@@ -5,7 +5,8 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
+  variable: "--font-inter"
 });
 
 export const metadata: Metadata = {
@@ -36,7 +37,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // 自动检测并设置语言
+              (function() {
+                try {
+                  const savedLocale = localStorage.getItem('locale');
+                  if (savedLocale === 'zh' || savedLocale === 'en') {
+                    document.documentElement.lang = savedLocale;
+                    return;
+                  }
+                  const browserLang = navigator.language.toLowerCase();
+                  document.documentElement.lang = browserLang.startsWith('zh') ? 'zh' : 'en';
+                } catch (e) {
+                  document.documentElement.lang = 'en';
+                }
+              })();
+            `
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} font-sans`}>
         <Providers>
           {children}
         </Providers>

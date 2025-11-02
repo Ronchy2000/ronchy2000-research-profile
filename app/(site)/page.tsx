@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { InfiniteScrollUpdates } from "@/components/infinite-scroll-updates";
 import { ProjectCard } from "@/components/project-card";
 import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";
@@ -52,29 +53,7 @@ export default function HomePage() {
         title="Recent Updates"
         eyebrow="Activity"
       >
-        <div className="relative">
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-            {updates.map((update) => (
-              <article 
-                key={update.title} 
-                className="flex-shrink-0 w-[calc(100%-2rem)] sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)] flex flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.3)] transition-all hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.4)] dark:border-slate-800 dark:bg-slate-900/70 snap-start"
-              >
-                <div className="space-y-3">
-                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                    {update.type} · {update.date}
-                  </p>
-                  <h3 className="text-base font-semibold leading-snug text-slate-900 dark:text-slate-50">{update.title}</h3>
-                  <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{update.summary}</p>
-                </div>
-                <a href={update.link} className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-foreground transition-colors">
-                  View details
-                  <span aria-hidden="true">→</span>
-                </a>
-              </article>
-            ))}
-          </div>
-          <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-slate-100 to-transparent dark:from-slate-950 pointer-events-none" />
-        </div>
+        <InfiniteScrollUpdates updates={updates} />
       </Section>
 
       <Section

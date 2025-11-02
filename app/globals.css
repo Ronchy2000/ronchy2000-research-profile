@@ -4,8 +4,11 @@
 
 :root {
   color-scheme: light;
-  /* Apple-inspired system font stack */
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans-stack: var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans", Arial, sans-serif;
+  font-family: var(--font-sans-stack);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .dark {
@@ -13,14 +16,58 @@
 }
 
 body {
-  @apply bg-slate-100 text-slate-900 antialiased;
-  /* Base font size is handled by Tailwind, Apple-style spacing */
-  line-height: 1.6;
-  letter-spacing: -0.011em; /* Apple-style tighter letter spacing */
+  @apply bg-slate-100 text-slate-900 antialiased font-sans;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga", "clig", "kern";
+  font-kerning: normal;
 }
 
 .dark body {
   @apply bg-slate-950 text-slate-100;
+}
+
+body:lang(zh),
+body:lang(zh-CN),
+body:lang(zh-Hans) {
+  letter-spacing: 0;
+  font-feature-settings: "liga", "clig", "kern";
+}
+
+@supports (font-variation-settings: normal) {
+  body {
+    font-variation-settings: "opsz" 16;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-feature-settings: "liga", "clig", "kern", "ss01", "ss03";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  p {
+    text-wrap: balance;
+  }
+
+  small {
+    letter-spacing: 0.015em;
+  }
 }
 
 a {
@@ -44,6 +91,25 @@ a:focus-visible {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Smooth scroll behavior */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+/* Reduced motion support - 尊重用户的无障碍设置 */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-smooth {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media print {

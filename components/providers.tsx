@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
+import { LocaleProvider } from "@/components/locale-provider";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
@@ -11,7 +12,9 @@ export function Providers({ children }: { children: ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      {children}
+      <LocaleProvider>
+        {children}
+      </LocaleProvider>
     </ThemeProvider>
   );
 }

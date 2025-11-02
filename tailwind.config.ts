@@ -10,7 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: [
+          "var(--font-inter)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "\"SF Pro Text\"",
+          "\"SF Pro Display\"",
+          "\"Segoe UI\"",
+          "Roboto",
+          "\"PingFang SC\"",
+          "\"Hiragino Sans GB\"",
+          "\"Microsoft YaHei\"",
+          "\"Noto Sans\"",
+          "sans-serif"
+        ],
         mono: ["JetBrains Mono", "SFMono-Regular", "Menlo", "monospace"]
       },
       colors: {
