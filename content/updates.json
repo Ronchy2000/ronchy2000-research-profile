@@ -7,53 +7,53 @@
   },
   "updates": [
     {
-      "date": "2025-02-18",
-      "type": "Publication",
-      "title": "PACE manuscript entered revision",
-      "summary": "Updated experiments with new ablations on communication budgets.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[feat]: recent update 滑动",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
     },
     {
-      "date": "2025-01-28",
-      "type": "Conference",
-      "title": "Presented at ICML 2025 Workshop",
-      "summary": "Shared latest findings on multi-agent coordination strategies.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[fix]: 字体排版",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cd2f504b76022ef962281518751ccb3ab8540cd3"
     },
     {
-      "date": "2025-01-15",
-      "type": "Research",
-      "title": "New algorithm achieves SOTA on SMAC",
-      "summary": "Improved win rates by 15% on hard scenarios using attention mechanisms.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[opt]: remove all technical content from public pages",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a196135eb73abfb4500044c9c68ba8b70ae79968"
     },
     {
-      "date": "2025-01-12",
-      "type": "Project",
-      "title": "Multi-agent-RL toolkit refreshed",
-      "summary": "Added MATD3 baseline and reproducible configs.",
-      "link": "https://github.com/Ronchy2000/Multi-agent-RL"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[opt]: 优化 Actions 定时任务、智能 commit 信息 & 新增GitHub项目",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1392810ab1a8314fc2ef1672a4a4721014045f38"
     },
     {
-      "date": "2024-12-20",
-      "type": "Collaboration",
-      "title": "Started collaboration with Stanford AI Lab",
-      "summary": "Working on scalable communication protocols for large agent teams.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[fix]: Giithub action",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6b5200b2170dc330e07d8e6e71eb3be61d89728b"
     },
     {
-      "date": "2024-12-08",
-      "type": "Award",
-      "title": "Graduate Scholarship (First Prize)",
-      "summary": "Recognised for research performance at Xidian University.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[fix]: github actions and 移动端布局优化",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/80d6d02da0df3a8feda5aeae60243390a8275b2b"
     },
     {
-      "date": "2024-11-25",
-      "type": "Teaching",
-      "title": "Guest lecture on Reinforcement Learning",
-      "summary": "Introduced policy gradient methods to graduate students.",
-      "link": "#"
+      "date": "2025-11-02",
+      "type": "Commit",
+      "title": "[fix] :github action",
+      "summary": "Authored by ronchy",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/914fb6f1a32ac422393cee589c779e30e3de323d"
     }
   ]
 }
