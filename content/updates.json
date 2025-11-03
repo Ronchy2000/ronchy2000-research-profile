@@ -7,11 +7,11 @@
   },
   "updates": [
     {
-      "date": "2025-11-02",
+      "date": "2025-11-03",
       "type": "Commit",
-      "title": "chore: update latest activities and GitHub stars",
-      "summary": "Authored by github-actions[bot]",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81a9c6a3b2941860d2adedded04c21acc973b66f"
+      "title": "[opt]: Recent update部分,排除bot的commit记录",
+      "summary": "Authored by ronchy",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
     },
     {
       "date": "2025-11-02",

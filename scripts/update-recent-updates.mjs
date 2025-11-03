@@ -27,7 +27,12 @@ const defaultIgnoredMessageKeywords = [
   "auto backup on",
   "update latest activities",
   "update github project stars",
-  "update github stars"
+  "update github stars",
+  "refresh content data"
+];
+
+const defaultIgnoredAccountTypes = [
+  "bot"
 ];
 
 function readListFromEnv(key) {
@@ -52,6 +57,11 @@ const ignoredMessageKeywords = [
   ...readListFromEnv("IGNORED_COMMIT_MESSAGE_KEYWORDS")
 ].map((value) => value.toLowerCase());
 
+const ignoredAccountTypes = new Set(
+  [...defaultIgnoredAccountTypes, ...readListFromEnv("IGNORED_COMMIT_ACCOUNT_TYPES")]
+    .map((value) => value.toLowerCase())
+);
+
 function shouldIgnoreCommit(commit) {
   const authorName = commit.commit?.author?.name ?? "";
   const committerName = commit.commit?.committer?.name ?? "";
@@ -74,6 +84,14 @@ function shouldIgnoreCommit(commit) {
     .filter(Boolean);
 
   if (normalizedEmails.some((email) => ignoredEmails.has(email))) {
+    return true;
+  }
+
+  const accountTypes = [commit.author?.type, commit.committer?.type]
+    .map((value) => value?.toLowerCase())
+    .filter(Boolean);
+
+  if (accountTypes.some((type) => ignoredAccountTypes.has(type))) {
     return true;
   }
 
