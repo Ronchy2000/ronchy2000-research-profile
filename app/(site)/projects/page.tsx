@@ -34,9 +34,9 @@ export default function ProjectsPage() {
         eyebrow="Activity Log"
       >
         <div className="space-y-3">
-          {updates.map((update) => (
+          {updates.map((update, index) => (
             <a 
-              key={update.title}
+              key={update.link || `${update.date}-${update.type}-${index}`}
               href={update.link}
               className="group flex items-start gap-4 py-3 px-4 rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-slate-900/50"
             >

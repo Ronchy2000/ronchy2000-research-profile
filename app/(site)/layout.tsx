@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import type { ReactNode } from "react";
 
 import { SiteShell } from "@/components/site-shell";
+import { useLocale } from "@/components/locale-provider";
 import { getProfileContent } from "@/lib/content";
 import type { NavItem } from "@/types/navigation";
 
@@ -19,13 +19,11 @@ const navItems = [
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
   const profileContent = getProfileContent();
-  const [locale, setLocale] = useState<"en" | "zh">("en");
+  const { locale, setLocale } = useLocale();
   const profile = locale === "zh" ? profileContent.zh : profileContent.en;
 
-  const toggleLocale = (next: "en" | "zh") => setLocale(next);
-
   return (
-    <SiteShell navItems={navItems} profile={profile} locale={locale} onToggleLocale={toggleLocale}>
+    <SiteShell navItems={navItems} profile={profile} locale={locale} onToggleLocale={setLocale}>
       {children}
     </SiteShell>
   );

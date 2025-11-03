@@ -44,16 +44,25 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ) : null}
         </div>
         <div className="flex flex-wrap gap-2">
-          {(project.links ?? [{ label: "Repository", href: "#" }]).map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200"
-            >
-              {link.label}
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))}
+          {(project.links ?? [{ label: "Repository", href: "#" }]).map((link) => {
+            // 检测是否为外部链接
+            const isExternal = link.href.startsWith("http") || link.href.startsWith("//");
+            
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                {...(isExternal && {
+                  target: "_blank",
+                  rel: "noopener noreferrer"
+                })}
+                className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200"
+              >
+                {link.label}
+                <span aria-hidden="true">↗</span>
+              </a>
+            );
+          })}
         </div>
       </div>
     </article>

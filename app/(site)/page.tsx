@@ -1,6 +1,19 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
-import { InfiniteScrollUpdates } from "@/components/infinite-scroll-updates";
+// 懒加载非关键组件，减少初始 bundle 大小
+const InfiniteScrollUpdates = dynamic(
+  () => import("@/components/infinite-scroll-updates").then(mod => ({ default: mod.InfiniteScrollUpdates })),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center py-12">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-900 dark:border-slate-700 dark:border-t-slate-100" />
+      </div>
+    ),
+    ssr: false // 这个组件在客户端才需要交互
+  }
+);
+
 import { ProjectCard } from "@/components/project-card";
 import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";

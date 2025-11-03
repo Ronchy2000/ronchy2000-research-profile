@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SideProfileCard } from "@/components/side-profile-card";
 import { SiteFooter } from "@/components/site-footer";
+import { getUpdatesContent } from "@/lib/content";
 import type { LocaleProfile } from "@/lib/content-types";
 import type { NavItem } from "@/types/navigation";
 
@@ -63,6 +64,16 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
     };
   }, [sidebarCollapsed, sidebarDisabled]);
 
+  // 获取真实的最后更新时间
+  const lastUpdated = useMemo(() => {
+    try {
+      const updates = getUpdatesContent().updates;
+      return updates[0]?.date || new Date().toISOString().split('T')[0];
+    } catch {
+      return new Date().toISOString().split('T')[0];
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <SiteHeader
@@ -84,7 +95,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         </div>
         <main className="flex-1 min-w-0 space-y-16">
           {children}
-          <SiteFooter lastUpdated={new Date().toISOString().split('T')[0]} />
+          <SiteFooter lastUpdated={lastUpdated} />
         </main>
       </div>
     </div>
