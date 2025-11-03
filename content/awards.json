@@ -11,27 +11,54 @@
       }
     }
   },
-  "awards": [
-    {
-      "title": "Graduate Scholarship (First Prize)",
-      "issuer": "Xidian University",
-      "year": "2025",
-      "notes": ""
-    },
-    {
-      "title": "Outstanding Graduate",
-      "issuer": "Sichuan Provincial Department of Education",
-      "year": "2023"
-    },
-    {
-      "title": "National Scholarship",
-      "issuer": "Ministry of Education of China",
-      "year": "2022"
-    },
-    {
-      "title": "Texas Instruments Electronic Design Cup · Provincial Second Prize",
-      "issuer": "Texas Instruments & CIE",
-      "year": "2021"
-    }
-  ]
+  "en": {
+    "awards": [
+      {
+        "title": "Graduate Scholarship (First Prize)",
+        "issuer": "Xidian University",
+        "year": "2025",
+        "notes": ""
+      },
+      {
+        "title": "Outstanding Graduate",
+        "issuer": "Sichuan Provincial Department of Education",
+        "year": "2023"
+      },
+      {
+        "title": "National Scholarship",
+        "issuer": "Ministry of Education of China",
+        "year": "2022"
+      },
+      {
+        "title": "Texas Instruments Electronic Design Cup · Provincial Second Prize",
+        "issuer": "Texas Instruments & CIE",
+        "year": "2021"
+      }
+    ]
+  },
+  "zh": {
+    "awards": [
+      {
+        "title": "研究生一等奖学金",
+        "issuer": "西安电子科技大学",
+        "year": "2025",
+        "notes": ""
+      },
+      {
+        "title": "优秀毕业生",
+        "issuer": "四川省教育厅",
+        "year": "2023"
+      },
+      {
+        "title": "国家奖学金",
+        "issuer": "中华人民共和国教育部",
+        "year": "2022"
+      },
+      {
+        "title": "德州仪器电子设计竞赛 · 省赛二等奖",
+        "issuer": "德州仪器 & 中国电子学会",
+        "year": "2021"
+      }
+    ]
+  }
 }

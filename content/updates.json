@@ -5,55 +5,110 @@
       "updates": "Array of { date, type, title, summary, link }"
     }
   },
-  "updates": [
-    {
-      "date": "2025-11-03",
-      "type": "Commit",
-      "title": "[opt]: 优化若干问题",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
-    },
-    {
-      "date": "2025-11-03",
-      "type": "Commit",
-      "title": "[opt]: 移除bot的commit记录",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
-    },
-    {
-      "date": "2025-11-03",
-      "type": "Commit",
-      "title": "[opt]: Recent update部分,排除bot的commit记录",
-      "summary": "Authored by ronchy",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[feat]: recent update 滑动",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[fix]: 字体排版",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cd2f504b76022ef962281518751ccb3ab8540cd3"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[opt]: remove all technical content from public pages",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a196135eb73abfb4500044c9c68ba8b70ae79968"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[opt]: 优化 Actions 定时任务、智能 commit 信息 & 新增GitHub项目",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1392810ab1a8314fc2ef1672a4a4721014045f38"
-    }
-  ]
+  "en": {
+    "updates": [
+      {
+        "date": "2025-11-03",
+        "type": "Commit",
+        "title": "[opt]: 优化若干问题",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
+      },
+      {
+        "date": "2025-11-03",
+        "type": "Commit",
+        "title": "[opt]: 移除bot的commit记录",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
+      },
+      {
+        "date": "2025-11-03",
+        "type": "Commit",
+        "title": "[opt]: Recent update部分,排除bot的commit记录",
+        "summary": "Authored by ronchy",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "Commit",
+        "title": "[feat]: recent update 滑动",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "Commit",
+        "title": "[fix]: 字体排版",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cd2f504b76022ef962281518751ccb3ab8540cd3"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "Commit",
+        "title": "[opt]: remove all technical content from public pages",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a196135eb73abfb4500044c9c68ba8b70ae79968"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "Commit",
+        "title": "[opt]: 优化 Actions 定时任务、智能 commit 信息 & 新增GitHub项目",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1392810ab1a8314fc2ef1672a4a4721014045f38"
+      }
+    ]
+  },
+  "zh": {
+    "updates": [
+      {
+        "date": "2025-11-03",
+        "type": "提交",
+        "title": "[opt]: 优化若干问题",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
+      },
+      {
+        "date": "2025-11-03",
+        "type": "提交",
+        "title": "[opt]: 移除 bot 的 commit 记录",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
+      },
+      {
+        "date": "2025-11-03",
+        "type": "提交",
+        "title": "[opt]: Recent update 部分排除 bot 记录",
+        "summary": "由 ronchy 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "功能",
+        "title": "[feat]: Recent update 滑动体验",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "修复",
+        "title": "[fix]: 字体排版",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cd2f504b76022ef962281518751ccb3ab8540cd3"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "优化",
+        "title": "[opt]: remove all technical content from public pages",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a196135eb73abfb4500044c9c68ba8b70ae79968"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "优化",
+        "title": "[opt]: 优化 Actions 定时任务、智能 commit 信息 & 新增GitHub项目",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1392810ab1a8314fc2ef1672a4a4721014045f38"
+      }
+    ]
+  }
 }

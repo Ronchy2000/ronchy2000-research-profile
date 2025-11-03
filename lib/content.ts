@@ -7,41 +7,14 @@ import awardsJson from "@/content/awards.json";
 import updatesJson from "@/content/updates.json";
 
 import type {
-  AwardEntry,
   ProfileContent,
-  ProjectGroup,
-  PublicationEntry,
-  ResearchExperience,
-  ResearchInterest,
-  TimelineEntry,
-  UpdateEntry
+  ResearchContent,
+  PublicationsContent,
+  ProjectsContent,
+  TimelineContent,
+  AwardsContent,
+  UpdatesContent
 } from "./content-types";
-
-type ResearchContent = {
-  interests: ResearchInterest[];
-  experiences: ResearchExperience[];
-};
-
-type ProjectsContent = {
-  groups: ProjectGroup[];
-};
-
-type TimelineContent = {
-  education: TimelineEntry[];
-  experience: TimelineEntry[];
-};
-
-type PublicationsContent = {
-  entries: PublicationEntry[];
-};
-
-type AwardsContent = {
-  awards: AwardEntry[];
-};
-
-type UpdatesContent = {
-  updates: UpdateEntry[];
-};
 
 /**
  * Placeholder accessors. In production, replace the inline casts with
@@ -54,31 +27,31 @@ export function getProfileContent(): ProfileContent {
 }
 
 export function getResearchContent(): ResearchContent {
-  const { interests, experiences } = researchJson as unknown as ResearchContent;
-  return { interests, experiences };
+  const { en, zh } = researchJson as unknown as ResearchContent;
+  return { en, zh };
 }
 
 export function getPublicationsContent(): PublicationsContent {
-  const { entries } = publicationsJson as unknown as PublicationsContent;
-  return { entries };
+  const { en, zh } = publicationsJson as unknown as PublicationsContent;
+  return { en, zh };
 }
 
 export function getProjectsContent(): ProjectsContent {
-  const { groups } = projectsJson as unknown as ProjectsContent;
-  return { groups };
+  const { en, zh } = projectsJson as unknown as ProjectsContent;
+  return { en, zh };
 }
 
 export function getTimelineContent(): TimelineContent {
-  const { education, experience } = timelineJson as unknown as TimelineContent;
-  return { education, experience };
+  const { en, zh } = timelineJson as unknown as TimelineContent;
+  return { en, zh };
 }
 
 export function getAwardsContent(): AwardsContent {
-  const { awards } = awardsJson as unknown as AwardsContent;
-  return { awards };
+  const { en, zh } = awardsJson as unknown as AwardsContent;
+  return { en, zh };
 }
 
 export function getUpdatesContent(): UpdatesContent {
-  const { updates } = updatesJson as unknown as UpdatesContent;
-  return { updates };
+  const { en, zh } = updatesJson as unknown as UpdatesContent;
+  return { en, zh };
 }

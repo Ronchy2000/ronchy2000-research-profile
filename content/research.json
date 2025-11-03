@@ -6,63 +6,126 @@
       "experiences": "Array of items with title, period, role, advisor, funding, summary, bullets, tags"
     }
   },
-  "interests": [
-    {
-      "title": "Multi-robot Coordination",
-      "description": "Distributed decision-making for aerial-ground teams under communication constraints."
-    },
-    {
-      "title": "Multi-agent Reinforcement Learning",
-      "description": "Centralised training with decentralised execution for pursuit-evasion and exploration tasks."
-    },
-    {
-      "title": "Vision-Language Navigation",
-      "description": "Linking high-level instructions with onboard perception for autonomous mobility."
-    },
-    {
-      "title": "Embedded Autonomy",
-      "description": "Deployable autonomy stacks on resource-limited edge hardware."
-    }
-  ],
-  "experiences": [
-    {
-      "title": "Phase-Adaptive Communication and Exploration (PACE)",
-      "period": "2024 – Present",
-      "role": "Core Researcher",
-      "advisor": "Prof. Yuanshi Zheng",
-      "funding": "National Science Foundation of China",
-      "summary": "Designing adaptive MARL policies that swap between local exploration and burst communication.",
-      "bullets": [
-        "Raised pursuit success to 91% in 4v1 pursuit-evasion benchmarks.",
-        "Drafted patents on heterogeneous UAV coordination and sparse reward exploration."
-      ],
-      "tags": ["MARL", "UAV"]
-    },
-    {
-      "title": "Autonomous UAV–Ground Vehicle Navigation",
-      "period": "2025",
-      "role": "Research Engineer",
-      "advisor": "Meituan Academy of Robotics Shenzhen",
-      "funding": "Industry Collaboration",
-      "summary": "Developing navigation stack combining RGB, LiDAR, odometry for indoor logistics.",
-      "bullets": [
-        "Implemented dual control modes with constraint-aware planning.",
-        "Achieved 10 cm arrival accuracy in dynamic test arenas."
-      ],
-      "tags": ["Navigation", "ROS"]
-    },
-    {
-      "title": "Visual-Inertial SLAM for Autonomous UAVs",
-      "period": "2022 – 2023",
-      "role": "Team Lead",
-      "advisor": "Assoc. Prof. Li Jun",
-      "funding": "Undergraduate Thesis",
-      "summary": "Integrated IMU and vision for warehouse-scale SLAM and obstacle-aware planning.",
-      "bullets": [
-        "Maintained <0.3 m drift over 10-minute flights.",
-        "Automated waypoint navigation through cluttered aisles."
-      ],
-      "tags": ["SLAM", "UAV"]
-    }
-  ]
+  "en": {
+    "interests": [
+      {
+        "title": "Multi-robot Coordination",
+        "description": "Distributed decision-making for aerial-ground teams under communication constraints."
+      },
+      {
+        "title": "Multi-agent Reinforcement Learning",
+        "description": "Centralised training with decentralised execution for pursuit-evasion and exploration tasks."
+      },
+      {
+        "title": "Vision-Language Navigation",
+        "description": "Linking high-level instructions with onboard perception for autonomous mobility."
+      },
+      {
+        "title": "Embedded Autonomy",
+        "description": "Deployable autonomy stacks on resource-limited edge hardware."
+      }
+    ],
+    "experiences": [
+      {
+        "title": "Phase-Adaptive Communication and Exploration (PACE)",
+        "period": "2024 – Present",
+        "role": "Core Researcher",
+        "advisor": "Prof. Yuanshi Zheng",
+        "funding": "National Science Foundation of China",
+        "summary": "Designing adaptive MARL policies that swap between local exploration and burst communication.",
+        "bullets": [
+          "Raised pursuit success to 91% in 4v1 pursuit-evasion benchmarks.",
+          "Drafted patents on heterogeneous UAV coordination and sparse reward exploration."
+        ],
+        "tags": ["MARL", "UAV"]
+      },
+      {
+        "title": "Autonomous UAV–Ground Vehicle Navigation",
+        "period": "2025",
+        "role": "Research Engineer",
+        "advisor": "Meituan Academy of Robotics Shenzhen",
+        "funding": "Industry Collaboration",
+        "summary": "Developing navigation stack combining RGB, LiDAR, odometry for indoor logistics.",
+        "bullets": [
+          "Implemented dual control modes with constraint-aware planning.",
+          "Achieved 10 cm arrival accuracy in dynamic test arenas."
+        ],
+        "tags": ["Navigation", "ROS"]
+      },
+      {
+        "title": "Visual-Inertial SLAM for Autonomous UAVs",
+        "period": "2022 – 2023",
+        "role": "Team Lead",
+        "advisor": "Assoc. Prof. Li Jun",
+        "funding": "Undergraduate Thesis",
+        "summary": "Integrated IMU and vision for warehouse-scale SLAM and obstacle-aware planning.",
+        "bullets": [
+          "Maintained <0.3 m drift over 10-minute flights.",
+          "Automated waypoint navigation through cluttered aisles."
+        ],
+        "tags": ["SLAM", "UAV"]
+      }
+    ]
+  },
+  "zh": {
+    "interests": [
+      {
+        "title": "多机器人协同控制",
+        "description": "聚焦空地异构编队，在受限通信条件下设计稳定可靠的分布式决策策略。"
+      },
+      {
+        "title": "多智能体强化学习",
+        "description": "研究集中训练、分散执行架构，支撑追逃博弈与大规模探索等任务场景。"
+      },
+      {
+        "title": "视觉-语言导航",
+        "description": "将自然语言指令与机载感知深度结合，构建可解释的自主导航能力。"
+      },
+      {
+        "title": "嵌入式自主系统",
+        "description": "在边缘算力受限的硬件上部署轻量化感知决策链路，兼顾鲁棒性与实时性。"
+      }
+    ],
+    "experiences": [
+      {
+        "title": "PACE 项目：阶段自适应通信与探索",
+        "period": "2024 – 至今",
+        "role": "核心研究成员",
+        "advisor": "导师：郑远师教授",
+        "funding": "资助：国家自然科学基金项目",
+        "summary": "围绕空地协同编队，探索在局部探索与突发通信之间自适应切换的多智能体强化学习策略。",
+        "bullets": [
+          "在 4v1 追逃基准中将捕获成功率提升至 91%。",
+          "撰写异构无人机协同与稀疏奖励探索相关专利草案。"
+        ],
+        "tags": ["MARL", "无人机"]
+      },
+      {
+        "title": "无人机-无人车协同导航系统",
+        "period": "2025",
+        "role": "研究工程师",
+        "advisor": "合作单位：美团机器人学院（深圳）",
+        "funding": "合作类型：产学研联合项目",
+        "summary": "搭建融合 RGB、LiDAR 与里程计的室内物流导航系统，提升调度弹性与执行精度。",
+        "bullets": [
+          "实现考虑底层约束的双模式控制器，支持自动切换与调度策略组合。",
+          "在动态测试场景下实现 10 cm 级到达精度。"
+        ],
+        "tags": ["导航", "ROS"]
+      },
+      {
+        "title": "面向仓储的视觉惯性 SLAM",
+        "period": "2022 – 2023",
+        "role": "项目负责人",
+        "advisor": "导师：李俊副教授",
+        "funding": "资助：本科毕业论文项目",
+        "summary": "融合惯导与视觉信息，完成仓储环境中的 SLAM 构建与避障路径规划。",
+        "bullets": [
+          "10 分钟自主飞行的累计漂移控制在 0.3 m 以内。",
+          "实现复杂货架通道内的自主航点巡航与避障。"
+        ],
+        "tags": ["SLAM", "无人机"]
+      }
+    ]
+  }
 }

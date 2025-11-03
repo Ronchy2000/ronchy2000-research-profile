@@ -14,10 +14,12 @@ export type LocaleProfile = {
   avatar?: string;
 };
 
-export type ProfileContent = {
-  en: LocaleProfile;
-  zh: LocaleProfile;
+export type Localized<T> = {
+  en: T;
+  zh: T;
 };
+
+export type ProfileContent = Localized<LocaleProfile>;
 
 export type ResearchInterest = {
   title: string;
@@ -90,3 +92,29 @@ export type UpdateEntry = {
   summary: string;
   link: string;
 };
+
+export type ResearchContent = Localized<{
+  interests: ResearchInterest[];
+  experiences: ResearchExperience[];
+}>;
+
+export type ProjectsContent = Localized<{
+  groups: ProjectGroup[];
+}>;
+
+export type TimelineContent = Localized<{
+  education: TimelineEntry[];
+  experience: TimelineEntry[];
+}>;
+
+export type PublicationsContent = Localized<{
+  entries: PublicationEntry[];
+}>;
+
+export type AwardsContent = Localized<{
+  awards: AwardEntry[];
+}>;
+
+export type UpdatesContent = Localized<{
+  updates: UpdateEntry[];
+}>;

@@ -1,23 +1,34 @@
 import { Tag } from "@/components/tag";
 import type { PublicationEntry } from "@/lib/content-types";
 
+type Locale = "en" | "zh";
+
 type PublicationItemProps = {
   item: PublicationEntry;
+  locale?: Locale;
 };
 
-const TYPE_LABELS: Record<PublicationEntry["type"], string> = {
-  C: "Conference",
-  J: "Journal",
-  P: "Patent",
-  S: "In Submission"
+const TYPE_LABELS: Record<Locale, Record<PublicationEntry["type"], string>> = {
+  en: {
+    C: "Conference",
+    J: "Journal",
+    P: "Patent",
+    S: "In Submission"
+  },
+  zh: {
+    C: "会议",
+    J: "期刊",
+    P: "专利",
+    S: "投稿中"
+  }
 };
 
 /**
  * Renders a single publication or patent entry with type badge,
  * author list, venue, optional notes, and links.
  */
-export function PublicationItem({ item }: PublicationItemProps) {
-  const typeLabel = TYPE_LABELS[item.type] ?? item.type;
+export function PublicationItem({ item, locale = "en" }: PublicationItemProps) {
+  const typeLabel = TYPE_LABELS[locale]?.[item.type] ?? item.type;
 
   return (
     <article className="space-y-3 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-[0_24px_60px_-45px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/70">

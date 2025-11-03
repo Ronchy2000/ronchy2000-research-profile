@@ -67,12 +67,12 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
   // 获取真实的最后更新时间
   const lastUpdated = useMemo(() => {
     try {
-      const updates = getUpdatesContent().updates;
+      const updates = getUpdatesContent()[locale]?.updates ?? [];
       return updates[0]?.date || new Date().toISOString().split('T')[0];
     } catch {
       return new Date().toISOString().split('T')[0];
     }
-  }, []);
+  }, [locale]);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -95,7 +95,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         </div>
         <main className="flex-1 min-w-0 space-y-16">
           {children}
-          <SiteFooter lastUpdated={lastUpdated} />
+          <SiteFooter lastUpdated={lastUpdated} locale={locale} />
         </main>
       </div>
     </div>

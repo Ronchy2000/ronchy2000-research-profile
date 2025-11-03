@@ -14,228 +14,382 @@
       }
     }
   },
-  "groups": [
-    {
-      "title": "Academic Projects",
-      "kind": "academic",
-      "items": [
-        {
-          "name": "Multi-agent-RL",
-          "summary": "Pursuit-evasion benchmarks with MADDPG, MATD3 implementations.",
-          "period": "2023 – 2025",
-          "role": "Core Researcher",
-          "tags": [
-            "Python",
-            "RL",
-            "MARL"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Multi-agent-RL"
+  "en": {
+    "groups": [
+      {
+        "title": "Academic Projects",
+        "kind": "academic",
+        "items": [
+          {
+            "name": "Multi-agent-RL",
+            "summary": "Pursuit-evasion benchmarks with MADDPG, MATD3 implementations.",
+            "period": "2023 – 2025",
+            "role": "Core Researcher",
+            "tags": ["Python", "RL", "MARL"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Multi-agent-RL"
+              }
+            ],
+            "metrics": {
+              "stars": 224
             }
-          ],
-          "metrics": {
-            "stars": 224
+          },
+          {
+            "name": "Visual-Inertial UAV Navigation",
+            "summary": "VI-SLAM with obstacle-aware planning for warehouse drones.",
+            "period": "2022 – 2023",
+            "role": "Team Lead",
+            "tags": ["ROS", "SLAM"],
+            "links": [
+              {
+                "label": "Report",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "name": "Flocking Formation Control",
+            "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
+            "period": "2024",
+            "role": "Developer",
+            "tags": ["MATLAB", "UAV", "Formation"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
+              }
+            ],
+            "metrics": {
+              "stars": 10
+            }
+          },
+          {
+            "name": "Quadrangular Formation Control",
+            "summary": "UAV square formation control using artificial potential fields with autonomous organization.",
+            "period": "2024",
+            "role": "Developer",
+            "tags": ["MATLAB", "UAV", "APF"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular"
+              }
+            ],
+            "metrics": {
+              "stars": 12
+            }
+          },
+          {
+            "name": "Circular Formation Control",
+            "summary": "Distributed UAV formation control based on ring topology for 2D/3D spatial formations.",
+            "period": "2024",
+            "role": "Developer",
+            "tags": ["MATLAB", "UAV", "Distributed"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Formation_control_Circular"
+              }
+            ],
+            "metrics": {
+              "stars": 11
+            }
           }
-        },
-        {
-          "name": "Visual-Inertial UAV Navigation",
-          "summary": "VI-SLAM with obstacle-aware planning for warehouse drones.",
-          "period": "2022 – 2023",
-          "role": "Team Lead",
-          "tags": [
-            "ROS",
-            "SLAM"
-          ],
-          "links": [
-            {
-              "label": "Report",
-              "href": "#"
+        ]
+      },
+      {
+        "title": "Open-source & Personal Projects",
+        "kind": "open-source",
+        "items": [
+          {
+            "name": "wiki-SICNU",
+            "summary": "Knowledge wiki and resource guide for SICNU students.",
+            "period": "2022",
+            "role": "Contributor",
+            "tags": ["Documentation", "Community"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+              }
+            ],
+            "metrics": {
+              "stars": 16
             }
-          ]
-        },
-        {
-          "name": "Flocking Formation Control",
-          "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
-          "period": "2024",
-          "role": "Developer",
-          "tags": [
-            "MATLAB",
-            "UAV",
-            "Formation"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
+          },
+          {
+            "name": "Gator Investment Research",
+            "summary": "Macroeconomic cycle analysis, industry research reports and asset allocation strategies.",
+            "period": "2025 – Present",
+            "role": "Author",
+            "tags": ["Finance", "Research"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Gator-Investment-Research"
+              }
+            ],
+            "metrics": {
+              "stars": 2
             }
-          ],
-          "metrics": {
-            "stars": 10
+          },
+          {
+            "name": "Raspi-ImmortalWrt",
+            "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
+            "period": "2025",
+            "role": "Author",
+            "tags": ["Networking", "OpenWrt"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
+              }
+            ],
+            "metrics": {
+              "stars": 20
+            }
+          },
+          {
+            "name": "Dynamic-Proxy-Pool",
+            "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
+            "period": "2025 – Present",
+            "role": "Maintainer",
+            "tags": ["Python", "Automation"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+              }
+            ],
+            "metrics": {
+              "stars": 0
+            }
+          },
+          {
+            "name": "Visitor Counter Cheater",
+            "summary": "Tool for testing web analytics and visitor counters on CSDN, GitHub and blogs.",
+            "period": "2025",
+            "role": "Developer",
+            "tags": ["Python", "Testing"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Visitor-Counter-Cheater"
+              }
+            ],
+            "metrics": {
+              "stars": 4
+            }
+          },
+          {
+            "name": "Windows Network Icon Fix",
+            "summary": "Registry fix for Windows 10 network icon showing as unconnected despite working internet.",
+            "period": "2024",
+            "role": "Developer",
+            "tags": ["Windows", "Registry"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Windows-Network-Icon-Fix"
+              }
+            ],
+            "metrics": {
+              "stars": 8
+            }
           }
-        },
-        {
-          "name": "Quadrangular Formation Control",
-          "summary": "UAV square formation control using artificial potential fields with autonomous organization.",
-          "period": "2024",
-          "role": "Developer",
-          "tags": [
-            "MATLAB",
-            "UAV",
-            "APF"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular"
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "groups": [
+      {
+        "title": "学术项目",
+        "kind": "academic",
+        "items": [
+          {
+            "name": "Multi-agent-RL 基准套件",
+            "summary": "构建 MADDPG、MATD3 等经典算法的追逃博弈基准，覆盖建模、训练与评估全流程。",
+            "period": "2023 – 2025",
+            "role": "核心研发",
+            "tags": ["Python", "强化学习", "MARL"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Multi-agent-RL"
+              }
+            ],
+            "metrics": {
+              "stars": 224
             }
-          ],
-          "metrics": {
-            "stars": 12
-          }
-        },
-        {
-          "name": "Circular Formation Control",
-          "summary": "Distributed UAV formation control based on ring topology for 2D/3D spatial formations.",
-          "period": "2024",
-          "role": "Developer",
-          "tags": [
-            "MATLAB",
-            "UAV",
-            "Distributed"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Formation_control_Circular"
+          },
+          {
+            "name": "视觉惯性无人机导航",
+            "summary": "面向仓储物流场景打造视惯融合 SLAM，并结合避障规划保障航迹安全。",
+            "period": "2022 – 2023",
+            "role": "项目牵头",
+            "tags": ["ROS", "SLAM"],
+            "links": [
+              {
+                "label": "项目报告",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "name": "仿鸟群编队控制",
+            "summary": "基于 flocking 模型实现多无人机自主编队与避障控制验证。",
+            "period": "2024",
+            "role": "算法开发",
+            "tags": ["MATLAB", "无人机", "编队控制"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
+              }
+            ],
+            "metrics": {
+              "stars": 10
             }
-          ],
-          "metrics": {
-            "stars": 11
-          }
-        }
-      ]
-    },
-    {
-      "title": "Open-source & Personal Projects",
-      "kind": "open-source",
-      "items": [
-        {
-          "name": "wiki-SICNU",
-          "summary": "Knowledge wiki and resource guide for SICNU students.",
-          "period": "2022",
-          "role": "Contributor",
-          "tags": [
-            "Documentation",
-            "Community"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/SICNU-Application/wiki-SICNU"
+          },
+          {
+            "name": "四边形编队控制",
+            "summary": "利用人工势场实现无人机方阵的自主重构与保持，兼顾收敛速度与稳定性。",
+            "period": "2024",
+            "role": "算法开发",
+            "tags": ["MATLAB", "无人机", "势场法"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular"
+              }
+            ],
+            "metrics": {
+              "stars": 12
             }
-          ],
-          "metrics": {
-            "stars": 16
-          }
-        },
-        {
-          "name": "Gator Investment Research",
-          "summary": "Macroeconomic cycle analysis, industry research reports and asset allocation strategies.",
-          "period": "2025 – Present",
-          "role": "Author",
-          "tags": [
-            "Finance",
-            "Research"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Gator-Investment-Research"
+          },
+          {
+            "name": "环形编队控制",
+            "summary": "在二维/三维空间构建环形拓扑的分布式无人机编队控制策略，支持动态调整。",
+            "period": "2024",
+            "role": "算法开发",
+            "tags": ["MATLAB", "无人机", "分布式控制"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Formation_control_Circular"
+              }
+            ],
+            "metrics": {
+              "stars": 11
             }
-          ],
-          "metrics": {
-            "stars": 2
           }
-        },
-        {
-          "name": "Raspi-ImmortalWrt",
-          "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
-          "period": "2025",
-          "role": "Author",
-          "tags": [
-            "Networking",
-            "OpenWrt"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
+        ]
+      },
+      {
+        "title": "开源与个人项目",
+        "kind": "open-source",
+        "items": [
+          {
+            "name": "wiki-SICNU 校园知识库",
+            "summary": "面向四川师大在校生整理课程资料、办事流程与社群资源的协作式知识库。",
+            "period": "2022",
+            "role": "贡献者",
+            "tags": ["文档", "社区"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+              }
+            ],
+            "metrics": {
+              "stars": 16
             }
-          ],
-          "metrics": {
-            "stars": 20
-          }
-        },
-        {
-          "name": "Dynamic-Proxy-Pool",
-          "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
-          "period": "2025 – Present",
-          "role": "Maintainer",
-          "tags": [
-            "Python",
-            "Automation"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+          },
+          {
+            "name": "Gator 投研笔记",
+            "summary": "记录宏观周期判断、行业研究报告与资产配置策略的个人分析框架。",
+            "period": "2025 – 至今",
+            "role": "作者",
+            "tags": ["金融", "研究"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Gator-Investment-Research"
+              }
+            ],
+            "metrics": {
+              "stars": 2
             }
-          ],
-          "metrics": {
-            "stars": 0
-          }
-        },
-        {
-          "name": "Visitor Counter Cheater",
-          "summary": "Tool for testing web analytics and visitor counters on CSDN, GitHub and blogs.",
-          "period": "2025",
-          "role": "Developer",
-          "tags": [
-            "Python",
-            "Testing"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Visitor-Counter-Cheater"
+          },
+          {
+            "name": "Raspi-ImmortalWrt 路由实践",
+            "summary": "聚焦时延与隐私需求，整理树莓派刷入 ImmortalWrt 的软路由配置经验。",
+            "period": "2025",
+            "role": "作者",
+            "tags": ["网络", "OpenWrt"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
+              }
+            ],
+            "metrics": {
+              "stars": 20
             }
-          ],
-          "metrics": {
-            "stars": 4
-          }
-        },
-        {
-          "name": "Windows Network Icon Fix",
-          "summary": "Registry fix for Windows 10 network icon showing as unconnected despite working internet.",
-          "period": "2024",
-          "role": "Developer",
-          "tags": [
-            "Windows",
-            "Registry"
-          ],
-          "links": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/Ronchy2000/Windows-Network-Icon-Fix"
+          },
+          {
+            "name": "动态代理池",
+            "summary": "自动轮换代理节点并监测可用性，缓解爬虫请求的封禁风险。",
+            "period": "2025 – 至今",
+            "role": "维护者",
+            "tags": ["Python", "自动化"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+              }
+            ],
+            "metrics": {
+              "stars": 0
             }
-          ],
-          "metrics": {
-            "stars": 8
+          },
+          {
+            "name": "访客计数器测试工具",
+            "summary": "批量模拟访问以验证 CSDN、GitHub 等平台的访客统计与防刷策略。",
+            "period": "2025",
+            "role": "开发者",
+            "tags": ["Python", "测试"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Visitor-Counter-Cheater"
+              }
+            ],
+            "metrics": {
+              "stars": 4
+            }
+          },
+          {
+            "name": "Windows 网络图标修复脚本",
+            "summary": "修复 Windows 10 网络图标误报未连接的问题，自动更新注册表配置。",
+            "period": "2024",
+            "role": "开发者",
+            "tags": ["Windows", "注册表"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Windows-Network-Icon-Fix"
+              }
+            ],
+            "metrics": {
+              "stars": 8
+            }
           }
-        }
-      ]
-    }
-  ]
+        ]
+      }
+    ]
+  }
 }

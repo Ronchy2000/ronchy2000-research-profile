@@ -16,57 +16,114 @@
       }
     }
   },
-  "entries": [
-    {
-      "id": "S.1",
-      "type": "S",
-      "title": "Cooperative Exploration and Control in Pursuit–Evasion Games with Reinforcement Learning",
-      "authors": "Rongqi Lu*, et al.",
-      "venue": "Manuscript in revision",
-      "year": "2025",
-      "tags": ["MARL", "Pursuit-Evasion"],
-      "links": [{ "label": "Draft", "href": "#" }],
-      "notes": "Student first author"
-    },
-    {
-      "id": "C.1",
-      "type": "C",
-      "title": "TOTAL: Multi-Corner Timing Optimization Based on Transfer and Active Learning",
-      "authors": "Wei W. Xing, Zheng Xing, Rongqi Lu*, et al.",
-      "venue": "ACM/IEEE DAC",
-      "year": "2023",
-      "tags": ["EDA", "Timing Analysis"],
-      "links": [{ "label": "DOI", "href": "#" }]
-    },
-    {
-      "id": "P.1",
-      "type": "P",
-      "title": "Intelligent Cooperative Pursuit Method Under Incomplete Information",
-      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
-      "venue": "CN Patent 202510738071.X",
-      "year": "2025",
-      "tags": ["Patent", "Cooperative Control"],
-      "links": [{ "label": "Patent", "href": "#" }]
-    },
-    {
-      "id": "P.2",
-      "type": "P",
-      "title": "Cooperative Pursuit Planning of Heterogeneous UAVs Under Local Observation",
-      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
-      "venue": "CN Patent 202511338072.1",
-      "year": "2025",
-      "tags": ["Patent", "UAV"],
-      "links": [{ "label": "Patent", "href": "#" }]
-    },
-    {
-      "id": "P.3",
-      "type": "P",
-      "title": "Collaborative Target Network-Based Multi-agent Cooperative Exploration",
-      "authors": "Yuanshi Zheng, Rongqi Lu*, et al.",
-      "venue": "CN Patent 202511464448.3",
-      "year": "2025",
-      "tags": ["Patent", "Exploration"],
-      "links": [{ "label": "Patent", "href": "#" }]
-    }
-  ]
+  "en": {
+    "entries": [
+      {
+        "id": "S.1",
+        "type": "S",
+        "title": "Cooperative Exploration and Control in Pursuit–Evasion Games with Reinforcement Learning",
+        "authors": "Rongqi Lu*, et al.",
+        "venue": "Manuscript in revision",
+        "year": "2025",
+        "tags": ["MARL", "Pursuit-Evasion"],
+        "links": [{ "label": "Draft", "href": "#" }],
+        "notes": "Student first author"
+      },
+      {
+        "id": "C.1",
+        "type": "C",
+        "title": "TOTAL: Multi-Corner Timing Optimization Based on Transfer and Active Learning",
+        "authors": "Wei Xing, Zheng Xing, Rongqi Lu*, et al.",
+        "venue": "ACM/IEEE DAC",
+        "year": "2023",
+        "tags": ["EDA", "Timing Analysis"],
+        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }]
+      },
+      {
+        "id": "P.1",
+        "type": "P",
+        "title": "Method and System for Multi-agent Cooperative Exploration Based on a Collaborative Target Network",
+        "authors": "Yuanshi Zheng, Rongqi Lu*, Jian Liu, Jiamin Wang",
+        "venue": "Filed Oct 14, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu, Jiamin Wang · CN 202511464448.3",
+        "year": "2025",
+        "tags": ["Patent", "Exploration"],
+        "links": [{ "label": "Patent", "href": "#" }]
+      },
+      {
+        "id": "P.2",
+        "type": "P",
+        "title": "Method and System for Coordinated Pursuit Planning of Heterogeneous UAVs under Local Observation",
+        "authors": "Yuanshi Zheng, Rongqi Lu*, Jian Liu, Jiamin Wang",
+        "venue": "Filed Sep 18, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu, Jiamin Wang · CN 202511338072.1",
+        "year": "2025",
+        "tags": ["Patent", "Cooperative Control"],
+        "links": [{ "label": "Patent", "href": "#" }]
+      },
+      {
+        "id": "P.3",
+        "type": "P",
+        "title": "Method and System for Cooperative Pursuit of Intelligent Swarms via Intrinsic Motivation under Incomplete Information",
+        "authors": "Yuanshi Zheng, Rongqi Lu*, Jian Liu",
+        "venue": "Filed Jun 4, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu · CN 202510738071.X",
+        "year": "2025",
+        "tags": ["Patent", "Cooperative Control"],
+        "links": [{ "label": "Patent", "href": "#" }]
+      }
+    ]
+  },
+  "zh": {
+    "entries": [
+      {
+        "id": "S.1",
+        "type": "S",
+        "title": "基于强化学习的追逃博弈协同探索与控制",
+        "authors": "陆荣琦* 等",
+        "venue": "论文修改中",
+        "year": "2025",
+        "tags": ["MARL", "追逃博弈"],
+        "links": [{ "label": "草稿", "href": "#" }],
+        "notes": "学生一作"
+      },
+      {
+        "id": "C.1",
+        "type": "C",
+        "title": "TOTAL：基于迁移与主动学习的多角时序优化方法",
+        "authors": "邢炜, 邢正, 陆荣琦* 等",
+        "venue": "ACM/IEEE DAC",
+        "year": "2023",
+        "tags": ["EDA", "时序分析"],
+        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }]
+      },
+      {
+        "id": "P.1",
+        "type": "P",
+        "title": "一种基于协同靶网络的多智能体协同探索方法与系统",
+        "authors": "郑元世, 陆荣琦*, 刘健, 王嘉敏",
+        "venue": "申请日：2025年10月14日 · 申请人：西安电子科技大学 · 发明人：郑元世, 陆荣琦, 刘健, 王嘉敏 · 公开号：CN 202511464448.3",
+        "year": "2025",
+        "tags": ["专利", "协同探索"],
+        "links": [{ "label": "专利链接", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
+      },
+      {
+        "id": "P.2",
+        "type": "P",
+        "title": "一种局部观测下异构无人机协同追捕规划方法与系统",
+        "authors": "郑元世, 陆荣琦*, 刘健, 王嘉敏",
+        "venue": "申请日：2025年9月18日 · 申请人：西安电子科技大学 · 发明人：郑元世, 陆荣琦, 刘健, 王嘉敏 · 公开号：CN 202511338072.1",
+        "year": "2025",
+        "tags": ["专利", "协同控制"],
+        "links": [{ "label": "专利链接", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
+      },
+      {
+        "id": "P.3",
+        "type": "P",
+        "title": "一种不完全信息条件下基于内在激励机制的智能群体协同追捕方法与系统",
+        "authors": "郑元世, 陆荣琦*, 刘健",
+        "venue": "申请日：2025年6月4日 · 申请人：西安电子科技大学 · 发明人：郑元世, 陆荣琦, 刘健 · 公开号：CN 202510738071.X",
+        "year": "2025",
+        "tags": ["专利", "协同控制"],
+        "links": [{ "label": "专利链接", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
+      }
+    ]
+  }
 }

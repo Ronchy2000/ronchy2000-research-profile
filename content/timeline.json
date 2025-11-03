@@ -12,44 +12,88 @@
       }
     }
   },
-  "education": [
-    {
-      "title": "M.Eng. Control Engineering · Xidian University",
-      "period": "2023 – 2026 (expected)",
-      "location": "Xi'an, China",
-      "details": [
-        "Research: multi-agent communication for aerial-ground fleets.",
-        "Coursework: Matrix Theory, Stochastic Processes, Optimal Control."
-      ]
-    },
-    {
-      "title": "B.Eng. Electronic Information Engineering · Sichuan Normal University",
-      "period": "2019 – 2023",
-      "location": "Chengdu, China",
-      "details": [
-        "Graduated first in cohort; thesis on UAV SLAM navigation.",
-        "Focus: embedded systems, data acquisition, communication networks."
-      ]
-    }
-  ],
-  "experience": [
-    {
-      "title": "AI Software Development Engineer Intern · Huawei",
-      "period": "2025 Summer",
-      "location": "Xi'an, China",
-      "details": [
-        "Refactored NE log pipeline, improving throughput by 15%.",
-        "Standardised web-to-server orchestration, cutting query latency by 30%."
-      ]
-    },
-    {
-      "title": "Embedded Software Engineer Intern · Xi'an Jutong Magnetic Tech",
-      "period": "2023 Summer",
-      "location": "Xi'an, China",
-      "details": [
-        "Optimised SPI stack across STM32 and C8051 controllers.",
-        "Reduced motor control response latency from 15 ms to 3 ms."
-      ]
-    }
-  ]
+  "en": {
+    "education": [
+      {
+        "title": "M.Eng. Control Engineering · Xidian University",
+        "period": "2023 – 2026 (expected)",
+        "location": "Xi'an, China",
+        "details": [
+          "Research: multi-agent communication for aerial-ground fleets.",
+          "Coursework: Matrix Theory, Stochastic Processes, Optimal Control."
+        ]
+      },
+      {
+        "title": "B.Eng. Electronic Information Engineering · Sichuan Normal University",
+        "period": "2019 – 2023",
+        "location": "Chengdu, China",
+        "details": [
+          "Undergraduate thesis focused on UAV SLAM navigation in warehouse environments.",
+          "Focus: embedded systems, data acquisition, communication networks."
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "title": "AI Software Development Engineer Intern · Huawei",
+        "period": "2025 Summer",
+        "location": "Xi'an, China",
+        "details": [
+          "Refactored NE log pipeline, improving throughput by 15%.",
+          "Standardised web-to-server orchestration, cutting query latency by 30%."
+        ]
+      },
+      {
+        "title": "Embedded Software Engineer Intern · Xi'an Jutong Magnetic Tech",
+        "period": "2023 Summer",
+        "location": "Xi'an, China",
+        "details": [
+          "Optimised SPI stack across STM32 and C8051 controllers.",
+          "Reduced motor control response latency from 15 ms to 3 ms."
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "education": [
+      {
+        "title": "西安电子科技大学 · 控制工程硕士",
+        "period": "2023 – 2026（预计）",
+        "location": "中国·西安",
+        "details": [
+          "研究方向：多智能体通信与空地异构编队控制。",
+          "主修课程：矩阵理论、随机过程、最优控制等。"
+        ]
+      },
+      {
+        "title": "四川师范大学 · 电子信息工程学士",
+        "period": "2019 – 2023",
+        "location": "中国·成都",
+        "details": [
+          "本科毕业论文聚焦无人机在仓储环境中的 SLAM 导航问题。",
+          "重点掌握嵌入式系统、数据采集与通信网络等课程。"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "title": "华为 · AI 软件开发工程师实习生",
+        "period": "2025 暑期",
+        "location": "中国·西安",
+        "details": [
+          "重构 NE 日志处理链路，整体吞吐率提升 15%。",
+          "规范 Web 到服务器的编排流程，查询延时下降 30%。"
+        ]
+      },
+      {
+        "title": "西安巨通磁性科技 · 嵌入式软件实习生",
+        "period": "2023 暑期",
+        "location": "中国·西安",
+        "details": [
+          "优化 STM32 与 C8051 控制器的 SPI 通信栈。",
+          "将电机控制响应延迟从 15 ms 降低至 3 ms。"
+        ]
+      }
+    ]
+  }
 }

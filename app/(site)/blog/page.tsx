@@ -1,35 +1,73 @@
+"use client";
+
 import Link from "next/link";
 
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
+import { useLocale } from "@/components/locale-provider";
 
-const examplePosts = [
-  {
-    slug: "sample-research-note",
-    title: "Sample Research Note",
-    date: "2025-02-01",
-    summary: "An example of research notes and technical documentation.",
-    tags: ["Research", "Example"]
+const POSTS = {
+  en: [
+    {
+      slug: "sample-research-note",
+      title: "Sample Research Note",
+      date: "2025-02-01",
+      summary: "An example of research notes and technical documentation.",
+      tags: ["Research", "Example"]
+    },
+    {
+      slug: "reading-notes",
+      title: "Reading Notes on Multi-agent Exploration",
+      date: "2024-12-15",
+      summary: "Insights from recent papers on decentralized coordination strategies.",
+      tags: ["Notes"]
+    }
+  ],
+  zh: [
+    {
+      slug: "sample-research-note",
+      title: "示例研究手记",
+      date: "2025-02-01",
+      summary: "演示如何整理实验记录、技术笔记与思考框架。",
+      tags: ["研究", "示例"]
+    },
+    {
+      slug: "reading-notes",
+      title: "多智能体探索阅读札记",
+      date: "2024-12-15",
+      summary: "梳理近期关于分布式协同与探索策略的论文要点。",
+      tags: ["阅读笔记"]
+    }
+  ]
+} as const;
+
+const COPY = {
+  en: {
+    title: "Blog",
+    description: "Long-form research notes, project retrospectives, and reading summaries.",
+    eyebrow: "Writing"
   },
-  {
-    slug: "reading-notes",
-    title: "Reading Notes on Multi-agent Exploration",
-    date: "2024-12-15",
-    summary: "Insights from recent papers on decentralized coordination strategies.",
-    tags: ["Notes"]
+  zh: {
+    title: "博客",
+    description: "记录研究手记、项目复盘与阅读体会。",
+    eyebrow: "写作"
   }
-];
+} as const;
 
 export default function BlogPage() {
+  const { locale } = useLocale();
+  const posts = POSTS[locale];
+  const t = COPY[locale];
+
   return (
     <div className="space-y-16">
       <Section
-        title="Blog"
-        description="Long-form research notes, project retrospectives, and reading summaries."
-        eyebrow="Writing"
+        title={t.title}
+        description={t.description}
+        eyebrow={t.eyebrow}
       >
         <div className="space-y-6">
-          {examplePosts.map((post) => (
+          {posts.map((post) => (
             <article key={post.slug} className="rounded-2xl border border-slate-200 bg-white/90 p-6 dark:border-slate-800 dark:bg-slate-900/70">
               <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
                 <span>{post.date}</span>
