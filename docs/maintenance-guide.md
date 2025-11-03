@@ -64,6 +64,7 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - 自动更新：`.github/workflows/update-content.yml` 每日 01:00 UTC 运行 `scripts/update-recent-updates.mjs`。
   - 默认使用 `secrets.GITHUB_TOKEN`（具有推送权限即可）；如需更高频率请在仓库 Secrets 中新增 `GH_PAT`（repo scope）。
   - 脚本读取最新 commit，写入 `type=Commit`、`title`（提交首行）、`summary`（作者）；可自行改成抓取 Releases/Issues。
+  - 脚本会自动忽略由 `github-actions[bot]`、Dependabot 以及树莓派备份脚本（`Router Auto Backup`）生成的提交；如需扩展忽略名单，可通过环境变量 `IGNORED_COMMIT_AUTHORS`、`IGNORED_COMMIT_EMAILS`、`IGNORED_COMMIT_MESSAGE_KEYWORDS` 追加。
 - 手动编辑：直接修改 `updates.json` 中的 `updates` 数组，字段 `type`、`date`（YYYY-MM-DD）、`title`、`summary`、`link`。
 
 ### Highlighted Projects
