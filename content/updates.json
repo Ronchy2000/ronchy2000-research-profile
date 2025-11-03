@@ -9,6 +9,13 @@
     {
       "date": "2025-11-03",
       "type": "Commit",
+      "title": "[opt]: 优化若干问题",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
+    },
+    {
+      "date": "2025-11-03",
+      "type": "Commit",
       "title": "[opt]: 移除bot的commit记录",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
@@ -47,13 +54,6 @@
       "title": "[opt]: 优化 Actions 定时任务、智能 commit 信息 & 新增GitHub项目",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1392810ab1a8314fc2ef1672a4a4721014045f38"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[fix]: Giithub action",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6b5200b2170dc330e07d8e6e71eb3be61d89728b"
     }
   ]
 }
