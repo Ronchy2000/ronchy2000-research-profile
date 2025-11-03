@@ -9,6 +9,13 @@
     {
       "date": "2025-11-03",
       "type": "Commit",
+      "title": "[opt]: 移除bot的commit记录",
+      "summary": "Authored by ronchy macbookAir",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
+    },
+    {
+      "date": "2025-11-03",
+      "type": "Commit",
       "title": "[opt]: Recent update部分,排除bot的commit记录",
       "summary": "Authored by ronchy",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
@@ -47,13 +54,6 @@
       "title": "[fix]: Giithub action",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6b5200b2170dc330e07d8e6e71eb3be61d89728b"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[fix]: github actions and 移动端布局优化",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/80d6d02da0df3a8feda5aeae60243390a8275b2b"
     }
   ]
 }
