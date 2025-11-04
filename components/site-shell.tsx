@@ -22,6 +22,18 @@ type SiteShellProps = {
 };
 
 const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects"]);
+const SIDEBAR_WIDTH = 260;
+const COLLAPSE_SCROLL_THRESHOLD = 360;
+const EXPAND_SCROLL_THRESHOLD = 220;
+const SCROLL_EASING = "cubic-bezier(0.38, 0, 0.22, 1)";
+const SIDEBAR_TRANSITION = [
+  `width 0.55s ${SCROLL_EASING}`,
+  `flex-basis 0.55s ${SCROLL_EASING}`,
+  `max-width 0.55s ${SCROLL_EASING}`,
+  `opacity 0.3s ease`,
+  `transform 0.55s ${SCROLL_EASING}`
+].join(", ");
+const SIDEBAR_HIDDEN_TRANSFORM = "translateX(-24px)";
 
 /**
  * Application shell with responsive header and optional sidebar profile card.
@@ -33,36 +45,101 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
   const sidebarDisabled = SIDEBAR_EXCLUDED_ROUTES.has(normalizedPath);
   const enableCollapsibleSidebar = !sidebarDisabled && normalizedPath === "/";
 
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
+  const [homeSidebarCollapsed, setHomeSidebarCollapsed] = useState(false);
   useEffect(() => {
     if (!enableCollapsibleSidebar) {
-      setSidebarCollapsed(false);
+      setHomeSidebarCollapsed(false);
       return;
     }
 
-    const handleScroll = () => {
-      const shouldCollapse = window.innerWidth >= 1024 && window.scrollY > 300;
-      setSidebarCollapsed(shouldCollapse);
+    let rafId: number | null = null;
+
+    const updateSidebar = () => {
+      rafId = null;
+      const isDesktop = window.innerWidth >= 1024;
+      const scrollY = window.scrollY;
+
+      setHomeSidebarCollapsed((prev) => {
+        if (!isDesktop) {
+          return false;
+        }
+
+        if (!prev && scrollY > COLLAPSE_SCROLL_THRESHOLD) {
+          return true;
+        }
+
+        if (prev && scrollY < EXPAND_SCROLL_THRESHOLD) {
+          return false;
+        }
+
+        return prev;
+      });
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const scheduleUpdate = () => {
+      if (rafId !== null) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(updateSidebar);
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
   }, [enableCollapsibleSidebar]);
+
+  useEffect(() => {
+    if (sidebarDisabled) {
+      return;
+    }
+
+    // Reset the collapsed state when leaving the Home page so route transitions start expanded.
+    if (!enableCollapsibleSidebar) {
+      setHomeSidebarCollapsed(false);
+    }
+  }, [enableCollapsibleSidebar, sidebarDisabled]);
+
+  const sidebarHidden = sidebarDisabled || (enableCollapsibleSidebar && homeSidebarCollapsed);
+
+  const layoutStyles = useMemo(() => {
+    const gap = sidebarHidden ? "0rem" : "2rem";
+    return {
+      gap,
+      transition: `gap 0.5s ${SCROLL_EASING}`
+    };
+  }, [sidebarHidden]);
 
   const sidebarStyles = useMemo(() => {
     if (sidebarDisabled) {
-      return { width: 0, opacity: 0, pointerEvents: "none" as const };
+      return {
+        width: 0,
+        flexBasis: "0px",
+        maxWidth: "0px",
+        opacity: 0,
+        transform: SIDEBAR_HIDDEN_TRANSFORM,
+        pointerEvents: "none" as const,
+        transition: SIDEBAR_TRANSITION
+      };
     }
 
     return {
-      width: sidebarCollapsed ? 0 : 260,
-      opacity: sidebarCollapsed ? 0 : 1,
-      transform: sidebarCollapsed ? "translateX(-24px)" : "translateX(0)",
-      pointerEvents: sidebarCollapsed ? ("none" as const) : undefined
+      width: sidebarHidden ? 0 : SIDEBAR_WIDTH,
+      flexBasis: sidebarHidden ? "0px" : `${SIDEBAR_WIDTH}px`,
+      maxWidth: sidebarHidden ? "0px" : `${SIDEBAR_WIDTH}px`,
+      opacity: sidebarHidden ? 0 : 1,
+      transform: sidebarHidden ? SIDEBAR_HIDDEN_TRANSFORM : "translateX(0)",
+      pointerEvents: sidebarHidden ? ("none" as const) : undefined,
+      transition: SIDEBAR_TRANSITION
     };
-  }, [sidebarCollapsed, sidebarDisabled]);
+  }, [sidebarDisabled, sidebarHidden]);
 
   // 获取真实的最后更新时间
   const lastUpdated = useMemo(() => {
@@ -82,14 +159,14 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         onToggleLocale={onToggleLocale}
         currentLocale={locale}
       />
-      <div className="mx-auto flex w-full max-w-6xl gap-8 px-4 py-10 lg:px-8">
+      <div
+        className="mx-auto flex w-full max-w-6xl px-4 py-10 lg:px-8"
+        style={layoutStyles}
+      >
         <div
           className="hidden overflow-hidden lg:flex"
-          style={{
-            ...sidebarStyles,
-            transition: "all 0.45s cubic-bezier(0.4, 0, 0.2, 1)"
-          }}
-          aria-hidden={sidebarDisabled || sidebarCollapsed}
+          style={sidebarStyles}
+          aria-hidden={sidebarHidden}
         >
           {!sidebarDisabled && <SideProfileCard profile={profile} />}
         </div>
