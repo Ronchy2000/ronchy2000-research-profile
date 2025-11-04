@@ -178,10 +178,37 @@ async function fetchCommits() {
 async function main() {
   const existing = JSON.parse(readFileSync(contentPath, "utf8"));
   const updates = await fetchCommits();
-  existing.updates = updates;
+  
+  // 更新英文和中文版本，而不是根级别的 updates
+  if (existing.en) {
+    existing.en.updates = updates;
+  }
+  if (existing.zh) {
+    // 为中文版本翻译类型和摘要
+    existing.zh.updates = updates.map(update => {
+      let summary = update.summary;
+      // 将 "Authored by XXX" 翻译为 "由 XXX 提交"
+      if (summary.startsWith("Authored by ")) {
+        summary = summary.replace("Authored by ", "由 ") + " 提交";
+      } else if (!summary.includes("由")) {
+        summary = summary + " 提交";
+      }
+      
+      return {
+        ...update,
+        type: update.type === "Commit" ? "提交" : update.type,
+        summary: summary
+      };
+    });
+  }
+  
+  // 移除错误的根级别 updates 字段（如果存在）
+  if (existing.updates) {
+    delete existing.updates;
+  }
 
   writeFileSync(contentPath, `${JSON.stringify(existing, null, 2)}\n`);
-  console.log(`[update-updates] Wrote ${updates.length} entries to content/updates.json`);
+  console.log(`[update-updates] Wrote ${updates.length} entries to content/updates.json (en + zh)`);
 }
 
 main().catch((error) => {
