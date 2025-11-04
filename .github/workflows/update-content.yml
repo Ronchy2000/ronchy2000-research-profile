@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: refresh-recent-updates
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -17,6 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
           persist-credentials: true
+          fetch-depth: 0  # 获取完整历史，便于调试
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -38,29 +43,63 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
+      - name: Generate daily heartbeat
+        if: github.event_name == 'schedule'
+        run: |
+          # 创建心跳文件，确保每天都有提交（仅定时触发时）
+          mkdir -p .github/heartbeat
+          date -u +'Last sync: %Y-%m-%d %H:%M:%S UTC' > .github/heartbeat/.last-sync
+          echo "✅ Daily heartbeat generated"
+
+      - name: Show working tree changes
+        run: |
+          echo "📊 Git Status:"
+          git status --porcelain
+          echo ""
+          echo "📝 Changed Files:"
+          git diff --name-only || echo "No unstaged changes"
+          echo ""
+          echo "📈 Diff Summary:"
+          git diff --stat || echo "No differences"
+
       - name: Commit and push changes
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            
-            # Check which files changed
-            UPDATES_CHANGED=$(git diff --name-only | grep -c "updates.json" || true)
-            PROJECTS_CHANGED=$(git diff --name-only | grep -c "projects.json" || true)
-            
-            # Build commit message
-            COMMIT_MSG="chore: refresh content data"
-            if [[ $UPDATES_CHANGED -gt 0 ]] && [[ $PROJECTS_CHANGED -gt 0 ]]; then
-              COMMIT_MSG="chore: update latest activities and GitHub stars"
-            elif [[ $UPDATES_CHANGED -gt 0 ]]; then
-              COMMIT_MSG="chore: update latest activities"
-            elif [[ $PROJECTS_CHANGED -gt 0 ]]; then
-              COMMIT_MSG="chore: update GitHub project stars"
-            fi
-            
-            git add content/updates.json content/projects.json
-            git commit -m "$COMMIT_MSG"
-            git push
-          else
-            echo "No changes to commit"
+          # 设置 Git 身份
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # 添加所有内容变更（包括心跳文件）
+          git add -A
+          
+          # 检查是否有已暂存的变更
+          if git diff --staged --quiet; then
+            echo "✅ No changes to commit - all content is up to date"
+            exit 0
           fi
+          
+          # 先同步远端再提交/推送，降低冲突概率
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME:-$(git rev-parse --abbrev-ref HEAD)}" || true
+          
+          # 智能生成提交信息
+          UPDATES_CHANGED=$(git diff --staged --name-only | grep -c "content/updates.json" || true)
+          PROJECTS_CHANGED=$(git diff --staged --name-only | grep -c "content/projects.json" || true)
+          HEARTBEAT_CHANGED=$(git diff --staged --name-only | grep -c ".github/heartbeat/.last-sync" || true)
+          
+          # 根据变更内容生成提交信息
+          if [[ $UPDATES_CHANGED -gt 0 && $PROJECTS_CHANGED -gt 0 ]]; then
+            COMMIT_MSG="chore: update latest activities and GitHub stars"
+          elif [[ $UPDATES_CHANGED -gt 0 ]]; then
+            COMMIT_MSG="chore: update latest activities"
+          elif [[ $PROJECTS_CHANGED -gt 0 ]]; then
+            COMMIT_MSG="chore: update GitHub project stars"
+          elif [[ $HEARTBEAT_CHANGED -gt 0 ]]; then
+            COMMIT_MSG="chore: daily sync"
+          else
+            COMMIT_MSG="chore: refresh content data"
+          fi
+          
+          echo "📤 Committing: $COMMIT_MSG"
+          git commit -m "$COMMIT_MSG"
+          # 若偶发失败，重试一次
+          git push || (git pull --rebase --autostash && git push)
+          echo "✅ Changes pushed successfully"

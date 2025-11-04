@@ -28,7 +28,8 @@ const defaultIgnoredMessageKeywords = [
   "update latest activities",
   "update github project stars",
   "update github stars",
-  "refresh content data"
+  "refresh content data",
+  "daily sync"
 ];
 
 const defaultIgnoredAccountTypes = [
