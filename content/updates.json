@@ -10,6 +10,13 @@
       {
         "date": "2025-11-04",
         "type": "Commit",
+        "title": "[fix]: rencent update script",
+        "summary": "Authored by ronchy",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ba1d560ae33a8e12aeda6631abaf0bdbd0234627"
+      },
+      {
+        "date": "2025-11-04",
+        "type": "Commit",
         "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
         "summary": "Authored by ronchy",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/47d7d6011e5dc15bd321c7ef6bc62575625e80fb"
@@ -41,11 +48,25 @@
         "title": "[opt]: Recent update部分,排除bot的commit记录",
         "summary": "Authored by ronchy",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "Commit",
+        "title": "[feat]: recent update 滑动",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2025-11-04",
+        "type": "提交",
+        "title": "[fix]: rencent update script",
+        "summary": "由 ronchy 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ba1d560ae33a8e12aeda6631abaf0bdbd0234627"
+      },
       {
         "date": "2025-11-04",
         "type": "提交",
@@ -80,6 +101,13 @@
         "title": "[opt]: Recent update部分,排除bot的commit记录",
         "summary": "由 ronchy 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
+      },
+      {
+        "date": "2025-11-02",
+        "type": "提交",
+        "title": "[feat]: recent update 滑动",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b961a84c26da07e4cd46151a7c4c8f8b37c9aac3"
       }
     ]
   }
