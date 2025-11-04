@@ -113,6 +113,13 @@
   },
   "updates": [
     {
+      "date": "2025-11-04",
+      "type": "Commit",
+      "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
+      "summary": "Authored by ronchy",
+      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/47d7d6011e5dc15bd321c7ef6bc62575625e80fb"
+    },
+    {
       "date": "2025-11-03",
       "type": "Commit",
       "title": "[fix]: 修复主页中文展示",
@@ -153,13 +160,6 @@
       "title": "[fix]: 字体排版",
       "summary": "Authored by ronchy macbookAir",
       "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cd2f504b76022ef962281518751ccb3ab8540cd3"
-    },
-    {
-      "date": "2025-11-02",
-      "type": "Commit",
-      "title": "[opt]: remove all technical content from public pages",
-      "summary": "Authored by ronchy macbookAir",
-      "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a196135eb73abfb4500044c9c68ba8b70ae79968"
     }
   ]
 }
