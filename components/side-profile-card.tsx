@@ -1,17 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import type { LocaleProfile } from "@/lib/content-types";
 
 type SideProfileCardProps = {
   profile: LocaleProfile;
   avatarSrc?: string;
+  contactHref?: string;
+  contactLabel?: string;
+  contactHint?: string;
 };
 
 /**
  * Profile summary shown in the desktop sidebar. Displays avatar, names,
  * affiliation, keywords, and social links.
  */
-export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg" }: SideProfileCardProps) {
+export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", contactHref, contactLabel, contactHint }: SideProfileCardProps) {
   const imageSrc = profile.avatar ?? avatarSrc;
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col gap-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_30px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70 lg:flex print:hidden">
@@ -37,13 +41,20 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg" }: 
         <p className="font-medium text-slate-700 dark:text-slate-200">{profile.affiliation}</p>
         <p className="text-slate-500 dark:text-slate-400">{profile.title}</p>
         <p className="text-slate-500 dark:text-slate-400">{profile.location}</p>
-        <a
-          href={`mailto:${profile.email}`}
-          className="flex w-full items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:bg-white hover:text-slate-900 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:border-slate-500 dark:hover:text-white"
-        >
-          <span aria-hidden="true" className="text-base leading-none">✉</span>
-          {profile.email}
-        </a>
+        {contactHref ? (
+          <Link
+            href={contactHref}
+            className="flex w-full items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:bg-white hover:text-slate-900 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:border-slate-500 dark:hover:text-white"
+          >
+            <span aria-hidden="true" className="text-base leading-none">🔒</span>
+            {contactLabel ?? "Reveal email alias"}
+          </Link>
+        ) : null}
+        {contactHint ? (
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            {contactHint}
+          </p>
+        ) : null}
       </div>
       <div className="w-full space-y-2 text-sm">
         {profile.social.map((link) => (

@@ -4,7 +4,6 @@ export type LocaleProfile = {
   title: string;
   affiliation: string;
   location: string;
-  email: string;
   keywords: string[];
   social: {
     label: string;

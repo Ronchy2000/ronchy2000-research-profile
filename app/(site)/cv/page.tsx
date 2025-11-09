@@ -22,7 +22,8 @@ export default function CVPage() {
         description: "Downloadable PDF and printable view. Adjust content via the files in /content.",
         eyebrow: "Overview",
         download: "Download PDF",
-        emailLabel: "Email",
+        contactLabel: "Contact",
+        contactAction: "Reveal email alias",
         locationLabel: "Location"
       },
       education: { title: "Education", eyebrow: "CV" },
@@ -55,7 +56,8 @@ export default function CVPage() {
         description: "提供 PDF 下载与打印视图，相关内容可在 /content 目录中维护。",
         eyebrow: "概览",
         download: "下载 PDF",
-        emailLabel: "邮箱",
+        contactLabel: "联系渠道",
+        contactAction: "获取邮箱别名",
         locationLabel: "常驻城市"
       },
       education: { title: "教育背景", eyebrow: "简历" },
@@ -105,7 +107,7 @@ export default function CVPage() {
           <p>{profile.title}</p>
           <p>{profile.affiliation}</p>
           <p>
-            {t.intro.emailLabel}: <a href={`mailto:${profile.email}`} className="text-brand hover:text-brand-foreground">{profile.email}</a>
+            {t.intro.contactLabel}: <Link href="/contact" className="text-brand hover:text-brand-foreground">{t.intro.contactAction}</Link>
           </p>
           <p>{t.intro.locationLabel}: {profile.location}</p>
         </div>

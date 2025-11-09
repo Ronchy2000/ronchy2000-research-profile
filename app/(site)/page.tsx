@@ -47,7 +47,8 @@ export default function HomePage() {
         title: "At a Glance",
         focusLabel: "Current focus",
         focusValue: "Robust coordination for aerial–ground robot teams",
-        contactLabel: "Primary contact",
+        contactLabel: "Contact alias",
+        contactValue: "Reveal email",
         locationLabel: "Based in"
       },
       sections: {
@@ -69,7 +70,8 @@ export default function HomePage() {
         title: "工作速览",
         focusLabel: "研究重点",
         focusValue: "多智能体强化学习, 追逃博弈",
-        contactLabel: "联系邮箱",
+        contactLabel: "联系渠道",
+        contactValue: "点击获取邮箱",
         locationLabel: "常驻城市"
       },
       sections: {
@@ -84,7 +86,7 @@ export default function HomePage() {
   const t = copy[locale];
   const highlightItems = [
     { label: t.highlights.focusLabel, value: t.highlights.focusValue },
-    { label: t.highlights.contactLabel, value: profile.email, href: `mailto:${profile.email}` },
+    { label: t.highlights.contactLabel, value: t.highlights.contactValue, href: "/contact" },
     { label: t.highlights.locationLabel, value: profile.location }
   ];
 

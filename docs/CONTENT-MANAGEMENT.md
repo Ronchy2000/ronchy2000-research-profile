@@ -337,23 +337,13 @@ Blog posts are placeholder examples. To implement a real blog:
 
 ---
 
-## Contact Form
+## Contact Page
 
-The contact form on `/contact` is currently a visual placeholder. To make it functional:
+`/contact` 现已采用「邮箱别名 + mailto」的轻量方案：访客在前端点击“显示邮箱”后，才会解码 Base64 别名并通过 `mailto:` 打开本地邮件客户端。
 
-**Option 1: Email Service** (Easiest)
-Use services like:
-- [Formspree](https://formspree.io/) - Free tier available
-- [Resend](https://resend.com/) - Modern email API
-- [SendGrid](https://sendgrid.com/) - Robust solution
-
-**Option 2: Custom API Route**
-1. Create `app/api/contact/route.ts`
-2. Handle form submission
-3. Send email via nodemailer or similar
-4. Return success/error response
-
-**Recommendation**: For academic sites, email link is often sufficient. Consider form only if you receive many inquiries.
+- 设置 `NEXT_PUBLIC_CONTACT_ALIAS_B64` 即可启用别名（见 `.env.example`），不会将真实邮箱写入静态文件。
+- 如需更复杂的流程（验证码、API 转发等），可以自行新增 `app/api/contact/route.ts` 并把页面按钮指向该端点。
+- 对于大多数个人主页而言，别名 + 手动邮件足以满足需求，同时避免任何第三方托管或额外成本。
 
 ---
 

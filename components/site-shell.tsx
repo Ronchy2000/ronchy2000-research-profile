@@ -22,6 +22,16 @@ type SiteShellProps = {
 };
 
 const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects"]);
+const CONTACT_COPY = {
+  en: {
+    button: "Reveal email alias",
+    hint: "Alias stays hidden until you open the contact page."
+  },
+  zh: {
+    button: "查看邮箱别名",
+    hint: "需要进入联系页手动解锁邮箱。"
+  }
+} as const satisfies Record<Locale, { button: string; hint: string }>;
 const SIDEBAR_WIDTH = 260;
 const COLLAPSE_SCROLL_THRESHOLD = 360;
 const EXPAND_SCROLL_THRESHOLD = 220;
@@ -168,7 +178,14 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
           style={sidebarStyles}
           aria-hidden={sidebarHidden}
         >
-          {!sidebarDisabled && <SideProfileCard profile={profile} />}
+          {!sidebarDisabled && (
+            <SideProfileCard
+              profile={profile}
+              contactHref="/contact"
+              contactLabel={CONTACT_COPY[locale].button}
+              contactHint={CONTACT_COPY[locale].hint}
+            />
+          )}
         </div>
         <main className="flex-1 min-w-0 space-y-16">
           {children}
