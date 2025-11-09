@@ -8,6 +8,20 @@
   "en": {
     "updates": [
       {
+        "date": "2025-11-09",
+        "type": "Commit",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "Authored by ronchy",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81bd2e74abe61f0d9260b5e250fd33a203c47d1a"
+      },
+      {
+        "date": "2025-11-09",
+        "type": "Commit",
+        "title": "[feat]: 尝试加入邮箱反爬",
+        "summary": "Authored by ronchy",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6eb0c909ab3b61d734c01ea0a8ff5c2cacee3a49"
+      },
+      {
         "date": "2025-11-04",
         "type": "Commit",
         "title": "[opt]: 优化UI,侧边栏弹出",
@@ -41,26 +55,26 @@
         "title": "[opt]: 优化若干问题",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "Commit",
-        "title": "[opt]: 移除bot的commit记录",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "Commit",
-        "title": "[opt]: Recent update部分,排除bot的commit记录",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-11-09",
+        "type": "提交",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "由 ronchy 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81bd2e74abe61f0d9260b5e250fd33a203c47d1a"
+      },
+      {
+        "date": "2025-11-09",
+        "type": "提交",
+        "title": "[feat]: 尝试加入邮箱反爬",
+        "summary": "由 ronchy 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6eb0c909ab3b61d734c01ea0a8ff5c2cacee3a49"
+      },
+      {
         "date": "2025-11-04",
         "type": "提交",
         "title": "[opt]: 优化UI,侧边栏弹出",
@@ -94,20 +108,6 @@
         "title": "[opt]: 优化若干问题",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "提交",
-        "title": "[opt]: 移除bot的commit记录",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7d2beb2f989c1ab698a8584c559e8d1411e41377"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "提交",
-        "title": "[opt]: Recent update部分,排除bot的commit记录",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/252b8e809330e390a30678ec0d159ad9f127f1ef"
       }
     ]
   }
