@@ -8,106 +8,106 @@
   "en": {
     "updates": [
       {
+        "date": "2025-11-10",
+        "type": "Commit",
+        "title": "feat: 添加邮箱保护机制",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7fe278226b8fe1f7604e4361a94442cc404bd216"
+      },
+      {
         "date": "2025-11-09",
         "type": "Commit",
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81bd2e74abe61f0d9260b5e250fd33a203c47d1a"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/c442e1a26aa0206dd556e8b83d7e34ec12ab2d19"
       },
       {
         "date": "2025-11-09",
         "type": "Commit",
         "title": "[feat]: 尝试加入邮箱反爬",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6eb0c909ab3b61d734c01ea0a8ff5c2cacee3a49"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b00bfe51eee40d46f851486fddaf63baf484d243"
       },
       {
         "date": "2025-11-04",
         "type": "Commit",
         "title": "[opt]: 优化UI,侧边栏弹出",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d27cdb07ac8e2d6cbf5534beaf6059ed8e385589"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ef0ffd42182aae59d19eabcec057e896cd810ede"
       },
       {
         "date": "2025-11-04",
         "type": "Commit",
         "title": "[fix]: rencent update script",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ba1d560ae33a8e12aeda6631abaf0bdbd0234627"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
       },
       {
         "date": "2025-11-04",
         "type": "Commit",
         "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/47d7d6011e5dc15bd321c7ef6bc62575625e80fb"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
       },
       {
         "date": "2025-11-03",
         "type": "Commit",
         "title": "[fix]: 修复主页中文展示",
-        "summary": "Authored by ronchy",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2bd1b168c7f8f9410fb94b89e9f365064fdc5a69"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "Commit",
-        "title": "[opt]: 优化若干问题",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1dcf1f040b408e1ceae3fc61182abd6fe98a8dae"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-11-10",
+        "type": "提交",
+        "title": "feat: 添加邮箱保护机制",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7fe278226b8fe1f7604e4361a94442cc404bd216"
+      },
+      {
         "date": "2025-11-09",
         "type": "提交",
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/81bd2e74abe61f0d9260b5e250fd33a203c47d1a"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/c442e1a26aa0206dd556e8b83d7e34ec12ab2d19"
       },
       {
         "date": "2025-11-09",
         "type": "提交",
         "title": "[feat]: 尝试加入邮箱反爬",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/6eb0c909ab3b61d734c01ea0a8ff5c2cacee3a49"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b00bfe51eee40d46f851486fddaf63baf484d243"
       },
       {
         "date": "2025-11-04",
         "type": "提交",
         "title": "[opt]: 优化UI,侧边栏弹出",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d27cdb07ac8e2d6cbf5534beaf6059ed8e385589"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ef0ffd42182aae59d19eabcec057e896cd810ede"
       },
       {
         "date": "2025-11-04",
         "type": "提交",
         "title": "[fix]: rencent update script",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ba1d560ae33a8e12aeda6631abaf0bdbd0234627"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
       },
       {
         "date": "2025-11-04",
         "type": "提交",
         "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/47d7d6011e5dc15bd321c7ef6bc62575625e80fb"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
       },
       {
         "date": "2025-11-03",
         "type": "提交",
         "title": "[fix]: 修复主页中文展示",
-        "summary": "由 ronchy 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2bd1b168c7f8f9410fb94b89e9f365064fdc5a69"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "提交",
-        "title": "[opt]: 优化若干问题",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cf3764b89ae34297023563170ea85145b8b227a0"
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1dcf1f040b408e1ceae3fc61182abd6fe98a8dae"
       }
     ]
   }
