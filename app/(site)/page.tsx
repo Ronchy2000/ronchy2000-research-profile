@@ -47,7 +47,7 @@ export default function HomePage() {
         title: "At a Glance",
         focusLabel: "Current focus",
         focusValue: "Robust coordination for aerial–ground robot teams",
-        contactLabel: "Contact alias",
+        contactLabel: "Email",
         contactValue: "Reveal email",
         locationLabel: "Based in"
       },
@@ -70,8 +70,8 @@ export default function HomePage() {
         title: "工作速览",
         focusLabel: "研究重点",
         focusValue: "多智能体强化学习, 追逃博弈",
-        contactLabel: "联系渠道",
-        contactValue: "点击获取邮箱",
+        contactLabel: "联系邮箱",
+        contactValue: "点击显示邮箱",
         locationLabel: "常驻城市"
       },
       sections: {

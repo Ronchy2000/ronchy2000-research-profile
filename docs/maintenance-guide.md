@@ -85,13 +85,13 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - `SiteHeader` 横向排布导航；桌面端显示完整菜单，移动端在第二行横向滚动。
 - 侧边名片（仅桌面端显示）由 `SideProfileCard` 渲染，已移除多余的 Download CV 按钮。
 
-## Contact 别名说明（零第三方）
-- 页面仅在客户端本地解码邮箱别名，通过 `mailto:` 打开访客的系统邮件客户端，没有任何服务器或第三方转发。
+## Contact 邮箱防爬（零第三方）
+- 页面仅在客户端本地解码邮箱地址，通过 `mailto:` 打开访客的系统邮件客户端，没有任何服务器或第三方转发。
 - **环境变量**（见根目录 `.env.example`）：
-  1. `NEXT_PUBLIC_CONTACT_ALIAS_B64`：公开邮箱别名的 Base64。示例：`echo -n "hi+site@example.com" | base64`。
+  1. `NEXT_PUBLIC_CONTACT_EMAIL_B64`：公开邮箱的 Base64。示例：`echo -n "hi@example.com" | base64`。
   2. `NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`（可选）：自定义邮件主题前缀（默认为中英双语文案）。
 - **部署步骤**：在 Vercel 或国内托管平台的环境变量面板填入上述键值即可；静态打包内容仍不包含明文邮箱。
-- **使用说明**：访客在联系页点击“显示邮箱别名”后才会看到真实地址，并可一键复制或通过 `mailto:` 生成邮件草稿。你可以为不同托管环境设置不同别名，方便追踪垃圾来源。
+- **使用说明**：访客在联系页点击“显示邮箱”后才会看到真实地址，并可一键复制或通过 `mailto:` 生成邮件草稿。想更换邮箱时，更新环境变量并重新部署即可，旧页面会继续显示模糊文本。
 
 ## 样式与设计基准
 - 背景、打印、焦点样式：`app/globals.css`。
@@ -126,12 +126,12 @@ npm run build    # 发布前验证（postbuild 会自动复制 edgeone.json）
 
 ## 常见问题
 - **导航未显示/排版异常**：确认 `SiteHeader` 没有被自定义样式覆盖；移动端第二行横向滚动属于预期行为。
-- **Contact 表单是否发送邮件？** 不再经过服务器。表单仅在本地生成 `mailto:` 链接，真实邮箱通过 Base64 别名在点击后才会解码显示。
+- **Contact 表单是否发送邮件？** 不经过服务器。表单仅在本地生成 `mailto:` 链接，真实邮箱以 Base64 形式打包，点击按钮后才会在浏览器里解码显示。
 - **Recent Updates 没刷新**：检查 GitHub Actions 的运行记录；若提示缺少权限，请添加 `GH_PAT`（repo 权限）到仓库 Secrets，或者手动运行 `node scripts/update-recent-updates.mjs` 并提交。
 
 如需更深度的自定义（多语言切换、MDX 解析、Arxiv API 等），可在 `lib/content.ts` 中增加对应的解析逻辑，再在页面中引入即可。
 
 ### 其他提示
 - Footer 当前仅显示版权和更新时间，如需 Sitemap/RSS，可在 `components/site-footer.tsx` 恢复链接并生成文件。
-- Contact 页面采用“点击才显示邮箱别名 + mailto”机制，如需更换别名只需更新 `NEXT_PUBLIC_CONTACT_ALIAS_B64` 并重新部署。
+- Contact 页面采用“点击才显示邮箱 + mailto”机制，如需更换邮箱只需更新 `NEXT_PUBLIC_CONTACT_EMAIL_B64` 并重新部署。
 - `.github/workflows/update-content.yml` 每日运行更新脚本（Recent Updates + GitHub stars）；确保仓库 token 拥有推送权限，建议配置 `GH_PAT`。工作流使用 `npm install --no-audit` 安装依赖，以避免 `npm ci` 对锁文件的要求。

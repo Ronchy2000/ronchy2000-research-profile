@@ -23,7 +23,7 @@ export default function CVPage() {
         eyebrow: "Overview",
         download: "Download PDF",
         contactLabel: "Contact",
-        contactAction: "Reveal email alias",
+        contactAction: "Reveal email",
         locationLabel: "Location"
       },
       education: { title: "Education", eyebrow: "CV" },
@@ -56,8 +56,8 @@ export default function CVPage() {
         description: "提供 PDF 下载与打印视图，相关内容可在 /content 目录中维护。",
         eyebrow: "概览",
         download: "下载 PDF",
-        contactLabel: "联系渠道",
-        contactAction: "获取邮箱别名",
+        contactLabel: "联系邮箱",
+        contactAction: "点击显示邮箱",
         locationLabel: "常驻城市"
       },
       education: { title: "教育背景", eyebrow: "简历" },

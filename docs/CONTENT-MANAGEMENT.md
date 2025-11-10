@@ -339,11 +339,11 @@ Blog posts are placeholder examples. To implement a real blog:
 
 ## Contact Page
 
-`/contact` 现已采用「邮箱别名 + mailto」的轻量方案：访客在前端点击“显示邮箱”后，才会解码 Base64 别名并通过 `mailto:` 打开本地邮件客户端。
+`/contact` 采用「点击才显示邮箱 + mailto」的轻量方案：访客在前端点击“显示邮箱”后，才会解码 Base64 字符串并通过 `mailto:` 打开本地邮件客户端。
 
-- 设置 `NEXT_PUBLIC_CONTACT_ALIAS_B64` 即可启用别名（见 `.env.example`），不会将真实邮箱写入静态文件。
+- 设置 `NEXT_PUBLIC_CONTACT_EMAIL_B64` 即可启用（见 `.env.example`），不会将真实邮箱写入静态文件。
 - 如需更复杂的流程（验证码、API 转发等），可以自行新增 `app/api/contact/route.ts` 并把页面按钮指向该端点。
-- 对于大多数个人主页而言，别名 + 手动邮件足以满足需求，同时避免任何第三方托管或额外成本。
+- 对于大多数个人主页而言，手动邮件足以满足需求，同时避免任何第三方托管或额外成本。
 
 ---
 

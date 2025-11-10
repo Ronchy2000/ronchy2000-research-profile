@@ -24,12 +24,12 @@ type SiteShellProps = {
 const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects"]);
 const CONTACT_COPY = {
   en: {
-    button: "Reveal email alias",
-    hint: "Alias stays hidden until you open the contact page."
+    button: "Reveal email address",
+    hint: "Email stays hidden until you open the contact page."
   },
   zh: {
-    button: "查看邮箱别名",
-    hint: "需要进入联系页手动解锁邮箱。"
+    button: "查看邮箱",
+    hint: "需要进入联系页手动查看邮箱。"
   }
 } as const satisfies Record<Locale, { button: string; hint: string }>;
 const SIDEBAR_WIDTH = 260;

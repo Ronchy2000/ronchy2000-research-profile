@@ -7,7 +7,7 @@ import { Section } from "@/components/section";
 import { useLocale } from "@/components/locale-provider";
 import { getProfileContent } from "@/lib/content";
 
-const ENCODED_ALIAS = process.env.NEXT_PUBLIC_CONTACT_ALIAS_B64 ?? "";
+const ENCODED_CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL_B64 ?? "";
 const SUBJECT_PREFIX = process.env.NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT ?? "";
 
 const findSocialLink = (profile: ReturnType<typeof getProfileContent>["en"], label: string) =>
@@ -19,7 +19,7 @@ type FormFields = {
   message: string;
 };
 
-const decodeAlias = (value: string) => {
+const decodeEmail = (value: string) => {
   if (!value) {
     return "";
   }
@@ -60,7 +60,7 @@ export default function ContactPage() {
   const { locale } = useLocale();
   const profileContent = getProfileContent();
   const profile = profileContent[locale];
-  const contactEmail = useMemo(() => decodeAlias(ENCODED_ALIAS.trim()), []);
+  const contactEmail = useMemo(() => decodeEmail(ENCODED_CONTACT_EMAIL.trim()), []);
   const obfuscatedEmail = useMemo(() => maskEmail(contactEmail, locale === "zh" ? "尚未配置" : "Not configured"), [contactEmail, locale]);
 
   const copy = {
@@ -68,60 +68,60 @@ export default function ContactPage() {
       title: "Contact",
       description: "Share a short note below. Your device will open the default mail app so that no third-party service stores the message.",
       eyebrow: "Connect",
-      revealButton: "Reveal email alias",
+      revealButton: "Reveal email address",
       copyButton: "Copy address",
       copySuccess: "Copied",
       copyError: "Unable to copy",
       submit: "Open mail client",
       items: {
-        contact: "Email alias",
+        contact: "Email",
         github: "GitHub",
         scholar: "Google Scholar",
         location: "Location"
       },
       notes: [
-        "Alias rotates frequently, so scraping an old deployment won't expose the real inbox.",
-        "Include affiliation or project links inside the message for faster routing."
+        "Email stays hidden in the static HTML until you deliberately reveal it.",
+        "Messages open locally via mailto, so no third-party relay stores your note."
       ],
       feedback: {
-        aliasMissing: "Set NEXT_PUBLIC_CONTACT_ALIAS_B64 before deploying so the alias can be revealed.",
+        emailMissing: "Set NEXT_PUBLIC_CONTACT_EMAIL_B64 before deploying so the email can be revealed.",
         formInvalid: "Fill out all fields before opening your mail client."
       },
       calloutTitle: "How this protects your inbox",
       calloutPoints: [
-        "Email address never appears in the generated HTML until you deliberately reveal it.",
-        "Visitors craft the final message locally via mailto, so no third-party relay captures the content.",
-        "Reuse different aliases per hosting provider to trace where spam originates."
+        "Email address stays Base64-encoded in the bundle until the browser decodes it on demand.",
+        "Visitors craft the final message locally via mailto, so no relay service captures the content.",
+        "Rotate the encoded value any time you want to refresh the exposed address."
       ]
     },
     zh: {
       title: "联系我",
       description: "简单填写下方信息后，将在本地打开默认邮件客户端发送邮件，全程不依赖任何第三方表单服务。",
       eyebrow: "联系",
-      revealButton: "点击显示邮箱别名",
+      revealButton: "点击显示邮箱",
       copyButton: "复制地址",
       copySuccess: "已复制",
       copyError: "复制失败",
       submit: "打开邮件客户端",
       items: {
-        contact: "邮箱别名",
+        contact: "邮箱",
         github: "GitHub",
         scholar: "谷歌学术",
         location: "常驻城市"
       },
       notes: [
-        "别名会定期轮换，即使旧版本页面被爬取也无法长期利用。",
-        "留言时可附上机构或项目链接，便于我快速了解背景。"
+        "在点击“显示邮箱”前，页面只会展示模糊信息，静态 HTML 中不会包含明文。",
+        "邮件通过 mailto 在你的设备本地生成，无需任何第三方表单服务。"
       ],
       feedback: {
-        aliasMissing: "请在部署前设置 NEXT_PUBLIC_CONTACT_ALIAS_B64，否则无法显示邮箱。",
+        emailMissing: "请在部署前设置 NEXT_PUBLIC_CONTACT_EMAIL_B64，否则无法显示邮箱。",
         formInvalid: "请完整填写表单再打开邮件客户端。"
       },
       calloutTitle: "邮箱防爬虫策略",
       calloutPoints: [
-        "在你主动点击前，网页不会输出真实邮箱。",
-        "邮件内容由你的设备直接生成，不经过任何第三方。",
-        "可以针对不同托管环境配置不同别名，用来追踪垃圾来源。"
+        "邮箱地址以 Base64 编码随页面一同部署，只有浏览器本地解码后才会显示。",
+        "访客直接通过 mailto 打开默认邮箱客户端，内容不会经过第三方服务。",
+        "需要更新邮箱时只需替换环境变量并重新部署，旧页面即刻失效。"
       ]
     }
   } as const;
@@ -141,7 +141,7 @@ export default function ContactPage() {
 
   const handleReveal = () => {
     if (!contactEmail) {
-      setError(copy[locale].feedback.aliasMissing);
+      setError(copy[locale].feedback.emailMissing);
       return;
     }
     setRevealed(true);
@@ -149,7 +149,7 @@ export default function ContactPage() {
 
   const handleCopy = async () => {
     if (!contactEmail) {
-      setError(copy[locale].feedback.aliasMissing);
+      setError(copy[locale].feedback.emailMissing);
       return;
     }
     try {
@@ -164,7 +164,7 @@ export default function ContactPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!contactEmail) {
-      setError(copy[locale].feedback.aliasMissing);
+      setError(copy[locale].feedback.emailMissing);
       return;
     }
     if (!form.name.trim() || !form.replyEmail.trim() || !form.message.trim()) {

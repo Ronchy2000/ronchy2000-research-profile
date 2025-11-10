@@ -50,17 +50,17 @@ GitHub stars 会在 workflow 中调用 `scripts/update-project-stars.mjs` 自动
 Vercel automatically enables preview deployments on each pull request and production deploys from the default branch.
 
 - **GitHub 邮箱隐私**：在 GitHub Settings → Emails 勾选 “Keep my email addresses private” 和 “Block command line pushes that expose my email”，并改用 `username@users.noreply.github.com` 作为提交邮箱，避免仓库历史泄露真实邮箱。
-- **公开邮箱建议**：使用邮箱提供商的别名/子地址（如 `name+site@outlook.com`），并在收件规则里将该别名的邮件自动归档或标记，便于批量拦截垃圾信息。
+- **公开邮箱建议**：可以直接使用主邮箱，也可以利用邮箱提供商的子地址（如 `name+site@outlook.com`）来随时替换。记得为该地址设置过滤规则，垃圾信件更好收拢。
 
-### 🛡 Contact Alias (Zero Third-party)
-> 联系方式只在浏览器本地解码，没有任何外部表单或邮件代理。
+### 🛡 Contact Email Anti-scraping (Zero Third-party)
+> 联系邮箱只会在浏览器本地解码，静态 HTML 中不会出现明文，同时不依赖任何第三方表单。
 
-1. **创建别名并编码**：任选一个公开邮箱别名（建议开启自动过滤），运行 `echo -n "hi+site@example.com" | base64` 得到 Base64 字符串。
-2. **配置变量**：在 `.env` / Vercel / 国内托管平台里设置
-   - `NEXT_PUBLIC_CONTACT_ALIAS_B64`：上一步生成的字符串。
+1. **准备邮箱并编码**：直接使用你要公开的邮箱（或子地址），运行 `echo -n "hi@example.com" | base64` 得到 Base64。
+2. **配置变量**：在 `.env` / Vercel / 国内托管平台中设置
+   - `NEXT_PUBLIC_CONTACT_EMAIL_B64`：上一步生成的字符串。
    - （可选）`NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`：自定义邮件主题前缀。
-3. **部署即可**：`contact/page.tsx` 会在用户点击“显示邮箱”后本地解码别名，并通过 `mailto:` 打开访客设备上的邮件客户端。真实邮箱不会出现在静态 HTML 或 JS bundle 中。
-4. **多站点追踪**：可为 Vercel、国内镜像等不同托管环境配置不同的别名，以识别垃圾来源；切换别名只需更新环境变量并重新部署。
+3. **交互解码**：`contact/page.tsx` 在访客点击“显示邮箱”后才会在浏览器本地解码并展示邮箱，同时通过 `mailto:` 打开对方设备的默认客户端，过程不经过外部服务。
+4. **随时更换**：想替换公开邮箱时，仅需更新环境变量并重新部署；旧版本即便被镜像也只能看到模糊文本。
 
 - 导航：在 `app/(site)/layout.tsx` 的 `navItems` 数组维护。
 - 样式：调节 `tailwind.config.ts`（brand 色）、`app/globals.css`（背景/打印样式）。
