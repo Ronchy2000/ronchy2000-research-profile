@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2025-11-11",
+        "type": "Commit",
+        "title": "[fix]: 暗黑模式邮箱色彩显示",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d6192320039509b4a0a6f73ae8efd3d20c44d144"
+      },
+      {
         "date": "2025-11-10",
         "type": "Commit",
         "title": "feat: 添加邮箱保护机制",
@@ -48,19 +55,19 @@
         "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "Commit",
-        "title": "[fix]: 修复主页中文展示",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1dcf1f040b408e1ceae3fc61182abd6fe98a8dae"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-11-11",
+        "type": "提交",
+        "title": "[fix]: 暗黑模式邮箱色彩显示",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d6192320039509b4a0a6f73ae8efd3d20c44d144"
+      },
+      {
         "date": "2025-11-10",
         "type": "提交",
         "title": "feat: 添加邮箱保护机制",
@@ -101,13 +108,6 @@
         "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
-      },
-      {
-        "date": "2025-11-03",
-        "type": "提交",
-        "title": "[fix]: 修复主页中文展示",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1dcf1f040b408e1ceae3fc61182abd6fe98a8dae"
       }
     ]
   }
