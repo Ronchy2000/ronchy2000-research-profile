@@ -188,25 +188,25 @@ export default function ContactPage() {
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4 text-base text-slate-600 dark:text-slate-300">
-            <p>{t.items.contact}: <span className="font-medium text-brand dark:text-brand-foreground">{displayEmail}</span></p>
+            <p>{t.items.contact}: <span className="font-medium text-slate-900 dark:text-slate-100">{displayEmail}</span></p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={handleReveal}
-                className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-700 transition hover:border-brand hover:text-brand dark:border-slate-700 dark:text-slate-200"
+                className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-700 transition hover:border-brand hover:text-brand dark:border-slate-600 dark:text-slate-300 dark:hover:border-brand dark:hover:text-brand"
               >
                 {t.revealButton}
               </button>
               <button
                 type="button"
                 onClick={handleCopy}
-                className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-700 transition hover:border-brand hover:text-brand dark:border-slate-700 dark:text-slate-200"
+                className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-700 transition hover:border-brand hover:text-brand dark:border-slate-600 dark:text-slate-300 dark:hover:border-brand dark:hover:text-brand"
               >
                 {copyState === "copied" ? t.copySuccess : copyState === "error" ? t.copyError : t.copyButton}
               </button>
             </div>
-            <p>{t.items.github}: <a href={githubLink} className="text-brand hover:text-brand-foreground" target="_blank" rel="noopener noreferrer">@Ronchy2000</a></p>
-            <p>{t.items.scholar}: <a href={scholarLink} className="text-brand hover:text-brand-foreground" target="_blank" rel="noopener noreferrer">{locale === "zh" ? "学术主页" : "Scholar profile"}</a></p>
+            <p>{t.items.github}: <a href={githubLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">@Ronchy2000</a></p>
+            <p>{t.items.scholar}: <a href={scholarLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">{locale === "zh" ? "学术主页" : "Scholar profile"}</a></p>
             <p>{t.items.location}: {profile.location}</p>
             <ul className="list-disc space-y-2 pl-5 text-sm text-slate-500 dark:text-slate-400">
               {t.notes.map((note) => (
