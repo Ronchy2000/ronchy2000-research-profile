@@ -44,7 +44,13 @@ const maskEmail = (value: string, fallback: string) => {
 };
 
 const buildMailtoLink = (email: string, fields: FormFields, locale: "en" | "zh") => {
-  const prefix = SUBJECT_PREFIX || (locale === "zh" ? "来自个人主页的留言" : "Message from research profile");
+  // 默认主题前缀（根据语言）
+  const defaultPrefix = locale === "zh" ? "来自您的个人网站" : "From your website";
+  
+  // 如果设置了环境变量且不为空，使用它作为所有语言的统一前缀
+  // 否则使用根据语言的默认值
+  const prefix = SUBJECT_PREFIX && SUBJECT_PREFIX.trim() ? SUBJECT_PREFIX : defaultPrefix;
+  
   const subject = `${prefix} - ${fields.name}`;
   const body = [
     `Name: ${fields.name}`,
@@ -52,8 +58,12 @@ const buildMailtoLink = (email: string, fields: FormFields, locale: "en" | "zh")
     "",
     fields.message
   ].join("\n");
-  const params = new URLSearchParams({ subject, body });
-  return `mailto:${email}?${params.toString()}`;
+  
+  // 手动编码，确保空格不会变成 +
+  const subjectEncoded = encodeURIComponent(subject);
+  const bodyEncoded = encodeURIComponent(body);
+  
+  return `mailto:${email}?subject=${subjectEncoded}&body=${bodyEncoded}`;
 };
 
 export default function ContactPage() {
