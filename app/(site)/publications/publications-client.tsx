@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { FilterToolbar } from "@/components/filter-toolbar";
 import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
@@ -85,57 +86,30 @@ export function PublicationsClient({ entries, locale }: PublicationsClientProps)
         eyebrow={copy.section.eyebrow}
         actions={<Tag label={copy.section.note} />}
       >
-        <div className="grid gap-3 rounded-3xl border border-slate-200 bg-white/90 p-4 text-sm shadow-[0_24px_60px_-45px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/70">
-          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-            <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
-              {copy.filters.type}
-            </span>
-            <div className="flex flex-wrap items-center gap-2">
-              {TYPE_OPTIONS.map((type) => {
-                const label = renderTypeLabel(type);
-                const active = typeFilter === type;
-                return (
-                  <button
-                    key={type}
-                    type="button"
-                    onClick={() => setTypeFilter(type)}
-                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                      active
-                        ? "bg-blue-600 text-white shadow"
-                        : "border border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-            <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
-              {copy.filters.year}
-            </span>
-            <div className="flex flex-wrap items-center gap-2">
-              {years.map((year) => {
-                const active = yearFilter === year;
-                return (
-                  <button
-                    key={year}
-                    type="button"
-                    onClick={() => setYearFilter(year)}
-                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                      active
-                        ? "bg-blue-600 text-white shadow"
-                        : "border border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300"
-                    }`}
-                  >
-                    {year === "All" ? copy.filters.all : year}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        <FilterToolbar
+          groups={[
+            {
+              id: "type",
+              label: copy.filters.type,
+              value: typeFilter,
+              options: TYPE_OPTIONS.map((type) => ({
+                value: type,
+                label: renderTypeLabel(type)
+              })),
+              onChange: (value) => setTypeFilter(value as TypeFilter)
+            },
+            {
+              id: "year",
+              label: copy.filters.year,
+              value: yearFilter,
+              options: years.map((year) => ({
+                value: year,
+                label: year === "All" ? copy.filters.all : year
+              })),
+              onChange: (value) => setYearFilter(value)
+            }
+          ]}
+        />
 
         <div className="space-y-6">
           {filteredEntries.length ? (

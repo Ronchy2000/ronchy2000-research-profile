@@ -3,12 +3,16 @@ import type { ProjectEntry } from "@/lib/content-types";
 
 type ProjectCardProps = {
   project: ProjectEntry;
+  badges?: {
+    label: string;
+    variant?: "default" | "accent";
+  }[];
 };
 
 /**
  * Card layout for projects with summary text, tags, and action buttons.
  */
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, badges }: ProjectCardProps) {
   const otherMetrics = project.metrics
     ? Object.entries(project.metrics).filter(([key]) => key !== "stars")
     : [];
@@ -21,6 +25,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </p>
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{project.name}</h3>
         <p className="text-sm text-slate-600 dark:text-slate-300">{project.summary}</p>
+        {badges?.length ? (
+          <div className="flex flex-wrap gap-2">
+            {badges.map((badge) => (
+              <Tag key={`${project.name}-${badge.label}`} label={badge.label} variant={badge.variant ?? "accent"} />
+            ))}
+          </div>
+        ) : null}
       </div>
       {project.tags?.length ? (
         <div className="mt-4 flex flex-wrap gap-2">
