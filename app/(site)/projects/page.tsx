@@ -207,7 +207,7 @@ export default function ProjectsPage() {
   }, [decoratedGroups, yearFilter, labelFilter]);
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-7">
       <section className="space-y-3 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 shadow-[0_24px_60px_-45px_rgba(30,64,175,0.45)] dark:border-slate-800 dark:bg-gradient-to-br dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40">
         <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">{t.heroTitle}</h1>
         <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">
@@ -215,63 +215,66 @@ export default function ProjectsPage() {
         </p>
       </section>
 
-      <FilterToolbar
-        groups={[
-          {
-            id: "year",
-            label: t.filters.year,
-            value: yearFilter,
-            options: yearOptions.map((year) => ({
-              value: year,
-              label: year === ALL_FILTER_VALUE ? t.filters.all : year
-            })),
-            onChange: setYearFilter
-          },
-          {
-            id: "tags",
-            label: t.filters.label,
-            value: labelFilter,
-            options: [
-              { value: ALL_FILTER_VALUE, label: t.filters.all },
-              { value: "ongoing", label: t.filters.ongoing },
-              { value: "featured", label: t.filters.featured }
-            ],
-            onChange: (value) => setLabelFilter(value as ProjectLabelFilter)
-          }
-        ]}
-      />
-
-      {filteredGroups.length ? (
-        filteredGroups.map((group) => (
-          <Section
-            key={group.title}
-            title={group.title}
-            eyebrow={
-              group.kind === "open-source"
-                ? t.groupLabels["open-source"]
-                : t.groupLabels[group.kind as keyof typeof t.groupLabels] ?? t.groupLabels.default
+      <div className="space-y-6">
+        <FilterToolbar
+          className="shadow-[0_16px_40px_-38px_rgba(15,23,42,0.55)]"
+          groups={[
+            {
+              id: "year",
+              label: t.filters.year,
+              value: yearFilter,
+              options: yearOptions.map((year) => ({
+                value: year,
+                label: year === ALL_FILTER_VALUE ? t.filters.all : year
+              })),
+              onChange: setYearFilter
+            },
+            {
+              id: "tags",
+              label: t.filters.label,
+              value: labelFilter,
+              options: [
+                { value: ALL_FILTER_VALUE, label: t.filters.all },
+                { value: "ongoing", label: t.filters.ongoing },
+                { value: "featured", label: t.filters.featured }
+              ],
+              onChange: (value) => setLabelFilter(value as ProjectLabelFilter)
             }
-          >
-            <div className="grid gap-6 md:grid-cols-2">
-              {group.items.map((project) => {
-                const badges: ProjectBadge[] = [];
-                if (project.derived.isFeatured) {
-                  badges.push({ label: t.badges.featured, variant: "accent" });
-                }
-                if (project.derived.isOngoing) {
-                  badges.push({ label: t.badges.ongoing, variant: "default" });
-                }
+          ]}
+        />
 
-                return <ProjectCard key={project.name} project={project} badges={badges} />;
-              })}
-            </div>
-          </Section>
-        ))
-      ) : (
-        <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
-          {t.empty}
-        </div>
-      )}
+        {filteredGroups.length ? (
+          filteredGroups.map((group) => (
+            <Section
+              key={group.title}
+              title={group.title}
+              eyebrow={
+                group.kind === "open-source"
+                  ? t.groupLabels["open-source"]
+                  : t.groupLabels[group.kind as keyof typeof t.groupLabels] ?? t.groupLabels.default
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2">
+                {group.items.map((project) => {
+                  const badges: ProjectBadge[] = [];
+                  if (project.derived.isFeatured) {
+                    badges.push({ label: t.badges.featured, variant: "accent" });
+                  }
+                  if (project.derived.isOngoing) {
+                    badges.push({ label: t.badges.ongoing, variant: "default" });
+                  }
+
+                  return <ProjectCard key={project.name} project={project} badges={badges} />;
+                })}
+              </div>
+            </Section>
+          ))
+        ) : (
+          <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
+            {t.empty}
+          </div>
+        )}
+      </div>
 
       <Section
         title={t.sections.updates.title}
