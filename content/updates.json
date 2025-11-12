@@ -8,106 +8,106 @@
   "en": {
     "updates": [
       {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "[feat]: 添加自动化排序，标签筛选",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "[opt]: update CV pdf",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "opt: project 顺序",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "feat: add Xidian LaTeX Template project & fix stars update script",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a6799c0d08655d126b33228251831432f4bfbafd"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ff6fd6ae395d9f142ec15cbfb0be754e729a6787"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
+        "title": "[opt]: Disable image optimization for EdgeOne compatibility",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
+      },
+      {
         "date": "2025-11-11",
         "type": "Commit",
         "title": "[opt]: 邮箱客户端链接",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
-      },
-      {
-        "date": "2025-11-11",
-        "type": "Commit",
-        "title": "[fix]: 暗黑模式邮箱色彩显示",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d6192320039509b4a0a6f73ae8efd3d20c44d144"
-      },
-      {
-        "date": "2025-11-10",
-        "type": "Commit",
-        "title": "feat: 添加邮箱保护机制",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7fe278226b8fe1f7604e4361a94442cc404bd216"
-      },
-      {
-        "date": "2025-11-09",
-        "type": "Commit",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/c442e1a26aa0206dd556e8b83d7e34ec12ab2d19"
-      },
-      {
-        "date": "2025-11-09",
-        "type": "Commit",
-        "title": "[feat]: 尝试加入邮箱反爬",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b00bfe51eee40d46f851486fddaf63baf484d243"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "Commit",
-        "title": "[opt]: 优化UI,侧边栏弹出",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ef0ffd42182aae59d19eabcec057e896cd810ede"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "Commit",
-        "title": "[fix]: rencent update script",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "[feat]: 添加自动化排序，标签筛选",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "[opt]: update CV pdf",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "opt: project 顺序",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "feat: add Xidian LaTeX Template project & fix stars update script",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a6799c0d08655d126b33228251831432f4bfbafd"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ff6fd6ae395d9f142ec15cbfb0be754e729a6787"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
+        "title": "[opt]: Disable image optimization for EdgeOne compatibility",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
+      },
+      {
         "date": "2025-11-11",
         "type": "提交",
         "title": "[opt]: 邮箱客户端链接",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
-      },
-      {
-        "date": "2025-11-11",
-        "type": "提交",
-        "title": "[fix]: 暗黑模式邮箱色彩显示",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d6192320039509b4a0a6f73ae8efd3d20c44d144"
-      },
-      {
-        "date": "2025-11-10",
-        "type": "提交",
-        "title": "feat: 添加邮箱保护机制",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7fe278226b8fe1f7604e4361a94442cc404bd216"
-      },
-      {
-        "date": "2025-11-09",
-        "type": "提交",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/c442e1a26aa0206dd556e8b83d7e34ec12ab2d19"
-      },
-      {
-        "date": "2025-11-09",
-        "type": "提交",
-        "title": "[feat]: 尝试加入邮箱反爬",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b00bfe51eee40d46f851486fddaf63baf484d243"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "提交",
-        "title": "[opt]: 优化UI,侧边栏弹出",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ef0ffd42182aae59d19eabcec057e896cd810ede"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "提交",
-        "title": "[fix]: rencent update script",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
       }
     ]
   }
