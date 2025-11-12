@@ -10,6 +10,13 @@
       {
         "date": "2025-11-11",
         "type": "Commit",
+        "title": "[opt]: 邮箱客户端链接",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
+      },
+      {
+        "date": "2025-11-11",
+        "type": "Commit",
         "title": "[fix]: 暗黑模式邮箱色彩显示",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d6192320039509b4a0a6f73ae8efd3d20c44d144"
@@ -48,18 +55,18 @@
         "title": "[fix]: rencent update script",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "Commit",
-        "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2025-11-11",
+        "type": "提交",
+        "title": "[opt]: 邮箱客户端链接",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
+      },
       {
         "date": "2025-11-11",
         "type": "提交",
@@ -101,13 +108,6 @@
         "title": "[fix]: rencent update script",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4ebdba250aabe9a7016e760e9340d38d1b487558"
-      },
-      {
-        "date": "2025-11-04",
-        "type": "提交",
-        "title": "[opt]: GitHub Action提交逻辑，加入每日心跳日志",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/4741463d2802fa58994b3137ca8e03507f24e314"
       }
     ]
   }
