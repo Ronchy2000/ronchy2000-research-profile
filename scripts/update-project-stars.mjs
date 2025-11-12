@@ -44,19 +44,27 @@ async function main() {
   const projectsContent = JSON.parse(readFileSync(projectsPath, "utf8"));
   let hasChanges = false;
 
-  for (const group of projectsContent.groups ?? []) {
-    for (const item of group.items ?? []) {
-      const githubLink = item.links?.find((link) => link.href && extractRepo(link.href));
-      const repo = githubLink ? extractRepo(githubLink.href) : null;
-      if (!repo) continue;
+  // Handle both flat structure (groups) and locale structure (en.groups, zh.groups)
+  const locales = projectsContent.en ? ["en", "zh"] : [null];
+  
+  for (const locale of locales) {
+    const groups = locale ? projectsContent[locale]?.groups : projectsContent.groups;
+    if (!groups) continue;
 
-      try {
-        const stars = await fetchStarCount(repo);
-        item.metrics = { ...(item.metrics ?? {}), stars };
-        hasChanges = true;
-        console.log(`[update-project-stars] ${repo} -> ${stars} stars`);
-      } catch (error) {
-        console.error(`[update-project-stars] Failed to update ${repo}:`, error.message);
+    for (const group of groups) {
+      for (const item of group.items ?? []) {
+        const githubLink = item.links?.find((link) => link.href && extractRepo(link.href));
+        const repo = githubLink ? extractRepo(githubLink.href) : null;
+        if (!repo) continue;
+
+        try {
+          const stars = await fetchStarCount(repo);
+          item.metrics = { ...(item.metrics ?? {}), stars };
+          hasChanges = true;
+          console.log(`[update-project-stars] ${repo} -> ${stars} stars`);
+        } catch (error) {
+          console.error(`[update-project-stars] Failed to update ${repo}:`, error.message);
+        }
       }
     }
   }

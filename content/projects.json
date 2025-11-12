@@ -152,6 +152,22 @@
             }
           },
           {
+            "name": "Xidian LaTeX Template",
+            "summary": "macOS-optimized LaTeX template for Xidian University theses with font configuration and TeX Live 2025 setup guide.",
+            "period": "2025 – Present",
+            "role": "Author",
+            "tags": ["LaTeX", "macOS", "Academic"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
+              }
+            ],
+            "metrics": {
+              "stars": 9
+            }
+          },
+          {
             "name": "Dynamic-Proxy-Pool",
             "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
             "period": "2025 – Present",
@@ -338,6 +354,22 @@
             ],
             "metrics": {
               "stars": 20
+            }
+          },
+          {
+            "name": "西电 LaTeX 模板",
+            "summary": "为 macOS 环境优化的西电学位论文模板，涵盖字体配置与 TeX Live 2025 环境搭建全流程。",
+            "period": "2025 – 至今",
+            "role": "作者",
+            "tags": ["LaTeX", "macOS", "学术"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
+              }
+            ],
+            "metrics": {
+              "stars": 9
             }
           },
           {
