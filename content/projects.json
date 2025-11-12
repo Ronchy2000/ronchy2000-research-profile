@@ -12,6 +12,18 @@
         "links": "Array of { label, href }",
         "metrics": "Optional stats e.g. stars, downloads"
       }
+    },
+    "sortingRules": {
+      "description": "项目排序规则 / Project Sorting Rules",
+      "rules": [
+        "1. 按结束年份降序排列（最新的在前）/ Sort by end year descending (newest first)",
+        "2. 进行中项目 (e.g., '2025 – Present') 优先于同年已完成项目 / Ongoing projects (e.g., '2025 – Present') before completed projects of the same year",
+        "3. 同年份内按 GitHub stars 数量降序排列 / Within same year, sort by GitHub stars descending",
+        "4. 无 stars 数据的项目排在同年份末尾 / Projects without stars go at the end of their year group"
+      ],
+      "examples": [
+        "'2025 – Present' (9 stars) > '2025 – Present' (2 stars) > '2025' (20 stars) > '2024' (8 stars)"
+      ]
     }
   },
   "en": {
@@ -34,35 +46,6 @@
             ],
             "metrics": {
               "stars": 224
-            }
-          },
-          {
-            "name": "Visual-Inertial UAV Navigation",
-            "summary": "VI-SLAM with obstacle-aware planning for warehouse drones.",
-            "period": "2022 – 2023",
-            "role": "Team Lead",
-            "tags": ["ROS", "SLAM"],
-            "links": [
-              {
-                "label": "Report",
-                "href": "#"
-              }
-            ]
-          },
-          {
-            "name": "Flocking Formation Control",
-            "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
-            "period": "2024",
-            "role": "Developer",
-            "tags": ["MATLAB", "UAV", "Formation"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
-              }
-            ],
-            "metrics": {
-              "stars": 10
             }
           },
           {
@@ -96,6 +79,35 @@
             "metrics": {
               "stars": 11
             }
+          },
+          {
+            "name": "Flocking Formation Control",
+            "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
+            "period": "2024",
+            "role": "Developer",
+            "tags": ["MATLAB", "UAV", "Formation"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
+              }
+            ],
+            "metrics": {
+              "stars": 10
+            }
+          },
+          {
+            "name": "Visual-Inertial UAV Navigation",
+            "summary": "VI-SLAM with obstacle-aware planning for warehouse drones.",
+            "period": "2022 – 2023",
+            "role": "Team Lead",
+            "tags": ["ROS", "SLAM"],
+            "links": [
+              {
+                "label": "Report",
+                "href": "#"
+              }
+            ]
           }
         ]
       },
@@ -104,19 +116,19 @@
         "kind": "open-source",
         "items": [
           {
-            "name": "wiki-SICNU",
-            "summary": "Knowledge wiki and resource guide for SICNU students.",
-            "period": "2022",
-            "role": "Contributor",
-            "tags": ["Documentation", "Community"],
+            "name": "Xidian LaTeX Template",
+            "summary": "macOS-optimized LaTeX template for Xidian University theses with font configuration and TeX Live 2025 setup guide.",
+            "period": "2025 – Present",
+            "role": "Author",
+            "tags": ["LaTeX", "macOS", "Academic"],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
               }
             ],
             "metrics": {
-              "stars": 16
+              "stars": 9
             }
           },
           {
@@ -136,38 +148,6 @@
             }
           },
           {
-            "name": "Raspi-ImmortalWrt",
-            "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
-            "period": "2025",
-            "role": "Author",
-            "tags": ["Networking", "OpenWrt"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
-              }
-            ],
-            "metrics": {
-              "stars": 20
-            }
-          },
-          {
-            "name": "Xidian LaTeX Template",
-            "summary": "macOS-optimized LaTeX template for Xidian University theses with font configuration and TeX Live 2025 setup guide.",
-            "period": "2025 – Present",
-            "role": "Author",
-            "tags": ["LaTeX", "macOS", "Academic"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
-              }
-            ],
-            "metrics": {
-              "stars": 9
-            }
-          },
-          {
             "name": "Dynamic-Proxy-Pool",
             "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
             "period": "2025 – Present",
@@ -181,6 +161,22 @@
             ],
             "metrics": {
               "stars": 0
+            }
+          },
+          {
+            "name": "Raspi-ImmortalWrt",
+            "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
+            "period": "2025",
+            "role": "Author",
+            "tags": ["Networking", "OpenWrt"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
+              }
+            ],
+            "metrics": {
+              "stars": 20
             }
           },
           {
@@ -214,6 +210,22 @@
             "metrics": {
               "stars": 8
             }
+          },
+          {
+            "name": "wiki-SICNU",
+            "summary": "Knowledge wiki and resource guide for SICNU students.",
+            "period": "2022",
+            "role": "Contributor",
+            "tags": ["Documentation", "Community"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+              }
+            ],
+            "metrics": {
+              "stars": 16
+            }
           }
         ]
       }
@@ -239,35 +251,6 @@
             ],
             "metrics": {
               "stars": 224
-            }
-          },
-          {
-            "name": "视觉惯性无人机导航",
-            "summary": "面向仓储物流场景打造视惯融合 SLAM，并结合避障规划保障航迹安全。",
-            "period": "2022 – 2023",
-            "role": "项目牵头",
-            "tags": ["ROS", "SLAM"],
-            "links": [
-              {
-                "label": "项目报告",
-                "href": "#"
-              }
-            ]
-          },
-          {
-            "name": "仿鸟群编队控制",
-            "summary": "基于 flocking 模型实现多无人机自主编队与避障控制验证。",
-            "period": "2024",
-            "role": "算法开发",
-            "tags": ["MATLAB", "无人机", "编队控制"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
-              }
-            ],
-            "metrics": {
-              "stars": 10
             }
           },
           {
@@ -301,6 +284,35 @@
             "metrics": {
               "stars": 11
             }
+          },
+          {
+            "name": "仿鸟群编队控制",
+            "summary": "基于 flocking 模型实现多无人机自主编队与避障控制验证。",
+            "period": "2024",
+            "role": "算法开发",
+            "tags": ["MATLAB", "无人机", "编队控制"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Flocking-Formation-Control"
+              }
+            ],
+            "metrics": {
+              "stars": 10
+            }
+          },
+          {
+            "name": "视觉惯性无人机导航",
+            "summary": "面向仓储物流场景打造视惯融合 SLAM，并结合避障规划保障航迹安全。",
+            "period": "2022 – 2023",
+            "role": "项目牵头",
+            "tags": ["ROS", "SLAM"],
+            "links": [
+              {
+                "label": "项目报告",
+                "href": "#"
+              }
+            ]
           }
         ]
       },
@@ -309,19 +321,19 @@
         "kind": "open-source",
         "items": [
           {
-            "name": "wiki-SICNU 校园知识库",
-            "summary": "面向四川师大在校生整理课程资料、办事流程与社群资源的协作式知识库。",
-            "period": "2022",
-            "role": "贡献者",
-            "tags": ["文档", "社区"],
+            "name": "西电 LaTeX 模板",
+            "summary": "为 macOS 环境优化的西电学位论文模板，涵盖字体配置与 TeX Live 2025 环境搭建全流程。",
+            "period": "2025 – 至今",
+            "role": "作者",
+            "tags": ["LaTeX", "macOS", "学术"],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
               }
             ],
             "metrics": {
-              "stars": 16
+              "stars": 9
             }
           },
           {
@@ -341,38 +353,6 @@
             }
           },
           {
-            "name": "Raspi-ImmortalWrt 路由实践",
-            "summary": "聚焦时延与隐私需求，整理树莓派刷入 ImmortalWrt 的软路由配置经验。",
-            "period": "2025",
-            "role": "作者",
-            "tags": ["网络", "OpenWrt"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
-              }
-            ],
-            "metrics": {
-              "stars": 20
-            }
-          },
-          {
-            "name": "西电 LaTeX 模板",
-            "summary": "为 macOS 环境优化的西电学位论文模板，涵盖字体配置与 TeX Live 2025 环境搭建全流程。",
-            "period": "2025 – 至今",
-            "role": "作者",
-            "tags": ["LaTeX", "macOS", "学术"],
-            "links": [
-              {
-                "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
-              }
-            ],
-            "metrics": {
-              "stars": 9
-            }
-          },
-          {
             "name": "动态代理池",
             "summary": "自动轮换代理节点并监测可用性，缓解爬虫请求的封禁风险。",
             "period": "2025 – 至今",
@@ -386,6 +366,22 @@
             ],
             "metrics": {
               "stars": 0
+            }
+          },
+          {
+            "name": "Raspi-ImmortalWrt 路由实践",
+            "summary": "聚焦时延与隐私需求，整理树莓派刷入 ImmortalWrt 的软路由配置经验。",
+            "period": "2025",
+            "role": "作者",
+            "tags": ["网络", "OpenWrt"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Raspi-ImmortalWrt"
+              }
+            ],
+            "metrics": {
+              "stars": 20
             }
           },
           {
@@ -418,6 +414,22 @@
             ],
             "metrics": {
               "stars": 8
+            }
+          },
+          {
+            "name": "wiki-SICNU 校园知识库",
+            "summary": "面向四川师大在校生整理课程资料、办事流程与社群资源的协作式知识库。",
+            "period": "2022",
+            "role": "贡献者",
+            "tags": ["文档", "社区"],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/SICNU-Application/wiki-SICNU"
+              }
+            ],
+            "metrics": {
+              "stars": 16
             }
           }
         ]
