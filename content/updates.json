@@ -10,6 +10,13 @@
       {
         "date": "2025-11-12",
         "type": "Commit",
+        "title": "[opt]: badge间距",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/48071e3a38edcdd8268f87da09e9c61de2e20768"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "Commit",
         "title": "[feat]: 添加自动化排序，标签筛选",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
@@ -48,13 +55,6 @@
         "title": "[opt]: Disable image optimization for EdgeOne compatibility",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
-      },
-      {
-        "date": "2025-11-11",
-        "type": "Commit",
-        "title": "[opt]: 邮箱客户端链接",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
       }
     ]
   },
@@ -63,6 +63,13 @@
       {
         "date": "2025-11-12",
         "type": "提交",
+        "title": "[opt]: badge间距",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/48071e3a38edcdd8268f87da09e9c61de2e20768"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "提交",
         "title": "[feat]: 添加自动化排序，标签筛选",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
@@ -101,13 +108,6 @@
         "title": "[opt]: Disable image optimization for EdgeOne compatibility",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
-      },
-      {
-        "date": "2025-11-11",
-        "type": "提交",
-        "title": "[opt]: 邮箱客户端链接",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d9b8749462dddad870403a1b2ff177ba1852bdaa"
       }
     ]
   }
