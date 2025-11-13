@@ -8,6 +8,27 @@
   "en": {
     "updates": [
       {
+        "date": "2025-11-13",
+        "type": "Commit",
+        "title": "[opt]: 优化技术架构",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5998eb810e00313557481eb862400b37ca16d0bb"
+      },
+      {
+        "date": "2025-11-13",
+        "type": "Commit",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9547c69429e84d934b4c51d486021ba6a5994889"
+      },
+      {
+        "date": "2025-11-13",
+        "type": "Commit",
+        "title": "[feat]: update ICP备案信息",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
+      },
+      {
         "date": "2025-11-12",
         "type": "Commit",
         "title": "[opt]: badge间距",
@@ -34,33 +55,33 @@
         "title": "opt: project 顺序",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "feat: add Xidian LaTeX Template project & fix stars update script",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a6799c0d08655d126b33228251831432f4bfbafd"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ff6fd6ae395d9f142ec15cbfb0be754e729a6787"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "[opt]: Disable image optimization for EdgeOne compatibility",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-11-13",
+        "type": "提交",
+        "title": "[opt]: 优化技术架构",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5998eb810e00313557481eb862400b37ca16d0bb"
+      },
+      {
+        "date": "2025-11-13",
+        "type": "提交",
+        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9547c69429e84d934b4c51d486021ba6a5994889"
+      },
+      {
+        "date": "2025-11-13",
+        "type": "提交",
+        "title": "[feat]: update ICP备案信息",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
+      },
+      {
         "date": "2025-11-12",
         "type": "提交",
         "title": "[opt]: badge间距",
@@ -87,27 +108,6 @@
         "title": "opt: project 顺序",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "feat: add Xidian LaTeX Template project & fix stars update script",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a6799c0d08655d126b33228251831432f4bfbafd"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ff6fd6ae395d9f142ec15cbfb0be754e729a6787"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "[opt]: Disable image optimization for EdgeOne compatibility",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/766880faa6b386ff7ea6078df8e6dcabe6fd770e"
       }
     ]
   }
