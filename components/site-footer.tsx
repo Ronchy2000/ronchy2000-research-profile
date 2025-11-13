@@ -17,27 +17,49 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
       copyright: `© ${year} Rongqi Lu. All rights reserved.`,
       viewSource: "View source on GitHub",
       lastUpdated: "Last updated:",
-      tagline: "Always improving"
+      tagline: "Always improving",
+      icpLabel: "ICP Licensing"
     },
     zh: {
       copyright: `© ${year} 陆荣琦。保留所有权利。`,
       viewSource: "GitHub 源码仓库",
       lastUpdated: "上次更新：",
-      tagline: "无限进步"
+      tagline: "无限进步",
+      icpLabel: "ICP备案号"
     }
-  } satisfies Record<Locale, { copyright: string; viewSource: string; lastUpdated: string; tagline: string }>;
+  } satisfies Record<
+    Locale,
+    { copyright: string; viewSource: string; lastUpdated: string; tagline: string; icpLabel: string }
+  >;
   const t = copy[locale];
+  const ICP_LICENSE = "晋ICP备2025068932号-1";
+
+  const icpLabel = (
+    <Link
+      href="https://beian.miit.gov.cn"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-slate-400 hover:text-brand dark:text-slate-500 dark:hover:text-brand"
+    >
+      {t.icpLabel}
+      {locale === "zh" ? "：" : ": "}
+      {ICP_LICENSE}
+    </Link>
+  );
 
   return (
     <footer className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400 print:hidden">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
-          <span>{t.copyright}</span>
-          <a 
-            href="https://github.com/Ronchy2000/ronchy2000-research-profile" 
-            target="_blank" 
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>{t.copyright}</span>
+            {icpLabel}
+          </span>
+          <a
+            href="https://github.com/Ronchy2000/ronchy2000-research-profile"
+            target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-400 hover:text-brand dark:text-slate-500 dark:hover:text-brand"
+            className="text-slate-400 hover:text-brand dark:text-slate-500 dark:hover:text-brand"
           >
             {t.viewSource}
           </a>
