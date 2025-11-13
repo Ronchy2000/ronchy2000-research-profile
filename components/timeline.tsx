@@ -21,10 +21,10 @@ export function Timeline({ items }: TimelineProps) {
             <div className="space-y-1">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{item.title}</h3>
               {item.location ? (
-                <p className="text-sm text-slate-500 dark:text-slate-400">{item.location}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">{item.location}</p>
               ) : null}
             </div>
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
               {item.period}
             </span>
           </div>

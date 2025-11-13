@@ -163,7 +163,7 @@ export default function BlogPage() {
           {filteredPosts.length ? (
             filteredPosts.map((post) => (
               <article key={post.slug} className="rounded-2xl border border-slate-200 bg-white/90 p-6 dark:border-slate-800 dark:bg-slate-900/70">
-                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
                   <span>{post.date}</span>
                 </div>
                 <h3 className="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-50">
@@ -180,7 +180,7 @@ export default function BlogPage() {
               </article>
             ))
           ) : (
-            <p className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
+            <p className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
               {t.empty}
             </p>
           )}

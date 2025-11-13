@@ -218,7 +218,7 @@ export default function ContactPage() {
             <p>{t.items.github}: <a href={githubLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">@Ronchy2000</a></p>
             <p>{t.items.scholar}: <a href={scholarLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">{locale === "zh" ? "学术主页" : "Scholar profile"}</a></p>
             <p>{t.items.location}: {profile.location}</p>
-            <ul className="list-disc space-y-2 pl-5 text-sm text-slate-500 dark:text-slate-400">
+            <ul className="list-disc space-y-2 pl-5 text-sm text-slate-600 dark:text-slate-300">
               {t.notes.map((note) => (
                 <li key={note}>{note}</li>
               ))}

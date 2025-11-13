@@ -67,7 +67,7 @@ export default function ResearchPage() {
             details: [item.summary, ...item.bullets]
           }))}
         />
-        <p className="mt-6 text-base text-slate-600 dark:text-slate-400">{t.collaboration}</p>
+        <p className="mt-6 text-base text-slate-600 dark:text-slate-300">{t.collaboration}</p>
       </Section>
     </div>
   );

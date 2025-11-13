@@ -33,14 +33,14 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
         <div className="w-full space-y-1 text-center">
           <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-50">{profile.name}</h1>
           {profile.nativeName && (
-            <p className="text-sm text-slate-500 dark:text-slate-400">{profile.nativeName}</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">{profile.nativeName}</p>
           )}
         </div>
       </div>
       <div className="w-full space-y-2 text-sm text-slate-600 dark:text-slate-300">
         <p className="font-medium text-slate-700 dark:text-slate-200">{profile.affiliation}</p>
-        <p className="text-slate-500 dark:text-slate-400">{profile.title}</p>
-        <p className="text-slate-500 dark:text-slate-400">{profile.location}</p>
+        <p className="text-slate-600 dark:text-slate-300">{profile.title}</p>
+        <p className="text-slate-600 dark:text-slate-300">{profile.location}</p>
         {contactHref ? (
           <Link
             href={contactHref as any}
@@ -51,7 +51,7 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
           </Link>
         ) : null}
         {contactHint ? (
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-slate-600 dark:text-slate-300">
             {contactHint}
           </p>
         ) : null}

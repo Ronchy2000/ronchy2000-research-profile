@@ -17,7 +17,7 @@ export function Section({ title, description, eyebrow, actions, children }: Sect
     <section className="space-y-6">
       <header className="space-y-3">
         {eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-600 dark:text-slate-300">
             {eyebrow}
           </p>
         ) : null}

@@ -270,7 +270,7 @@ export default function ProjectsPage() {
             </Section>
           ))
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
+          <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-center text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
             {t.empty}
           </div>
         )}
@@ -287,16 +287,16 @@ export default function ProjectsPage() {
               href={update.link}
               className="group flex items-start gap-4 py-3 px-4 rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-slate-900/50"
             >
-              <div className="flex-shrink-0 w-20 text-xs font-medium text-slate-500 dark:text-slate-400 pt-0.5">
+              <div className="flex-shrink-0 w-20 text-xs font-medium text-slate-600 dark:text-slate-300 pt-0.5">
                 {update.date}
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-base font-medium text-slate-900 dark:text-slate-50 group-hover:text-brand transition-colors">
                   {update.title}
                 </h3>
-                <p className="mt-1 text-base text-slate-600 dark:text-slate-400">{update.summary}</p>
+                <p className="mt-1 text-base text-slate-600 dark:text-slate-300">{update.summary}</p>
               </div>
-              <span className="flex-shrink-0 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">→</span>
+              <span className="flex-shrink-0 text-slate-600 dark:text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">→</span>
             </a>
           ))}
         </div>

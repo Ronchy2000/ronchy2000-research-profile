@@ -93,7 +93,7 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       <section className="space-y-6 rounded-3xl border border-white/70 bg-white/90 p-8 shadow-[0_32px_80px_-50px_rgba(15,23,42,0.55)] dark:border-slate-800 dark:bg-slate-900/70 print:border-none print:bg-transparent print:shadow-none">
-        <div className="flex flex-wrap items-baseline gap-3 text-sm uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+        <div className="flex flex-wrap items-baseline gap-3 text-sm uppercase tracking-[0.4em] text-slate-600 dark:text-slate-300">
           <span>{profile.name}</span>
           {profile.nativeName ? <span>{profile.nativeName}</span> : null}
         </div>
@@ -120,13 +120,13 @@ export default function HomePage() {
             </div>
           </div>
           <aside className="space-y-4 rounded-3xl border border-slate-200 bg-white/80 p-6 dark:border-slate-800 dark:bg-slate-900/60">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-600 dark:text-slate-300">
               {t.highlights.title}
             </h2>
             <dl className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
               {highlightItems.map((item) => (
                 <div key={item.label} className="flex flex-col gap-1 border-b border-slate-200 pb-3 last:border-b-0 last:pb-0 dark:border-slate-700">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
                     {item.label}
                   </dt>
                   <dd className="text-base font-medium text-slate-900 dark:text-slate-50">
@@ -189,7 +189,7 @@ export default function HomePage() {
             <li key={`${award.title}-${award.year}`} className="leading-relaxed">
               <span className="font-medium text-slate-900 dark:text-slate-50">{award.title}</span>
               {award.issuer ? <span> · {award.issuer}</span> : null}
-              <span className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400"> · {award.year}</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300"> · {award.year}</span>
             </li>
           ))}
         </ul>

@@ -266,7 +266,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
     [alignToIndex, layout.cardWidth, updatesCount]
   );
 
-  // 监听用户手动滚动 - 使用 passive 事件监听器优化性能
+  // 监听用户手动滚动
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
@@ -301,18 +301,14 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
     };
 
     const handleWheel = (e: WheelEvent) => {
-      // 支持横向滚轮 - 使用 requestAnimationFrame 优化性能
+      // 支持横向滚轮
       if (Math.abs(e.deltaX) > 0) {
         e.preventDefault();
-        
-        // 使用 RAF 进行平滑滚动更新
-        requestAnimationFrame(() => {
-          scrollContainer.scrollLeft += e.deltaX;
-          updateIndices(scrollContainer.scrollLeft);
-        });
+        scrollContainer.scrollLeft += e.deltaX;
       }
 
       stopScrollAnimation();
+      updateIndices(scrollContainer.scrollLeft);
       manualScrollRef.current = true;
       setIsScrolling(true);
       setIsUserScrolling(true);
@@ -502,9 +498,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
           msOverflowStyle: 'none',
           scrollBehavior: 'auto',
           cursor: isDragging ? 'grabbing' : 'grab',
-          userSelect: isDragging ? 'none' : 'auto',
-          // 添加 will-change 提示浏览器优化性能
-          willChange: isDragging || isScrolling ? 'scroll-position' : 'auto'
+          userSelect: isDragging ? 'none' : 'auto'
         }}
       >
         {trackUpdates.map((update, index) => (
@@ -513,9 +507,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
             className="flex min-w-[260px] flex-shrink-0 flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.3)] transition-[box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.4)] dark:border-slate-800 dark:bg-slate-900/70"
             style={{
               ...itemDimension,
-              transition: CARD_TRANSITION,
-              // 提示浏览器优化 transform 和 box-shadow 动画
-              willChange: 'transform, box-shadow'
+              transition: CARD_TRANSITION
             }}
           >
             <div className="space-y-3">

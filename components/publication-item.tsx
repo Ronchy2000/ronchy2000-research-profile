@@ -32,12 +32,12 @@ export function PublicationItem({ item, locale = "en" }: PublicationItemProps) {
 
   return (
     <article className="space-y-3 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-[0_24px_60px_-45px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/70">
-      <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-medium uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-medium uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
         <div className="flex flex-wrap items-center gap-2">
           <Tag label={typeLabel} />
           <span>{item.year}</span>
         </div>
-        <span className="text-slate-400">{item.id}</span>
+        <span className="text-slate-600 dark:text-slate-300">{item.id}</span>
       </div>
       <div className="space-y-2">
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{item.title}</h3>
@@ -45,7 +45,7 @@ export function PublicationItem({ item, locale = "en" }: PublicationItemProps) {
           {item.authors}
           {item.notes ? <span className="ml-2 text-slate-500">({item.notes})</span> : null}
         </p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">{item.venue}</p>
+        <p className="text-sm text-slate-600 dark:text-slate-300">{item.venue}</p>
       </div>
       {item.tags?.length ? (
         <div className="flex flex-wrap gap-2">

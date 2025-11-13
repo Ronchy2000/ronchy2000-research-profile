@@ -39,7 +39,7 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
       href="https://beian.miit.gov.cn"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-slate-400 hover:text-brand dark:text-slate-500 dark:hover:text-brand"
+      className="text-slate-600 hover:text-brand dark:text-slate-300 dark:hover:text-brand"
     >
       {t.icpLabel}
       {locale === "zh" ? "：" : ": "}
@@ -48,7 +48,7 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
   );
 
   return (
-    <footer className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400 print:hidden">
+    <footer className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300 print:hidden">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -59,7 +59,7 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
             href="https://github.com/Ronchy2000/ronchy2000-research-profile"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-brand dark:text-slate-500 dark:hover:text-brand"
+            className="text-slate-600 hover:text-brand dark:text-slate-300 dark:hover:text-brand"
           >
             {t.viewSource}
           </a>

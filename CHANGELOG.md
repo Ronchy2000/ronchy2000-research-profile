@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 2025.11.07 Improvements
+
+- Build output now targets evergreen browsers only via an explicit `browserslist` configuration in `package.json`,削减了多余 polyfill 和 legacy 转译。
+- 调整站点多处辅助文字颜色（首页 Section、项目/出版物/博客列表、侧边栏、页脚等组件），统一采用更高对比度的 `text-slate-600` / `dark:text-slate-300`，满足无障碍对比度要求。
+- `components/infinite-scroll-updates.tsx` 恢复了原先的“即时拖拽 + 惯性滚轮”体验：仍保留自适应卡片宽度与智能锚点，但鼠标拖动、滚轮滑动与停顿对齐逻辑回到最顺手的实现。
+
 ### 2025.11.03Changed
 
 #### 内容清理 - 移除所有技术性说明文字

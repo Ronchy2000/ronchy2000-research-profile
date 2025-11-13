@@ -20,7 +20,7 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
   return (
     <article className="flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_20px_40px_-35px_rgba(15,23,42,0.45)] transition duration-150 hover:-translate-y-1 hover:shadow-[0_25px_45px_-35px_rgba(15,23,42,0.55)] dark:border-slate-800 dark:bg-slate-900/60">
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
           {project.period}
         </p>
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{project.name}</h3>
@@ -49,7 +49,7 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
             </div>
           ) : null}
           {otherMetrics.length ? (
-            <div className="text-xs text-slate-500 dark:text-slate-400">
+            <div className="text-xs text-slate-600 dark:text-slate-300">
               {otherMetrics.map(([key, value]) => `${key}: ${value}`).join(" · ")}
             </div>
           ) : null}

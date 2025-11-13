@@ -115,7 +115,7 @@ export function PublicationsClient({ entries, locale }: PublicationsClientProps)
           {filteredEntries.length ? (
             filteredEntries.map((entry) => <PublicationItem key={entry.id} item={entry} locale={locale} />)
           ) : (
-            <p className="text-sm text-slate-500 dark:text-slate-400">{copy.empty}</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">{copy.empty}</p>
           )}
         </div>
       </Section>
