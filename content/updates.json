@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2025-12-06",
+        "type": "Commit",
+        "title": "feat: add debug logs for locale switching issue",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/525b3636482749c5cf6e68254909daf91e81f717"
+      },
+      {
         "date": "2025-11-13",
         "type": "Commit",
         "title": "[opt]: 优化技术架构",
@@ -48,19 +55,19 @@
         "title": "[opt]: update CV pdf",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "opt: project 顺序",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-12-06",
+        "type": "提交",
+        "title": "feat: add debug logs for locale switching issue",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/525b3636482749c5cf6e68254909daf91e81f717"
+      },
+      {
         "date": "2025-11-13",
         "type": "提交",
         "title": "[opt]: 优化技术架构",
@@ -101,13 +108,6 @@
         "title": "[opt]: update CV pdf",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "opt: project 顺序",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/191569a0d5ab04cb41fc1352c5fdb022564e032d"
       }
     ]
   }
