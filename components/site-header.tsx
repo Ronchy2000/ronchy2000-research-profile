@@ -77,7 +77,10 @@ export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocal
                   <button
                     key={option.value}
                     type="button"
-                    onClick={() => onToggleLocale(option.value)}
+                    onClick={() => {
+                      console.log("[SiteHeader] Locale button clicked:", option.value);
+                      onToggleLocale(option.value);
+                    }}
                     className={`rounded-full px-2.5 py-1 transition ${
                       active
                         ? "bg-slate-900 text-white shadow-sm dark:bg-white dark:text-slate-900"

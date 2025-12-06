@@ -34,6 +34,10 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
   const profile = profileContent[locale];
   const navItems = NAV_ITEMS[locale];
 
+  console.log("[SiteLayout] Current locale:", locale);
+  console.log("[SiteLayout] Profile:", profile?.name);
+  console.log("[SiteLayout] NavItems count:", navItems?.length);
+
   return (
     <SiteShell navItems={navItems} profile={profile} locale={locale} onToggleLocale={setLocale}>
       {children}
