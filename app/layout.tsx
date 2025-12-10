@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "Rongqi Lu | Research Profile",
   description:
     "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg"
+  },
   openGraph: {
     title: "Rongqi Lu | Research Profile",
     description:

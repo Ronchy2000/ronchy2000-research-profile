@@ -78,7 +78,6 @@ export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocal
                     key={option.value}
                     type="button"
                     onClick={() => {
-                      console.log("[SiteHeader] Locale button clicked:", option.value);
                       onToggleLocale(option.value);
                     }}
                     className={`rounded-full px-2.5 py-1 transition ${

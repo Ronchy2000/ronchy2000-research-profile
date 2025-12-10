@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Site icon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c39b76" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#9d6f51" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="letter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38d9ff"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)" fill-opacity="0.95"/>
+  <rect width="64" height="30" rx="14" fill="url(#gloss)"/>
+  <text
+    x="50%"
+    y="52%"
+    fill="url(#letter)"
+    font-family="Inter, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="42"
+    font-weight="800"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="1"
+  >
+    R
+  </text>
+</svg>

@@ -15,8 +15,6 @@ const headers = {
 
 if (token) {
   headers.Authorization = `Bearer ${token}`;
-} else {
-  console.warn("[update-project-stars] No GITHUB_TOKEN provided; unauthenticated requests may be rate-limited.");
 }
 
 function extractRepo(link) {
@@ -61,9 +59,10 @@ async function main() {
           const stars = await fetchStarCount(repo);
           item.metrics = { ...(item.metrics ?? {}), stars };
           hasChanges = true;
-          console.log(`[update-project-stars] ${repo} -> ${stars} stars`);
         } catch (error) {
-          console.error(`[update-project-stars] Failed to update ${repo}:`, error.message);
+          process.stderr.write(
+            `[update-project-stars] Failed to update ${repo}: ${error instanceof Error ? error.message : String(error)}\n`
+          );
         }
       }
     }
@@ -71,13 +70,12 @@ async function main() {
 
   if (hasChanges) {
     writeFileSync(projectsPath, `${JSON.stringify(projectsContent, null, 2)}\n`);
-    console.log("[update-project-stars] content/projects.json updated");
-  } else {
-    console.log("[update-project-stars] No GitHub repositories found; no changes written.");
   }
 }
 
 main().catch((error) => {
-  console.error("[update-project-stars] Unexpected failure:", error);
+  process.stderr.write(
+    `[update-project-stars] Unexpected failure: ${error instanceof Error ? error.message : String(error)}\n`
+  );
   process.exit(1);
 });

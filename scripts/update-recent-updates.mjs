@@ -113,9 +113,6 @@ async function fetchCommits() {
 
   if (token) {
     headers.Authorization = `Bearer ${token}`;
-  } else {
-    console.warn("[update-updates] No GITHUB_TOKEN provided; falling back to unauthenticated requests (rate limited).\n" +
-      "Set GITHUB_TOKEN or add a PAT secret for higher limits.");
   }
 
   const perPage = Math.min(Math.max(limit * 4, 30), 100);
@@ -208,10 +205,11 @@ async function main() {
   }
 
   writeFileSync(contentPath, `${JSON.stringify(existing, null, 2)}\n`);
-  console.log(`[update-updates] Wrote ${updates.length} entries to content/updates.json (en + zh)`);
 }
 
 main().catch((error) => {
-  console.error("[update-updates] Failed to refresh updates:", error);
+  process.stderr.write(
+    `[update-updates] Failed to refresh updates: ${error instanceof Error ? error.message : String(error)}\n`
+  );
   process.exit(1);
 });

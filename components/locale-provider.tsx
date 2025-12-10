@@ -21,14 +21,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       // 1. 先检查 localStorage 中的用户偏好
       if (typeof window !== "undefined") {
         const savedLocale = localStorage.getItem("locale");
-        console.log("[LocaleProvider] Saved locale from localStorage:", savedLocale);
         if (savedLocale === "en" || savedLocale === "zh") {
           return savedLocale;
         }
 
         // 2. 检测浏览器语言设置
         const browserLang = navigator.language.toLowerCase();
-        console.log("[LocaleProvider] Browser language:", browserLang);
         if (browserLang.startsWith("zh")) {
           return "zh";
         }
@@ -39,31 +37,25 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     };
 
     const detectedLocale = detectLocale();
-    console.log("[LocaleProvider] Detected locale:", detectedLocale, "Current locale:", locale);
     
     // 只在检测到的语言与当前不同时才更新
     if (detectedLocale !== locale) {
-      console.log("[LocaleProvider] Updating locale state to:", detectedLocale);
       setLocaleState(detectedLocale);
     }
     
     // 更新 HTML lang 属性
     if (typeof document !== "undefined") {
       document.documentElement.lang = detectedLocale;
-      console.log("[LocaleProvider] Updated HTML lang attribute to:", detectedLocale);
     }
   }, [locale]);
 
   const setLocale = (newLocale: Locale) => {
-    console.log("[LocaleProvider] setLocale called with:", newLocale);
     setLocaleState(newLocale);
     if (typeof window !== "undefined") {
       localStorage.setItem("locale", newLocale);
-      console.log("[LocaleProvider] Saved to localStorage:", newLocale);
     }
     if (typeof document !== "undefined") {
       document.documentElement.lang = newLocale;
-      console.log("[LocaleProvider] Updated HTML lang to:", newLocale);
     }
   };
 

@@ -11,7 +11,6 @@ const targetDir = join(projectRoot, ".next");
 const target = join(targetDir, "edgeone.json");
 
 if (!existsSync(source)) {
-  console.warn("[postbuild] edgeone.json not found; skipping copy.");
   process.exit(0);
 }
 
@@ -20,4 +19,3 @@ if (!existsSync(targetDir)) {
 }
 
 cpSync(source, target);
-console.log("[postbuild] edgeone.json copied to build output.");
