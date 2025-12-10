@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2025-12-10",
+        "type": "Commit",
+        "title": "Remove console logs and add favicon",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9f7df5e165514e9873b898d62b866b5c7a4f74d1"
+      },
+      {
         "date": "2025-12-06",
         "type": "Commit",
         "title": "feat: add debug logs for locale switching issue",
@@ -48,19 +55,19 @@
         "title": "[feat]: 添加自动化排序，标签筛选",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "[opt]: update CV pdf",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2025-12-10",
+        "type": "提交",
+        "title": "Remove console logs and add favicon",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9f7df5e165514e9873b898d62b866b5c7a4f74d1"
+      },
+      {
         "date": "2025-12-06",
         "type": "提交",
         "title": "feat: add debug logs for locale switching issue",
@@ -101,13 +108,6 @@
         "title": "[feat]: 添加自动化排序，标签筛选",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "[opt]: update CV pdf",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e09a423e9c5323abb9498a925253ec462dd6031b"
       }
     ]
   }
