@@ -8,6 +8,20 @@
   "en": {
     "updates": [
       {
+        "date": "2025-12-11",
+        "type": "Commit",
+        "title": "opt: 自适应宽度",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2cc8b1098c2d513c6af5c11760baa6277614cc4c"
+      },
+      {
+        "date": "2025-12-11",
+        "type": "Commit",
+        "title": "opt: remove Hint about reveal Email adress",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/30baef2a5474aff8ace173ddabbb77b255b72b2d"
+      },
+      {
         "date": "2025-12-10",
         "type": "Commit",
         "title": "Remove console logs and add favicon",
@@ -41,25 +55,25 @@
         "title": "[feat]: update ICP备案信息",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "[opt]: badge间距",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/48071e3a38edcdd8268f87da09e9c61de2e20768"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "Commit",
-        "title": "[feat]: 添加自动化排序，标签筛选",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2025-12-11",
+        "type": "提交",
+        "title": "opt: 自适应宽度",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2cc8b1098c2d513c6af5c11760baa6277614cc4c"
+      },
+      {
+        "date": "2025-12-11",
+        "type": "提交",
+        "title": "opt: remove Hint about reveal Email adress",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/30baef2a5474aff8ace173ddabbb77b255b72b2d"
+      },
       {
         "date": "2025-12-10",
         "type": "提交",
@@ -94,20 +108,6 @@
         "title": "[feat]: update ICP备案信息",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "[opt]: badge间距",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/48071e3a38edcdd8268f87da09e9c61de2e20768"
-      },
-      {
-        "date": "2025-11-12",
-        "type": "提交",
-        "title": "[feat]: 添加自动化排序，标签筛选",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/384b5c3c84fc5824c928185155cd12605b462753"
       }
     ]
   }
