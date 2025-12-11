@@ -8,14 +8,13 @@ type SideProfileCardProps = {
   avatarSrc?: string;
   contactHref?: string;
   contactLabel?: string;
-  contactHint?: string;
 };
 
 /**
  * Profile summary shown in the desktop sidebar. Displays avatar, names,
  * affiliation, keywords, and social links.
  */
-export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", contactHref, contactLabel, contactHint }: SideProfileCardProps) {
+export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", contactHref, contactLabel }: SideProfileCardProps) {
   const imageSrc = profile.avatar ?? avatarSrc;
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col gap-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_30px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70 lg:flex print:hidden">
@@ -49,11 +48,6 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
             <span aria-hidden="true" className="text-base leading-none">🔒</span>
             {contactLabel ?? "Reveal email"}
           </Link>
-        ) : null}
-        {contactHint ? (
-          <p className="text-xs text-slate-600 dark:text-slate-300">
-            {contactHint}
-          </p>
         ) : null}
       </div>
       <div className="w-full space-y-2 text-sm">
