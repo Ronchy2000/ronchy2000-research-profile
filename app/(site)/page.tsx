@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.9fr)]">
           <div className="space-y-6">
-            <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
               {t.heroIntro}
             </p>
             <div className="flex flex-wrap gap-2">

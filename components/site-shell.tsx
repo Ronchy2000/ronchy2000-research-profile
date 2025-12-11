@@ -156,7 +156,11 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
   }, [locale]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="relative isolate min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_18%,rgba(37,99,235,0.08),transparent_38%),radial-gradient(circle_at_88%_12%,rgba(14,165,233,0.08),transparent_32%),linear-gradient(120deg,rgba(15,23,42,0.03),rgba(15,23,42,0.06))] dark:bg-[radial-gradient(circle_at_15%_25%,rgba(96,165,250,0.12),transparent_40%),radial-gradient(circle_at_85%_15%,rgba(34,211,238,0.1),transparent_36%),linear-gradient(120deg,rgba(15,23,42,0.65),rgba(15,23,42,0.75))]"
+      />
       <SiteHeader
         navItems={navItems}
         profileName={profile.name}
@@ -164,7 +168,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
         currentLocale={locale}
       />
       <div
-        className="mx-auto flex w-full max-w-6xl px-4 py-10 lg:px-8"
+        className="mx-auto flex w-full max-w-6xl px-4 py-10 lg:px-8 xl:max-w-7xl xl:px-10 2xl:max-w-[1500px] 2xl:px-12"
         style={layoutStyles}
       >
         <div
