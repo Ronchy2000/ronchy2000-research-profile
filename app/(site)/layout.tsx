@@ -13,6 +13,7 @@ const NAV_ITEMS: Record<"en" | "zh", NavItem[]> = {
     { label: "Research", href: "/research" },
     { label: "Publications", href: "/publications" },
     { label: "Projects", href: "/projects" },
+    { label: "Experience", href: "/experience" },
     { label: "CV", href: "/cv" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" }
@@ -22,6 +23,7 @@ const NAV_ITEMS: Record<"en" | "zh", NavItem[]> = {
     { label: "科研概览", href: "/research" },
     { label: "发表成果", href: "/publications" },
     { label: "项目集锦", href: "/projects" },
+    { label: "经历", href: "/experience" },
     { label: "简历", href: "/cv" },
     { label: "博客", href: "/blog" },
     { label: "联系", href: "/contact" }

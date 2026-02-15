@@ -1,13 +1,13 @@
 ## Ronchy2000 Research Profile
 
-Modern academic site for **Rongqi Lu** built with Next.js 14 + Tailwind CSS. Multi页面布局包含 Home / Research / Publications / Projects / Experience / CV / Blog / Contact 等板块，内容全部来自 `content/*.json` 文件，便于维护与部署。
+Modern academic site for **Rongqi Lu** built with Next.js 14 + Tailwind CSS. Multi页面布局包含 Home / Research / Publications / Projects / Experience / CV / Blog / Contact 等板块，内容主要在 `content/` 中维护（JSON + MDX），便于维护与部署。
 
 ### ✨ Highlights
 - Next.js 14 App Router + Tailwind CSS，桌面端左侧名片 + 右侧正文，移动端顶部导航
 - 明暗主题切换、打印优化（隐藏导航/侧栏，黑白输出）
 - 所有数据均在 `content/` 中维护（profile、research、publications、projects、timeline、awards、updates）
 - 页面组件化：Section、Timeline、PublicationItem、ProjectCard、Callout 等可复用模块
-- 提供博客（MDX 占位）、CV 页面（在线预览 + 下载）、Contact 表单 UI 占位
+- 提供博客（`content/blog/{en,zh}/*.mdx` 内容驱动）、CV 页面（在线预览 + 下载）、Contact 表单（mailto，无第三方）
 - `scripts/update-recent-updates.mjs` / `scripts/update-project-stars.mjs` 通过 GitHub Actions 自动刷新首页动态和 GitHub star 数
 
 ### 🛠️ Getting Started
@@ -32,10 +32,19 @@ Key content files:
 | `content/timeline.json` | 教育与实习时间线 |
 | `content/awards.json` | 荣誉列表（首页、CV 共用） |
 | `content/updates.json` | 首页「Recent Updates」模块 |
-| `blog/sample-post.mdx` | 博客示例文章，可替换或扩展 |
+| `content/pages/*.json` | 页面文案（Home/Blog/Contact/CV/Projects/Research/Publications/Experience 等） |
+| `content/blog/en/*.mdx` | 博客文章（英文） |
+| `content/blog/zh/*.mdx` | 博客文章（中文） |
 
-所有读取逻辑在 `lib/content.ts` 中，目前为 JSON 占位，可按需替换为 YAML/MDX 解析。
+所有结构化内容读取逻辑在 `lib/content.ts` 中，博客文章解析逻辑在 `lib/blog.ts` 中。
 GitHub stars 会在 workflow 中调用 `scripts/update-project-stars.mjs` 自动更新。
+
+### ✍️ Writing Blog Posts
+- Add a post file under `content/blog/en/` or `content/blog/zh/` (`.md` or `.mdx`).
+- Optional helper:
+```bash
+npm run new:post -- --locale en --slug my-first-post --title "My First Post"
+```
 
 ### 📂 Assets
 - Place a square profile image at `public/images/profile.jpg`（建议 600×600）
@@ -59,7 +68,7 @@ Vercel automatically enables preview deployments on each pull request and produc
 2. **配置变量**：在 `.env` / Vercel / 国内托管平台中设置
    - `NEXT_PUBLIC_CONTACT_EMAIL_B64`：上一步生成的字符串。
    - （可选）`NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`：自定义邮件主题前缀。
-3. **交互解码**：`contact/page.tsx` 在访客点击“显示邮箱”后才会在浏览器本地解码并展示邮箱，同时通过 `mailto:` 打开对方设备的默认客户端，过程不经过外部服务。
+3. **交互解码**：`app/(site)/contact/page.tsx` 在访客点击“显示邮箱”后才会在浏览器本地解码并展示邮箱，同时通过 `mailto:` 打开对方设备的默认客户端，过程不经过外部服务。
 4. **随时更换**：想替换公开邮箱时，仅需更新环境变量并重新部署；旧版本即便被镜像也只能看到模糊文本。
 
 - 导航：在 `app/(site)/layout.tsx` 的 `navItems` 数组维护。

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
+import { ArrowRightIcon } from "@/components/icons";
+
 type Update = {
   title: string;
   summary: string;
@@ -519,7 +521,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
             </div>
             <a href={update.link} className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-foreground transition-colors">
               View details
-              <span aria-hidden="true">→</span>
+              <ArrowRightIcon aria-hidden="true" className="h-4 w-4" />
             </a>
           </article>
         ))}
@@ -528,7 +530,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
       {/* 简化的滚动状态提示 */}
       {isDragging && (
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-slate-900/80 text-white text-xs font-medium dark:bg-white/80 dark:text-slate-900 backdrop-blur-sm transition-all duration-300">
-          🖱️ Dragging...
+          Dragging...
         </div>
       )}
     </div>

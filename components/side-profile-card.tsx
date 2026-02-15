@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ExternalLinkIcon, LockIcon } from "@/components/icons";
 import type { LocaleProfile } from "@/lib/content-types";
 
 type SideProfileCardProps = {
@@ -45,7 +46,7 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
             href={contactHref as any}
             className="flex w-full items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:bg-white hover:text-slate-900 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:border-slate-500 dark:hover:text-white"
           >
-            <span aria-hidden="true" className="text-base leading-none">🔒</span>
+            <LockIcon aria-hidden="true" className="h-4 w-4 shrink-0" />
             {contactLabel ?? "Reveal email"}
           </Link>
         ) : null}
@@ -57,12 +58,13 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center justify-between rounded-2xl border border-slate-200 px-3 py-2 text-slate-600 transition hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-500 dark:hover:bg-blue-500/10 dark:hover:text-blue-200"
+            className="group flex items-center justify-between rounded-2xl border border-slate-200 px-3 py-2 text-slate-600 transition hover:border-brand/60 hover:bg-brand/5 hover:text-brand dark:border-slate-700 dark:text-slate-300 dark:hover:border-brand/70 dark:hover:bg-brand/10 dark:hover:text-brand"
           >
             <span className="text-sm font-medium">{link.label}</span>
-            <span aria-hidden="true" className="text-sm opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100">
-              ↗
-            </span>
+            <ExternalLinkIcon
+              aria-hidden="true"
+              className="h-4 w-4 shrink-0 opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100"
+            />
           </a>
         ))}
       </div>

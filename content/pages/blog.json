@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "description": "Copy and labels for the Blog page. Add new fields here to avoid editing TSX for content updates."
+  },
+  "en": {
+    "title": "Blog",
+    "description": "Long-form research notes, project retrospectives, and reading summaries.",
+    "eyebrow": "Writing",
+    "filters": {
+      "type": "Type",
+      "year": "Year",
+      "all": "All"
+    },
+    "types": {
+      "research": "Research",
+      "note": "Notes"
+    },
+    "empty": "No posts match the selected filters."
+  },
+  "zh": {
+    "title": "博客",
+    "description": "记录研究手记、项目复盘与阅读体会。",
+    "eyebrow": "写作",
+    "filters": {
+      "type": "类型",
+      "year": "年份",
+      "all": "全部"
+    },
+    "types": {
+      "research": "研究",
+      "note": "笔记"
+    },
+    "empty": "暂无符合筛选条件的文章。"
+  }
+}
+

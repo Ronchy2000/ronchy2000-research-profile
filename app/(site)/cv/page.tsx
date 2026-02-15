@@ -6,7 +6,7 @@ import { Section } from "@/components/section";
 import { Table } from "@/components/table";
 import { Timeline } from "@/components/timeline";
 import { useLocale } from "@/components/locale-provider";
-import { getAwardsContent, getProfileContent, getTimelineContent } from "@/lib/content";
+import { getAwardsContent, getCVPageCopy, getProfileContent, getTimelineContent } from "@/lib/content";
 
 export default function CVPage() {
   const { locale } = useLocale();
@@ -15,78 +15,7 @@ export default function CVPage() {
   const timeline = getTimelineContent()[locale];
   const awards = getAwardsContent()[locale].awards;
 
-  const copy = {
-    en: {
-      intro: {
-        title: "Curriculum Vitae",
-        description: "Downloadable PDF and printable view. Adjust content via the files in /content.",
-        eyebrow: "Overview",
-        download: "Download PDF",
-        contactLabel: "Contact",
-        contactAction: "Reveal email",
-        locationLabel: "Location"
-      },
-      education: { title: "Education", eyebrow: "CV" },
-      experience: { title: "Professional Experience", eyebrow: "CV" },
-      honors: {
-        title: "Selected Honors",
-        eyebrow: "Recognition",
-        headers: ["Year", "Award", "Issuer"]
-      },
-      skills: {
-        title: "Skills & Coursework",
-        eyebrow: "CV",
-        headers: ["Category", "Items"],
-        rows: [
-          ["Programming", "Python, C/C++, MATLAB"],
-          ["Frameworks", "PyTorch, ROS, OpenCV"],
-          ["Courses", "Optimal Control, Multi-agent Systems, Embedded Systems"]
-        ]
-      },
-      links: {
-        title: "Additional Links",
-        eyebrow: "CV",
-        publications: "Publications overview",
-        projects: "Project portfolio"
-      }
-    },
-    zh: {
-      intro: {
-        title: "个人简历",
-        description: "提供 PDF 下载与打印视图，相关内容可在 /content 目录中维护。",
-        eyebrow: "概览",
-        download: "下载 PDF",
-        contactLabel: "联系邮箱",
-        contactAction: "点击显示邮箱",
-        locationLabel: "常驻城市"
-      },
-      education: { title: "教育背景", eyebrow: "简历" },
-      experience: { title: "实习 / 工作经历", eyebrow: "简历" },
-      honors: {
-        title: "荣誉奖励",
-        eyebrow: "荣誉",
-        headers: ["年份", "奖项", "颁发机构"]
-      },
-      skills: {
-        title: "技能与课程",
-        eyebrow: "简历",
-        headers: ["类别", "内容"],
-        rows: [
-          ["编程", "Python、C/C++、MATLAB"],
-          ["框架", "PyTorch、ROS、OpenCV"],
-          ["课程", "最优控制、多智能体系统、嵌入式系统"]
-        ]
-      },
-      links: {
-        title: "更多链接",
-        eyebrow: "简历",
-        publications: "查看发表成果",
-        projects: "浏览项目集锦"
-      }
-    }
-  } as const;
-
-  const t = copy[locale];
+  const t = getCVPageCopy()[locale];
   const honorsHeaders = [...t.honors.headers];
   const skillsHeaders = [...t.skills.headers];
   const skillsRows = t.skills.rows.map((row) => [...row]);

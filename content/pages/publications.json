@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "description": "Copy and labels for the Publications page."
+  },
+  "en": {
+    "section": {
+      "title": "Publications & Patents",
+      "description": "Conference papers, journal articles, and patent applications.",
+      "eyebrow": "Catalogue",
+      "note": "* indicates student-first author"
+    },
+    "filters": {
+      "type": "Type",
+      "year": "Year",
+      "all": "All"
+    },
+    "types": {
+      "C": "Conference",
+      "J": "Journal",
+      "P": "Patent",
+      "S": "In Submission"
+    },
+    "empty": "No publications match the selected filters."
+  },
+  "zh": {
+    "section": {
+      "title": "论文与专利",
+      "description": "展示已发表论文、投稿进展与专利申请情况。",
+      "eyebrow": "成果目录",
+      "note": "* 表示学生一作"
+    },
+    "filters": {
+      "type": "类型",
+      "year": "年份",
+      "all": "全部"
+    },
+    "types": {
+      "C": "会议",
+      "J": "期刊",
+      "P": "专利",
+      "S": "投稿中"
+    },
+    "empty": "暂无符合当前筛选条件的成果。"
+  }
+}
+

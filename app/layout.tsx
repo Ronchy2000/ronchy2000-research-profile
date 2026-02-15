@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { getRequestLocale } from "@/lib/locale.server";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -39,32 +40,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLocale = getRequestLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // 自动检测并设置语言
-              (function() {
-                try {
-                  const savedLocale = localStorage.getItem('locale');
-                  if (savedLocale === 'zh' || savedLocale === 'en') {
-                    document.documentElement.lang = savedLocale;
-                    return;
-                  }
-                  const browserLang = navigator.language.toLowerCase();
-                  document.documentElement.lang = browserLang.startsWith('zh') ? 'zh' : 'en';
-                } catch (e) {
-                  document.documentElement.lang = 'en';
-                }
-              })();
-            `
-          }}
-        />
-      </head>
+    <html lang={initialLocale} suppressHydrationWarning>
       <body className={`${inter.variable} font-sans`}>
-        <Providers>
+        <Providers initialLocale={initialLocale}>
           {children}
         </Providers>
       </body>

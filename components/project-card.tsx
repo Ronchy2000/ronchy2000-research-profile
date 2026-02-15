@@ -1,4 +1,5 @@
 import { Tag } from "@/components/tag";
+import { ExternalLinkIcon, StarIcon } from "@/components/icons";
 import type { ProjectEntry } from "@/lib/content-types";
 
 type ProjectCardProps = {
@@ -44,7 +45,7 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
         <div className="flex flex-wrap items-center gap-2">
           {project.metrics?.stars !== undefined ? (
             <div className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
-              <span aria-hidden="true">★</span>
+              <StarIcon aria-hidden="true" className="h-4 w-4" />
               <span>{project.metrics.stars}</span>
             </div>
           ) : null}
@@ -70,7 +71,7 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
                 className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200"
               >
                 {link.label}
-                <span aria-hidden="true">↗</span>
+                <ExternalLinkIcon aria-hidden="true" className="h-4 w-4" />
               </a>
             );
           })}

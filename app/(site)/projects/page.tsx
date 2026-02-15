@@ -6,7 +6,8 @@ import { FilterToolbar } from "@/components/filter-toolbar";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
 import { useLocale } from "@/components/locale-provider";
-import { getProjectsContent, getUpdatesContent } from "@/lib/content";
+import { ArrowRightIcon } from "@/components/icons";
+import { getProjectsContent, getProjectsPageCopy, getUpdatesContent } from "@/lib/content";
 import type { ProjectEntry, ProjectGroup } from "@/lib/content-types";
 
 type ProjectLabelFilter = "all" | "ongoing" | "featured";
@@ -111,64 +112,7 @@ export default function ProjectsPage() {
   const groups = getProjectsContent()[locale].groups;
   const updates = getUpdatesContent()[locale].updates.slice(0, 7);
 
-  const copy = {
-    en: {
-      heroTitle: "Project Portfolio",
-      heroDescription: "Academic and open-source projects showcasing multi-agent systems, robotics, and software engineering.",
-      filters: {
-        year: "Year",
-        label: "Tag",
-        all: "All",
-        ongoing: "Ongoing",
-        featured: "Featured"
-      },
-      badges: {
-        ongoing: "Ongoing",
-        featured: "Featured"
-      },
-      empty: "No projects match the selected filters.",
-      sections: {
-        updates: {
-          title: "Recent Project Updates",
-          eyebrow: "Activity Log"
-        }
-      },
-      groupLabels: {
-        academic: "Academic",
-        "open-source": "Open Source",
-        default: "Projects"
-      }
-    },
-    zh: {
-      heroTitle: "项目集锦",
-      heroDescription: "汇总多智能体系统、机器人与软件工程相关的科研成果与开源项目。",
-      filters: {
-        year: "年份",
-        label: "标签",
-        all: "全部",
-        ongoing: "进行中",
-        featured: "精华"
-      },
-      badges: {
-        ongoing: "进行中",
-        featured: "精华"
-      },
-      empty: "暂无符合当前筛选条件的项目。",
-      sections: {
-        updates: {
-          title: "项目动态",
-          eyebrow: "更新记录"
-        }
-      },
-      groupLabels: {
-        academic: "学术项目",
-        "open-source": "开源项目",
-        default: "项目"
-      }
-    }
-  } as const;
-
-  const t = copy[locale];
+  const t = getProjectsPageCopy()[locale];
   const [yearFilter, setYearFilter] = useState<string>(ALL_FILTER_VALUE);
   const [labelFilter, setLabelFilter] = useState<ProjectLabelFilter>(ALL_FILTER_VALUE);
 
@@ -296,7 +240,10 @@ export default function ProjectsPage() {
                 </h3>
                 <p className="mt-1 text-base text-slate-600 dark:text-slate-300">{update.summary}</p>
               </div>
-              <span className="flex-shrink-0 text-slate-600 dark:text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">→</span>
+              <ArrowRightIcon
+                aria-hidden="true"
+                className="h-4 w-4 flex-shrink-0 text-slate-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-slate-300"
+              />
             </a>
           ))}
         </div>

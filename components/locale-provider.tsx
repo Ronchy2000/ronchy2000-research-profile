@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-type Locale = "en" | "zh";
+import { DEFAULT_LOCALE, LOCALE_COOKIE_NAME, normalizeLocale, type Locale } from "@/lib/locale";
 
 type LocaleContextType = {
   locale: Locale;
@@ -11,52 +11,51 @@ type LocaleContextType = {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  // 使用默认语言 "en" 进行 SSR，避免返回 null
-  const [locale, setLocaleState] = useState<Locale>("en");
+type LocaleProviderProps = {
+  children: ReactNode;
+  initialLocale?: Locale;
+};
+
+function persistLocale(locale: Locale) {
+  try {
+    localStorage.setItem("locale", locale);
+  } catch {
+    // ignore
+  }
+
+  try {
+    const maxAge = 60 * 60 * 24 * 365; // 1 year
+    const secure = typeof location !== "undefined" && location.protocol === "https:" ? "; secure" : "";
+    document.cookie = `${LOCALE_COOKIE_NAME}=${locale}; path=/; max-age=${maxAge}; samesite=lax${secure}`;
+  } catch {
+    // ignore
+  }
+}
+
+export function LocaleProvider({ children, initialLocale }: LocaleProviderProps) {
+  // SSR uses `initialLocale` so the first paint matches server output.
+  const [locale, setLocaleState] = useState<Locale>(initialLocale ?? DEFAULT_LOCALE);
 
   useEffect(() => {
-    // 客户端挂载后检测用户语言偏好
-    const detectLocale = (): Locale => {
-      // 1. 先检查 localStorage 中的用户偏好
-      if (typeof window !== "undefined") {
-        const savedLocale = localStorage.getItem("locale");
-        if (savedLocale === "en" || savedLocale === "zh") {
-          return savedLocale;
-        }
-
-        // 2. 检测浏览器语言设置
-        const browserLang = navigator.language.toLowerCase();
-        if (browserLang.startsWith("zh")) {
-          return "zh";
-        }
-      }
-
-      // 3. 默认英文
-      return "en";
-    };
-
-    const detectedLocale = detectLocale();
-    
-    // 只在检测到的语言与当前不同时才更新
-    if (detectedLocale !== locale) {
-      setLocaleState(detectedLocale);
+    // Client-side override: if the user has an explicit preference stored, use it.
+    const savedLocale = normalizeLocale(localStorage.getItem("locale"));
+    if (savedLocale && savedLocale !== locale) {
+      setLocaleState(savedLocale);
+      persistLocale(savedLocale);
+      return;
     }
-    
-    // 更新 HTML lang 属性
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = detectedLocale;
-    }
+
+    // Otherwise, persist the initial locale so server + client stay aligned.
+    persistLocale(locale);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
   }, [locale]);
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("locale", newLocale);
-    }
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = newLocale;
-    }
+    persistLocale(newLocale);
   };
 
   // 始终渲染 children，避免 SSR 白屏

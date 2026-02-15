@@ -7,14 +7,18 @@
     "build": "next build",
     "postbuild": "node scripts/postbuild.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new:post": "node scripts/new-post.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "next": "14.2.5",
+    "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {

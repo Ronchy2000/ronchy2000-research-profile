@@ -7,7 +7,7 @@ type TagProps = {
 
 const VARIANT_STYLES = {
   default: "border-slate-200 bg-white/70 text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-300",
-  accent: "border-transparent bg-blue-600 text-white shadow-sm dark:bg-blue-500 dark:text-white"
+  accent: "border-transparent bg-brand text-white shadow-sm dark:bg-brand dark:text-white"
 } as const;
 
 /**

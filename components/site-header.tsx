@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { NavItem } from "@/types/navigation";
@@ -23,9 +23,15 @@ const typeSafeHref = (href: NavItem["href"]) => href;
  */
 export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocale = "en" }: SiteHeaderProps) {
   const pathname = usePathname();
+  const router = useRouter();
 
   const renderLink = (item: NavItem, variant: "desktop" | "mobile") => {
-    const active = pathname === item.href;
+    const normalizedPathname = (pathname ?? "/").replace(/\/$/, "") || "/";
+    const normalizedHref = String(item.href).replace(/\/$/, "") || "/";
+    const active =
+      normalizedHref === "/"
+        ? normalizedPathname === "/"
+        : normalizedPathname === normalizedHref || normalizedPathname.startsWith(`${normalizedHref}/`);
     const baseClasses =
       variant === "desktop"
         ? "rounded-full px-4 py-2 text-sm font-medium transition-colors"
@@ -79,6 +85,7 @@ export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocal
                     type="button"
                     onClick={() => {
                       onToggleLocale(option.value);
+                      router.refresh();
                     }}
                     className={`rounded-full px-2.5 py-1 transition ${
                       active

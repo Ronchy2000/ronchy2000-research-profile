@@ -21,7 +21,7 @@ import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
 import { useLocale } from "@/components/locale-provider";
-import { getAwardsContent, getProfileContent, getProjectsContent, getPublicationsContent, getUpdatesContent } from "@/lib/content";
+import { getAwardsContent, getHomePageCopy, getProfileContent, getProjectsContent, getPublicationsContent, getUpdatesContent } from "@/lib/content";
 
 export default function HomePage() {
   const { locale } = useLocale();
@@ -34,56 +34,7 @@ export default function HomePage() {
   const updates = getUpdatesContent()[locale].updates.slice(0, 7);
   const awards = getAwardsContent()[locale].awards.slice(0, 6);
 
-  const copy = {
-    en: {
-      heroIntro:
-        "I am Rongqi Lu, a Control Engineering graduate student at Xidian University. I design learning-driven coordination policies that keep heterogeneous robot teams reliable outside simulation, with a focus on resilient communication, exploration, and edge deployment.",
-      buttons: {
-        cv: "View CV",
-        publications: "View Publications",
-        projects: "Explore Projects"
-      },
-      highlights: {
-        title: "At a Glance",
-        focusLabel: "Current focus",
-        focusValue: "Robust coordination for aerial–ground robot teams",
-        contactLabel: "Email",
-        contactValue: "Reveal email",
-        locationLabel: "Based in"
-      },
-      sections: {
-        updates: { title: "Recent Updates", eyebrow: "Activity" },
-        projects: { title: "Highlighted Projects", eyebrow: "Projects", action: "All projects" },
-        publications: { title: "Latest Writing", eyebrow: "Publications", action: "All entries" },
-        awards: { title: "Honors & Awards", eyebrow: "Recognition", action: "Full CV" }
-      }
-    },
-    zh: {
-      heroIntro:
-        "陆荣琦，西安电子科技大学控制工程专业研究生。关注多机器人协同与多智能体强化学习，帮助智能体在复杂环境中自如沟通、稳健探索。",
-      buttons: {
-        cv: "查看简历",
-        publications: "浏览论文",
-        projects: "查看项目"
-      },
-      highlights: {
-        title: "工作速览",
-        focusLabel: "研究重点",
-        focusValue: "多智能体强化学习, 追逃博弈",
-        contactLabel: "联系邮箱",
-        contactValue: "点击显示邮箱",
-        locationLabel: "常驻城市"
-      },
-      sections: {
-        updates: { title: "近期动态", eyebrow: "动态" },
-        projects: { title: "精选项目", eyebrow: "项目", action: "全部项目" },
-        publications: { title: "近期写作", eyebrow: "成果", action: "查看全部" },
-        awards: { title: "荣誉与奖项", eyebrow: "荣誉", action: "完整简历" }
-      }
-    }
-  } as const;
-
-  const t = copy[locale];
+  const t = getHomePageCopy()[locale];
   const highlightItems = [
     { label: t.highlights.focusLabel, value: t.highlights.focusValue },
     { label: t.highlights.contactLabel, value: t.highlights.contactValue, href: "/contact" },

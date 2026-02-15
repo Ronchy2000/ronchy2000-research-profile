@@ -14,8 +14,8 @@ app/
     projects/page.tsx
     experience/page.tsx
     cv/page.tsx
-    blog/page.tsx     # 博客列表占位
-    blog/[slug]/page.tsx # 博客详情占位
+    blog/page.tsx          # 博客列表（MDX/Markdown 内容驱动）
+    blog/[slug]/page.tsx   # 博客详情（渲染 MDX）
     contact/page.tsx
 components/
   site-header.tsx     # 顶部横向导航（PC/移动共用）
@@ -31,9 +31,13 @@ content/
   timeline.json       # 教育、实习时间线（Experience / CV 共用）
   awards.json         # 荣誉奖项
   updates.json        # 首页 Recent Updates 数据（可由 GitHub Action 自动刷新）
-blog/sample-post.mdx  # 博客示例文章
+  pages/              # 页面文案（中英文 JSON）
+  blog/
+    en/               # 博客文章（英文, .md/.mdx）
+    zh/               # 博客文章（中文, .md/.mdx）
 lib/content.ts        # 从 content/ 读取占位逻辑
 lib/content-types.ts  # 内容类型声明
+lib/blog.ts           # 博客文章解析（frontmatter + MDX）
 scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 .github/workflows/update-content.yml # 定时任务配置
 ```
@@ -48,7 +52,7 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 | Latest Writing & Publications 页 | `content/publications.json` | `type` 取值 `C`(Conference) / `J`(Journal) / `P`(Patent) / `S`(In Submission)，会自动映射标签，支持 Type/Year 筛选；新增条目按 `year` 排序，首页自动展示最新两项。 |
 | Experience / CV 页 | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
 | Honors | `content/awards.json` | 年份倒序，首页取前 6 条；CV 页展示全部。 |
-| 博客 | `blog/*.mdx` | 使用 MDX 排版；`MDXContent` 组件提供基础排版。 |
+| 博客 | `content/blog/{en,zh}/*.{md,mdx}` | 内容驱动；frontmatter 提供标题/日期/摘要/标签；正文支持 Markdown/MDX。 |
 
 > 所有 JSON 均带 `_meta` 字段，记录字段释义，方便回顾。
 
@@ -129,7 +133,7 @@ npm run build    # 发布前验证（postbuild 会自动复制 edgeone.json）
 - **Contact 表单是否发送邮件？** 不经过服务器。表单仅在本地生成 `mailto:` 链接，真实邮箱以 Base64 形式打包，点击按钮后才会在浏览器里解码显示。
 - **Recent Updates 没刷新**：检查 GitHub Actions 的运行记录；若提示缺少权限，请添加 `GH_PAT`（repo 权限）到仓库 Secrets，或者手动运行 `node scripts/update-recent-updates.mjs` 并提交。
 
-如需更深度的自定义（多语言切换、MDX 解析、Arxiv API 等），可在 `lib/content.ts` 中增加对应的解析逻辑，再在页面中引入即可。
+如需更深度的自定义（路由级 i18n、代码高亮、RSS、Arxiv API 等），可在 `lib/blog.ts` / `lib/content.ts` 中扩展解析逻辑，再在页面中引入即可。
 
 ### 其他提示
 - Footer 当前仅显示版权和更新时间，如需 Sitemap/RSS，可在 `components/site-footer.tsx` 恢复链接并生成文件。

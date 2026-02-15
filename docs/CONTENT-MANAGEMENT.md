@@ -4,7 +4,9 @@ This guide explains how to maintain and update the content on your research prof
 
 ## Overview
 
-All website content is managed through JSON files in the `content/` directory. This allows you to update information without modifying code.
+Most website content is managed through files in the `content/` directory. This allows you to update information without modifying code.
+
+> Note: Parts of this document were written for an earlier content schema. For the current schema, rely on the `_meta` blocks inside `content/*.json`, the page copy files under `content/pages/*.json`, and the README.
 
 ---
 
@@ -318,22 +320,32 @@ The site automatically hides navigation elements in print view.
 
 ### Current Setup
 
-Blog posts are placeholder examples. To implement a real blog:
+Blog is file-driven (Markdown/MDX) and auto-loaded at build time.
 
-**Option 1: MDX Files** (Recommended)
-1. Place `.mdx` files in `/blog` directory
-2. Add frontmatter with title, date, summary, tags
-3. Update blog pages to load from file system
+**Where to put posts**
+- English: `content/blog/en/*.md` or `content/blog/en/*.mdx`
+- Chinese: `content/blog/zh/*.md` or `content/blog/zh/*.mdx`
 
-**Option 2: CMS Integration**
-1. Use a headless CMS (Contentful, Sanity, etc.)
-2. Update blog pages to fetch from API
-3. Manage content through CMS interface
+**How slugs work**
+- The filename becomes the slug.
+- Example: `content/blog/en/my-first-post.mdx` renders at `/blog/my-first-post`.
 
-**Current files**:
-- `/blog/sample-post.mdx` - Example MDX post
-- `app/(site)/blog/page.tsx` - Blog listing (uses placeholder data)
-- `app/(site)/blog/[slug]/page.tsx` - Individual post view (placeholder)
+**Required frontmatter (recommended)**
+```yaml
+---
+title: "My First Post"
+date: "2026-02-15"
+summary: "One-line summary shown in the blog list."
+tags:
+  - Notes
+type: "note" # or "research"
+draft: false
+---
+```
+
+**Rendering**
+- Blog list: `app/(site)/blog/page.tsx` (loads metadata, supports filters)
+- Blog post: `app/(site)/blog/[slug]/page.tsx` (renders Markdown/MDX)
 
 ---
 

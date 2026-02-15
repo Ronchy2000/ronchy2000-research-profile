@@ -48,8 +48,8 @@ export function FilterToolbar({ groups, className }: FilterToolbarProps) {
                   className={clsx(
                     "rounded-full px-3 py-1 text-xs font-semibold transition",
                     active
-                      ? "bg-blue-600 text-white shadow"
-                      : "border border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300"
+                      ? "bg-brand text-white shadow-sm"
+                      : "border border-slate-200 text-slate-600 hover:border-brand/60 hover:text-brand dark:border-slate-700 dark:text-slate-300 dark:hover:border-brand/70 dark:hover:text-brand"
                   )}
                 >
                   {option.label}

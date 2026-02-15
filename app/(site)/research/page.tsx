@@ -3,36 +3,13 @@
 import { Section } from "@/components/section";
 import { Timeline } from "@/components/timeline";
 import { useLocale } from "@/components/locale-provider";
-import { getResearchContent } from "@/lib/content";
+import { getResearchContent, getResearchPageCopy } from "@/lib/content";
 
 export default function ResearchPage() {
   const { locale } = useLocale();
   const { interests, experiences } = getResearchContent()[locale];
 
-  const copy = {
-    en: {
-      heroTitle: "Research Overview",
-      heroDescription:
-        "My work blends multi-agent reinforcement learning, distributed robotics, and embedded autonomy, focusing on reliable coordination strategies for autonomous robot teams.",
-      interestsTitle: "Research Interests",
-      interestsEyebrow: "Focus Areas",
-      experienceTitle: "Research Experience",
-      experienceEyebrow: "Experience",
-      collaboration: "Interested in collaboration? Feel free to reach out via the Contact page."
-    },
-    zh: {
-      heroTitle: "科研概览",
-      heroDescription:
-        "聚焦多智能体强化学习、分布式机器人与嵌入式自主系统，探索可稳定落地的协同策略，让自主系统在真实环境中保持可靠表现。",
-      interestsTitle: "研究兴趣",
-      interestsEyebrow: "关注方向",
-      experienceTitle: "科研经历",
-      experienceEyebrow: "经历",
-      collaboration: "欢迎通过联系页面与我交流合作设想。"
-    }
-  } as const;
-
-  const t = copy[locale];
+  const t = getResearchPageCopy()[locale];
 
   return (
     <div className="space-y-16">

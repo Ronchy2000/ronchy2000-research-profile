@@ -5,7 +5,7 @@ import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import { Callout } from "@/components/callout";
 import { Section } from "@/components/section";
 import { useLocale } from "@/components/locale-provider";
-import { getProfileContent } from "@/lib/content";
+import { getContactPageCopy, getProfileContent } from "@/lib/content";
 
 const ENCODED_CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL_B64 ?? "";
 const SUBJECT_PREFIX = process.env.NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT ?? "";
@@ -72,69 +72,7 @@ export default function ContactPage() {
   const profile = profileContent[locale];
   const contactEmail = useMemo(() => decodeEmail(ENCODED_CONTACT_EMAIL.trim()), []);
   const obfuscatedEmail = useMemo(() => maskEmail(contactEmail, locale === "zh" ? "尚未配置" : "Not configured"), [contactEmail, locale]);
-
-  const copy = {
-    en: {
-      title: "Contact",
-      description: "Share a short note below. Your device will open the default mail app so that no third-party service stores the message.",
-      eyebrow: "Connect",
-      revealButton: "Reveal email address",
-      copyButton: "Copy address",
-      copySuccess: "Copied",
-      copyError: "Unable to copy",
-      submit: "Open mail client",
-      items: {
-        contact: "Email",
-        github: "GitHub",
-        scholar: "Google Scholar",
-        location: "Location"
-      },
-      notes: [
-        "Email stays hidden in the static HTML until you deliberately reveal it.",
-        "Messages open locally via mailto, so no third-party relay stores your note."
-      ],
-      feedback: {
-        emailMissing: "Set NEXT_PUBLIC_CONTACT_EMAIL_B64 before deploying so the email can be revealed.",
-        formInvalid: "Fill out all fields before opening your mail client."
-      },
-      calloutTitle: "How this protects your inbox",
-      calloutPoints: [
-        "Email address stays Base64-encoded in the bundle until the browser decodes it on demand.",
-        "Visitors craft the final message locally via mailto, so no relay service captures the content.",
-        "Rotate the encoded value any time you want to refresh the exposed address."
-      ]
-    },
-    zh: {
-      title: "联系我",
-      description: "简单填写下方信息后，将在本地打开默认邮件客户端发送邮件，全程不依赖任何第三方表单服务。",
-      eyebrow: "联系",
-      revealButton: "点击显示邮箱",
-      copyButton: "复制地址",
-      copySuccess: "已复制",
-      copyError: "复制失败",
-      submit: "打开邮件客户端",
-      items: {
-        contact: "邮箱",
-        github: "GitHub",
-        scholar: "谷歌学术",
-        location: "常驻城市"
-      },
-      notes: [
-        "在点击“显示邮箱”前，页面只会展示模糊信息，静态 HTML 中不会包含明文。",
-        "邮件通过 mailto 在你的设备本地生成，无需任何第三方表单服务。"
-      ],
-      feedback: {
-        emailMissing: "请在部署前设置 NEXT_PUBLIC_CONTACT_EMAIL_B64，否则无法显示邮箱。",
-        formInvalid: "请完整填写表单再打开邮件客户端。"
-      },
-      calloutTitle: "邮箱防爬虫策略",
-      calloutPoints: [
-        "邮箱地址以 Base64 编码随页面一同部署，只有浏览器本地解码后才会显示。",
-        "访客直接通过 mailto 打开默认邮箱客户端，内容不会经过第三方服务。",
-        "需要更新邮箱时只需替换环境变量并重新部署，旧页面即刻失效。"
-      ]
-    }
-  } as const;
+  const t = getContactPageCopy()[locale];
 
   const [form, setForm] = useState<FormFields>({ name: "", replyEmail: "", message: "" });
   const [revealed, setRevealed] = useState(false);
@@ -151,7 +89,7 @@ export default function ContactPage() {
 
   const handleReveal = () => {
     if (!contactEmail) {
-      setError(copy[locale].feedback.emailMissing);
+      setError(t.feedback.emailMissing);
       return;
     }
     setRevealed(true);
@@ -159,7 +97,7 @@ export default function ContactPage() {
 
   const handleCopy = async () => {
     if (!contactEmail) {
-      setError(copy[locale].feedback.emailMissing);
+      setError(t.feedback.emailMissing);
       return;
     }
     try {
@@ -174,19 +112,17 @@ export default function ContactPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!contactEmail) {
-      setError(copy[locale].feedback.emailMissing);
+      setError(t.feedback.emailMissing);
       return;
     }
     if (!form.name.trim() || !form.replyEmail.trim() || !form.message.trim()) {
-      setError(copy[locale].feedback.formInvalid);
+      setError(t.feedback.formInvalid);
       return;
     }
     setError(null);
     const mailtoHref = buildMailtoLink(contactEmail, form, locale);
     window.location.href = mailtoHref;
   };
-
-  const t = copy[locale];
   const displayEmail = revealed ? contactEmail : obfuscatedEmail;
 
   return (
@@ -215,8 +151,8 @@ export default function ContactPage() {
                 {copyState === "copied" ? t.copySuccess : copyState === "error" ? t.copyError : t.copyButton}
               </button>
             </div>
-            <p>{t.items.github}: <a href={githubLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">@Ronchy2000</a></p>
-            <p>{t.items.scholar}: <a href={scholarLink} className="text-brand hover:text-brand-foreground dark:text-brand-light dark:hover:text-brand" target="_blank" rel="noopener noreferrer">{locale === "zh" ? "学术主页" : "Scholar profile"}</a></p>
+            <p>{t.items.github}: <a href={githubLink} className="text-brand hover:text-brand-foreground dark:text-brand dark:hover:text-brand" target="_blank" rel="noopener noreferrer">@Ronchy2000</a></p>
+            <p>{t.items.scholar}: <a href={scholarLink} className="text-brand hover:text-brand-foreground dark:text-brand dark:hover:text-brand" target="_blank" rel="noopener noreferrer">{t.scholarLabel}</a></p>
             <p>{t.items.location}: {profile.location}</p>
             <ul className="list-disc space-y-2 pl-5 text-sm text-slate-600 dark:text-slate-300">
               {t.notes.map((note) => (
@@ -227,7 +163,7 @@ export default function ContactPage() {
           <form className="space-y-4" aria-label="Message helper" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-sm font-medium text-slate-600 dark:text-slate-300">
-                {locale === "zh" ? "姓名" : "Name"}
+                {t.form.nameLabel}
               </label>
               <input
                 id="name"
@@ -235,13 +171,13 @@ export default function ContactPage() {
                 required
                 value={form.name}
                 onChange={handleFieldChange("name")}
-                placeholder={locale === "zh" ? "例如：张三" : "Your name"}
+                placeholder={t.form.namePlaceholder}
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="replyEmail" className="text-sm font-medium text-slate-600 dark:text-slate-300">
-                {locale === "zh" ? "回复邮箱" : "Reply email"}
+                {t.form.replyLabel}
               </label>
               <input
                 id="replyEmail"
@@ -255,7 +191,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="message" className="text-sm font-medium text-slate-600 dark:text-slate-300">
-                {locale === "zh" ? "留言" : "Message"}
+                {t.form.messageLabel}
               </label>
               <textarea
                 id="message"
@@ -263,7 +199,7 @@ export default function ContactPage() {
                 required
                 value={form.message}
                 onChange={handleFieldChange("message")}
-                placeholder={locale === "zh" ? "简单介绍合作意向" : "Introduce yourself and the idea"}
+                placeholder={t.form.messagePlaceholder}
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               />
             </div>
@@ -282,7 +218,7 @@ export default function ContactPage() {
         </div>
         <Callout title={t.calloutTitle}>
           <ul className="list-disc space-y-2 pl-5">
-            {copy[locale].calloutPoints.map((point) => (
+            {t.calloutPoints.map((point) => (
               <li key={point}>{point}</li>
             ))}
           </ul>

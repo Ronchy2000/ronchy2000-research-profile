@@ -1,4 +1,5 @@
 import { Tag } from "@/components/tag";
+import { ExternalLinkIcon } from "@/components/icons";
 import type { PublicationEntry } from "@/lib/content-types";
 
 type Locale = "en" | "zh";
@@ -57,9 +58,15 @@ export function PublicationItem({ item, locale = "en" }: PublicationItemProps) {
       {item.links?.length ? (
         <div className="flex flex-wrap gap-3 text-sm font-medium">
           {item.links.map((link) => (
-            <a key={link.label} href={link.href} className="inline-flex items-center gap-1 text-brand hover:text-brand-foreground">
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-brand hover:text-brand-foreground"
+            >
               {link.label}
-              <span aria-hidden="true">↗</span>
+              <ExternalLinkIcon aria-hidden="true" className="h-4 w-4" />
             </a>
           ))}
         </div>

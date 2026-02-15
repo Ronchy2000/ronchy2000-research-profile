@@ -1,58 +1,67 @@
-"use client";
-
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
+import remarkGfm from "remark-gfm";
+import { compileMDX } from "next-mdx-remote/rsc";
+
+import { Callout } from "@/components/callout";
 import { MDXContent } from "@/components/mdx-content";
 import { Section } from "@/components/section";
-import { useLocale } from "@/components/locale-provider";
+import { Table } from "@/components/table";
+import { getAllBlogSlugs, getBlogPostWithFallback } from "@/lib/blog";
+import { getRequestLocale } from "@/lib/locale.server";
 
-const POST_COPY = {
-  en: {
-    title: "Sample Research Note",
-    date: "2025-02-01",
-    summary: "An example of research notes and technical writing.",
-    paragraphs: [
-      "Welcome to my research notes. This space is dedicated to documenting experiment findings, paper reviews, and technical explorations in multi-agent systems and robotics.",
-      "Each article includes detailed analysis, relevant references, and illustrative examples to share insights from my research journey."
-    ],
-    backPrefix: "Return to the ",
-    backLabel: "blog index",
-    backSuffix: " for more entries."
-  },
-  zh: {
-    title: "示例研究手记",
-    date: "2025-02-01",
-    summary: "示范如何整理实验结果、论文阅读与技术笔记。",
-    paragraphs: [
-      "欢迎来到我的研究笔记，这里记录多智能体与机器人方向的实验结果、论文体会与技术探索。",
-      "每篇文章都会附上关键分析、参考文献及示例，方便快速复盘研究过程。"
-    ],
-    backPrefix: "返回",
-    backLabel: "博客列表",
-    backSuffix: "查看更多内容。"
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateStaticParams() {
+  const slugs = await getAllBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const locale = getRequestLocale();
+  const post = await getBlogPostWithFallback(locale, params.slug);
+
+  if (!post) {
+    notFound();
   }
-} as const;
 
-export default function BlogPostPage() {
-  const { locale } = useLocale();
-  const post = POST_COPY[locale];
+  const { content } = await compileMDX({
+    source: post.content,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm]
+      }
+    },
+    components: {
+      Callout,
+      Table
+    }
+  });
+
+  const back = locale === "zh"
+    ? { prefix: "返回", label: "博客列表", suffix: "查看更多内容。" }
+    : { prefix: "Return to the ", label: "blog index", suffix: " for more entries." };
 
   return (
     <div className="space-y-16">
       <Section title={post.title} description={post.summary} eyebrow={post.date}>
         <MDXContent>
-          {post.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-          <p>
-            {post.backPrefix}
-            <Link href="/blog" className="text-brand">
-              {post.backLabel}
+          {content}
+          <p className="pt-6">
+            {back.prefix}
+            <Link href="/blog" className="text-brand hover:text-brand-foreground">
+              {back.label}
             </Link>
-            {post.backSuffix}
+            {back.suffix}
           </p>
         </MDXContent>
       </Section>
     </div>
   );
 }
+
