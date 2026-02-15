@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import { compileMDX } from "next-mdx-remote/rsc";
 
 import { Callout } from "@/components/callout";
@@ -14,7 +16,9 @@ import { getRequestLocale } from "@/lib/locale.server";
 type PageProps = {
   params: {
     slug: string;
-  };
+  } | Promise<{
+    slug: string;
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -23,8 +27,9 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const locale = getRequestLocale();
-  const post = await getBlogPostWithFallback(locale, params.slug);
+  const locale = await getRequestLocale();
+  const { slug } = await params;
+  const post = await getBlogPostWithFallback(locale, slug);
 
   if (!post) {
     notFound();
@@ -34,7 +39,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     source: post.content,
     options: {
       mdxOptions: {
-        remarkPlugins: [remarkGfm]
+        remarkPlugins: [remarkGfm, remarkMath],
+        rehypePlugins: [rehypeKatex]
       }
     },
     components: {
@@ -64,4 +70,3 @@ export default async function BlogPostPage({ params }: PageProps) {
     </div>
   );
 }
-

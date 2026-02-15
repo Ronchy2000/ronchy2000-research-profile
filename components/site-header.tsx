@@ -62,8 +62,12 @@ export function SiteHeader({ navItems, profileName, onToggleLocale, currentLocal
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 text-slate-700 shadow-[0_10px_40px_-30px_rgba(15,23,42,0.4)] backdrop-blur-lg dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-8 xl:max-w-7xl xl:px-10 2xl:max-w-[1500px] 2xl:px-12">
         <div className="flex items-center gap-6">
-          <Link href="/" className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-600/80 hover:text-slate-900 dark:text-slate-200/80 dark:hover:text-white">
-            {profileName ?? "Rongqi Lu"}
+          <Link
+            href="/"
+            className="inline-flex items-center text-sm font-semibold text-slate-700/90 hover:text-slate-900 dark:text-slate-200/90 dark:hover:text-white"
+            aria-label={profileName ?? "Rongqi Lu"}
+          >
+            <span className="whitespace-nowrap">{profileName ?? "Rongqi Lu"}</span>
           </Link>
           <nav className="hidden items-center gap-3 md:flex">
             {navItems.map((item) => renderLink(item, "desktop"))}

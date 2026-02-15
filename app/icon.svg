@@ -1,31 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Site icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rongqi Lu site icon">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c39b76" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#9d6f51" stop-opacity="0.95"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220" />
+      <stop offset="0.55" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#06b6d4" />
     </linearGradient>
-    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="letter" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38d9ff"/>
-      <stop offset="100%" stop-color="#3b82f6"/>
-    </linearGradient>
+    <radialGradient id="shine" cx="0.25" cy="0.2" r="0.95">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.20" />
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)" fill-opacity="0.95"/>
-  <rect width="64" height="30" rx="14" fill="url(#gloss)"/>
-  <text
-    x="50%"
-    y="52%"
-    fill="url(#letter)"
-    font-family="Inter, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-    font-size="42"
-    font-weight="800"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    letter-spacing="1"
-  >
-    R
-  </text>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <rect width="64" height="64" rx="14" fill="url(#shine)" />
+
+  <!-- "Multi-agent graph" mark: simple, high-contrast, and readable at 16px -->
+  <g stroke="#ffffff" stroke-opacity="0.92" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 40 L32 22 L44 40 Z" fill="none" />
+    <path d="M32 22 L32 44" />
+  </g>
+  <g fill="#ffffff">
+    <circle cx="20" cy="40" r="4.6" />
+    <circle cx="32" cy="22" r="4.6" />
+    <circle cx="44" cy="40" r="4.6" />
+    <circle cx="32" cy="44" r="3.8" opacity="0.92" />
+  </g>
 </svg>

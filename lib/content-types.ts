@@ -1,6 +1,7 @@
 export type LocaleProfile = {
   name: string;
   nativeName?: string;
+  aka?: string;
   title: string;
   affiliation: string;
   location: string;

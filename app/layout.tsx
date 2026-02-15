@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import { Providers } from "@/components/providers";
 import { getRequestLocale } from "@/lib/locale.server";
 const inter = Inter({
@@ -35,12 +36,13 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialLocale = getRequestLocale();
+  // Next.js 16+ makes `cookies()`/`headers()` async.
+  const initialLocale = await getRequestLocale();
 
   return (
     <html lang={initialLocale} suppressHydrationWarning>

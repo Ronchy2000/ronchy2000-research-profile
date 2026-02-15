@@ -4,7 +4,10 @@ node_modules/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+.npm-cache/
 dist/
+next-env.d.ts
+.npmrc
 
 # Logs
 npm-debug.log*

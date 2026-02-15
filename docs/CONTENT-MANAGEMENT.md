@@ -1,430 +1,170 @@
 # Content Management Guide
 
-This guide explains how to maintain and update the content on your research profile website.
+This site is intentionally content-driven: most routine updates are done in `content/` (JSON + Markdown/MDX) without touching TS/TSX.
 
-## Overview
+Each `content/*.json` file contains a `_meta` section describing the current schema. Prefer following `_meta` over old examples you might find online.
 
-Most website content is managed through files in the `content/` directory. This allows you to update information without modifying code.
+## Quick Edit Map
 
-> Note: Parts of this document were written for an earlier content schema. For the current schema, rely on the `_meta` blocks inside `content/*.json`, the page copy files under `content/pages/*.json`, and the README.
+- Profile: `content/profile.json`
+- Page copy (titles/buttons/labels): `content/pages/*.json`
+- Research: `content/research.json`
+- Publications & patents: `content/publications.json`
+- Projects: `content/projects.json`
+- Education/industry timeline: `content/timeline.json`
+- Awards: `content/awards.json`
+- Homepage recent updates: `content/updates.json` (typically automated)
+- Blog posts: `content/blog/{en,zh}/*.{md,mdx}`
 
----
+## Profile (`content/profile.json`)
 
-## Content Files Reference
-
-### 1. Profile Information (`content/profile.json`)
-
-**Location**: `content/profile.json`
-
-Contains your basic profile information displayed across the site.
+File shape:
 
 ```json
 {
-  "name": "Your Name",
-  "title": "Your Title",
-  "affiliation": "Your Institution",
-  "email": "your.email@example.com",
-  "bio": "Brief biography...",
-  "location": "City, Country"
+  "en": { "...": "..." },
+  "zh": { "...": "..." }
 }
 ```
 
-**Where it appears**:
-- Side profile card (all pages)
-- Footer
-- Contact page
-
----
-
-### 2. Projects (`content/projects.json`)
-
-**Location**: `content/projects.json`
-
-Manages your project portfolio. Supports both open-source and academic projects.
-
-**Structure**:
-```json
-{
-  "openSourceProjects": [
-    {
-      "name": "Project Name",
-      "description": "Short description",
-      "technologies": ["Tech1", "Tech2"],
-      "githubUrl": "https://github.com/username/repo",
-      "stars": 0,  // Auto-updated by GitHub Action
-      "featured": true  // Show on homepage
-    }
-  ],
-  "academicProjects": [
-    {
-      "name": "Research Project",
-      "description": "Academic project description",
-      "affiliation": "University Name",
-      "year": 2024,
-      "featured": false
-    }
-  ]
-}
-```
-
-**Key fields**:
-- `stars`: Set to `0` for GitHub projects - will auto-sync daily at 7:30 AM Beijing time
-- `featured`: Set to `true` to display on homepage (max 6 recommended)
-- `githubUrl`: Required for star sync to work
-- `technologies`: Optional tech stack tags
-
-**Where it appears**:
-- Homepage (featured projects only)
-- Projects page (all projects)
-
----
-
-### 3. Publications (`content/publications.json`)
-
-**Location**: `content/publications.json`
-
-Your publication list with filtering support.
-
-**Structure**:
-```json
-[
-  {
-    "title": "Paper Title",
-    "authors": ["Author 1", "Author 2", "You"],
-    "venue": "Conference/Journal Name",
-    "year": 2024,
-    "type": "conference",  // or "journal", "patent"
-    "status": "published",  // or "submitted", "in-review"
-    "doi": "10.1234/example",
-    "pdfUrl": "/files/paper.pdf",
-    "abstract": "Brief abstract..."
-  }
-]
-```
-
-**Valid types**:
-- `conference`
-- `journal`
-- `patent`
-
-**Valid statuses**:
-- `published`
-- `submitted`
-- `in-review`
-
-**Where it appears**:
-- Homepage (featured publications)
-- Publications page (all, with filtering)
-
----
-
-### 4. Recent Updates (`content/updates.json`)
-
-**Location**: `content/updates.json`
-
-News and activity feed. **Auto-maintained by GitHub Action** - do not edit manually unless necessary.
-
-**Structure**:
-```json
-[
-  {
-    "date": "2025-02-01",
-    "title": "Update Title",
-    "summary": "Brief description of the update",
-    "type": "github",  // or "publication", "award", "talk"
-    "link": "https://example.com"
-  }
-]
-```
-
-**Auto-sync behavior**:
-- Runs daily at 7:30 AM Beijing time (23:30 UTC)
-- Fetches latest 7 updates from your GitHub activity
-- Creates smart commit messages:
-  - "chore: update GitHub project stars" when stars change
-  - "chore: update recent GitHub activities" when new events added
-
-**Manual additions**:
-You can manually add important events (publications, awards, talks) by editing this file. The GitHub Action will preserve manual entries.
-
-**Where it appears**:
-- Homepage (horizontal scrolling cards, 7 latest)
-- Projects page (timeline view, 7 latest)
-
----
-
-### 5. Timeline (`content/timeline.json`)
-
-**Location**: `content/timeline.json`
-
-Your academic/professional timeline (education, positions, etc.)
-
-**Structure**:
-```json
-[
-  {
-    "date": "2020 - Present",
-    "title": "Position Title",
-    "organization": "Institution Name",
-    "description": "Brief description of role/achievements",
-    "type": "education"  // or "work", "research"
-  }
-]
-```
-
-**Where it appears**:
-- Experience page
-
----
-
-### 6. Awards & Honors (`content/awards.json`)
-
-**Location**: `content/awards.json`
-
-Scholarships, honors, and recognition.
-
-**Structure**:
-```json
-[
-  {
-    "year": 2024,
-    "title": "Award Name",
-    "organization": "Awarding Organization",
-    "description": "Optional description"
-  }
-]
-```
-
-**Sorting**: Awards are automatically sorted by year (newest first).
-
-**Where it appears**:
-- Homepage (awards section)
-- CV page (honors table)
-
----
-
-### 7. Research Interests (`content/research.json`)
-
-**Location**: `content/research.json`
-
-Your research areas and ongoing projects.
+Common fields (per locale):
 
-**Structure**:
-```json
-{
-  "interests": [
-    {
-      "name": "Research Area",
-      "description": "What you're working on in this area",
-      "icon": "🤖"  // Optional emoji
-    }
-  ],
-  "collaborations": [
-    {
-      "title": "Collaboration Name",
-      "partner": "Institution/Lab",
-      "description": "What the collaboration is about",
-      "startDate": "2024-01"
-    }
-  ]
-}
-```
+- `name`: Primary display name.
+- `nativeName`: Optional secondary name (e.g. Chinese name on English page).
+- `aka`: Optional preferred name. Currently rendered as `Call me {aka}!` under the avatar on English pages only.
+- `title`, `affiliation`, `location`: Short strings used in the sidebar and pages.
+- `keywords`: Array of short research keywords.
+- `social`: Array of `{ label, href }` links.
+- `avatar`: Optional path under `public/` (e.g. `/images/profile.jpeg`).
+- `cvLink`: Relative URL to a PDF under `public/` (e.g. `/files/Ronchy_CV.pdf`).
 
-**Where it appears**:
-- Research page
+Where it appears:
 
----
+- Desktop sidebar profile card
+- Header brand text
+- Home hero header line
 
-## Maintenance Tips
+## Page Copy (`content/pages/*.json`)
 
-### Adding New Projects
+These files control per-page copy such as headings, descriptions, button labels, and section titles.
 
-1. Open `content/projects.json`
-2. Add to either `openSourceProjects` or `academicProjects` array
-3. For GitHub projects:
-   - Set `stars: 0` initially
-   - Provide valid `githubUrl`
-   - Stars will auto-sync next morning
-4. Set `featured: true` to show on homepage
-5. Save and commit
+If you only want to adjust wording, start here instead of editing TSX.
 
-### Managing Publications
+## Projects (`content/projects.json`)
 
-1. Open `content/publications.json`
-2. Add new publication object to array
-3. Use consistent author names
-4. Provide DOI if available
-5. Upload PDF to `public/files/` if sharing
+Projects are organized as `groups`, each with `title`, `kind`, and `items`.
 
-### Updating Your Bio
+A project item typically contains:
 
-1. Edit `content/profile.json`
-2. Keep bio under 2-3 sentences for best display
-3. Changes reflect immediately on all pages
+- `name`, `summary`, `period`, `role`
+- `tags`: Array of short labels
+- `links`: Array of `{ label, href }`
+- `metrics`: Optional stats (e.g. `stars`)
 
----
+### GitHub Stars Automation
 
-## GitHub Action Setup
+`scripts/update-project-stars.mjs` scans each project item for a GitHub link and writes `metrics.stars`.
 
-### Requirements
+The scheduled workflow can run this daily:
 
-The automated content sync requires a GitHub Personal Access Token (PAT).
+- Workflow file: `.github/workflows/update-content.yml`
+- Schedule: `30 23 * * *` (23:30 UTC)
+- Required secret: `GH_PAT` (used for checkout, GitHub API calls, and pushing updates)
 
-**Steps**:
+## Publications (`content/publications.json`)
 
-1. **Create a PAT**:
-   - Go to GitHub Settings → Developer Settings → Personal Access Tokens → Tokens (classic)
-   - Generate new token with `public_repo` scope
-   - Copy the token (you won't see it again!)
+Publications live in `entries`.
 
-2. **Add to Repository**:
-   - Go to your repository Settings → Secrets and variables → Actions
-   - Create new secret named `GH_PAT`
-   - Paste your token
+Key fields:
 
-3. **Verify Workflow**:
-   - Check `.github/workflows/update-content.yml` is present
-   - Should have `permissions: contents: write`
-   - Schedule: `cron: "30 23 * * *"` (7:30 AM Beijing time)
+- `id`: Short identifier (e.g. `C.1`)
+- `type`: One of `C|J|P|S` (Conference/Journal/Patent/In Submission)
+- `title`, `authors`, `venue`, `year`
+- Optional: `tags`, `links`, `notes`
 
-### Manual Trigger
+## Research (`content/research.json`)
 
-To manually run the update:
-```bash
-# Go to GitHub Actions tab in your repository
-# Select "Update Content" workflow
-# Click "Run workflow"
-```
+- `interests`: Cards on the Research page (`title`, `description`).
+- `experiences`: A timeline-like list of research experiences (`title`, `period`, `role`, optional `advisor`/`funding`, `summary`, `bullets`, optional `tags`).
 
-Or use GitHub CLI:
-```bash
-gh workflow run update-content.yml
-```
+## Timeline (`content/timeline.json`)
 
----
+Used for Experience/CV pages.
 
-## Print Optimization (CV Page)
+- `education`: Array of timeline entries
+- `experience`: Array of timeline entries
 
-When printing your CV from the browser:
+Each entry has:
 
-1. Use `Ctrl/Cmd + P` to open print dialog
-2. Remove headers/footers for cleaner output
-3. Adjust margins if needed
-4. Save as PDF for sharing
+- `title`, `period`, optional `location`
+- `details`: Bullet strings
 
-The site automatically hides navigation elements in print view.
+## Awards (`content/awards.json`)
 
----
+Awards live in `awards`.
 
-## Blog Management
+Each item has:
 
-### Current Setup
+- `title`, `issuer`, `year`
+- Optional: `notes`
 
-Blog is file-driven (Markdown/MDX) and auto-loaded at build time.
+## Recent Updates (`content/updates.json`)
 
-**Where to put posts**
+This feed is designed to be automated.
+
+- `scripts/update-recent-updates.mjs` overwrites `en.updates` and `zh.updates` with recent commits.
+- If you want manual curation, disable the workflow or adjust the script to merge your own entries.
+
+## Blog Posts (`content/blog/{en,zh}`)
+
+File-driven blog:
+
 - English: `content/blog/en/*.md` or `content/blog/en/*.mdx`
 - Chinese: `content/blog/zh/*.md` or `content/blog/zh/*.mdx`
 
-**How slugs work**
-- The filename becomes the slug.
-- Example: `content/blog/en/my-first-post.mdx` renders at `/blog/my-first-post`.
+The filename becomes the slug.
 
-**Required frontmatter (recommended)**
+Example: `content/blog/en/my-first-post.mdx` renders at `/blog/my-first-post`.
+
+### Recommended Frontmatter
+
 ```yaml
 ---
 title: "My First Post"
 date: "2026-02-15"
 summary: "One-line summary shown in the blog list."
-tags:
-  - Notes
+tags: ["Notes"]
 type: "note" # or "research"
 draft: false
 ---
 ```
 
-**Rendering**
-- Blog list: `app/(site)/blog/page.tsx` (loads metadata, supports filters)
-- Blog post: `app/(site)/blog/[slug]/page.tsx` (renders Markdown/MDX)
+### Math (KaTeX)
 
----
+Math is supported via KaTeX. Use `$...$` or `$$...$$`:
 
-## Contact Page
+- Inline: `$E=mc^2$`
+- Block:
 
-`/contact` 采用「点击才显示邮箱 + mailto」的轻量方案：访客在前端点击“显示邮箱”后，才会解码 Base64 字符串并通过 `mailto:` 打开本地邮件客户端。
-
-- 设置 `NEXT_PUBLIC_CONTACT_EMAIL_B64` 即可启用（见 `.env.example`），不会将真实邮箱写入静态文件。
-- 如需更复杂的流程（验证码、API 转发等），可以自行新增 `app/api/contact/route.ts` 并把页面按钮指向该端点。
-- 对于大多数个人主页而言，手动邮件足以满足需求，同时避免任何第三方托管或额外成本。
-
----
-
-## Troubleshooting
-
-### Stars not updating
-
-**Check**:
-1. GitHub Action ran successfully (check Actions tab)
-2. `GH_PAT` secret is set correctly
-3. Project has valid `githubUrl` in `projects.json`
-4. Repository is public (or PAT has private repo access)
-
-**Fix**:
-```bash
-# Manually verify the API works
-curl https://api.github.com/repos/username/repo
-
-# Should return JSON with "stargazers_count" field
+```md
+$$
+\nabla \cdot \mathbf{E} = \rho / \varepsilon_0
+$$
 ```
 
-### Updates not showing
+Tip: wrap LaTeX in `$...$` / `$$...$$` when writing MDX.
 
-**Check**:
-1. File saved correctly (valid JSON syntax)
-2. Development server restarted (`npm run dev`)
-3. Browser cache cleared (hard refresh: Ctrl/Cmd + Shift + R)
+### Create a New Post
 
-**Fix**:
 ```bash
-# Validate JSON syntax
-cat content/updates.json | jq .
-
-# If error, fix JSON syntax
+npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 ```
 
-### Layout broken after content change
+## Release Checklist
 
-**Likely causes**:
-1. Missing required fields in JSON
-2. Very long text causing overflow
-3. Invalid data types (string vs number)
+Before deploying:
 
-**Fix**:
-1. Check browser console for errors
-2. Validate JSON schema matches examples above
-3. Shorten text or adjust styling in components
+- `npm run lint`
+- `npm run build`
 
----
-
-## Best Practices
-
-1. **Keep content concise** - Respect your visitors' time
-2. **Update regularly** - Fresh content shows you're active
-3. **Validate JSON** - Use a linter before committing
-4. **Backup first** - Git commit before major changes
-5. **Test locally** - Run `npm run dev` to preview changes
-6. **Mobile-first** - Check how content looks on small screens
-7. **Accessibility** - Use descriptive link text, alt text for images
-
----
-
-## Questions?
-
-If you need help with content management:
-
-1. Check this guide first
-2. Review example entries in existing JSON files
-3. Consult Next.js documentation for advanced customization
-4. Open a GitHub issue if you discover a bug
-
-Last updated: 2025-02-01
+Last updated: 2026-02-15

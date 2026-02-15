@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    typedRoutes: true
-  },
+  typedRoutes: true,
   images: {
     unoptimized: true, // Disable image optimization for EdgeOne compatibility , vercel can support this function.
   }

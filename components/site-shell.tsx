@@ -179,6 +179,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
           {!sidebarDisabled && (
             <SideProfileCard
               profile={profile}
+              locale={locale}
               contactHref="/contact"
               contactLabel={CONTACT_BUTTON[locale]}
             />

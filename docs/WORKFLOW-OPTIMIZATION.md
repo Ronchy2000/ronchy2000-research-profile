@@ -84,7 +84,7 @@ Bot 提交不会显示在 Recent Updates 的原因：
 ## 环境变量
 
 工作流使用以下环境变量：
-- `GITHUB_TOKEN` / `GH_PAT` - GitHub 访问令牌
+- `GH_PAT` - GitHub 访问令牌（必需）。当前 workflow 使用该 token 进行 checkout / GitHub API / push（建议 classic token + `repo` 权限）。
 - `GITHUB_REPOSITORY` - 仓库名称（自动设置）
 - `UPDATES_LIMIT` - Recent Updates 显示的条目数（默认 7）
 

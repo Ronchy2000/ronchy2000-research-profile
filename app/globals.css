@@ -117,7 +117,7 @@ a:focus-visible {
     @apply bg-white text-black;
   }
 
-  .print\\:hidden {
+  .print\:hidden {
     display: none !important;
   }
 

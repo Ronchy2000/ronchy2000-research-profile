@@ -4,8 +4,11 @@ import Link from "next/link";
 import { ExternalLinkIcon, LockIcon } from "@/components/icons";
 import type { LocaleProfile } from "@/lib/content-types";
 
+type Locale = "en" | "zh";
+
 type SideProfileCardProps = {
   profile: LocaleProfile;
+  locale?: Locale;
   avatarSrc?: string;
   contactHref?: string;
   contactLabel?: string;
@@ -15,7 +18,7 @@ type SideProfileCardProps = {
  * Profile summary shown in the desktop sidebar. Displays avatar, names,
  * affiliation, keywords, and social links.
  */
-export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", contactHref, contactLabel }: SideProfileCardProps) {
+export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/profile.jpg", contactHref, contactLabel }: SideProfileCardProps) {
   const imageSrc = profile.avatar ?? avatarSrc;
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col gap-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_30px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70 lg:flex print:hidden">
@@ -30,11 +33,14 @@ export function SideProfileCard({ profile, avatarSrc = "/images/profile.jpg", co
             sizes="(min-width: 1024px) 200px, 160px"
           />
         </div>
-        <div className="w-full space-y-1 text-center">
+        <div className="w-full space-y-2 text-center">
           <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-50">{profile.name}</h1>
-          {profile.nativeName && (
-            <p className="text-sm text-slate-600 dark:text-slate-300">{profile.nativeName}</p>
-          )}
+          {profile.nativeName ? <p className="text-sm text-slate-600 dark:text-slate-300">{profile.nativeName}</p> : null}
+          {locale === "en" && profile.aka ? (
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Call me <span className="font-semibold text-slate-700 dark:text-slate-200">{profile.aka}</span>!
+            </p>
+          ) : null}
         </div>
       </div>
       <div className="w-full space-y-2 text-sm text-slate-600 dark:text-slate-300">

@@ -1,87 +1,96 @@
 ## Ronchy2000 Research Profile
 
-Modern academic site for **Rongqi Lu** built with Next.js 14 + Tailwind CSS. Multi页面布局包含 Home / Research / Publications / Projects / Experience / CV / Blog / Contact 等板块，内容主要在 `content/` 中维护（JSON + MDX），便于维护与部署。
+Modern academic homepage for **Rongqi Lu** built with Next.js 16 (App Router) + Tailwind CSS.
+Most routine updates (profile, publications, projects, blog posts) live in `content/` so you rarely touch TS/TSX.
 
-### ✨ Highlights
-- Next.js 14 App Router + Tailwind CSS，桌面端左侧名片 + 右侧正文，移动端顶部导航
-- 明暗主题切换、打印优化（隐藏导航/侧栏，黑白输出）
-- 所有数据均在 `content/` 中维护（profile、research、publications、projects、timeline、awards、updates）
-- 页面组件化：Section、Timeline、PublicationItem、ProjectCard、Callout 等可复用模块
-- 提供博客（`content/blog/{en,zh}/*.mdx` 内容驱动）、CV 页面（在线预览 + 下载）、Contact 表单（mailto，无第三方）
-- `scripts/update-recent-updates.mjs` / `scripts/update-project-stars.mjs` 通过 GitHub Actions 自动刷新首页动态和 GitHub star 数
+### Highlights
+- Next.js 16 (Turbopack) + React 19 + Tailwind CSS
+- Content-driven: structured data in `content/*.json`, page copy in `content/pages/*.json`, and posts in `content/blog/{en,zh}/*.{md,mdx}`
+- Light/dark theme, responsive navigation, print-friendly CV
+- Blog supports Markdown/MDX + math rendering (KaTeX)
+- Optional GitHub Actions automation for homepage updates and GitHub star sync
 
-### 🛠️ Getting Started
+### Getting Started
 ```bash
-# Install dependencies
 npm install
-
-# Run the development server
 npm run dev
 ```
-The site runs at `http://localhost:3000`. Edit files in `content/`, `app/(site)/*`, and `components/`; hot reload updates the preview instantly.
+Local dev server: `http://localhost:3000`
 
-### 🧱 Content Structure
-Key content files:
+Useful commands:
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-| 文件 | 说明 |
+### Content Structure
+
+| File/Folder | What to edit |
 | --- | --- |
-| `content/profile.json` | 双语名称、职称、关键词、社交/头像路径、CV 路径 |
-| `content/research.json` | 研究兴趣卡片 + 研究经历时间线 |
-| `content/publications.json` | 论文/专利列表（类型、标签、链接、备注） |
-| `content/projects.json` | 学术项目与开源项目分组，保持开源仓库条目可见 |
-| `content/timeline.json` | 教育与实习时间线 |
-| `content/awards.json` | 荣誉列表（首页、CV 共用） |
-| `content/updates.json` | 首页「Recent Updates」模块 |
-| `content/pages/*.json` | 页面文案（Home/Blog/Contact/CV/Projects/Research/Publications/Experience 等） |
-| `content/blog/en/*.mdx` | 博客文章（英文） |
-| `content/blog/zh/*.mdx` | 博客文章（中文） |
+| `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` shows `Call me ...!` under the avatar on English pages (desktop sidebar). |
+| `content/pages/*.json` | Page copy (Home/Research/Publications/Projects/Experience/CV/Blog/Contact). |
+| `content/research.json` | Research interests + research experience timeline. |
+| `content/publications.json` | Publications & patents (supports type/year filters). |
+| `content/projects.json` | Project groups + items. GitHub stars are stored in `metrics.stars`. |
+| `content/timeline.json` | Education + industry timeline (Experience/CV). |
+| `content/awards.json` | Honors & awards (Home/CV). |
+| `content/updates.json` | Homepage "Recent Updates" feed (typically overwritten by automation). |
+| `content/blog/{en,zh}/*.{md,mdx}` | Blog posts (filename = slug). |
 
-所有结构化内容读取逻辑在 `lib/content.ts` 中，博客文章解析逻辑在 `lib/blog.ts` 中。
-GitHub stars 会在 workflow 中调用 `scripts/update-project-stars.mjs` 自动更新。
+Accessors live in `lib/content.ts` (JSON) and `lib/blog.ts` (blog parsing).
 
-### ✍️ Writing Blog Posts
-- Add a post file under `content/blog/en/` or `content/blog/zh/` (`.md` or `.mdx`).
-- Optional helper:
+### Writing Blog Posts
+- Add a post under `content/blog/en/` or `content/blog/zh/` (`.md` or `.mdx`).
+- Recommended frontmatter:
+```yaml
+---
+title: "My First Post"
+date: "2026-02-15"
+summary: "One-line summary shown in the blog list."
+tags: ["Notes"]
+type: "note" # or "research"
+draft: false
+---
+```
+- Math (KaTeX) examples:
+  - Inline: `$E=mc^2$`
+  - Block:
+    ```md
+    $$
+    \\nabla \\cdot \\mathbf{E} = \\rho / \\varepsilon_0
+    $$
+    ```
+  Wrap LaTeX in `$...$` / `$$...$$` when writing MDX.
+
+Optional helper:
 ```bash
 npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 ```
 
-### 📂 Assets
-- Place a square profile image at `public/images/profile.jpg`（建议 600×600）
-- Drop a PDF CV at `public/files/cv.pdf`，主页/CV/侧栏共用
+### Assets
+Defaults are configured via `content/profile.json`:
+- Avatar: `public/images/profile.jpeg` (`avatar`)
+- CV PDF: `public/files/Ronchy_CV.pdf` (`cvLink`)
 
-### 🚀 Deploying to Vercel
+### GitHub Actions (Optional)
+The scheduled workflow `.github/workflows/update-content.yml` refreshes:
+- `content/updates.json` from recent commits
+- `content/projects.json` GitHub `metrics.stars`
+
+It expects a repository secret `GH_PAT` to call GitHub APIs and push updates.
+
+### Deploying to Vercel
 1. Push the repository to GitHub.
 2. Create a new project on [vercel.com](https://vercel.com) and import the repo.
 3. Use the default Next.js build command (`npm run build`) and output directory (`.next`).
 4. Set up a custom domain if desired, then trigger a deploy.
 
-Vercel automatically enables preview deployments on each pull request and production deploys from the default branch.
+### Contact Email Anti-scraping (Zero Third-party)
+> The contact email is decoded locally in the browser only after user interaction (no third-party form service).
 
-- **GitHub 邮箱隐私**：在 GitHub Settings → Emails 勾选 “Keep my email addresses private” 和 “Block command line pushes that expose my email”，并改用 `username@users.noreply.github.com` 作为提交邮箱，避免仓库历史泄露真实邮箱。
-- **公开邮箱建议**：可以直接使用主邮箱，也可以利用邮箱提供商的子地址（如 `name+site@outlook.com`）来随时替换。记得为该地址设置过滤规则，垃圾信件更好收拢。
-
-### 🛡 Contact Email Anti-scraping (Zero Third-party)
-> 联系邮箱只会在浏览器本地解码，静态 HTML 中不会出现明文，同时不依赖任何第三方表单。
-
-1. **准备邮箱并编码**：直接使用你要公开的邮箱（或子地址），运行 `echo -n "hi@example.com" | base64` 得到 Base64。
-2. **配置变量**：在 `.env` / Vercel / 国内托管平台中设置
-   - `NEXT_PUBLIC_CONTACT_EMAIL_B64`：上一步生成的字符串。
-   - （可选）`NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`：自定义邮件主题前缀。
-3. **交互解码**：`app/(site)/contact/page.tsx` 在访客点击“显示邮箱”后才会在浏览器本地解码并展示邮箱，同时通过 `mailto:` 打开对方设备的默认客户端，过程不经过外部服务。
-4. **随时更换**：想替换公开邮箱时，仅需更新环境变量并重新部署；旧版本即便被镜像也只能看到模糊文本。
-
-- 导航：在 `app/(site)/layout.tsx` 的 `navItems` 数组维护。
-- 样式：调节 `tailwind.config.ts`（brand 色）、`app/globals.css`（背景/打印样式）。
-
-- 导航：在 `app/(site)/layout.tsx` 的 `navItems` 数组维护。
-- 样式：调节 `tailwind.config.ts`（brand 色）、`app/globals.css`（背景/打印样式）。
-- 组件：`Section`、`Timeline`、`ProjectCard` 等均有简洁 props 注释，方便快速复用。
-- 如果需要新增页面或模块，先在 `content/` 增加数据，再在 `lib/content.ts` & `app/(site)` 中接入。
-- Workflow (`.github/workflows/update-content.yml`) 每日运行，需仓库具有推送权限；可在 Secrets 中配置 `GH_PAT` 以避免速率限制。工作流内使用 `npm install --no-audit` 安装依赖，适合无 `npm ci` 锁文件的情况。
-
-### 🧪 Recommended Next Steps
-- Run `npm run lint` to verify code style before committing.
-- Add integration with analytics (e.g., Umami, Plausible) if you need traffic insights.
-
-Enjoy your new academic site! 内容驱动、双主题、易于维护。
+1. Base64-encode your public email: `echo -n "hi@example.com" | base64`
+2. Set env vars (see `.env.example`):
+   - `NEXT_PUBLIC_CONTACT_EMAIL_B64`
+   - (Optional) `NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`
+3. The contact page decodes and shows the email only after clicking “Reveal email”, and opens `mailto:` locally.

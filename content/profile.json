@@ -4,6 +4,7 @@
     "fields": {
       "name": "Full name string",
       "nativeName": "Optional Chinese name",
+      "aka": "Optional English nickname / preferred name (shown on English pages only)",
       "title": "Short professional title",
       "affiliation": "Current institution or lab",
       "location": "City, Country",
@@ -16,6 +17,7 @@
   "en": {
     "name": "Rongqi Lu",
     "nativeName": "陆荣琦",
+    "aka": "Ronchy",
     "title": "Control Engineering Graduate Student",
     "affiliation": "Xidian University",
     "location": "Xi'an, China",

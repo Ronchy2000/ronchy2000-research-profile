@@ -1,6 +1,6 @@
 # 维护手册（自用）
 
-本项目基于 Next.js 14 + Tailwind CSS，采用「内容文件 + 页面壳层」模式。所有文案集中在 `content/`，页面只负责排版与组件组合。以下指南便于后续维护。
+本项目基于 Next.js 16 + Tailwind CSS（App Router），采用「内容文件 + 页面壳层」模式。所有文案集中在 `content/`，页面只负责排版与组件组合。以下指南便于后续维护。
 
 ## 目录结构速览
 
@@ -46,8 +46,8 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 
 | 模块 | 数据文件 | 说明 |
 | ---- | -------- | ---- |
-| Hero & 侧边名片 | `content/profile.json` | 修改姓名、职称、关键词、社交链接、头像、CV 路径；Hero 按关键词渲染 Tag。 |
-| Recent Updates | `content/updates.json` | 三条最近动态；默认由 GitHub Action 脚本生成，必要时可手动编辑。 |
+| Hero & 侧边名片 | `content/profile.json` | 修改姓名、职称、关键词、社交链接、头像、CV 路径；可选 `aka`（英文页头像下方显示 “Call me …!”）。 |
+| Recent Updates | `content/updates.json` | 首页最近动态（默认由 GitHub Action 脚本覆盖生成，不建议手动改）。 |
 | Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页取前 4 项，Projects 页完整展示。 |
 | Latest Writing & Publications 页 | `content/publications.json` | `type` 取值 `C`(Conference) / `J`(Journal) / `P`(Patent) / `S`(In Submission)，会自动映射标签，支持 Type/Year 筛选；新增条目按 `year` 排序，首页自动展示最新两项。 |
 | Experience / CV 页 | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
@@ -65,8 +65,8 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 
 ### Recent Updates
 - 数据源：`content/updates.json`。
-- 自动更新：`.github/workflows/update-content.yml` 每日 01:00 UTC 运行 `scripts/update-recent-updates.mjs`。
-  - 默认使用 `secrets.GITHUB_TOKEN`（具有推送权限即可）；如需更高频率请在仓库 Secrets 中新增 `GH_PAT`（repo scope）。
+- 自动更新：`.github/workflows/update-content.yml` 每日 23:30 UTC 运行 `scripts/update-recent-updates.mjs`。
+  - 当前 workflow 依赖仓库 Secrets 中的 `GH_PAT`（classic token，建议 `repo` 权限）用于 checkout / GitHub API / push；未配置会直接失败。
   - 脚本读取最新 commit，写入 `type=Commit`、`title`（提交首行）、`summary`（作者）；可自行改成抓取 Releases/Issues。
   - 脚本会自动忽略由 `github-actions[bot]`、Dependabot 以及树莓派备份脚本（`Router Auto Backup`）生成的提交；如需扩展忽略名单，可通过环境变量 `IGNORED_COMMIT_AUTHORS`、`IGNORED_COMMIT_EMAILS`、`IGNORED_COMMIT_MESSAGE_KEYWORDS` 追加。
 - 手动编辑：直接修改 `updates.json` 中的 `updates` 数组，字段 `type`、`date`（YYYY-MM-DD）、`title`、`summary`、`link`。
@@ -115,9 +115,9 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - **更新 Recent Updates**：若暂时不想依赖 GitHub Action，可手动编辑 `content/updates.json`。恢复自动化时重新触发 workflow 即可。
 - **编辑 Highlighted Projects**：通过调整 `content/projects.json` 中条目的顺序/分组，控制首页与 Projects 页的展示。
 - **调整导航顺序**：修改 `navItems` 数组，并确认对应页面文件存在。
-- **更换头像/简历**：
-  - 头像：`public/images/profile.jpg`（建议 600×600 PNG/JPG）。
-  - 简历：`public/files/cv.pdf`（Hero / CV 页面共用）。
+- **更换头像/简历**：优先在 `content/profile.json` 里改 `avatar` / `cvLink` 路径（对应 `public/` 下文件）。当前默认是：
+  - 头像：`public/images/profile.jpeg`
+  - 简历：`public/files/Ronchy_CV.pdf`
 
 ## 开发 & 本地调试
 ```bash
@@ -131,11 +131,11 @@ npm run build    # 发布前验证（postbuild 会自动复制 edgeone.json）
 ## 常见问题
 - **导航未显示/排版异常**：确认 `SiteHeader` 没有被自定义样式覆盖；移动端第二行横向滚动属于预期行为。
 - **Contact 表单是否发送邮件？** 不经过服务器。表单仅在本地生成 `mailto:` 链接，真实邮箱以 Base64 形式打包，点击按钮后才会在浏览器里解码显示。
-- **Recent Updates 没刷新**：检查 GitHub Actions 的运行记录；若提示缺少权限，请添加 `GH_PAT`（repo 权限）到仓库 Secrets，或者手动运行 `node scripts/update-recent-updates.mjs` 并提交。
+- **Recent Updates 没刷新**：检查 GitHub Actions 的运行记录；若提示缺少权限/缺少 token，请在仓库 Secrets 中设置 `GH_PAT`，或者手动运行 `node scripts/update-recent-updates.mjs` 并提交。
 
 如需更深度的自定义（路由级 i18n、代码高亮、RSS、Arxiv API 等），可在 `lib/blog.ts` / `lib/content.ts` 中扩展解析逻辑，再在页面中引入即可。
 
 ### 其他提示
 - Footer 当前仅显示版权和更新时间，如需 Sitemap/RSS，可在 `components/site-footer.tsx` 恢复链接并生成文件。
 - Contact 页面采用“点击才显示邮箱 + mailto”机制，如需更换邮箱只需更新 `NEXT_PUBLIC_CONTACT_EMAIL_B64` 并重新部署。
-- `.github/workflows/update-content.yml` 每日运行更新脚本（Recent Updates + GitHub stars）；确保仓库 token 拥有推送权限，建议配置 `GH_PAT`。工作流使用 `npm install --no-audit` 安装依赖，以避免 `npm ci` 对锁文件的要求。
+- `.github/workflows/update-content.yml` 每日运行更新脚本（Recent Updates + GitHub stars）；需要仓库 Secrets 中的 `GH_PAT` 具备推送权限。工作流使用 `npm install --no-audit` 安装依赖，以避免 `npm ci` 对锁文件的要求。

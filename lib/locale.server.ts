@@ -22,13 +22,14 @@ function detectLocaleFromAcceptLanguage(value: string | null): Locale | null {
   return null;
 }
 
-export function getRequestLocale(): Locale {
-  const cookieLocale = normalizeLocale(cookies().get(LOCALE_COOKIE_NAME)?.value);
+export async function getRequestLocale(): Promise<Locale> {
+  const cookieStore = await cookies();
+  const cookieLocale = normalizeLocale(cookieStore.get(LOCALE_COOKIE_NAME)?.value);
   if (cookieLocale) {
     return cookieLocale;
   }
 
-  const headerLocale = detectLocaleFromAcceptLanguage(headers().get("accept-language"));
+  const headerStore = await headers();
+  const headerLocale = detectLocaleFromAcceptLanguage(headerStore.get("accept-language"));
   return headerLocale ?? DEFAULT_LOCALE;
 }
-
