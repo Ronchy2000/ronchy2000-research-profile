@@ -61,3 +61,6 @@ export const config = {
     "/((?!_next/|api/|.*\\..*).*)"
   ]
 };
+
+// Default export for EdgeOne compatibility
+export default proxy;
