@@ -104,11 +104,27 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - 已移除 sitemap/rss 链接；Footer 仅保留版权与更新时间。
 
 ## 自动化与部署
-- `npm run build` 会执行 `postbuild`，确保 `edgeone.json` 复制到 `.next/`，便于 EdgeOne 读取重定向配置。
-- GitHub Actions：
-  - `update-content.yml`：每日刷新 Recent Updates，亦可手动在 Actions 列表中触发。
-  - 若新增自动化脚本（例如根据 arXiv/Google Scholar 刷新 Publications），可以仿照该 workflow 添加新的 job。
-- Vercel 部署：推送到主分支后自动构建，无需额外配置。若需要 GitHub Actions 推送自动提交，请确保 Vercel 的部署策略允许「外部提交触发」或使用专用 deploy hook。
+
+### EdgeOne Pages 部署
+- **静态导出模式**：`next.config.mjs` 在 `EDGEONE=1` 环境变量下使用 `output: "export"` + `trailingSlash: true`，生成纯静态站点到 `out/` 目录。
+- **配置文件**：
+  - `edgeone.json` 配置 `outputDirectory: "out"` 和 `environmentVariables: { "EDGEONE": "1" }`
+  - 包含 308 永久重定向规则：`/en` → `/en/`，`/zh` → `/zh/`
+- **路径 `/en` vs `/en/` 的坑**：（熬到我2026年2月16日2:19am...
+  - 静态托管中 `/en/` 会查找 `en/index.html`（✅ 能找到）
+  - 但 `/en` 会查找文件 `en` 或 `en.html`（❌ 不存在）
+  - **解决方案**：在 `edgeone.json` 的 `redirects` 中添加 308 重定向，将无尾斜杠路径重定向到有尾斜杠版本
+  - 这比依赖 CDN"自动补斜杠"更明确、SEO 友好，且不受平台差异影响
+- **子路径为何正常**：`/en/experience` 等子路径能访问是因为它们也是目录形态（`/en/experience/` → `index.html`），部分浏览器/CDN 会自动补全
+
+### GitHub Actions
+- `update-content.yml`：每日刷新 Recent Updates，亦可手动在 Actions 列表中触发。
+- 若新增自动化脚本（例如根据 arXiv/Google Scholar 刷新 Publications），可以仿照该 workflow 添加新的 job。
+
+### Vercel 部署
+- 推送到主分支后自动构建，无需额外配置。
+- Vercel 不会设置 `EDGEONE=1`，因此会使用标准的 Next.js SSG 模式（输出到 `.next/`），middleware（`proxy.ts`）会正常工作。
+- 若需要 GitHub Actions 推送自动提交触发部署，请确保 Vercel 的部署策略允许「外部提交触发」或使用专用 deploy hook。
 
 ## 常见修改场景
 - **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Homepage 与 Publications 页将自动更新。
