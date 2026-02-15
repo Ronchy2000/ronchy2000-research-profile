@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import { Providers } from "@/components/providers";
-import { getRequestLocale } from "@/lib/locale.server";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -36,18 +35,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Next.js 16+ makes `cookies()`/`headers()` async.
-  const initialLocale = await getRequestLocale();
-
   return (
-    <html lang={initialLocale} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans`}>
-        <Providers initialLocale={initialLocale}>
+        <Providers>
           {children}
         </Providers>
       </body>

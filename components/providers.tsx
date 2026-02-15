@@ -2,10 +2,8 @@
 
 import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
-import { LocaleProvider } from "@/components/locale-provider";
-import type { Locale } from "@/lib/locale";
 
-export function Providers({ children, initialLocale }: { children: ReactNode; initialLocale: Locale }) {
+export function Providers({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
@@ -13,9 +11,7 @@ export function Providers({ children, initialLocale }: { children: ReactNode; in
       enableSystem
       disableTransitionOnChange
     >
-      <LocaleProvider initialLocale={initialLocale}>
-        {children}
-      </LocaleProvider>
+      {children}
     </ThemeProvider>
   );
 }

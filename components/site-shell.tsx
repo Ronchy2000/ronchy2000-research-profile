@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SideProfileCard } from "@/components/side-profile-card";
 import { SiteFooter } from "@/components/site-footer";
-import { getUpdatesContent } from "@/lib/content";
 import type { LocaleProfile } from "@/lib/content-types";
 import type { NavItem } from "@/types/navigation";
 
@@ -18,7 +17,7 @@ type SiteShellProps = {
   navItems: NavItem[];
   profile: LocaleProfile;
   locale: Locale;
-  onToggleLocale?: (next: Locale) => void;
+  lastUpdated?: string;
 };
 
 const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects"]);
@@ -39,13 +38,19 @@ const SIDEBAR_TRANSITION = [
 ].join(", ");
 const SIDEBAR_HIDDEN_TRANSFORM = "translateX(-24px)";
 
+function stripLocalePrefix(pathname: string) {
+  const match = pathname.match(/^\/(en|zh)(\/.*)?$/);
+  if (!match) return pathname;
+  return match[2] || "/";
+}
+
 /**
  * Application shell with responsive header and optional sidebar profile card.
  * On the Home page the sidebar collapses once you scroll past the hero in desktop view.
  */
-export function SiteShell({ children, navItems, profile, locale, onToggleLocale }: SiteShellProps) {
+export function SiteShell({ children, navItems, profile, locale, lastUpdated }: SiteShellProps) {
   const pathname = usePathname();
-  const normalizedPath = pathname?.replace(/\/$/, "") || "/";
+  const normalizedPath = stripLocalePrefix((pathname ?? "/").replace(/\/$/, "") || "/");
   const sidebarDisabled = SIDEBAR_EXCLUDED_ROUTES.has(normalizedPath);
   const enableCollapsibleSidebar = !sidebarDisabled && normalizedPath === "/";
 
@@ -145,16 +150,6 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
     };
   }, [sidebarDisabled, sidebarHidden]);
 
-  // 获取真实的最后更新时间
-  const lastUpdated = useMemo(() => {
-    try {
-      const updates = getUpdatesContent()[locale]?.updates ?? [];
-      return updates[0]?.date || new Date().toISOString().split('T')[0];
-    } catch {
-      return new Date().toISOString().split('T')[0];
-    }
-  }, [locale]);
-
   return (
     <div className="relative isolate min-h-screen bg-slate-50 dark:bg-slate-950">
       <div
@@ -164,7 +159,6 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
       <SiteHeader
         navItems={navItems}
         profileName={profile.name}
-        onToggleLocale={onToggleLocale}
         currentLocale={locale}
       />
       <div
@@ -180,7 +174,7 @@ export function SiteShell({ children, navItems, profile, locale, onToggleLocale 
             <SideProfileCard
               profile={profile}
               locale={locale}
-              contactHref="/contact"
+              contactHref={`/${locale}/contact`}
               contactLabel={CONTACT_BUTTON[locale]}
             />
           )}

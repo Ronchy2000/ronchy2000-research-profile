@@ -15,13 +15,15 @@ type BlogPostWithYear = BlogPostMeta & { year: string };
 type BlogClientProps = {
   copy: BlogPageCopy[Locale];
   posts: BlogPostMeta[];
+  locale: Locale;
 };
 
 const ALL_FILTER_VALUE = "all" as const;
 
-export function BlogClient({ copy, posts }: BlogClientProps) {
+export function BlogClient({ copy, posts, locale }: BlogClientProps) {
   const [typeFilter, setTypeFilter] = useState<string>(ALL_FILTER_VALUE);
   const [yearFilter, setYearFilter] = useState<string>(ALL_FILTER_VALUE);
+  const base = `/${locale}`;
 
   const normalizedPosts = useMemo<BlogPostWithYear[]>(() => {
     return posts
@@ -91,7 +93,7 @@ export function BlogClient({ copy, posts }: BlogClientProps) {
                 </div>
                 <h3 className="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-50">
                   <Link
-                    href={`/blog/${post.slug}` as any}
+                    href={`${base}/blog/${post.slug}` as any}
                     className="hover:text-brand"
                   >
                     {post.title}

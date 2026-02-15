@@ -6,8 +6,7 @@ import { FilterToolbar } from "@/components/filter-toolbar";
 import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
-import { getPublicationsPageCopy } from "@/lib/content";
-import type { PublicationEntry } from "@/lib/content-types";
+import type { PublicationEntry, PublicationsPageCopy } from "@/lib/content-types";
 
 type Locale = "en" | "zh";
 
@@ -17,9 +16,10 @@ type TypeFilter = typeof TYPE_OPTIONS[number];
 type PublicationsClientProps = {
   entries: PublicationEntry[];
   locale: Locale;
+  copy: PublicationsPageCopy[Locale];
 };
 
-export function PublicationsClient({ entries, locale }: PublicationsClientProps) {
+export function PublicationsClient({ entries, locale, copy }: PublicationsClientProps) {
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [yearFilter, setYearFilter] = useState<string>("All");
 
@@ -35,8 +35,6 @@ export function PublicationsClient({ entries, locale }: PublicationsClientProps)
       return typeMatch && yearMatch;
     });
   }, [entries, typeFilter, yearFilter]);
-
-  const copy = getPublicationsPageCopy()[locale];
 
   const renderTypeLabel = (type: TypeFilter) => {
     if (type === "All") {

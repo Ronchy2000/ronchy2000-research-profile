@@ -124,7 +124,7 @@ File-driven blog:
 
 The filename becomes the slug.
 
-Example: `content/blog/en/my-first-post.mdx` renders at `/blog/my-first-post`.
+Example: `content/blog/en/my-first-post.mdx` renders at `/en/blog/my-first-post` (and Chinese posts under `/zh/blog/...`).
 
 ### Recommended Frontmatter
 

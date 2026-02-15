@@ -1,21 +1,29 @@
-"use client";
-
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Section } from "@/components/section";
 import { Table } from "@/components/table";
 import { Timeline } from "@/components/timeline";
-import { useLocale } from "@/components/locale-provider";
 import { getAwardsContent, getCVPageCopy, getProfileContent, getTimelineContent } from "@/lib/content";
+import { normalizeLocale } from "@/lib/locale";
 
-export default function CVPage() {
-  const { locale } = useLocale();
-  const profileContent = getProfileContent();
-  const profile = profileContent[locale];
+type PageProps = {
+  params: { locale: string } | Promise<{ locale: string }>;
+};
+
+export default async function CVPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const locale = normalizeLocale(resolvedParams.locale);
+  if (!locale) {
+    notFound();
+  }
+
+  const base = `/${locale}`;
+  const profile = getProfileContent()[locale];
   const timeline = getTimelineContent()[locale];
   const awards = getAwardsContent()[locale].awards;
-
   const t = getCVPageCopy()[locale];
+
   const honorsHeaders = [...t.honors.headers];
   const skillsHeaders = [...t.skills.headers];
   const skillsRows = t.skills.rows.map((row) => [...row]);
@@ -27,7 +35,10 @@ export default function CVPage() {
         description={t.intro.description}
         eyebrow={t.intro.eyebrow}
         actions={
-          <a href={profile.cvLink} className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
+          <a
+            href={profile.cvLink}
+            className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+          >
             {t.intro.download}
           </a>
         }
@@ -36,9 +47,14 @@ export default function CVPage() {
           <p>{profile.title}</p>
           <p>{profile.affiliation}</p>
           <p>
-            {t.intro.contactLabel}: <Link href="/contact" className="text-brand hover:text-brand-foreground">{t.intro.contactAction}</Link>
+            {t.intro.contactLabel}:{" "}
+            <Link href={`${base}/contact` as any} className="text-brand hover:text-brand-foreground">
+              {t.intro.contactAction}
+            </Link>
           </p>
-          <p>{t.intro.locationLabel}: {profile.location}</p>
+          <p>
+            {t.intro.locationLabel}: {profile.location}
+          </p>
         </div>
       </Section>
 
@@ -51,28 +67,22 @@ export default function CVPage() {
       </Section>
 
       <Section title={t.honors.title} eyebrow={t.honors.eyebrow}>
-        <Table
-          headers={honorsHeaders}
-          rows={awards.map((award) => [award.year, award.title, award.issuer])}
-        />
+        <Table headers={honorsHeaders} rows={awards.map((award) => [award.year, award.title, award.issuer])} />
       </Section>
 
       <Section title={t.skills.title} eyebrow={t.skills.eyebrow}>
-        <Table
-          headers={skillsHeaders}
-          rows={skillsRows}
-        />
+        <Table headers={skillsHeaders} rows={skillsRows} />
       </Section>
 
       <Section title={t.links.title} eyebrow={t.links.eyebrow}>
         <ul className="space-y-2 text-base text-slate-600 dark:text-slate-300">
           <li>
-            <Link href="/publications" className="text-brand hover:text-brand-foreground">
+            <Link href={`${base}/publications` as any} className="text-brand hover:text-brand-foreground">
               {t.links.publications}
             </Link>
           </li>
           <li>
-            <Link href="/projects" className="text-brand hover:text-brand-foreground">
+            <Link href={`${base}/projects` as any} className="text-brand hover:text-brand-foreground">
               {t.links.projects}
             </Link>
           </li>

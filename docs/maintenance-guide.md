@@ -85,7 +85,7 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - 首页的 “Latest Writing” 自动按 `year` 倒序取最近 2 条，无需额外维护，Publications 页的 Type/Year 按钮可即时筛选当前列表（`All` 表示不过滤）。
 
 ## 顶部导航 & 响应式
-- 导航定义位于 `app/(site)/layout.tsx` 中的 `navItems` 常量，使用 `satisfies NavItem[]` 保障路径正确，新增页面时在此添加即可。
+- 导航定义位于 `app/(site)/[locale]/layout.tsx` 中的 `NAV_ITEMS` 常量（`/en/*`、`/zh/*`），新增页面时在此添加即可。
 - `SiteHeader` 横向排布导航；桌面端显示完整菜单，移动端在第二行横向滚动。
 - 侧边名片（仅桌面端显示）由 `SideProfileCard` 渲染，已移除多余的 Download CV 按钮。
 

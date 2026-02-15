@@ -1,14 +1,22 @@
-"use client";
+import { notFound } from "next/navigation";
 
 import { Section } from "@/components/section";
 import { Timeline } from "@/components/timeline";
-import { useLocale } from "@/components/locale-provider";
 import { getResearchContent, getResearchPageCopy } from "@/lib/content";
+import { normalizeLocale } from "@/lib/locale";
 
-export default function ResearchPage() {
-  const { locale } = useLocale();
+type PageProps = {
+  params: { locale: string } | Promise<{ locale: string }>;
+};
+
+export default async function ResearchPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const locale = normalizeLocale(resolvedParams.locale);
+  if (!locale) {
+    notFound();
+  }
+
   const { interests, experiences } = getResearchContent()[locale];
-
   const t = getResearchPageCopy()[locale];
 
   return (
@@ -18,13 +26,13 @@ export default function ResearchPage() {
         <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">{t.heroDescription}</p>
       </section>
 
-      <Section
-        title={t.interestsTitle}
-        eyebrow={t.interestsEyebrow}
-      >
+      <Section title={t.interestsTitle} eyebrow={t.interestsEyebrow}>
         <div className="grid gap-4 md:grid-cols-2">
           {interests.map((interest) => (
-            <article key={interest.title} className="rounded-2xl border border-slate-200 bg-white/90 p-5 dark:border-slate-800 dark:bg-slate-900/70">
+            <article
+              key={interest.title}
+              className="rounded-2xl border border-slate-200 bg-white/90 p-5 dark:border-slate-800 dark:bg-slate-900/70"
+            >
               <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{interest.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">{interest.description}</p>
             </article>
@@ -32,10 +40,7 @@ export default function ResearchPage() {
         </div>
       </Section>
 
-      <Section
-        title={t.experienceTitle}
-        eyebrow={t.experienceEyebrow}
-      >
+      <Section title={t.experienceTitle} eyebrow={t.experienceEyebrow}>
         <Timeline
           items={experiences.map((item) => ({
             title: `${item.title} · ${item.role}`,

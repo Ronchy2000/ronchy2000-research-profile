@@ -5,10 +5,9 @@ import { useMemo, useState } from "react";
 import { FilterToolbar } from "@/components/filter-toolbar";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
-import { useLocale } from "@/components/locale-provider";
 import { ArrowRightIcon } from "@/components/icons";
-import { getProjectsContent, getProjectsPageCopy, getUpdatesContent } from "@/lib/content";
-import type { ProjectEntry, ProjectGroup } from "@/lib/content-types";
+import type { ProjectEntry, ProjectGroup, ProjectsPageCopy, UpdateEntry } from "@/lib/content-types";
+import type { Locale } from "@/lib/locale";
 
 type ProjectLabelFilter = "all" | "ongoing" | "featured";
 
@@ -33,6 +32,13 @@ type ProjectGroupWithDerived = Omit<ProjectGroup, "items"> & {
 type ProjectBadge = {
   label: string;
   variant?: "default" | "accent";
+};
+
+type ProjectsClientProps = {
+  locale: Locale;
+  groups: ProjectGroup[];
+  updates: UpdateEntry[];
+  copy: ProjectsPageCopy[Locale];
 };
 
 const FEATURE_THRESHOLD = 15;
@@ -107,12 +113,7 @@ function decorateGroup(group: ProjectGroup): ProjectGroupWithDerived {
   };
 }
 
-export default function ProjectsPage() {
-  const { locale } = useLocale();
-  const groups = getProjectsContent()[locale].groups;
-  const updates = getUpdatesContent()[locale].updates.slice(0, 7);
-
-  const t = getProjectsPageCopy()[locale];
+export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClientProps) {
   const [yearFilter, setYearFilter] = useState<string>(ALL_FILTER_VALUE);
   const [labelFilter, setLabelFilter] = useState<ProjectLabelFilter>(ALL_FILTER_VALUE);
 
@@ -153,9 +154,9 @@ export default function ProjectsPage() {
   return (
     <div className="space-y-7">
       <section className="space-y-3 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 shadow-[0_24px_60px_-45px_rgba(30,64,175,0.45)] dark:border-slate-800 dark:bg-gradient-to-br dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40">
-        <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">{t.heroTitle}</h1>
+        <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">{copy.heroTitle}</h1>
         <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">
-          {t.heroDescription}
+          {copy.heroDescription}
         </p>
       </section>
 
@@ -165,22 +166,22 @@ export default function ProjectsPage() {
           groups={[
             {
               id: "year",
-              label: t.filters.year,
+              label: copy.filters.year,
               value: yearFilter,
               options: yearOptions.map((year) => ({
                 value: year,
-                label: year === ALL_FILTER_VALUE ? t.filters.all : year
+                label: year === ALL_FILTER_VALUE ? copy.filters.all : year
               })),
               onChange: setYearFilter
             },
             {
               id: "tags",
-              label: t.filters.label,
+              label: copy.filters.label,
               value: labelFilter,
               options: [
-                { value: ALL_FILTER_VALUE, label: t.filters.all },
-                { value: "ongoing", label: t.filters.ongoing },
-                { value: "featured", label: t.filters.featured }
+                { value: ALL_FILTER_VALUE, label: copy.filters.all },
+                { value: "ongoing", label: copy.filters.ongoing },
+                { value: "featured", label: copy.filters.featured }
               ],
               onChange: (value) => setLabelFilter(value as ProjectLabelFilter)
             }
@@ -194,18 +195,18 @@ export default function ProjectsPage() {
               title={group.title}
               eyebrow={
                 group.kind === "open-source"
-                  ? t.groupLabels["open-source"]
-                  : t.groupLabels[group.kind as keyof typeof t.groupLabels] ?? t.groupLabels.default
+                  ? copy.groupLabels["open-source"]
+                  : copy.groupLabels[group.kind as keyof typeof copy.groupLabels] ?? copy.groupLabels.default
               }
             >
               <div className="grid gap-6 md:grid-cols-2">
                 {group.items.map((project) => {
                   const badges: ProjectBadge[] = [];
                   if (project.derived.isFeatured) {
-                    badges.push({ label: t.badges.featured, variant: "accent" });
+                    badges.push({ label: copy.badges.featured, variant: "accent" });
                   }
                   if (project.derived.isOngoing) {
-                    badges.push({ label: t.badges.ongoing, variant: "default" });
+                    badges.push({ label: copy.badges.ongoing, variant: "default" });
                   }
 
                   return <ProjectCard key={project.name} project={project} badges={badges} />;
@@ -215,27 +216,24 @@ export default function ProjectsPage() {
           ))
         ) : (
           <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-6 text-center text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
-            {t.empty}
+            {copy.empty}
           </div>
         )}
       </div>
 
-      <Section
-        title={t.sections.updates.title}
-        eyebrow={t.sections.updates.eyebrow}
-      >
+      <Section title={copy.sections.updates.title} eyebrow={copy.sections.updates.eyebrow}>
         <div className="space-y-3">
           {updates.map((update, index) => (
-            <a 
+            <a
               key={update.link || `${update.date}-${update.type}-${index}`}
               href={update.link}
-              className="group flex items-start gap-4 py-3 px-4 rounded-xl transition-all hover:bg-slate-50 dark:hover:bg-slate-900/50"
+              className="group flex items-start gap-4 rounded-xl px-4 py-3 transition-all hover:bg-slate-50 dark:hover:bg-slate-900/50"
             >
-              <div className="flex-shrink-0 w-20 text-xs font-medium text-slate-600 dark:text-slate-300 pt-0.5">
+              <div className="w-20 flex-shrink-0 pt-0.5 text-xs font-medium text-slate-600 dark:text-slate-300">
                 {update.date}
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base font-medium text-slate-900 dark:text-slate-50 group-hover:text-brand transition-colors">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-base font-medium text-slate-900 transition-colors group-hover:text-brand dark:text-slate-50">
                   {update.title}
                 </h3>
                 <p className="mt-1 text-base text-slate-600 dark:text-slate-300">{update.summary}</p>
@@ -251,3 +249,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+
