@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
+const isEdgeOneBuild = process.env.EDGEONE === "1";
+
 const nextConfig = {
   images: {
-    unoptimized: true, // Disable image optimization for EdgeOne compatibility , vercel can support this function.
+    // EdgeOne Pages does not support Next.js image optimization.
+    unoptimized: true
   },
-  // Ensure trailing slashes for EdgeOne routing
-  trailingSlash: false,
-  // Skip trailing slash redirects to avoid conflicts with proxy.ts
-  skipTrailingSlashRedirect: true,
+  ...(isEdgeOneBuild
+    ? {
+        // EdgeOne Pages: prefer fully-static export for maximum compatibility.
+        output: "export",
+        trailingSlash: true
+      }
+    : {})
 };
 
 export default nextConfig;

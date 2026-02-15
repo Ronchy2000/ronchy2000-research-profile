@@ -29,7 +29,7 @@ The site uses locale-prefixed routes for best performance and caching:
 - English: `/en/*`
 - Chinese: `/zh/*`
 
-Requests to `/` (and legacy paths like `/research`) are redirected by `proxy.ts` based on the `locale` cookie and `Accept-Language`.
+Requests to `/` (and legacy paths like `/research`) are redirected to `/{locale}`. In middleware-capable builds this is handled by `proxy.ts`; in static-export builds it is handled by pages under `app/(redirects)` (client-side redirect).
 
 ### Content Structure
 

@@ -31,7 +31,7 @@ type LocaleRedirectProps = {
 
 export function LocaleRedirect({
   pathAfterLocale = "",
-  title = "Redirecting…"
+  title = "Redirecting..."
 }: LocaleRedirectProps) {
   useEffect(() => {
     const cookieLocale = normalizeLocale(readCookie(LOCALE_COOKIE_NAME));
@@ -67,4 +67,3 @@ export function LocaleRedirect({
     </main>
   );
 }
-
