@@ -96,7 +96,7 @@ export function SiteHeader({ navItems, profileName, currentLocale = "en" }: Site
                     const stripped = stripLocalePrefix(current);
                     const nextPath = stripped === "/" ? `/${option.value}` : `/${option.value}${stripped}`;
 
-                    // Persist user preference for middleware redirects and future visits.
+                    // Persist user preference for proxy redirects and future visits.
                     document.cookie = `${LOCALE_COOKIE_NAME}=${option.value}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
                     router.push(nextPath as any);
                   }}

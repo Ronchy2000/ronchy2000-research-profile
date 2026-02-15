@@ -26,7 +26,7 @@ function isSupportedRoute(pathname: string) {
   return roots.some((root) => pathname === root || pathname.startsWith(`${root}/`));
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (hasLocalePrefix(pathname)) {
@@ -61,4 +61,3 @@ export const config = {
     "/((?!_next/|api/|.*\\..*).*)"
   ]
 };
-

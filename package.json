@@ -15,7 +15,7 @@
     "gray-matter": "^4.0.3",
     "katex": "^0.16.22",
     "next": "^16.1.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
