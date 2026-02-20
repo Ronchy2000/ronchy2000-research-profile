@@ -8,106 +8,106 @@
   "en": {
     "updates": [
       {
-        "date": "2025-12-11",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "opt: 自适应宽度",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2cc8b1098c2d513c6af5c11760baa6277614cc4c"
+        "title": "chore: document EdgeOne trailing slash routing issue and remove unused postbuild",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/262aca6f97a37cfa6a1dd09e058bc4bfd995120e"
       },
       {
-        "date": "2025-12-11",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "opt: remove Hint about reveal Email adress",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/30baef2a5474aff8ace173ddabbb77b255b72b2d"
+        "title": "Fix EdgeOne static export configuration",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
       },
       {
-        "date": "2025-12-10",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "Remove console logs and add favicon",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9f7df5e165514e9873b898d62b866b5c7a4f74d1"
+        "title": "Fix EdgeOne output directory configuration",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a3391d13461b27b54ec293dd7256f9ec865d4b5d"
       },
       {
-        "date": "2025-12-06",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "feat: add debug logs for locale switching issue",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/525b3636482749c5cf6e68254909daf91e81f717"
+        "title": "chore: try to fix EO",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/529fe7be83578d8059afd66648160df1b78fb9f2"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "[opt]: 优化技术架构",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5998eb810e00313557481eb862400b37ca16d0bb"
+        "title": "chore add edge-function file",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8c560311a956dfa355a122efd236b002c415b99e"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9547c69429e84d934b4c51d486021ba6a5994889"
+        "title": "[try fix]: EdgeOne 404",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/21b022a87580febeb38db5521dd4d5adad439176"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "Commit",
-        "title": "[feat]: update ICP备案信息",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
+        "title": "Fix EdgeOne proxy configuration",
+        "summary": "Authored by ronchy-motherHome",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d19cf7fc80a11f81c32c407f2bd28097c1505805"
       }
     ]
   },
   "zh": {
     "updates": [
       {
-        "date": "2025-12-11",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "opt: 自适应宽度",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2cc8b1098c2d513c6af5c11760baa6277614cc4c"
+        "title": "chore: document EdgeOne trailing slash routing issue and remove unused postbuild",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/262aca6f97a37cfa6a1dd09e058bc4bfd995120e"
       },
       {
-        "date": "2025-12-11",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "opt: remove Hint about reveal Email adress",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/30baef2a5474aff8ace173ddabbb77b255b72b2d"
+        "title": "Fix EdgeOne static export configuration",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
       },
       {
-        "date": "2025-12-10",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "Remove console logs and add favicon",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9f7df5e165514e9873b898d62b866b5c7a4f74d1"
+        "title": "Fix EdgeOne output directory configuration",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a3391d13461b27b54ec293dd7256f9ec865d4b5d"
       },
       {
-        "date": "2025-12-06",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "feat: add debug logs for locale switching issue",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/525b3636482749c5cf6e68254909daf91e81f717"
+        "title": "chore: try to fix EO",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/529fe7be83578d8059afd66648160df1b78fb9f2"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "[opt]: 优化技术架构",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5998eb810e00313557481eb862400b37ca16d0bb"
+        "title": "chore add edge-function file",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8c560311a956dfa355a122efd236b002c415b99e"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/9547c69429e84d934b4c51d486021ba6a5994889"
+        "title": "[try fix]: EdgeOne 404",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/21b022a87580febeb38db5521dd4d5adad439176"
       },
       {
-        "date": "2025-11-13",
+        "date": "2026-02-15",
         "type": "提交",
-        "title": "[feat]: update ICP备案信息",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/31fad270094b3617a1d94375a1bb37cd42d2ad31"
+        "title": "Fix EdgeOne proxy configuration",
+        "summary": "由 ronchy-motherHome 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/d19cf7fc80a11f81c32c407f2bd28097c1505805"
       }
     ]
   }

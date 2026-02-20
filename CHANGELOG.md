@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 2026.02.20 Content
+
+- `content/projects.json` 已为中英文项目条目补充多外链展示，不再仅保留 GitHub 单链接。
+- 新增站点入口：
+  - `https://sicnuwiki.com`
+  - `https://gator.ronchy2000.top`
+  - `https://raspi.ronchy2000.top`
+  - `https://visitor-counter-cheater.vercel.app`
+  - `https://deepwiki.com/Ronchy2000/Multi-agent-RL`
+- 项目卡片会自动渲染这些链接按钮，便于访问仓库、文档站和在线演示。
+
 ### 2025.11.07 Improvements
 
 - Build output now targets evergreen browsers only via an explicit `browserslist` configuration in `package.json`,削减了多余 polyfill 和 legacy 转译。
