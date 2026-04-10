@@ -1,5 +1,7 @@
 # 维护手册（自用）
 
+如果希望用这个模板，可以直接：<https://github.com/Ronchy2000/Academic-Homepage-Template> 使用此模板即可。
+
 本项目基于 Next.js 16 + Tailwind CSS（App Router），采用「内容文件 + 页面壳层」模式。所有文案集中在 `content/`，页面只负责排版与组件组合。以下指南便于后续维护。
 
 ## 目录结构速览
