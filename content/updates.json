@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2026-04-10",
+        "type": "Commit",
+        "title": "docs: add template repo link",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/3fa5f085d4e7b3582a45a3498ecb128f4168729a"
+      },
+      {
         "date": "2026-02-20",
         "type": "Commit",
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
@@ -48,19 +55,19 @@
         "title": "chore: try to fix EO",
         "summary": "Authored by ronchy-motherHome",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/529fe7be83578d8059afd66648160df1b78fb9f2"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "Commit",
-        "title": "chore add edge-function file",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8c560311a956dfa355a122efd236b002c415b99e"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-04-10",
+        "type": "提交",
+        "title": "docs: add template repo link",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/3fa5f085d4e7b3582a45a3498ecb128f4168729a"
+      },
+      {
         "date": "2026-02-20",
         "type": "提交",
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
@@ -101,13 +108,6 @@
         "title": "chore: try to fix EO",
         "summary": "由 ronchy-motherHome 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/529fe7be83578d8059afd66648160df1b78fb9f2"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "提交",
-        "title": "chore add edge-function file",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8c560311a956dfa355a122efd236b002c415b99e"
       }
     ]
   }
