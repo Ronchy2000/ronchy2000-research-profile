@@ -104,3 +104,10 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
     - `NEXT_PUBLIC_CONTACT_EMAIL_B64`
     - `NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`（可选）
 3. 联系页在点击“Reveal email”后才会解码并显示邮箱，并在本地打开 `mailto:`。
+
+<div align="center">
+  <sub>感谢关注这个项目</sub><br />
+  <a href="https://hits.sh/github.com/Ronchy2000/ronchy2000-research-profile/">
+    <img alt="Visits" src="https://hits.sh/github.com/Ronchy2000/ronchy2000-research-profile.svg?style=flat-square&label=visits&color=0A7EA4" />
+  </a>
+</div>

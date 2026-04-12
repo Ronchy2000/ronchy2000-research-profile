@@ -101,3 +101,10 @@ It expects a repository secret `GH_PAT` to call GitHub APIs and push updates.
     - `NEXT_PUBLIC_CONTACT_EMAIL_B64`
     - (Optional) `NEXT_PUBLIC_CONTACT_MAILTO_SUBJECT`
 3. The contact page decodes and shows the email only after clicking “Reveal email”, and opens `mailto:` locally.
+
+<div align="center">
+  <sub>Thanks for visiting this project</sub><br />
+  <a href="https://hits.sh/github.com/Ronchy2000/ronchy2000-research-profile/">
+    <img alt="Visits" src="https://hits.sh/github.com/Ronchy2000/ronchy2000-research-profile.svg?style=flat-square&label=visits&color=0A7EA4" />
+  </a>
+</div>
