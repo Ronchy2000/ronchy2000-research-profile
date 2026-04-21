@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2026-04-20",
+        "type": "Commit",
+        "title": "chore: align node runtime to 24",
+        "summary": "Authored by ronchy",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/817afeb3240b1678d06224fdca02e2d2a349bc96"
+      },
+      {
         "date": "2026-04-12",
         "type": "Commit",
         "title": "feat: add visit count for repo",
@@ -48,19 +55,19 @@
         "title": "Fix EdgeOne static export configuration",
         "summary": "Authored by ronchy-motherHome",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "Commit",
-        "title": "Fix EdgeOne output directory configuration",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a3391d13461b27b54ec293dd7256f9ec865d4b5d"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-04-20",
+        "type": "提交",
+        "title": "chore: align node runtime to 24",
+        "summary": "由 ronchy 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/817afeb3240b1678d06224fdca02e2d2a349bc96"
+      },
+      {
         "date": "2026-04-12",
         "type": "提交",
         "title": "feat: add visit count for repo",
@@ -101,13 +108,6 @@
         "title": "Fix EdgeOne static export configuration",
         "summary": "由 ronchy-motherHome 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "提交",
-        "title": "Fix EdgeOne output directory configuration",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/a3391d13461b27b54ec293dd7256f9ec865d4b5d"
       }
     ]
   }
