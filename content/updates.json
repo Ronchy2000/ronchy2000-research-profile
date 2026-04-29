@@ -8,6 +8,27 @@
   "en": {
     "updates": [
       {
+        "date": "2026-04-29",
+        "type": "Commit",
+        "title": "fix: track package lock for ci",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
+      },
+      {
+        "date": "2026-04-29",
+        "type": "Commit",
+        "title": "feat: refine project ordering and highlights",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/bd563754708ea83395d1553ee03375336959a1e6"
+      },
+      {
+        "date": "2026-04-29",
+        "type": "Commit",
+        "title": "AI: AGNETS for codex",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e0b50531c9e288abf1c52dd8ee6af0c988ba4b31"
+      },
+      {
         "date": "2026-04-20",
         "type": "Commit",
         "title": "chore: align node runtime to 24",
@@ -34,32 +55,32 @@
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
         "summary": "Authored by ronchy-motherHome",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/459f0160a4c8dbbd007d14327a28523572415c90"
-      },
-      {
-        "date": "2026-02-20",
-        "type": "Commit",
-        "title": "feat: 站点链接直接接入项目数据层，让每个项目卡片支持“多个外链”而不只 GitHub",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ecd9998846d02e2d4d5e7ad634bf50189f0731d9"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "Commit",
-        "title": "chore: document EdgeOne trailing slash routing issue and remove unused postbuild",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/262aca6f97a37cfa6a1dd09e058bc4bfd995120e"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "Commit",
-        "title": "Fix EdgeOne static export configuration",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2026-04-29",
+        "type": "提交",
+        "title": "fix: track package lock for ci",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
+      },
+      {
+        "date": "2026-04-29",
+        "type": "提交",
+        "title": "feat: refine project ordering and highlights",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/bd563754708ea83395d1553ee03375336959a1e6"
+      },
+      {
+        "date": "2026-04-29",
+        "type": "提交",
+        "title": "AI: AGNETS for codex",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e0b50531c9e288abf1c52dd8ee6af0c988ba4b31"
+      },
       {
         "date": "2026-04-20",
         "type": "提交",
@@ -87,27 +108,6 @@
         "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
         "summary": "由 ronchy-motherHome 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/459f0160a4c8dbbd007d14327a28523572415c90"
-      },
-      {
-        "date": "2026-02-20",
-        "type": "提交",
-        "title": "feat: 站点链接直接接入项目数据层，让每个项目卡片支持“多个外链”而不只 GitHub",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/ecd9998846d02e2d4d5e7ad634bf50189f0731d9"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "提交",
-        "title": "chore: document EdgeOne trailing slash routing issue and remove unused postbuild",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/262aca6f97a37cfa6a1dd09e058bc4bfd995120e"
-      },
-      {
-        "date": "2026-02-15",
-        "type": "提交",
-        "title": "Fix EdgeOne static export configuration",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/8fb38afcb22c08b18568233e479ca23203fbd9d8"
       }
     ]
   }
