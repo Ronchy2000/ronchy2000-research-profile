@@ -1,4 +1,4 @@
-name: Refresh Recent Updates
+name: Refresh Content Data
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-recent-updates
+  group: refresh-content-data
   cancel-in-progress: false
 
 jobs:
@@ -26,10 +26,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
-        run: npm install --no-audit --progress=false
+        run: npm ci --no-audit --progress=false
 
       - name: Refresh recent updates data
         run: node scripts/update-recent-updates.mjs

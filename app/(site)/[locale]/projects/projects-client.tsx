@@ -8,26 +8,9 @@ import { Section } from "@/components/section";
 import { ArrowRightIcon } from "@/components/icons";
 import type { ProjectEntry, ProjectGroup, ProjectsPageCopy, UpdateEntry } from "@/lib/content-types";
 import type { Locale } from "@/lib/locale";
+import { decorateGroup, type DerivedProject, type ProjectGroupWithDerived } from "@/lib/project-utils";
 
 type ProjectLabelFilter = "all" | "ongoing" | "featured";
-
-type ProjectDerivedMeta = {
-  startYear: number | null;
-  endYear: number | null;
-  years: number[];
-  isOngoing: boolean;
-  isFeatured: boolean;
-  hasStars: boolean;
-  starCount: number | null;
-};
-
-type DerivedProject = ProjectEntry & {
-  derived: ProjectDerivedMeta;
-};
-
-type ProjectGroupWithDerived = Omit<ProjectGroup, "items"> & {
-  items: DerivedProject[];
-};
 
 type ProjectBadge = {
   label: string;
@@ -41,77 +24,7 @@ type ProjectsClientProps = {
   copy: ProjectsPageCopy[Locale];
 };
 
-const FEATURE_THRESHOLD = 15;
-const PRESENT_REGEX = /(present|至今)/i;
 const ALL_FILTER_VALUE = "all" as const;
-
-function buildYearRange(startYear: number | null, endYear: number | null, isOngoing: boolean, currentYear: number) {
-  if (!startYear && !endYear) return [];
-  const effectiveStart = startYear ?? endYear;
-  if (!effectiveStart) return [];
-
-  const resolvedEnd = isOngoing ? Math.max(currentYear, effectiveStart) : endYear ?? effectiveStart;
-  const years: number[] = [];
-  for (let year = effectiveStart; year <= resolvedEnd; year += 1) {
-    years.push(year);
-  }
-  return years;
-}
-
-function deriveProject(project: ProjectEntry): DerivedProject {
-  const yearMatches = project.period.match(/\d{4}/g)?.map(Number) ?? [];
-  const startYear = yearMatches[0] ?? null;
-  const endYear = yearMatches.length > 1 ? yearMatches[yearMatches.length - 1] : yearMatches[0] ?? null;
-  const isOngoing = PRESENT_REGEX.test(project.period);
-  const years = buildYearRange(startYear, endYear, isOngoing, new Date().getFullYear());
-  const rawStars = project.metrics?.stars ?? null;
-  const parsedStars = rawStars === null || rawStars === undefined ? null : Number(rawStars);
-  const hasStars = typeof parsedStars === "number" && !Number.isNaN(parsedStars);
-  const starCount = hasStars ? parsedStars : null;
-  const isFeatured = typeof starCount === "number" && starCount >= FEATURE_THRESHOLD;
-
-  return {
-    ...project,
-    derived: {
-      startYear,
-      endYear: endYear ?? startYear ?? null,
-      years,
-      isOngoing,
-      isFeatured,
-      hasStars,
-      starCount
-    }
-  };
-}
-
-function compareProjects(a: DerivedProject, b: DerivedProject) {
-  const endYearA = a.derived.endYear ?? a.derived.startYear ?? 0;
-  const endYearB = b.derived.endYear ?? b.derived.startYear ?? 0;
-  if (endYearA !== endYearB) {
-    return endYearB - endYearA;
-  }
-
-  if (a.derived.isOngoing !== b.derived.isOngoing) {
-    return a.derived.isOngoing ? -1 : 1;
-  }
-
-  if (a.derived.hasStars !== b.derived.hasStars) {
-    return a.derived.hasStars ? -1 : 1;
-  }
-
-  if (a.derived.hasStars && b.derived.hasStars && a.derived.starCount !== b.derived.starCount) {
-    return (b.derived.starCount ?? 0) - (a.derived.starCount ?? 0);
-  }
-
-  return a.name.localeCompare(b.name);
-}
-
-function decorateGroup(group: ProjectGroup): ProjectGroupWithDerived {
-  return {
-    ...group,
-    items: group.items.map(deriveProject).sort(compareProjects)
-  };
-}
 
 export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClientProps) {
   const [yearFilter, setYearFilter] = useState<string>(ALL_FILTER_VALUE);
@@ -249,4 +162,3 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
     </div>
   );
 }
-

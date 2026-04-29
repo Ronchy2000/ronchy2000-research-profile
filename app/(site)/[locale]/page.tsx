@@ -11,6 +11,7 @@ import {
   getUpdatesContent
 } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
+import { compareProjectsByStars, deriveProject } from "@/lib/project-utils";
 
 type PageProps = {
   params: { locale: string } | Promise<{ locale: string }>;
@@ -24,7 +25,11 @@ export default async function HomePage({ params }: PageProps) {
   }
 
   const profile = getProfileContent()[locale];
-  const highlightProjects = getProjectsContent()[locale].groups.flatMap((group) => group.items).slice(0, 4);
+  const highlightProjects = getProjectsContent()[locale].groups
+    .flatMap((group) => group.items)
+    .map((project, index) => deriveProject(project, index))
+    .sort(compareProjectsByStars)
+    .slice(0, 4);
   const publications = [...getPublicationsContent()[locale].entries]
     .sort((a, b) => Number(b.year) - Number(a.year))
     .slice(0, 2);

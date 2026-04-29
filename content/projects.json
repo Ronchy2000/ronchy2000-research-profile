@@ -139,23 +139,63 @@
         "kind": "open-source",
         "items": [
           {
-            "name": "Xidian LaTeX Template",
-            "summary": "macOS-optimized LaTeX template for Xidian University theses with font configuration and TeX Live 2025 setup guide.",
+            "name": "Epic Weekly Free Games Helper",
+            "summary": "GitHub Actions-based Epic weekly free-games claimer with GLM-assisted captcha solving and zero-server setup.",
+            "period": "2026 – Present",
+            "role": "Maintainer",
+            "tags": [
+              "Python",
+              "GitHub Actions",
+              "Automation"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/epic-freebies-helper"
+              }
+            ],
+            "metrics": {
+              "stars": 107
+            }
+          },
+          {
+            "name": "Macintosh EFI 2026-01",
+            "summary": "Hackintosh EFI maintenance record for a Comet Lake plus RX 6600 build, covering USB mapping, OpenCore updates, and OCLP patching.",
+            "period": "2026",
+            "role": "Maintainer",
+            "tags": [
+              "OpenCore",
+              "Hackintosh",
+              "EFI"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Macintosh-EFI-2026-01"
+              }
+            ],
+            "metrics": {
+              "stars": 7
+            }
+          },
+          {
+            "name": "Academic-LaTeX",
+            "summary": "Curated LaTeX template collection for journals, conferences, and theses, with release packaging for direct download.",
             "period": "2025 – Present",
             "role": "Author",
             "tags": [
               "LaTeX",
-              "macOS",
+              "Template",
               "Academic"
             ],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
+                "href": "https://github.com/Ronchy2000/Academic-LaTeX"
               }
             ],
             "metrics": {
-              "stars": 42
+              "stars": 1
             }
           },
           {
@@ -182,28 +222,49 @@
             }
           },
           {
-            "name": "Dynamic-Proxy-Pool",
-            "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
-            "period": "2025 – Present",
-            "role": "Maintainer",
+            "name": "Xidian LaTeX Template",
+            "summary": "macOS-optimized LaTeX template for Xidian University theses with font configuration and TeX Live 2025 setup guide.",
+            "period": "2025 – 2026",
+            "role": "Author",
             "tags": [
-              "Python",
-              "Automation"
+              "LaTeX",
+              "macOS",
+              "Academic"
             ],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
               }
             ],
             "metrics": {
-              "stars": 6
+              "stars": 42
+            }
+          },
+          {
+            "name": "Home Network Router Bridging Solution",
+            "summary": "Structured notes for main-router plus side-router bridging, OpenClash deployment, and household network troubleshooting.",
+            "period": "2025 – 2026",
+            "role": "Author",
+            "tags": [
+              "Networking",
+              "ImmortalWrt",
+              "OpenClash"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Home-Network-Router-Bridging-Solution"
+              }
+            ],
+            "metrics": {
+              "stars": 3
             }
           },
           {
             "name": "Raspi-ImmortalWrt",
             "summary": "Raspberry Pi routing guide focusing on latency and privacy.",
-            "period": "2025",
+            "period": "2025 – 2026",
             "role": "Author",
             "tags": [
               "Networking",
@@ -221,6 +282,45 @@
             ],
             "metrics": {
               "stars": 36
+            }
+          },
+          {
+            "name": "Academic Homepage Template",
+            "summary": "Bilingual Next.js homepage template with content-driven customization, detailed docs, and streamlined Vercel deployment.",
+            "period": "2025",
+            "role": "Author",
+            "tags": [
+              "Next.js",
+              "Template",
+              "Documentation"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Academic-Homepage-Template"
+              }
+            ],
+            "metrics": {
+              "stars": 1
+            }
+          },
+          {
+            "name": "Dynamic-Proxy-Pool",
+            "summary": "Auto-rotating proxy pool with health monitoring and anti-detection heuristics.",
+            "period": "2025",
+            "role": "Maintainer",
+            "tags": [
+              "Python",
+              "Automation"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+              }
+            ],
+            "metrics": {
+              "stars": 6
             }
           },
           {
@@ -268,7 +368,7 @@
           {
             "name": "wiki-SICNU",
             "summary": "Knowledge wiki and resource guide for SICNU students.",
-            "period": "2022",
+            "period": "2022 – Present",
             "role": "Contributor",
             "tags": [
               "Documentation",
@@ -405,23 +505,63 @@
         "kind": "open-source",
         "items": [
           {
-            "name": "西电 LaTeX 模板",
-            "summary": "为 macOS 环境优化的西电学位论文模板，涵盖字体配置与 TeX Live 2025 环境搭建全流程。",
+            "name": "Epic 周免游戏领取助手",
+            "summary": "基于 GitHub Actions 的 Epic 周免自动领取项目，接入 GLM 验证码处理能力，实现零服务器的长期运行。",
+            "period": "2026 – 至今",
+            "role": "维护者",
+            "tags": [
+              "Python",
+              "GitHub Actions",
+              "自动化"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/epic-freebies-helper"
+              }
+            ],
+            "metrics": {
+              "stars": 107
+            }
+          },
+          {
+            "name": "Macintosh EFI 2026-01",
+            "summary": "记录 Comet Lake 与 RX 6600 黑苹果 EFI 的接管、精简与升级过程，涵盖 USB 映射、OpenCore 与 OCLP 补丁收口。",
+            "period": "2026",
+            "role": "维护者",
+            "tags": [
+              "OpenCore",
+              "黑苹果",
+              "EFI"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Macintosh-EFI-2026-01"
+              }
+            ],
+            "metrics": {
+              "stars": 7
+            }
+          },
+          {
+            "name": "Academic-LaTeX 模板合集",
+            "summary": "整理期刊、会议与学位论文的常用 LaTeX 模板，并通过 Release 打包降低下载与复用门槛。",
             "period": "2025 – 至今",
             "role": "作者",
             "tags": [
               "LaTeX",
-              "macOS",
+              "模板",
               "学术"
             ],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
+                "href": "https://github.com/Ronchy2000/Academic-LaTeX"
               }
             ],
             "metrics": {
-              "stars": 42
+              "stars": 1
             }
           },
           {
@@ -448,28 +588,49 @@
             }
           },
           {
-            "name": "动态代理池",
-            "summary": "自动轮换代理节点并监测可用性，缓解爬虫请求的封禁风险。",
-            "period": "2025 – 至今",
-            "role": "维护者",
+            "name": "西电 LaTeX 模板",
+            "summary": "为 macOS 环境优化的西电学位论文模板，涵盖字体配置与 TeX Live 2025 环境搭建全流程。",
+            "period": "2025 – 2026",
+            "role": "作者",
             "tags": [
-              "Python",
-              "自动化"
+              "LaTeX",
+              "macOS",
+              "学术"
             ],
             "links": [
               {
                 "label": "GitHub",
-                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+                "href": "https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS"
               }
             ],
             "metrics": {
-              "stars": 6
+              "stars": 42
+            }
+          },
+          {
+            "name": "家庭网络路由桥接方案",
+            "summary": "系统整理主路由加旁路由桥接、OpenClash 配置与家庭网络故障排查流程，便于长期维护与复盘。",
+            "period": "2025 – 2026",
+            "role": "作者",
+            "tags": [
+              "网络",
+              "ImmortalWrt",
+              "OpenClash"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Home-Network-Router-Bridging-Solution"
+              }
+            ],
+            "metrics": {
+              "stars": 3
             }
           },
           {
             "name": "Raspi-ImmortalWrt 路由实践",
             "summary": "聚焦时延与隐私需求，整理树莓派刷入 ImmortalWrt 的软路由配置经验。",
-            "period": "2025",
+            "period": "2025 – 2026",
             "role": "作者",
             "tags": [
               "网络",
@@ -487,6 +648,45 @@
             ],
             "metrics": {
               "stars": 36
+            }
+          },
+          {
+            "name": "Academic Homepage Template",
+            "summary": "支持中英双语的 Next.js 学术主页模板，强调内容驱动配置、详细文档与 Vercel 快速部署。",
+            "period": "2025",
+            "role": "作者",
+            "tags": [
+              "Next.js",
+              "模板",
+              "文档"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Academic-Homepage-Template"
+              }
+            ],
+            "metrics": {
+              "stars": 1
+            }
+          },
+          {
+            "name": "动态代理池",
+            "summary": "自动轮换代理节点并监测可用性，缓解爬虫请求的封禁风险。",
+            "period": "2025",
+            "role": "维护者",
+            "tags": [
+              "Python",
+              "自动化"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Dynamic-Proxy-Pool"
+              }
+            ],
+            "metrics": {
+              "stars": 6
             }
           },
           {
@@ -534,7 +734,7 @@
           {
             "name": "wiki-SICNU 校园知识库",
             "summary": "面向四川师大在校生整理课程资料、办事流程与社群资源的协作式知识库。",
-            "period": "2022",
+            "period": "2022 – 至今",
             "role": "贡献者",
             "tags": [
               "文档",
