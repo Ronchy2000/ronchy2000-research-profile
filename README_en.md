@@ -93,6 +93,28 @@ It expects a repository secret `GH_PAT` to call GitHub APIs and push updates.
 3. Use the default Next.js build command (`npm run build`) and output directory (`.next`).
 4. Set up a custom domain if desired, then trigger a deploy.
 
+### SEO / Multi-domain Deployment Contract
+- **Google canonical domain**: `https://ronchylu.com`
+- **China-facing mirror**: `https://ronchy2000.top`
+- **Other duplicate deployments** (for example `cv.ronchy2000.top`): keep them reachable, but do not let them compete for indexing
+
+The project now uses two SEO env vars:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `SITE_CANONICAL_ORIGIN` | Canonical origin used by canonical tags, sitemap, and `hreflang` | `https://ronchylu.com` |
+| `SITE_INDEXABLE` | Whether the current deployment should be indexable; `0` / `false` / `no` / `off` emits `noindex,follow` | `1` |
+
+Recommended per platform:
+- **Cloudflare Pages (`ronchylu.com`)**: default values are already correct; if you prefer explicit config, set `SITE_CANONICAL_ORIGIN=https://ronchylu.com` and `SITE_INDEXABLE=1`
+- **EdgeOne Pages (`ronchy2000.top`)**: `edgeone.json` is pinned to mirror mode and builds with `SITE_CANONICAL_ORIGIN=https://ronchylu.com` plus `SITE_INDEXABLE=0`
+- **Vercel mirror (`cv.ronchy2000.top`)**: add `SITE_INDEXABLE=0` in Project Settings → Environment Variables; keep `SITE_CANONICAL_ORIGIN=https://ronchylu.com`
+
+This yields:
+- `.com` emits the canonical, `hreflang`, `robots.txt`, and `sitemap.xml` signals as the single Google-facing site
+- `.top` / `cv` remain accessible, but emit `noindex,follow` while pointing canonical back to `.com`
+- `robots.txt` always allows crawling; mirror deployments exit indexing via page-level `noindex`, not via `Disallow`
+
 ### Contact Email Anti-scraping (Zero Third-party)
 > The contact email is decoded locally in the browser only after user interaction (no third-party form service).
 

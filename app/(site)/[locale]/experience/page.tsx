@@ -1,13 +1,22 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Section } from "@/components/section";
 import { Timeline } from "@/components/timeline";
 import { getExperiencePageCopy, getTimelineContent } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
+import { buildLocaleMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string } | Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const locale = normalizeLocale(resolvedParams.locale);
+
+  return locale ? buildLocaleMetadata(locale, "/experience") : {};
+}
 
 export default async function ExperiencePage({ params }: PageProps) {
   const resolvedParams = await params;

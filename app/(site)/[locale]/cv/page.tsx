@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -6,10 +7,18 @@ import { Table } from "@/components/table";
 import { Timeline } from "@/components/timeline";
 import { getAwardsContent, getCVPageCopy, getProfileContent, getTimelineContent } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
+import { buildLocaleMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string } | Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const locale = normalizeLocale(resolvedParams.locale);
+
+  return locale ? buildLocaleMetadata(locale, "/cv") : {};
+}
 
 export default async function CVPage({ params }: PageProps) {
   const resolvedParams = await params;

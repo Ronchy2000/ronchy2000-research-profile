@@ -96,6 +96,28 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 3. 使用默认 Next.js 构建命令（`npm run build`）和输出目录（`.next`）。
 4. 如需自定义域名，配置后重新触发部署。
 
+### SEO / 多域名部署约定
+- **Google 主收录域名**：`https://ronchylu.com`
+- **国内镜像域名**：`https://ronchy2000.top`
+- **其他重复部署**（例如 `cv.ronchy2000.top`）：保留访问，但不要参与收录竞争
+
+项目内置两类 SEO 环境变量：
+
+| 变量 | 作用 | 默认值 |
+| --- | --- | --- |
+| `SITE_CANONICAL_ORIGIN` | canonical / sitemap / hreflang 的主域名 | `https://ronchylu.com` |
+| `SITE_INDEXABLE` | 是否允许当前部署参与收录；设为 `0`/`false`/`no`/`off` 会输出 `noindex,follow` | `1` |
+
+推荐按平台这样配置：
+- **Cloudflare Pages (`ronchylu.com`)**：可以直接使用默认值；如需显式设置，可填 `SITE_CANONICAL_ORIGIN=https://ronchylu.com`、`SITE_INDEXABLE=1`
+- **EdgeOne Pages (`ronchy2000.top`)**：仓库内 `edgeone.json` 已固定为镜像模式，构建时会使用 `SITE_CANONICAL_ORIGIN=https://ronchylu.com`、`SITE_INDEXABLE=0`
+- **Vercel 镜像 (`cv.ronchy2000.top`)**：在 Project Settings → Environment Variables 中添加 `SITE_INDEXABLE=0`；`SITE_CANONICAL_ORIGIN` 保持 `https://ronchylu.com`
+
+这套约定的结果是：
+- `.com` 版本输出 canonical、`hreflang`、`robots.txt`、`sitemap.xml`，作为唯一主收录站点
+- `.top` / `cv` 镜像继续可访问，但页面会输出 `noindex,follow`，同时 canonical 仍指向 `.com`
+- `robots.txt` 始终允许抓取；镜像站通过页面级 `noindex` 退出收录，而不是在 `robots.txt` 里屏蔽抓取
+
 ### 联系邮箱防抓取（零第三方）
 > 联系邮箱只会在用户交互后于浏览器本地解码，不依赖第三方表单服务。
 

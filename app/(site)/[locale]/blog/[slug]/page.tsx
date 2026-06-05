@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,7 @@ import { Section } from "@/components/section";
 import { Table } from "@/components/table";
 import { getAllBlogSlugs, getBlogPostWithFallback } from "@/lib/blog";
 import { LOCALES, normalizeLocale } from "@/lib/locale";
+import { buildLocaleMetadata } from "@/lib/seo";
 
 type PageParams = { locale: string; slug: string };
 
@@ -30,6 +32,13 @@ export async function generateStaticParams() {
     }
   }
   return params;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolved = await params;
+  const locale = normalizeLocale(resolved.locale);
+
+  return locale ? buildLocaleMetadata(locale, `/blog/${resolved.slug}`) : {};
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -81,4 +90,3 @@ export default async function BlogPostPage({ params }: PageProps) {
     </div>
   );
 }
-

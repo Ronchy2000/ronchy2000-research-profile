@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 2026.06.05 SEO
+
+- 新增 `lib/seo.ts`，统一管理 canonical 主域名、镜像站 `noindex` 开关、`hreflang` 与 sitemap URL 生成。
+- 新增 `app/robots.ts` 与 `app/sitemap.ts`：
+  - 主站构建输出 `robots.txt` + `sitemap.xml`
+  - 镜像构建仍允许抓取，但不再输出 sitemap
+- 所有 `/en/*`、`/zh/*` 页面现在都会输出指向 `https://ronchylu.com` 的 canonical / hreflang。
+- 所有静态 locale 跳转入口（如 `/research`、`/projects`、`/`）统一标记为 `noindex,follow`，避免重定向页参与收录。
+- `app/layout.tsx` 改为从 `SITE_CANONICAL_ORIGIN` 与 `SITE_INDEXABLE` 读取全站 SEO 配置；默认主站为 `https://ronchylu.com`。
+- `edgeone.json` 的构建命令改为镜像模式：继续静态导出到 `out/`，但默认 `SITE_INDEXABLE=0`，使 `ronchy2000.top` 保持可访问同时不与 `.com` 抢收录。
+- 补充 `.env.example`、`README.md`、`README_en.md` 与 `docs/maintenance-guide.md`，记录主站/镜像部署约定与所需环境变量。
+
 ### 2026.02.20 Content
 
 - `content/projects.json` 已为中英文项目条目补充多外链展示，不再仅保留 GitHub 单链接。

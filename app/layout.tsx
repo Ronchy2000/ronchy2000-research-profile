@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import { Providers } from "@/components/providers";
+import { getSiteRobotsMetadata, seoSiteConfig } from "@/lib/seo";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -11,9 +13,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(seoSiteConfig.canonicalOrigin),
   title: "Rongqi Lu | Research Profile",
   description:
     "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
+  robots: getSiteRobotsMetadata(),
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg"
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
     title: "Rongqi Lu | Research Profile",
     description:
       "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
-    url: "https://www.ronchy2000.top",
+    url: seoSiteConfig.canonicalOrigin,
     siteName: "Rongqi Lu Research Profile",
     locale: "en_US",
     type: "website"

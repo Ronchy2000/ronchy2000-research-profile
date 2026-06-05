@@ -107,10 +107,33 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 
 ## 自动化与部署
 
+### SEO 主站 / 镜像约定（当前正式方案）
+- **Google 主收录域名**：`https://ronchylu.com`
+- **国内访问镜像**：`https://ronchy2000.top`
+- **其他重复部署**（例如 `cv.ronchy2000.top`）：可访问，但不参与收录竞争
+- **原则**：
+  - canonical / sitemap / hreflang 一律以 `ronchylu.com` 为准
+  - 镜像站不做 `robots.txt` 屏蔽，而是输出 `noindex,follow`
+  - `/`、`/research`、`/projects` 这类 locale 跳转入口统一 `noindex,follow`
+
+### SEO 环境变量
+- `SITE_CANONICAL_ORIGIN`
+  - 用途：控制 canonical、`metadataBase`、Open Graph URL、`sitemap.xml` 和 `hreflang` 的主域名
+  - 默认值：`https://ronchylu.com`
+- `SITE_INDEXABLE`
+  - 用途：控制当前部署是否允许参与 Google 收录
+  - 兼容值：`0`、`false`、`no`、`off` 都表示镜像模式
+  - 镜像模式下：
+    - 页面输出 `noindex,follow`
+    - `robots.txt` 仍允许抓取
+    - `sitemap.xml` 返回空列表，不再给镜像域名喂 URL
+
 ### EdgeOne Pages 部署
-- **静态导出模式**：`next.config.mjs` 在 `EDGEONE=1` 环境变量下使用 `output: "export"` + `trailingSlash: true`，生成纯静态站点到 `out/` 目录。
+- **静态导出模式**：`next.config.mjs` 在 `EDGEONE=1` 或 `CF_PAGES=1` 环境变量下使用 `output: "export"` + `trailingSlash: true`，生成纯静态站点到 `out/` 目录。
 - **配置文件**：
-  - `edgeone.json` 配置 `outputDirectory: "out"` 和 `environmentVariables: { "EDGEONE": "1" }`
+  - `edgeone.json` 的 `buildCommand` 已固定为：
+    - `SITE_CANONICAL_ORIGIN=https://ronchylu.com SITE_INDEXABLE=0 EDGEONE=1 npm run build`
+  - 作用：保证 `ronchy2000.top` 始终作为镜像站部署，保持访问速度，但不会与 `.com` 抢 canonical / 收录
   - 包含 308 永久重定向规则：`/en` → `/en/`，`/zh` → `/zh/`
 - **路径 `/en` vs `/en/` 的坑**：（熬到我2026年2月16日2:19am...
   - 静态托管中 `/en/` 会查找 `en/index.html`（✅ 能找到）
@@ -126,7 +149,17 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 ### Vercel 部署
 - 推送到主分支后自动构建，无需额外配置。
 - Vercel 不会设置 `EDGEONE=1`，因此会使用标准的 Next.js SSG 模式（输出到 `.next/`），middleware（`proxy.ts`）会正常工作。
+- 若 Vercel 承担的是镜像域名（如 `cv.ronchy2000.top`），请在 Project Settings → Environment Variables 中显式设置：
+  - `SITE_INDEXABLE=0`
+  - `SITE_CANONICAL_ORIGIN=https://ronchylu.com`
 - 若需要 GitHub Actions 推送自动提交触发部署，请确保 Vercel 的部署策略允许「外部提交触发」或使用专用 deploy hook。
+
+### Cloudflare Pages 部署
+- 当前作为 **唯一主收录站** 使用：`https://ronchylu.com`
+- 本仓库默认 canonical 主域名就是 `https://ronchylu.com`，因此 Cloudflare Pages 在不额外设置 SEO 环境变量时，也会输出正确的 canonical / sitemap / hreflang。
+- 建议在 Cloudflare Pages 的构建设置中显式记录：
+  - `SITE_CANONICAL_ORIGIN=https://ronchylu.com`
+  - `SITE_INDEXABLE=1`
 
 ## 常见修改场景
 - **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Homepage 与 Publications 页将自动更新。
