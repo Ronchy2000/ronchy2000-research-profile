@@ -8,6 +8,20 @@
   "en": {
     "updates": [
       {
+        "date": "2026-06-05",
+        "type": "Commit",
+        "title": "feat: add canonical SEO deployment setup",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/db5c1d4d117d44709a3466b88c5a6151df3a7499"
+      },
+      {
+        "date": "2026-06-05",
+        "type": "Commit",
+        "title": "fix: enable Cloudflare Pages static export build",
+        "summary": "Authored by Ronchy2000",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
+      },
+      {
         "date": "2026-04-29",
         "type": "Commit",
         "title": "fix: track package lock for ci",
@@ -41,25 +55,25 @@
         "title": "feat: add visit count for repo",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1aed9258d296ddd9acb22c3ca4a19580bdb4104c"
-      },
-      {
-        "date": "2026-04-10",
-        "type": "Commit",
-        "title": "docs: add template repo link",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/3fa5f085d4e7b3582a45a3498ecb128f4168729a"
-      },
-      {
-        "date": "2026-02-20",
-        "type": "Commit",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "Authored by ronchy-motherHome",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/459f0160a4c8dbbd007d14327a28523572415c90"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2026-06-05",
+        "type": "提交",
+        "title": "feat: add canonical SEO deployment setup",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/db5c1d4d117d44709a3466b88c5a6151df3a7499"
+      },
+      {
+        "date": "2026-06-05",
+        "type": "提交",
+        "title": "fix: enable Cloudflare Pages static export build",
+        "summary": "由 Ronchy2000 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
+      },
       {
         "date": "2026-04-29",
         "type": "提交",
@@ -94,20 +108,6 @@
         "title": "feat: add visit count for repo",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1aed9258d296ddd9acb22c3ca4a19580bdb4104c"
-      },
-      {
-        "date": "2026-04-10",
-        "type": "提交",
-        "title": "docs: add template repo link",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/3fa5f085d4e7b3582a45a3498ecb128f4168729a"
-      },
-      {
-        "date": "2026-02-20",
-        "type": "提交",
-        "title": "Merge branch 'master' of github.com:Ronchy2000/ronchy2000-research-profile",
-        "summary": "由 ronchy-motherHome 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/459f0160a4c8dbbd007d14327a28523572415c90"
       }
     ]
   }
