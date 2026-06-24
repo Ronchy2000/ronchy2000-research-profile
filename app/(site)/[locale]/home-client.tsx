@@ -56,6 +56,7 @@ export function HomeClient({
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-600 dark:text-slate-300">
           <span className="font-semibold text-slate-900 dark:text-slate-50">{profile.name}</span>
           {profile.nativeName ? <span className="text-slate-500 dark:text-slate-400">{profile.nativeName}</span> : null}
+          {profile.pronouns ? <span className="text-slate-500 dark:text-slate-400">{profile.pronouns}</span> : null}
         </div>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.9fr)]">
           <div className="space-y-6">
@@ -175,4 +176,3 @@ export function HomeClient({
     </div>
   );
 }
-

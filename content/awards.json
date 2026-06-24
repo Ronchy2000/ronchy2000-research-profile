@@ -14,6 +14,18 @@
   "en": {
     "awards": [
       {
+        "title": "Outstanding Graduating Graduate Student Leader",
+        "issuer": "Xidian University",
+        "year": "2026",
+        "notes": ""
+      },
+      {
+        "title": "Outstanding Graduate Student / Graduate Student Leader",
+        "issuer": "Xidian University",
+        "year": "2025-2026",
+        "notes": ""
+      },
+      {
         "title": "Graduate Scholarship (First Prize)",
         "issuer": "Xidian University",
         "year": "2025",
@@ -38,6 +50,18 @@
   },
   "zh": {
     "awards": [
+      {
+        "title": "优秀毕业研究生干部",
+        "issuer": "西安电子科技大学",
+        "year": "2026",
+        "notes": ""
+      },
+      {
+        "title": "优秀研究生、研究生干部",
+        "issuer": "西安电子科技大学",
+        "year": "2025-2026",
+        "notes": ""
+      },
       {
         "title": "研究生一等奖学金",
         "issuer": "西安电子科技大学",

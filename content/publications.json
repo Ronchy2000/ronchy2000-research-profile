@@ -21,13 +21,12 @@
       {
         "id": "S.1",
         "type": "S",
-        "title": "Cooperative Exploration and Control in Pursuit–Evasion Games with Reinforcement Learning",
+        "title": "Cooperative Pursuit Strategies for Low-Altitude UAV Swarms under Field-of-View and Communication Constraints",
         "authors": "Rongqi Lu*, et al.",
-        "venue": "Manuscript in revision",
-        "year": "2025",
+        "venue": "IEEE/CAA Journal of Automatica Sinica",
+        "year": "2026",
         "tags": ["MARL", "Pursuit-Evasion"],
-        "links": [{ "label": "Draft", "href": "#" }],
-        "notes": "Student first author"
+        "links": [{ "label": "article", "href": "#" }]
       },
       {
         "id": "C.1",
@@ -37,7 +36,8 @@
         "venue": "ACM/IEEE DAC",
         "year": "2023",
         "tags": ["EDA", "Timing Analysis"],
-        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }]
+        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }],
+        "notes": "Student first author"
       },
       {
         "id": "P.1",
@@ -47,7 +47,7 @@
         "venue": "Filed Oct 14, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu, Jiamin Wang · CN 202511464448.3",
         "year": "2025",
         "tags": ["Patent", "Exploration"],
-        "links": [{ "label": "Patent", "href": "#" }]
+        "links": [{ "label": "Patent", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
       },
       {
         "id": "P.2",
@@ -57,7 +57,7 @@
         "venue": "Filed Sep 18, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu, Jiamin Wang · CN 202511338072.1",
         "year": "2025",
         "tags": ["Patent", "Cooperative Control"],
-        "links": [{ "label": "Patent", "href": "#" }]
+        "links": [{ "label": "Patent", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
       },
       {
         "id": "P.3",
@@ -67,7 +67,7 @@
         "venue": "Filed Jun 4, 2025 · Applicant: Xidian University · Inventors: Yuanshi Zheng, Rongqi Lu, Jian Liu · CN 202510738071.X",
         "year": "2025",
         "tags": ["Patent", "Cooperative Control"],
-        "links": [{ "label": "Patent", "href": "#" }]
+        "links": [{ "label": "Patent", "href": "http://epub.cnipa.gov.cn/Dxb/IndexQuery" }]
       }
     ]
   },
@@ -76,13 +76,12 @@
       {
         "id": "S.1",
         "type": "S",
-        "title": "基于强化学习的追逃博弈协同探索与控制",
+        "title": "视场与通信受限环境下低空无人集群协同追捕策略研究",
         "authors": "陆荣琦* 等",
-        "venue": "论文修改中",
-        "year": "2025",
+        "venue": "自动化学报",
+        "year": "2026",
         "tags": ["MARL", "追逃博弈"],
-        "links": [{ "label": "草稿", "href": "#" }],
-        "notes": "学生一作"
+        "links": [{ "label": "期刊论文", "href": "#" }]
       },
       {
         "id": "C.1",
@@ -91,8 +90,9 @@
         "authors": "邢炜, 邢正, 陆荣琦* 等",
         "venue": "ACM/IEEE DAC",
         "year": "2023",
-        "tags": ["EDA", "时序分析"],
-        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }]
+        "tags": ["EDA", "静态时序分析", "高斯过程回归"],
+        "links": [{ "label": "DOI", "href": "https://ieeexplore.ieee.org/abstract/document/10247914/" }],
+        "notes": "学生一作"
       },
       {
         "id": "P.1",
@@ -117,7 +117,7 @@
       {
         "id": "P.3",
         "type": "P",
-        "title": "一种不完全信息条件下基于内在激励机制的智能群体协同追捕方法与系统",
+        "title": "一种不完全信息条件下的智能群体协同追捕方法与系统",
         "authors": "郑元世, 陆荣琦*, 刘健",
         "venue": "申请日：2025年6月4日 · 申请人：西安电子科技大学 · 发明人：郑元世, 陆荣琦, 刘健 · 公开号：CN 202510738071.X",
         "year": "2025",

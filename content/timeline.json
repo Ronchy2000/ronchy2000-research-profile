@@ -16,7 +16,7 @@
     "education": [
       {
         "title": "M.Eng. Control Engineering · Xidian University",
-        "period": "2023 – 2026 (expected)",
+        "period": "2023.9 – 2026.6",
         "location": "Xi'an, China",
         "details": [
           "Research: multi-agent communication for aerial-ground fleets.",
@@ -25,7 +25,7 @@
       },
       {
         "title": "B.Eng. Electronic Information Engineering · Sichuan Normal University",
-        "period": "2019 – 2023",
+        "period": "2019.9 – 2023.6",
         "location": "Chengdu, China",
         "details": [
           "Undergraduate thesis focused on UAV SLAM navigation in warehouse environments.",
@@ -58,16 +58,16 @@
     "education": [
       {
         "title": "西安电子科技大学 · 控制工程硕士",
-        "period": "2023 – 2026（预计）",
+        "period": "2023.9 – 2026.6",
         "location": "中国·西安",
         "details": [
-          "研究方向：多智能体通信与空地异构编队控制。",
+          "研究方向：多智能体通信与空中异构编队控制。",
           "主修课程：矩阵理论、随机过程、最优控制等。"
         ]
       },
       {
         "title": "四川师范大学 · 电子信息工程学士",
-        "period": "2019 – 2023",
+        "period": "2019.9 – 2023.6",
         "location": "中国·成都",
         "details": [
           "本科毕业论文聚焦无人机在仓储环境中的 SLAM 导航问题。",
@@ -86,7 +86,7 @@
         ]
       },
       {
-        "title": "西安巨通磁性科技 · 嵌入式软件实习生",
+        "title": "西安聚通磁信息技术有限公司 · 嵌入式软件开发实习生",
         "period": "2023 暑期",
         "location": "中国·西安",
         "details": [

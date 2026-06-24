@@ -27,15 +27,15 @@
     ],
     "experiences": [
       {
-        "title": "Phase-Adaptive Communication and Exploration (PACE)",
-        "period": "2024 – Present",
+        "title": "Intelligent Swarm Pursuit-Evasion under Incomplete Information",
+        "period": "2024 – 2026",
         "role": "Core Researcher",
         "advisor": "Prof. Yuanshi Zheng",
-        "funding": "National Science Foundation of China",
-        "summary": "Designing adaptive MARL policies that swap between local exploration and burst communication.",
+        "funding": "National Natural Science Foundation of China",
+        "summary": "Studied MARL policies for aerial swarms that adapt between local exploration and burst communication under incomplete information.",
         "bullets": [
-          "Raised pursuit success to 91% in 4v1 pursuit-evasion benchmarks.",
-          "Drafted patents on heterogeneous UAV coordination and sparse reward exploration."
+          "Raised pursuit success to 91% in the NP-1E pursuit-evasion environment.",
+          "Filed multiple published invention patents on UAV coordination and sparse-reward exploration."
         ],
         "tags": ["MARL", "UAV"]
       },
@@ -63,7 +63,7 @@
           "Maintained <0.3 m drift over 10-minute flights.",
           "Automated waypoint navigation through cluttered aisles."
         ],
-        "tags": ["SLAM", "UAV"]
+        "tags": ["SLAM", "UAV", "Navigation"]
       }
     ]
   },
@@ -71,7 +71,7 @@
     "interests": [
       {
         "title": "多机器人协同控制",
-        "description": "聚焦空地异构编队，在受限通信条件下设计稳定可靠的分布式决策策略。"
+        "description": "聚焦空中异构编队，在受限通信条件下设计稳定可靠的分布式决策策略。"
       },
       {
         "title": "多智能体强化学习",
@@ -82,21 +82,21 @@
         "description": "将自然语言指令与机载感知深度结合，构建可解释的自主导航能力。"
       },
       {
-        "title": "嵌入式自主系统",
+        "title": "嵌入式无人系统",
         "description": "在边缘算力受限的硬件上部署轻量化感知决策链路，兼顾鲁棒性与实时性。"
       }
     ],
     "experiences": [
       {
         "title": "不完全信息条件下智能群体追逃博弈算法研究",
-        "period": "2024 – 至今",
+        "period": "2024 – 2026",
         "role": "核心研究成员",
         "advisor": "导师：郑元世教授",
         "funding": "资助：国家自然科学基金项目",
-        "summary": "围绕空地协同编队，探索在局部探索与突发通信之间自适应切换的多智能体强化学习策略。",
+        "summary": "围绕空中协同编队，探索在局部探索与突发通信之间自适应切换的多智能体强化学习策略。",
         "bullets": [
-          "在 Nv1 追逃基准中将捕获成功率提升至 91%。",
-          "撰写多项无人机协同与稀疏奖励探索相关专利草案。"
+          "在 NP-1E 追逃环境中将捕获成功率提升至 91%。",
+          "申请多项无人机协同与稀疏奖励探索相关发明专利并已公开。"
         ],
         "tags": ["MARL", "无人机", "追逃博弈"]
       },
@@ -104,7 +104,7 @@
         "title": "无人机-无人车协同导航系统",
         "period": "2025",
         "role": "研究工程师",
-        "advisor": "合作单位：美团机器人学院（深圳）",
+        "advisor": "合作单位：美团机器人研究院（深圳）",
         "funding": "合作类型：产学研联合项目",
         "summary": "搭建融合 RGB、LiDAR 与里程计的室内物流导航系统，提升调度弹性与执行精度。",
         "bullets": [
@@ -124,7 +124,7 @@
           "10 分钟自主飞行的累计漂移控制在 0.3 m 以内。",
           "实现复杂货架通道内的自主航点巡航与避障。"
         ],
-        "tags": ["SLAM", "无人机"]
+        "tags": ["SLAM", "四旋翼无人机","室内导航"]
       }
     ]
   }

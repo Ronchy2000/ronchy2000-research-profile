@@ -36,6 +36,7 @@ export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/p
         <div className="w-full space-y-2 text-center">
           <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-50">{profile.name}</h1>
           {profile.nativeName ? <p className="text-sm text-slate-600 dark:text-slate-300">{profile.nativeName}</p> : null}
+          {profile.pronouns ? <p className="text-xs text-slate-500 dark:text-slate-400">{profile.pronouns}</p> : null}
           {locale === "en" && profile.aka ? (
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Call me <span className="font-semibold text-slate-700 dark:text-slate-200">{profile.aka}</span>!
