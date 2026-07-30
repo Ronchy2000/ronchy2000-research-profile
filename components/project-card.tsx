@@ -17,9 +17,30 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
   const otherMetrics = project.metrics
     ? Object.entries(project.metrics).filter(([key]) => key !== "stars")
     : [];
+  const validLinks = (project.links ?? []).filter((link) => link.href && link.href !== "#");
+  const primaryLink = validLinks[0];
+  const primaryLinkIsExternal =
+    primaryLink?.href.startsWith("http") || primaryLink?.href.startsWith("//");
 
   return (
-    <article className="flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_20px_40px_-35px_rgba(15,23,42,0.45)] transition duration-150 hover:-translate-y-1 hover:shadow-[0_25px_45px_-35px_rgba(15,23,42,0.55)] dark:border-slate-800 dark:bg-slate-900/60">
+    <article
+      className={`relative flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_20px_40px_-35px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/60 ${
+        primaryLink
+          ? "group cursor-pointer transition duration-150 hover:-translate-y-1 hover:shadow-[0_25px_45px_-35px_rgba(15,23,42,0.55)]"
+          : ""
+      }`}
+    >
+      {primaryLink ? (
+        <a
+          href={primaryLink.href}
+          aria-label={`${project.name} — ${primaryLink.label}`}
+          {...(primaryLinkIsExternal && {
+            target: "_blank",
+            rel: "noopener noreferrer"
+          })}
+          className="absolute inset-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+        />
+      ) : null}
       <div className="space-y-2">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
           {project.period}
@@ -55,8 +76,8 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
             </div>
           ) : null}
         </div>
-        <div className="flex flex-wrap gap-2">
-          {(project.links ?? [{ label: "Repository", href: "#" }]).map((link) => {
+        <div className="relative z-10 flex flex-wrap gap-2">
+          {validLinks.map((link) => {
             // 检测是否为外部链接
             const isExternal = link.href.startsWith("http") || link.href.startsWith("//");
             

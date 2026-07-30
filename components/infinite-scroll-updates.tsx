@@ -33,6 +33,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
   const previousSidebarStateRef = useRef<boolean | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const isTransitioningRef = useRef(false);
+  const didDragRef = useRef(false);
 
   const [isUserScrolling, setIsUserScrolling] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -429,6 +430,9 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
       e.preventDefault();
       stopScrollAnimation();
       const x = e.pageX;
+      if (Math.abs(x - dragStart.x) > 5) {
+        didDragRef.current = true;
+      }
       const walk = (dragStart.x - x) * 1.5;
       scrollContainer.scrollLeft = dragStart.scrollLeft + walk;
       updateIndices(scrollContainer.scrollLeft);
@@ -456,6 +460,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
     
     e.preventDefault();
     stopScrollAnimation();
+    didDragRef.current = false;
     
     setIsDragging(true);
     setDragStart({
@@ -464,11 +469,13 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
     });
   }, [stopScrollAnimation]);
 
-  const handleMouseUp = useCallback(() => {
-    if (isDragging) {
-      setIsDragging(false);
+  const handleClickCapture = useCallback((e: React.MouseEvent) => {
+    if (didDragRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      didDragRef.current = false;
     }
-  }, [isDragging]);
+  }, []);
 
   const handleMouseLeave = useCallback(() => {
     // 不在这里设置 isDragging 为 false，让全局监听器处理
@@ -494,6 +501,7 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
         className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
         onMouseLeave={handleMouseLeave}
         onMouseDown={handleMouseDown}
+        onClickCapture={handleClickCapture}
         style={{
           WebkitOverflowScrolling: 'touch',
           scrollbarWidth: 'none',
@@ -504,9 +512,13 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
         }}
       >
         {trackUpdates.map((update, index) => (
-          <article
+          <a
             key={`${update.title}-${index}`}
-            className="flex min-w-[260px] flex-shrink-0 flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.3)] transition-[box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.4)] dark:border-slate-800 dark:bg-slate-900/70"
+            href={update.link}
+            draggable={false}
+            className={`group flex min-w-[260px] flex-shrink-0 flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.3)] transition-[box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:border-slate-800 dark:bg-slate-900/70 ${
+              isDragging ? "cursor-grabbing" : "cursor-pointer"
+            }`}
             style={{
               ...itemDimension,
               transition: CARD_TRANSITION
@@ -519,11 +531,11 @@ export function InfiniteScrollUpdates({ updates }: InfiniteScrollUpdatesProps) {
               <h3 className="text-base font-semibold leading-snug text-slate-900 dark:text-slate-50">{update.title}</h3>
               <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{update.summary}</p>
             </div>
-            <a href={update.link} className="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-foreground transition-colors">
+            <span className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-colors group-hover:text-brand-foreground">
               View details
               <ArrowRightIcon aria-hidden="true" className="h-4 w-4" />
-            </a>
-          </article>
+            </span>
+          </a>
         ))}
       </div>
 
