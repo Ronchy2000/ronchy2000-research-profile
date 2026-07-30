@@ -9,9 +9,9 @@
 ### 特性亮点
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - 内容驱动：结构化数据在 `content/*.json`，页面文案在 `content/pages/*.json`，博客在 `content/blog/{en,zh}/*.{md,mdx}`
-- 支持明暗主题、响应式导航、打印友好的简历页面
+- 支持明暗主题、响应式导航、长页面章节索引与 PDF 简历下载
 - 博客支持 Markdown/MDX + 数学公式渲染（KaTeX）
-- 可选 GitHub Actions 自动化：主页更新与 GitHub Star 同步
+- 可选 GitHub Actions 自动化：项目动态与 GitHub Stars 同步
 
 ### 快速开始
 ```bash
@@ -24,6 +24,7 @@ npm run dev
 ```bash
 npm run lint
 npm run build
+npm run test:stars
 npm run start
 ```
 
@@ -39,13 +40,13 @@ npm run start
 | 文件/目录 | 主要修改内容 |
 | --- | --- |
 | `content/profile.json` | 姓名/标题/单位/地点/关键词/社交链接，以及 `avatar` 与 `cvLink`。`en.aka` 会在英文页头像下显示 `Call me ...!`（桌面端侧栏）。 |
-| `content/pages/*.json` | 页面文案（Home/Research/Publications/Projects/Experience/CV/Blog/Contact）。 |
+| `content/pages/*.json` | 页面文案（Home/Research/Projects/About/Blog/Contact，以及论文目录文案）。 |
 | `content/research.json` | 研究兴趣与研究经历时间线。 |
 | `content/publications.json` | 论文与专利（支持按类型/年份筛选）。 |
 | `content/projects.json` | 项目分组与条目，GitHub Stars 存在 `metrics.stars`。 |
-| `content/timeline.json` | 教育与工作时间线（Experience/CV）。 |
-| `content/awards.json` | 荣誉与奖项（Home/CV）。 |
-| `content/updates.json` | 首页“Recent Updates”动态（通常由自动化覆盖）。 |
+| `content/timeline.json` | About 页的教育与行业经历时间线。 |
+| `content/awards.json` | About 页的荣誉与奖项。 |
+| `content/updates.json` | Projects 页的近期项目动态（通常由自动化覆盖）。 |
 | `content/blog/{en,zh}/*.{md,mdx}` | 博客文章（文件名即 slug）。 |
 
 读取逻辑在 `lib/content.ts`（JSON）与 `lib/blog.ts`（博客解析）。
@@ -89,6 +90,7 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 - 同步 `content/projects.json` 中的 GitHub `metrics.stars`
 
 该流程需要仓库密钥 `GH_PAT`，用于调用 GitHub API 并推送更新。
+同步脚本会按仓库去重请求并同时更新中英文项目；可用 `npm run test:stars` 做离线回归。
 
 ### 部署到 Vercel
 1. 将仓库推送到 GitHub。

@@ -10,9 +10,8 @@ import homePageJson from "@/content/pages/home.json";
 import researchPageJson from "@/content/pages/research.json";
 import projectsPageJson from "@/content/pages/projects.json";
 import publicationsPageJson from "@/content/pages/publications.json";
-import cvPageJson from "@/content/pages/cv.json";
+import aboutPageJson from "@/content/pages/about.json";
 import contactPageJson from "@/content/pages/contact.json";
-import experiencePageJson from "@/content/pages/experience.json";
 
 import type {
   ProfileContent,
@@ -27,9 +26,8 @@ import type {
   ResearchPageCopy,
   ProjectsPageCopy,
   PublicationsPageCopy,
-  CVPageCopy,
-  ContactPageCopy,
-  ExperiencePageCopy
+  AboutPageCopy,
+  ContactPageCopy
 } from "./content-types";
 
 /**
@@ -97,17 +95,12 @@ export function getPublicationsPageCopy(): PublicationsPageCopy {
   return { en, zh };
 }
 
-export function getCVPageCopy(): CVPageCopy {
-  const { en, zh } = cvPageJson as unknown as CVPageCopy;
+export function getAboutPageCopy(): AboutPageCopy {
+  const { en, zh } = aboutPageJson as unknown as AboutPageCopy;
   return { en, zh };
 }
 
 export function getContactPageCopy(): ContactPageCopy {
   const { en, zh } = contactPageJson as unknown as ContactPageCopy;
-  return { en, zh };
-}
-
-export function getExperiencePageCopy(): ExperiencePageCopy {
-  const { en, zh } = experiencePageJson as unknown as ExperiencePageCopy;
   return { en, zh };
 }

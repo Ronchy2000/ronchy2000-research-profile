@@ -11,6 +11,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .dark {
   color-scheme: dark;
 }
@@ -101,6 +105,10 @@ a:focus-visible {
 
 /* Reduced motion support - 尊重用户的无障碍设置 */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .scroll-smooth {
     scroll-behavior: auto;
   }

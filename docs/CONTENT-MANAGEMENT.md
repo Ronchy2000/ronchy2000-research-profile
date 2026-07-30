@@ -13,7 +13,7 @@ Each `content/*.json` file contains a `_meta` section describing the current sch
 - Projects: `content/projects.json`
 - Education/industry timeline: `content/timeline.json`
 - Awards: `content/awards.json`
-- Homepage recent updates: `content/updates.json` (typically automated)
+- Recent project activity: `content/updates.json` (typically automated)
 - Blog posts: `content/blog/{en,zh}/*.{md,mdx}`
 
 ## Profile (`content/profile.json`)
@@ -64,16 +64,19 @@ A project item typically contains:
 ### GitHub Stars Automation
 
 `scripts/update-project-stars.mjs` scans each project item for a GitHub link and writes `metrics.stars`.
+Repositories shared by the English and Chinese datasets are fetched once and applied to both locales. If every API request fails, the script exits with an error and leaves existing values untouched.
 
 The scheduled workflow can run this daily:
 
 - Workflow file: `.github/workflows/update-content.yml`
 - Schedule: `30 23 * * *` (23:30 UTC)
 - Required secret: `GH_PAT` (used for checkout, GitHub API calls, and pushing updates)
+- Offline regression check: `npm run test:stars`
 
 ## Publications (`content/publications.json`)
 
 Publications live in `entries`.
+They are rendered as the final catalogue on the consolidated Research page.
 
 Key fields:
 
@@ -89,7 +92,7 @@ Key fields:
 
 ## Timeline (`content/timeline.json`)
 
-Used for Experience/CV pages.
+Used for the consolidated About page.
 
 - `education`: Array of timeline entries
 - `experience`: Array of timeline entries
@@ -108,11 +111,12 @@ Each item has:
 - `title`, `issuer`, `year`
 - Optional: `notes`
 
-## Recent Updates (`content/updates.json`)
+## Recent Project Activity (`content/updates.json`)
 
 This feed is designed to be automated.
 
 - `scripts/update-recent-updates.mjs` overwrites `en.updates` and `zh.updates` with recent commits.
+- The resulting feed is shown on the Projects page, while the homepage stays curated and compact.
 - If you want manual curation, disable the workflow or adjust the script to merge your own entries.
 
 ## Blog Posts (`content/blog/{en,zh}`)

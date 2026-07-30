@@ -6,5 +6,5 @@ import { buildNoIndexMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildNoIndexMetadata();
 
 export default function LegacyCvRedirectPage() {
-  return <LocaleRedirect pathAfterLocale="/cv" title="Redirecting to CV..." />;
+  return <LocaleRedirect pathAfterLocale="/about" title="Redirecting to profile..." />;
 }

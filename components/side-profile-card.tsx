@@ -20,6 +20,7 @@ type SideProfileCardProps = {
  */
 export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/profile.jpg", contactHref, contactLabel }: SideProfileCardProps) {
   const imageSrc = profile.avatar ?? avatarSrc;
+  const cvLabel = locale === "zh" ? "下载简历" : "Download CV";
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col gap-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_30px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70 lg:flex print:hidden">
       <div className="flex flex-col gap-4">
@@ -48,6 +49,14 @@ export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/p
         <p className="font-medium text-slate-700 dark:text-slate-200">{profile.affiliation}</p>
         <p className="text-slate-600 dark:text-slate-300">{profile.title}</p>
         <p className="text-slate-600 dark:text-slate-300">{profile.location}</p>
+        <a
+          href={profile.cvLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex w-full items-center justify-center rounded-full bg-slate-900 px-3 py-2 text-sm font-medium text-white hover:bg-slate-700 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900"
+        >
+          {cvLabel}
+        </a>
         {contactHref ? (
           <Link
             href={contactHref as any}

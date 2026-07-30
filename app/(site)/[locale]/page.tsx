@@ -4,13 +4,11 @@ import { notFound } from "next/navigation";
 import { HomeClient } from "./home-client";
 
 import {
-  getAwardsContent,
   getHomePageCopy,
   getProfileContent,
   getProjectsContent,
-  getPublicationsContent,
-  getUpdatesContent
 } from "@/lib/content";
+import { getBlogPostMetas } from "@/lib/blog";
 import { normalizeLocale } from "@/lib/locale";
 import { compareProjectsByStars, deriveProject } from "@/lib/project-utils";
 import { buildLocaleMetadata } from "@/lib/seo";
@@ -38,12 +36,8 @@ export default async function HomePage({ params }: PageProps) {
     .flatMap((group) => group.items)
     .map((project, index) => deriveProject(project, index))
     .sort(compareProjectsByStars)
-    .slice(0, 4);
-  const publications = [...getPublicationsContent()[locale].entries]
-    .sort((a, b) => Number(b.year) - Number(a.year))
-    .slice(0, 2);
-  const updates = getUpdatesContent()[locale].updates.slice(0, 7);
-  const awards = getAwardsContent()[locale].awards.slice(0, 6);
+    .slice(0, 3);
+  const posts = (await getBlogPostMetas(locale)).slice(0, 2);
   const copy = getHomePageCopy()[locale];
 
   return (
@@ -51,9 +45,7 @@ export default async function HomePage({ params }: PageProps) {
       locale={locale}
       profile={profile}
       highlightProjects={highlightProjects}
-      publications={publications}
-      updates={updates}
-      awards={awards}
+      posts={posts}
       copy={copy}
     />
   );

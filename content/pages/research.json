@@ -9,7 +9,15 @@
     "interestsEyebrow": "Focus Areas",
     "experienceTitle": "Research Experience",
     "experienceEyebrow": "Experience",
-    "collaboration": "Interested in collaboration? Feel free to reach out via the Contact page."
+    "collaboration": "Interested in collaboration? Feel free to reach out and share the problem you are working on.",
+    "collaborationAction": "Contact me",
+    "outline": {
+      "label": "On this page",
+      "overview": "Overview",
+      "interests": "Focus Areas",
+      "experience": "Research Experience",
+      "publications": "Publications & Patents"
+    }
   },
   "zh": {
     "heroTitle": "科研概览",
@@ -18,7 +26,14 @@
     "interestsEyebrow": "关注方向",
     "experienceTitle": "科研经历",
     "experienceEyebrow": "经历",
-    "collaboration": "欢迎通过联系页面与我交流合作设想。"
+    "collaboration": "如果你也在关注相关问题，欢迎分享研究设想与合作方向。",
+    "collaborationAction": "联系我",
+    "outline": {
+      "label": "本页概览",
+      "overview": "研究概述",
+      "interests": "关注方向",
+      "experience": "科研经历",
+      "publications": "论文与专利"
+    }
   }
 }
-

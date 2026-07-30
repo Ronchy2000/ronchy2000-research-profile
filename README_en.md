@@ -6,9 +6,9 @@ Most routine updates (profile, publications, projects, blog posts) live in `cont
 ### Highlights
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - Content-driven: structured data in `content/*.json`, page copy in `content/pages/*.json`, and posts in `content/blog/{en,zh}/*.{md,mdx}`
-- Light/dark theme, responsive navigation, print-friendly CV
+- Light/dark theme, responsive navigation, long-page outlines, and a downloadable PDF CV
 - Blog supports Markdown/MDX + math rendering (KaTeX)
-- Optional GitHub Actions automation for homepage updates and GitHub star sync
+- Optional GitHub Actions automation for project activity and GitHub star sync
 
 ### Getting Started
 ```bash
@@ -21,6 +21,7 @@ Useful commands:
 ```bash
 npm run lint
 npm run build
+npm run test:stars
 npm run start
 ```
 
@@ -36,13 +37,13 @@ Requests to `/` (and legacy paths like `/research`) are redirected to `/{locale}
 | File/Folder | What to edit |
 | --- | --- |
 | `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` shows `Call me ...!` under the avatar on English pages (desktop sidebar). |
-| `content/pages/*.json` | Page copy (Home/Research/Publications/Projects/Experience/CV/Blog/Contact). |
+| `content/pages/*.json` | Page copy (Home/Research/Projects/About/Blog/Contact, plus publication catalogue labels). |
 | `content/research.json` | Research interests + research experience timeline. |
 | `content/publications.json` | Publications & patents (supports type/year filters). |
 | `content/projects.json` | Project groups + items. GitHub stars are stored in `metrics.stars`. |
-| `content/timeline.json` | Education + industry timeline (Experience/CV). |
-| `content/awards.json` | Honors & awards (Home/CV). |
-| `content/updates.json` | Homepage "Recent Updates" feed (typically overwritten by automation). |
+| `content/timeline.json` | Education + industry timeline for the About page. |
+| `content/awards.json` | Honors & awards for the About page. |
+| `content/updates.json` | Recent project activity shown on Projects (typically overwritten by automation). |
 | `content/blog/{en,zh}/*.{md,mdx}` | Blog posts (filename = slug). |
 
 Accessors live in `lib/content.ts` (JSON) and `lib/blog.ts` (blog parsing).
@@ -86,6 +87,7 @@ The scheduled workflow `.github/workflows/update-content.yml` refreshes:
 - `content/projects.json` GitHub `metrics.stars`
 
 It expects a repository secret `GH_PAT` to call GitHub APIs and push updates.
+The sync deduplicates repositories across locales; run `npm run test:stars` for an offline regression check.
 
 ### Deploying to Vercel
 1. Push the repository to GitHub.

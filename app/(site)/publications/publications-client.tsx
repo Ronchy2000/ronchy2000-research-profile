@@ -17,9 +17,10 @@ type PublicationsClientProps = {
   entries: PublicationEntry[];
   locale: Locale;
   copy: PublicationsPageCopy[Locale];
+  sectionId?: string;
 };
 
-export function PublicationsClient({ entries, locale, copy }: PublicationsClientProps) {
+export function PublicationsClient({ entries, locale, copy, sectionId }: PublicationsClientProps) {
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
   const [yearFilter, setYearFilter] = useState<string>("All");
 
@@ -46,6 +47,7 @@ export function PublicationsClient({ entries, locale, copy }: PublicationsClient
   return (
     <div className="space-y-12">
       <Section
+        id={sectionId}
         title={copy.section.title}
         description={copy.section.description}
         eyebrow={copy.section.eyebrow}

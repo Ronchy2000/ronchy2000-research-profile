@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "description": "Copy and labels for the consolidated About page."
+  },
+  "en": {
+    "intro": {
+      "title": "About & Experience",
+      "description": "A focused view of my academic training, industry experience, honors, and technical background. The downloadable CV remains the formal reference.",
+      "eyebrow": "Profile",
+      "download": "Download CV",
+      "contactAction": "Contact me"
+    },
+    "education": { "title": "Academic Training", "eyebrow": "Education" },
+    "experience": { "title": "Industry Experience", "eyebrow": "Experience" },
+    "honors": {
+      "title": "Selected Honors",
+      "eyebrow": "Recognition",
+      "headers": ["Year", "Award", "Issuer"]
+    },
+    "skills": {
+      "title": "Skills & Coursework",
+      "eyebrow": "Capabilities",
+      "headers": ["Category", "Items"],
+      "rows": [
+        ["Programming", "Python, C/C++, MATLAB"],
+        ["Frameworks", "PyTorch, ROS, OpenCV"],
+        ["Courses", "Optimal Control, Multi-agent Systems, Embedded Systems"]
+      ]
+    },
+    "outline": {
+      "label": "On this page",
+      "overview": "Profile",
+      "education": "Education",
+      "experience": "Experience",
+      "honors": "Honors",
+      "skills": "Skills"
+    }
+  },
+  "zh": {
+    "intro": {
+      "title": "关于与履历",
+      "description": "集中呈现教育背景、行业经历、荣誉奖励与技术能力；可下载的 PDF 简历继续作为正式版本。",
+      "eyebrow": "个人履历",
+      "download": "下载简历",
+      "contactAction": "联系我"
+    },
+    "education": { "title": "教育背景", "eyebrow": "教育" },
+    "experience": { "title": "行业经历", "eyebrow": "经历" },
+    "honors": {
+      "title": "荣誉奖励",
+      "eyebrow": "荣誉",
+      "headers": ["年份", "奖项", "颁发机构"]
+    },
+    "skills": {
+      "title": "技能与课程",
+      "eyebrow": "能力",
+      "headers": ["类别", "内容"],
+      "rows": [
+        ["编程", "Python、C/C++、MATLAB"],
+        ["框架", "PyTorch、ROS、OpenCV"],
+        ["课程", "最优控制、多智能体系统、嵌入式系统"]
+      ]
+    },
+    "outline": {
+      "label": "本页概览",
+      "overview": "个人概述",
+      "education": "教育背景",
+      "experience": "行业经历",
+      "honors": "荣誉奖励",
+      "skills": "技能课程"
+    }
+  }
+}

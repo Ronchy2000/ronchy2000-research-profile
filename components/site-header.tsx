@@ -11,6 +11,7 @@ type Locale = "en" | "zh";
 
 type SiteHeaderProps = {
   navItems: NavItem[];
+  contactItem: NavItem;
   profileName?: string;
   currentLocale?: Locale;
 };
@@ -25,12 +26,12 @@ function stripLocalePrefix(pathname: string) {
  * Global horizontal navigation bar with language toggle and theme switcher.
  * Sticks to the top across desktop and mobile.
  */
-export function SiteHeader({ navItems, profileName, currentLocale = "en" }: SiteHeaderProps) {
+export function SiteHeader({ navItems, contactItem, profileName, currentLocale = "en" }: SiteHeaderProps) {
   const pathname = usePathname();
   const router = useRouter();
   const homeHref = navItems[0]?.href ?? "/";
 
-  const renderLink = (item: NavItem, variant: "desktop" | "mobile") => {
+  const renderLink = (item: NavItem, variant: "desktop" | "mobile" | "contact") => {
     const normalizedPathname = (pathname ?? "/").replace(/\/$/, "") || "/";
     const normalizedHref = String(item.href).replace(/\/$/, "") || "/";
     const isRootLike = normalizedHref === "/" || /^\/(en|zh)$/.test(normalizedHref);
@@ -40,22 +41,29 @@ export function SiteHeader({ navItems, profileName, currentLocale = "en" }: Site
     const baseClasses =
       variant === "desktop"
         ? "rounded-full px-4 py-2 text-sm font-medium transition-colors"
-        : "whitespace-nowrap rounded-full px-3 py-1 text-sm font-medium transition-colors";
+        : variant === "contact"
+          ? "whitespace-nowrap rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-foreground hover:text-white"
+          : "whitespace-nowrap rounded-full px-3 py-1 text-sm font-medium transition-colors";
 
     const activeClasses =
-      variant === "desktop"
-        ? "bg-slate-900 text-white shadow-sm hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900"
-        : "bg-slate-900 text-white hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900";
+      variant === "contact"
+        ? ""
+        : variant === "desktop"
+          ? "bg-slate-900 text-white shadow-sm hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900"
+          : "bg-slate-900 text-white hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900";
 
     const inactiveClasses =
-      variant === "desktop"
-        ? "text-slate-600/80 hover:bg-slate-200/80 hover:text-slate-900 dark:text-slate-200/80 dark:hover:bg-white/10 dark:hover:text-white"
-        : "text-slate-600/80 hover:bg-slate-200/80 dark:text-slate-200/80 dark:hover:bg-white/10";
+      variant === "contact"
+        ? ""
+        : variant === "desktop"
+          ? "text-slate-600/80 hover:bg-slate-200/80 hover:text-slate-900 dark:text-slate-200/80 dark:hover:bg-white/10 dark:hover:text-white"
+          : "text-slate-600/80 hover:bg-slate-200/80 dark:text-slate-200/80 dark:hover:bg-white/10";
 
     return (
       <Link
         key={item.href}
         href={item.href as any}
+        aria-current={active ? "page" : undefined}
         className={`${baseClasses} ${active ? activeClasses : inactiveClasses}`}
       >
         {item.label}
@@ -74,11 +82,12 @@ export function SiteHeader({ navItems, profileName, currentLocale = "en" }: Site
           >
             <span className="whitespace-nowrap">{profileName ?? "Rongqi Lu"}</span>
           </Link>
-          <nav className="hidden items-center gap-3 md:flex">
+          <nav className="hidden items-center gap-2 lg:flex">
             {navItems.map((item) => renderLink(item, "desktop"))}
           </nav>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="hidden lg:block">{renderLink(contactItem, "contact")}</div>
           <div className="flex items-center gap-1 rounded-full border border-slate-300 bg-white/70 p-1 text-xs font-semibold text-slate-600/80 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-200/80">
             {(
               [
@@ -114,8 +123,9 @@ export function SiteHeader({ navItems, profileName, currentLocale = "en" }: Site
           <ThemeToggle variant="subtle" />
         </div>
       </div>
-      <nav className="flex items-center gap-2 overflow-x-auto border-t border-slate-200 px-4 py-2 scrollbar-hide md:hidden dark:border-slate-800">
+      <nav className="flex items-center gap-2 overflow-x-auto border-t border-slate-200 px-4 py-2 scrollbar-hide lg:hidden dark:border-slate-800">
         {navItems.map((item) => renderLink(item, "mobile"))}
+        {renderLink(contactItem, "contact")}
       </nav>
     </header>
   );

@@ -27,6 +27,12 @@
       "academic": "Academic",
       "open-source": "Open Source",
       "default": "Projects"
+    },
+    "outline": {
+      "label": "On this page",
+      "overview": "Overview",
+      "catalogue": "Project Catalogue",
+      "updates": "Recent Activity"
     }
   },
   "zh": {
@@ -54,7 +60,12 @@
       "academic": "学术项目",
       "open-source": "开源项目",
       "default": "项目"
+    },
+    "outline": {
+      "label": "本页概览",
+      "overview": "项目概述",
+      "catalogue": "项目目录",
+      "updates": "近期动态"
     }
   }
 }
-

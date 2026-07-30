@@ -6,7 +6,7 @@
     "heroIntro": "I am Rongqi Lu, an M.Eng. graduate in Control Engineering from Xidian University. My work focuses on multi-robot coordination and multi-agent reinforcement learning, helping agents communicate efficiently and explore robustly in complex environments. Beyond research, I practice AI-assisted software development and personal infrastructure engineering, from coding agents and model-service orchestration to self-hosted systems, while maintaining an engineering interest in edge devices and index-based markets.",
     "buttons": {
       "cv": "View CV",
-      "publications": "View Publications",
+      "research": "Explore Research",
       "projects": "Explore Projects"
     },
     "highlights": {
@@ -18,17 +18,38 @@
       "locationLabel": "Based in"
     },
     "sections": {
-      "updates": { "title": "Recent Updates", "eyebrow": "Activity" },
+      "explore": {
+        "title": "Explore by Theme",
+        "eyebrow": "Start Here",
+        "description": "Choose a complete topic page instead of piecing the story together across disconnected sections.",
+        "research": {
+          "title": "Research & Results",
+          "description": "Research questions, project experience, publications, and patents in one continuous narrative."
+        },
+        "projects": {
+          "title": "Project Practice",
+          "description": "Academic engineering and open-source work, with live GitHub star counts and direct links."
+        },
+        "blog": {
+          "title": "Writing & Notes",
+          "description": "Long-form research notes, project retrospectives, and reading summaries."
+        }
+      },
       "projects": { "title": "Highlighted Projects", "eyebrow": "Projects", "action": "All projects" },
-      "publications": { "title": "Selected Publications", "eyebrow": "Publications", "action": "All entries" },
-      "awards": { "title": "Honors & Awards", "eyebrow": "Recognition", "action": "Full CV" }
+      "writing": { "title": "Latest Writing", "eyebrow": "Blog", "action": "All posts", "empty": "New notes are on the way." },
+      "contact": {
+        "title": "Start a Conversation",
+        "eyebrow": "Connect",
+        "description": "Interested in multi-agent systems, autonomous robotics, or practical AI engineering? I am always open to thoughtful conversations and collaboration.",
+        "action": "Get in touch"
+      }
     }
   },
   "zh": {
     "heroIntro": "陆荣琦，硕士，毕业于西安电子科技大学控制工程专业。关注多机器人协同与多智能体强化学习，帮助智能体在复杂环境中高效通信、稳健探索。研究之外，持续实践 AI 辅助软件开发与个人基础设施建设，关注从智能编码工具、模型服务编排到自托管系统的可靠落地；也长期跟踪边缘设备实验、指数化投资与加密资产，保持对技术系统和复杂市场的工程化理解。",
     "buttons": {
       "cv": "查看简历",
-      "publications": "浏览论文",
+      "research": "研究与成果",
       "projects": "查看项目"
     },
     "highlights": {
@@ -40,10 +61,31 @@
       "locationLabel": "常驻城市"
     },
     "sections": {
-      "updates": { "title": "近期动态", "eyebrow": "动态" },
+      "explore": {
+        "title": "按主题浏览",
+        "eyebrow": "从这里开始",
+        "description": "每个入口对应一个完整主题页，不必在割裂的栏目之间拼凑信息。",
+        "research": {
+          "title": "研究与成果",
+          "description": "连续呈现研究问题、科研经历、论文与专利，形成完整研究叙事。"
+        },
+        "projects": {
+          "title": "项目实践",
+          "description": "集中展示科研工程与开源项目，并保留实时 GitHub Stars 和项目链接。"
+        },
+        "blog": {
+          "title": "博客与笔记",
+          "description": "记录研究手记、项目复盘与阅读体会。"
+        }
+      },
       "projects": { "title": "精选项目", "eyebrow": "项目", "action": "全部项目" },
-      "publications": { "title": "代表成果", "eyebrow": "成果", "action": "查看全部" },
-      "awards": { "title": "荣誉与奖项", "eyebrow": "荣誉", "action": "完整简历" }
+      "writing": { "title": "近期写作", "eyebrow": "博客", "action": "全部文章", "empty": "新的文章正在整理中。" },
+      "contact": {
+        "title": "期待交流",
+        "eyebrow": "联系",
+        "description": "如果你关注多智能体系统、自主机器人或 AI 工程实践，欢迎交流研究问题与合作设想。",
+        "action": "联系我"
+      }
     }
   }
 }

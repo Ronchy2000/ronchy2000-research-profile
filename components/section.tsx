@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 type SectionProps = {
+  id?: string;
   title: string;
   description?: string;
   eyebrow?: string;
@@ -12,9 +13,9 @@ type SectionProps = {
  * Layout wrapper for page sections. Handles titles, subtitles,
  * optional eyebrow labels, and trailing action elements.
  */
-export function Section({ title, description, eyebrow, actions, children }: SectionProps) {
+export function Section({ id, title, description, eyebrow, actions, children }: SectionProps) {
   return (
-    <section className="space-y-6">
+    <section id={id} className="space-y-6">
       <header className="space-y-3">
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-600 dark:text-slate-300">

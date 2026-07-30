@@ -16,23 +16,22 @@ const NAV_ITEMS: Record<Locale, NavItem[]> = {
   en: [
     { label: "Home", href: "/en" },
     { label: "Research", href: "/en/research" },
-    { label: "Publications", href: "/en/publications" },
     { label: "Projects", href: "/en/projects" },
-    { label: "Experience", href: "/en/experience" },
-    { label: "CV", href: "/en/cv" },
     { label: "Blog", href: "/en/blog" },
-    { label: "Contact", href: "/en/contact" }
+    { label: "About", href: "/en/about" }
   ],
   zh: [
     { label: "首页", href: "/zh" },
-    { label: "科研概览", href: "/zh/research" },
-    { label: "发表成果", href: "/zh/publications" },
-    { label: "项目集锦", href: "/zh/projects" },
-    { label: "经历", href: "/zh/experience" },
-    { label: "简历", href: "/zh/cv" },
+    { label: "研究与成果", href: "/zh/research" },
+    { label: "项目实践", href: "/zh/projects" },
     { label: "博客", href: "/zh/blog" },
-    { label: "联系", href: "/zh/contact" }
+    { label: "关于", href: "/zh/about" }
   ]
+};
+
+const CONTACT_ITEMS: Record<Locale, NavItem> = {
+  en: { label: "Contact", href: "/en/contact" },
+  zh: { label: "联系", href: "/zh/contact" }
 };
 
 export default async function LocaleLayout({
@@ -50,10 +49,17 @@ export default async function LocaleLayout({
 
   const profile = getProfileContent()[locale];
   const navItems = NAV_ITEMS[locale];
+  const contactItem = CONTACT_ITEMS[locale];
   const lastUpdated = getUpdatesContent()[locale]?.updates?.[0]?.date;
 
   return (
-    <SiteShell navItems={navItems} profile={profile} locale={locale} lastUpdated={lastUpdated}>
+    <SiteShell
+      navItems={navItems}
+      contactItem={contactItem}
+      profile={profile}
+      locale={locale}
+      lastUpdated={lastUpdated}
+    >
       {children}
     </SiteShell>
   );

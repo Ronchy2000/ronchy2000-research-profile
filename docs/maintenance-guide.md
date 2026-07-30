@@ -10,12 +10,13 @@
 app/
   (site)/
     layout.tsx        # 页面壳层：顶部导航 + 侧边名片 + Footer
-    page.tsx          # 首页（Hero / Updates / Projects / Publications / Honors）
+    page.tsx          # 首页（Hero / 主题入口 / 精选项目 / 近期写作 / 联系）
     research/page.tsx
-    publications/page.tsx
+    publications/page.tsx # 旧地址兼容跳转
     projects/page.tsx
-    experience/page.tsx
-    cv/page.tsx
+    about/page.tsx
+    experience/page.tsx   # 旧地址兼容跳转
+    cv/page.tsx           # 旧地址兼容跳转
     blog/page.tsx          # 博客列表（MDX/Markdown 内容驱动）
     blog/[slug]/page.tsx   # 博客详情（渲染 MDX）
     contact/page.tsx
@@ -30,9 +31,9 @@ content/
   research.json       # 研究兴趣 + 经历时间线
   publications.json   # 论文 / 专利清单
   projects.json       # 学术与开源项目分组
-  timeline.json       # 教育、实习时间线（Experience / CV 共用）
+  timeline.json       # About 页的教育、实习时间线
   awards.json         # 荣誉奖项
-  updates.json        # 首页 Recent Updates 数据（可由 GitHub Action 自动刷新）
+  updates.json        # Projects 页近期动态（可由 GitHub Action 自动刷新）
   pages/              # 页面文案（中英文 JSON）
   blog/
     en/               # 博客文章（英文, .md/.mdx）
@@ -49,11 +50,11 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 | 模块 | 数据文件 | 说明 |
 | ---- | -------- | ---- |
 | Hero & 侧边名片 | `content/profile.json` | 修改姓名、职称、关键词、社交链接、头像、CV 路径；可选 `aka`（英文页头像下方显示 “Call me …!”）。 |
-| Recent Updates | `content/updates.json` | 首页最近动态（默认由 GitHub Action 脚本覆盖生成，不建议手动改）。 |
-| Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页取前 4 项，Projects 页完整展示。 |
-| Latest Writing & Publications 页 | `content/publications.json` | `type` 取值 `C`(Conference) / `J`(Journal) / `P`(Patent) / `S`(In Submission)，会自动映射标签，支持 Type/Year 筛选；新增条目按 `year` 排序，首页自动展示最新两项。 |
-| Experience / CV 页 | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
-| Honors | `content/awards.json` | 年份倒序，首页取前 6 条；CV 页展示全部。 |
+| Recent Project Activity | `content/updates.json` | Projects 页近期动态（默认由 GitHub Action 脚本覆盖生成，不建议手动改）。 |
+| Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页按 Stars 取前 3 项，Projects 页完整展示。 |
+| Research Results | `content/publications.json` | Research 页底部的论文与专利目录；`type` 取值 `C`、`J`、`P`、`S`，支持 Type/Year 筛选。 |
+| About | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
+| Honors | `content/awards.json` | 年份倒序，在 About 页完整展示。 |
 | 博客 | `content/blog/{en,zh}/*.{md,mdx}` | 内容驱动；frontmatter 提供标题/日期/摘要/标签；正文支持 Markdown/MDX。 |
 
 > 所有 JSON 均带 `_meta` 字段，记录字段释义，方便回顾。
@@ -62,11 +63,11 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 
 ### Hero 区
 - 关键词来自 `profile.json` 的 `keywords`。
-- 主按钮为 `View CV`（跳转 `/cv` 页面查看/下载 PDF），其余入口分别指向 Publications / Projects。
+- 主按钮进入 Research，Projects 与 PDF 简历下载作为并列操作。
 - 头像路径在 `profile.json` 中配置；尺寸在侧栏 `side-profile-card.tsx` 中调节（当前设为约 160px）。
 
-### Recent Updates
-- 数据源：`content/updates.json`。
+### Recent Project Activity
+- 数据源：`content/updates.json`，展示在 Projects 页，避免首页与项目页重复。
 - 自动更新：`.github/workflows/update-content.yml` 每日 23:30 UTC 运行 `scripts/update-recent-updates.mjs`。
   - 当前 workflow 依赖仓库 Secrets 中的 `GH_PAT`（classic token，建议 `repo` 权限）用于 checkout / GitHub API / push；未配置会直接失败。
   - 脚本读取最新 commit，写入 `type=Commit`、`title`（提交首行）、`summary`（作者）；可自行改成抓取 Releases/Issues。
@@ -74,22 +75,22 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 - 手动编辑：直接修改 `updates.json` 中的 `updates` 数组，字段 `type`、`date`（YYYY-MM-DD）、`title`、`summary`、`link`。
 
 ### Highlighted Projects
-- 首页取项目分组的前四个条目；排序由 `content/projects.json` 中的顺序控制。
+- 首页按 GitHub Stars 与项目排序规则取前三个条目。
 - 如果需要展示某个具体开源仓库（如 `Multi-agent-RL`、`Raspi-ImmortalWrt`），确保其条目在 `Open-source & Personal Projects` 分组里靠前。
 - GitHub star 数据由 `scripts/update-project-stars.mjs` 获取并写回 `content/projects.json`，在 `.github/workflows/update-content.yml` 中与 Recent Updates 一起运行。
 
-### Latest Writing / Publications 页
+### Research 页的 Publications & Patents
 - `PublicationItem` 组件会根据 `type` 自动生成标签（In Submission / Conference / Journal / Patent），并显示年份 + 自定义标签列表。
 - 在 `content/publications.json` 中补充条目时：
   - `type` 为 `C`、`J`、`P`、`S`（示例中已包含 3 个专利条目作为模板）。
   - `tags` 用于补充主题标签，页面会显示在标题下。
   - `links` 可放 DOI、PDF、代码仓库链接，文本会附带外链箭头。
-- 首页的 “Latest Writing” 自动按 `year` 倒序取最近 2 条，无需额外维护，Publications 页的 Type/Year 按钮可即时筛选当前列表（`All` 表示不过滤）。
+- Research 页的 Type/Year 按钮可即时筛选完整列表（`All` 表示不过滤）；首页“近期写作”改为读取博客文章，不再重复论文目录。
 
 ## 顶部导航 & 响应式
 - 导航定义位于 `app/(site)/[locale]/layout.tsx` 中的 `NAV_ITEMS` 常量（`/en/*`、`/zh/*`），新增页面时在此添加即可。
 - `SiteHeader` 横向排布导航；桌面端显示完整菜单，移动端在第二行横向滚动。
-- 侧边名片（仅桌面端显示）由 `SideProfileCard` 渲染，已移除多余的 Download CV 按钮。
+- 侧边名片（仅桌面端显示）由 `SideProfileCard` 渲染，并保留 PDF 简历下载入口。
 
 ## Contact 邮箱防爬（零第三方）
 - 页面仅在客户端本地解码邮箱地址，通过 `mailto:` 打开访客的系统邮件客户端，没有任何服务器或第三方转发。
@@ -162,7 +163,7 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
   - `SITE_INDEXABLE=1`
 
 ## 常见修改场景
-- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Homepage 与 Publications 页将自动更新。
+- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Research 页的成果目录会自动更新。
 - **更新 Recent Updates**：若暂时不想依赖 GitHub Action，可手动编辑 `content/updates.json`。恢复自动化时重新触发 workflow 即可。
 - **编辑 Highlighted Projects**：通过调整 `content/projects.json` 中条目的顺序/分组，控制首页与 Projects 页的展示。
 - **调整导航顺序**：修改 `navItems` 数组，并确认对应页面文件存在。

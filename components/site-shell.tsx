@@ -15,12 +15,13 @@ type Locale = "en" | "zh";
 type SiteShellProps = {
   children: React.ReactNode;
   navItems: NavItem[];
+  contactItem: NavItem;
   profile: LocaleProfile;
   locale: Locale;
   lastUpdated?: string;
 };
 
-const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects"]);
+const SIDEBAR_EXCLUDED_ROUTES = new Set(["/research", "/publications", "/projects", "/experience", "/cv", "/about"]);
 const CONTACT_BUTTON = {
   en: "Reveal email address",
   zh: "查看邮箱"
@@ -48,7 +49,7 @@ function stripLocalePrefix(pathname: string) {
  * Application shell with responsive header and optional sidebar profile card.
  * On the Home page the sidebar collapses once you scroll past the hero in desktop view.
  */
-export function SiteShell({ children, navItems, profile, locale, lastUpdated }: SiteShellProps) {
+export function SiteShell({ children, navItems, contactItem, profile, locale, lastUpdated }: SiteShellProps) {
   const pathname = usePathname();
   const normalizedPath = stripLocalePrefix((pathname ?? "/").replace(/\/$/, "") || "/");
   const sidebarDisabled = SIDEBAR_EXCLUDED_ROUTES.has(normalizedPath);
@@ -158,6 +159,7 @@ export function SiteShell({ children, navItems, profile, locale, lastUpdated }: 
       />
       <SiteHeader
         navItems={navItems}
+        contactItem={contactItem}
         profileName={profile.name}
         currentLocale={locale}
       />
