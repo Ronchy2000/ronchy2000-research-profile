@@ -8,6 +8,20 @@
   "en": {
     "updates": [
       {
+        "date": "2026-07-30",
+        "type": "Commit",
+        "title": "fix: make lifted cards clickable",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b990759405387d82c97f61e892050002e76e1264"
+      },
+      {
+        "date": "2026-07-30",
+        "type": "Commit",
+        "title": "Update profile avatar",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/62a3292a56c2978ed38ece3adb5df1a68eebb8b7"
+      },
+      {
         "date": "2026-06-24",
         "type": "Commit",
         "title": "Refine CV page description",
@@ -41,26 +55,26 @@
         "title": "fix: track package lock for ci",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "Commit",
-        "title": "feat: refine project ordering and highlights",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/bd563754708ea83395d1553ee03375336959a1e6"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "Commit",
-        "title": "AI: AGNETS for codex",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e0b50531c9e288abf1c52dd8ee6af0c988ba4b31"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-07-30",
+        "type": "提交",
+        "title": "fix: make lifted cards clickable",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b990759405387d82c97f61e892050002e76e1264"
+      },
+      {
+        "date": "2026-07-30",
+        "type": "提交",
+        "title": "Update profile avatar",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/62a3292a56c2978ed38ece3adb5df1a68eebb8b7"
+      },
+      {
         "date": "2026-06-24",
         "type": "提交",
         "title": "Refine CV page description",
@@ -94,20 +108,6 @@
         "title": "fix: track package lock for ci",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "提交",
-        "title": "feat: refine project ordering and highlights",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/bd563754708ea83395d1553ee03375336959a1e6"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "提交",
-        "title": "AI: AGNETS for codex",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e0b50531c9e288abf1c52dd8ee6af0c988ba4b31"
       }
     ]
   }
