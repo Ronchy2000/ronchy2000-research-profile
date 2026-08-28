@@ -31,12 +31,12 @@ export default async function CvRedirectPage({ params }: PageProps) {
   const copy = locale === "zh"
     ? {
         title: "网页简历已并入关于页面",
-        description: "正在前往整合后的个人履历页面；PDF 简历下载入口保持不变。",
+        description: "正在前往整合后的个人履历页面；PDF 简历查看入口保持不变。",
         action: "继续前往"
       }
     : {
         title: "The web CV has moved",
-        description: "Taking you to the consolidated About page. The PDF download remains available there.",
+        description: "Taking you to the consolidated About page. The PDF viewing option remains available there.",
         action: "Continue"
       };
 
