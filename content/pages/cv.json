@@ -5,9 +5,9 @@
   "en": {
     "intro": {
       "title": "Curriculum Vitae",
-      "description": "A concise overview of my education, research experience, honors, and technical skills, with a downloadable PDF for reference.",
+      "description": "A concise overview of my education, research experience, honors, and technical skills, with a PDF ready to view or print.",
       "eyebrow": "Overview",
-      "download": "Download PDF",
+      "download": "View PDF",
       "contactLabel": "Contact",
       "contactAction": "Reveal email",
       "locationLabel": "Location"
@@ -39,9 +39,9 @@
   "zh": {
     "intro": {
       "title": "个人简历",
-      "description": "汇总教育背景、科研经历、荣誉奖励与技术能力，并提供 PDF 简历下载与打印视图。",
+      "description": "汇总教育背景、科研经历、荣誉奖励与技术能力，并提供 PDF 简历查看与打印视图。",
       "eyebrow": "概览",
-      "download": "下载 PDF",
+      "download": "查看 PDF",
       "contactLabel": "联系邮箱",
       "contactAction": "点击显示邮箱",
       "locationLabel": "常驻城市"

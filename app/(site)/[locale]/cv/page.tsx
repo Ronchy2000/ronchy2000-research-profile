@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ArrowRightIcon } from "@/components/icons";
 import { Section } from "@/components/section";
 import { Table } from "@/components/table";
 import { Timeline } from "@/components/timeline";
@@ -46,9 +47,13 @@ export default async function CVPage({ params }: PageProps) {
         actions={
           <a
             href={profile.cvLink}
-            className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_-14px_rgba(37,99,235,0.9)] ring-1 ring-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-foreground hover:text-white hover:shadow-[0_16px_32px_-14px_rgba(37,99,235,0.95)]"
           >
             {t.intro.download}
+            <ArrowRightIcon
+              aria-hidden="true"
+              className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+            />
           </a>
         }
       >
