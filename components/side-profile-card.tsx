@@ -20,7 +20,7 @@ type SideProfileCardProps = {
  */
 export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/profile.jpg", contactHref, contactLabel }: SideProfileCardProps) {
   const imageSrc = profile.avatar ?? avatarSrc;
-  const cvLabel = locale === "zh" ? "下载简历" : "Download CV";
+  const cvLabel = locale === "zh" ? "查看 PDF" : "View PDF";
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col gap-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_30px_60px_-45px_rgba(15,23,42,0.4)] backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70 lg:flex print:hidden">
       <div className="flex flex-col gap-4">
@@ -53,9 +53,13 @@ export function SideProfileCard({ profile, locale = "en", avatarSrc = "/images/p
           href={profile.cvLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full items-center justify-center rounded-full bg-slate-900 px-3 py-2 text-sm font-medium text-white hover:bg-slate-700 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900"
+          className="group flex w-full items-center justify-center gap-2 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_-14px_rgba(37,99,235,0.9)] ring-1 ring-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-foreground hover:text-white hover:shadow-[0_16px_32px_-14px_rgba(37,99,235,0.95)]"
         >
           {cvLabel}
+          <ExternalLinkIcon
+            aria-hidden="true"
+            className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </a>
         {contactHref ? (
           <Link

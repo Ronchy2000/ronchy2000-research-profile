@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ExternalLinkIcon } from "@/components/icons";
 import { PageOutline } from "@/components/page-outline";
 import { Section } from "@/components/section";
 import { Table } from "@/components/table";
@@ -80,9 +81,13 @@ export default async function AboutPage({ params }: PageProps) {
               href={profile.cvLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-slate-900 px-5 py-2 text-white hover:bg-slate-700 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 font-semibold text-white shadow-[0_12px_28px_-14px_rgba(37,99,235,0.9)] ring-1 ring-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-foreground hover:text-white hover:shadow-[0_16px_32px_-14px_rgba(37,99,235,0.95)]"
             >
               {copy.intro.download}
+              <ExternalLinkIcon
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </a>
             <Link
               href={`/${locale}/contact` as any}

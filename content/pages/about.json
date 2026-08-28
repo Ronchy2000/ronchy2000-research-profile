@@ -7,7 +7,7 @@
       "title": "About & Experience",
       "description": "A focused view of my academic training, industry experience, honors, and technical background. The downloadable CV remains the formal reference.",
       "eyebrow": "Profile",
-      "download": "Download CV",
+      "download": "View PDF",
       "contactAction": "Contact me"
     },
     "education": { "title": "Academic Training", "eyebrow": "Education" },
@@ -41,7 +41,7 @@
       "title": "关于与履历",
       "description": "集中呈现教育背景、行业经历、荣誉奖励与技术能力；可下载的 PDF 简历继续作为正式版本。",
       "eyebrow": "个人履历",
-      "download": "下载简历",
+      "download": "查看 PDF",
       "contactAction": "联系我"
     },
     "education": { "title": "教育背景", "eyebrow": "教育" },

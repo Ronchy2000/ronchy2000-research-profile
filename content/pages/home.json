@@ -5,7 +5,7 @@
   "en": {
     "heroIntro": "I am Rongqi Lu, an M.Eng. graduate in Control Engineering from Xidian University. My work focuses on multi-robot coordination and multi-agent reinforcement learning, helping agents communicate efficiently and explore robustly in complex environments. Beyond research, I practice AI-assisted software development and personal infrastructure engineering, from coding agents and model-service orchestration to self-hosted systems, while maintaining an engineering interest in edge devices and index-based markets.",
     "buttons": {
-      "cv": "View CV",
+      "cv": "View PDF",
       "research": "Explore Research",
       "projects": "Explore Projects"
     },
@@ -48,7 +48,7 @@
   "zh": {
     "heroIntro": "陆荣琦，硕士，毕业于西安电子科技大学控制工程专业。关注多机器人协同与多智能体强化学习，帮助智能体在复杂环境中高效通信、稳健探索。研究之外，持续实践 AI 辅助软件开发与个人基础设施建设，关注从智能编码工具、模型服务编排到自托管系统的可靠落地；也长期跟踪边缘设备实验、指数化投资与加密资产，保持对技术系统和复杂市场的工程化理解。",
     "buttons": {
-      "cv": "查看简历",
+      "cv": "查看 PDF",
       "research": "研究与成果",
       "projects": "查看项目"
     },

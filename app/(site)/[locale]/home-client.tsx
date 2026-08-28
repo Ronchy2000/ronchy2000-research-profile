@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { ArrowRightIcon } from "@/components/icons";
+import { ArrowRightIcon, ExternalLinkIcon } from "@/components/icons";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
 import { Tag } from "@/components/tag";
@@ -89,9 +89,13 @@ export function HomeClient({
                 href={profile.cvLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 font-semibold text-white shadow-[0_12px_28px_-14px_rgba(37,99,235,0.9)] ring-1 ring-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-foreground hover:text-white hover:shadow-[0_16px_32px_-14px_rgba(37,99,235,0.95)]"
               >
                 {copy.buttons.cv}
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </a>
             </div>
           </div>
