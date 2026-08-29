@@ -8,6 +8,13 @@
   "en": {
     "updates": [
       {
+        "date": "2026-08-28",
+        "type": "Commit",
+        "title": "fix: clarify PDF resume action",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
+      },
+      {
         "date": "2026-07-30",
         "type": "Commit",
         "title": "fix: make lifted cards clickable",
@@ -48,19 +55,19 @@
         "title": "fix: enable Cloudflare Pages static export build",
         "summary": "Authored by Ronchy2000",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "Commit",
-        "title": "fix: track package lock for ci",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-08-28",
+        "type": "提交",
+        "title": "fix: clarify PDF resume action",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
+      },
+      {
         "date": "2026-07-30",
         "type": "提交",
         "title": "fix: make lifted cards clickable",
@@ -101,13 +108,6 @@
         "title": "fix: enable Cloudflare Pages static export build",
         "summary": "由 Ronchy2000 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
-      },
-      {
-        "date": "2026-04-29",
-        "type": "提交",
-        "title": "fix: track package lock for ci",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1ef04c3cf91495455455e2ece0112afeb31728b9"
       }
     ]
   }
