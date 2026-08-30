@@ -5,6 +5,11 @@
   "nodeVersion": "22.11.0",
   "redirects": [
     {
+      "source": "$host",
+      "destination": "$wwwhost",
+      "statusCode": 301
+    },
+    {
       "source": "/",
       "destination": "/en/",
       "statusCode": 308
@@ -18,11 +23,6 @@
       "source": "/zh",
       "destination": "/zh/",
       "statusCode": 308
-    },
-    {
-      "source": "$host",
-      "destination": "$wwwhost",
-      "statusCode": 301
     }
   ]
 }
