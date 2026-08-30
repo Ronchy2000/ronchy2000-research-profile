@@ -18,6 +18,11 @@
       "source": "/zh",
       "destination": "/zh/",
       "statusCode": 308
+    },
+    {
+      "source": "$host",
+      "destination": "$wwwhost",
+      "statusCode": 301
     }
   ]
 }
