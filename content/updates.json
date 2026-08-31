@@ -8,6 +8,27 @@
   "en": {
     "updates": [
       {
+        "date": "2026-08-30",
+        "type": "Commit",
+        "title": "fix: prioritize EdgeOne www redirect",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/29da1f2af9875becf5413b29392555e591f43c9e"
+      },
+      {
+        "date": "2026-08-30",
+        "type": "Commit",
+        "title": "fix: keep www as EdgeOne canonical host",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5a22d1b5d4f0f70408b722e18c3805cc4fc794fa"
+      },
+      {
+        "date": "2026-08-30",
+        "type": "Commit",
+        "title": "perf: reduce EdgeOne entry redirects",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2115fe3b8774c34d7369b4f84114e39bca7d1c3c"
+      },
+      {
         "date": "2026-08-28",
         "type": "Commit",
         "title": "fix: clarify PDF resume action",
@@ -34,33 +55,33 @@
         "title": "Refine CV page description",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/537bf8c44bf1146287faecfea4e9dcaa16d8f3c0"
-      },
-      {
-        "date": "2026-06-24",
-        "type": "Commit",
-        "title": "Update graduation profile content",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7327f8a3a73e194cb960fc2b58ff4a6b28c8f4d4"
-      },
-      {
-        "date": "2026-06-05",
-        "type": "Commit",
-        "title": "feat: add canonical SEO deployment setup",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/db5c1d4d117d44709a3466b88c5a6151df3a7499"
-      },
-      {
-        "date": "2026-06-05",
-        "type": "Commit",
-        "title": "fix: enable Cloudflare Pages static export build",
-        "summary": "Authored by Ronchy2000",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-08-30",
+        "type": "提交",
+        "title": "fix: prioritize EdgeOne www redirect",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/29da1f2af9875becf5413b29392555e591f43c9e"
+      },
+      {
+        "date": "2026-08-30",
+        "type": "提交",
+        "title": "fix: keep www as EdgeOne canonical host",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5a22d1b5d4f0f70408b722e18c3805cc4fc794fa"
+      },
+      {
+        "date": "2026-08-30",
+        "type": "提交",
+        "title": "perf: reduce EdgeOne entry redirects",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2115fe3b8774c34d7369b4f84114e39bca7d1c3c"
+      },
+      {
         "date": "2026-08-28",
         "type": "提交",
         "title": "fix: clarify PDF resume action",
@@ -87,27 +108,6 @@
         "title": "Refine CV page description",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/537bf8c44bf1146287faecfea4e9dcaa16d8f3c0"
-      },
-      {
-        "date": "2026-06-24",
-        "type": "提交",
-        "title": "Update graduation profile content",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7327f8a3a73e194cb960fc2b58ff4a6b28c8f4d4"
-      },
-      {
-        "date": "2026-06-05",
-        "type": "提交",
-        "title": "feat: add canonical SEO deployment setup",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/db5c1d4d117d44709a3466b88c5a6151df3a7499"
-      },
-      {
-        "date": "2026-06-05",
-        "type": "提交",
-        "title": "fix: enable Cloudflare Pages static export build",
-        "summary": "由 Ronchy2000 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/df998e6d69a701d253c7ff512f7fff364ac5e70b"
       }
     ]
   }
