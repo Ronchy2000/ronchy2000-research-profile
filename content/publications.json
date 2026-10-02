@@ -19,14 +19,14 @@
   "en": {
     "entries": [
       {
-        "id": "S.1",
-        "type": "S",
+        "id": "J.1",
+        "type": "J",
         "title": "Cooperative Pursuit Strategies for Low-Altitude UAV Swarms under Field-of-View and Communication Constraints",
-        "authors": "Rongqi Lu*, et al.",
+        "authors": "Rongqi Lu, Runxi Wang, Jian Liu, Yuanshi Zheng",
         "venue": "IEEE/CAA Journal of Automatica Sinica",
         "year": "2026",
         "tags": ["MARL", "Pursuit-Evasion"],
-        "links": [{ "label": "article", "href": "#" }]
+        "notes": "Accepted on September 29, 2026; corresponding author: Jian Liu"
       },
       {
         "id": "C.1",
@@ -74,14 +74,14 @@
   "zh": {
     "entries": [
       {
-        "id": "S.1",
-        "type": "S",
+        "id": "J.1",
+        "type": "J",
         "title": "视场与通信受限环境下低空无人集群协同追捕策略研究",
-        "authors": "陆荣琦* 等",
+        "authors": "陆荣琦, 王润曦, 刘健, 郑元世",
         "venue": "自动化学报",
         "year": "2026",
         "tags": ["MARL", "追逃博弈"],
-        "links": [{ "label": "期刊论文", "href": "#" }]
+        "notes": "2026年9月29日接收；通讯作者：刘健"
       },
       {
         "id": "C.1",
