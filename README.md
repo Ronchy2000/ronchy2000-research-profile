@@ -9,7 +9,7 @@
 ### 特性亮点
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - 内容驱动：结构化数据在 `content/*.json`，页面文案在 `content/pages/*.json`，博客在 `content/blog/{en,zh}/*.{md,mdx}`
-- 支持明暗主题、响应式导航、长页面章节索引与 PDF 简历下载
+- 支持明暗主题、独立页面导航、连续章节阅读、响应式目录与 PDF 简历查看
 - 博客支持 Markdown/MDX + 数学公式渲染（KaTeX）
 - 可选 GitHub Actions 自动化：项目动态与 GitHub Stars 同步
 
@@ -35,17 +35,28 @@ npm run start
 
 访问 `/`（以及 `/research` 这类旧路径）会重定向到 `/{locale}`。在支持中间件的构建中由 `proxy.ts` 处理；静态导出构建中由 `app/(redirects)` 下的页面处理（客户端跳转）。
 
+### 页面分工
+
+顶部保留五个独立页面：主页、研究、项目、博客、联系。
+
+- **主页**：个人简介、教育与行业经历、荣誉、技术背景；近期论文只提供简短入口。
+- **研究**：方向、论文与专利、科研经历；详细方法与贡献按需展开。
+- **项目**：每组按 GitHub Stars 优先显示 4 项，可展开全部；年份与标签筛选始终覆盖完整数据。
+- **博客 / 联系**：保持独立页面，保留 MDX、邮件显示与复制等原有功能。
+
+主页、研究和项目采用有终点的纵向章节布局。桌面显示右侧固定目录，手机显示顶部横向目录；均支持顶部/底部跳转。旧的 `/about`、`/cv`、`/experience` 地址进入主页对应章节，`/publications` 进入研究页的成果章节，避免重复维护。
+
 ### 内容结构
 
 | 文件/目录 | 主要修改内容 |
 | --- | --- |
-| `content/profile.json` | 姓名/标题/单位/地点/关键词/社交链接，以及 `avatar` 与 `cvLink`。`en.aka` 会在英文页头像下显示 `Call me ...!`（桌面端侧栏）。 |
-| `content/pages/*.json` | 页面文案（Home/Research/Projects/About/Blog/Contact，以及论文目录文案）。 |
+| `content/profile.json` | 姓名/标题/单位/地点/关键词/社交链接，以及 `avatar` 与 `cvLink`。`en.aka` 会在英文页姓名下显示昵称。 |
+| `content/pages/*.json` | 页面文案（Home/Research/Projects/Blog/Contact，以及论文目录文案）。 |
 | `content/research.json` | 研究兴趣与研究经历时间线。 |
 | `content/publications.json` | 论文与专利（支持按类型/年份筛选）。 |
 | `content/projects.json` | 项目分组与条目，GitHub Stars 存在 `metrics.stars`。 |
-| `content/timeline.json` | About 页的教育与行业经历时间线。 |
-| `content/awards.json` | About 页的荣誉与奖项。 |
+| `content/timeline.json` | 主页的教育与行业经历时间线。 |
+| `content/awards.json` | 主页的荣誉与奖项。 |
 | `content/updates.json` | Projects 页的近期项目动态（通常由自动化覆盖）。 |
 | `content/blog/{en,zh}/*.{md,mdx}` | 博客文章（文件名即 slug）。 |
 
@@ -81,7 +92,7 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 
 ### 资源文件
 默认路径在 `content/profile.json` 中配置：
-- 头像：`public/images/profile.jpeg`（`avatar`）
+- 头像：`public/images/profile-2026.jpeg`（`avatar`）
 - 简历 PDF：`public/files/Ronchy_CV.pdf`（`cvLink`）
 
 ### GitHub Actions（可选）

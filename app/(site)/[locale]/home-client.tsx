@@ -1,236 +1,112 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowRightIcon, ExternalLinkIcon } from "@/components/icons";
-import { ProjectCard } from "@/components/project-card";
+import { PageOutline } from "@/components/page-outline";
 import { Section } from "@/components/section";
-import { Tag } from "@/components/tag";
-import type { BlogPostMeta } from "@/lib/blog-types";
-import type { HomePageCopy, LocaleProfile, ProjectEntry } from "@/lib/content-types";
+import { Timeline } from "@/components/timeline";
+import type { AwardEntry, HomePageCopy, LocaleProfile, PublicationEntry, TimelineContent } from "@/lib/content-types";
 import type { Locale } from "@/lib/locale";
 
 type HomeClientProps = {
   locale: Locale;
   profile: LocaleProfile;
-  highlightProjects: ProjectEntry[];
-  posts: BlogPostMeta[];
+  timeline: TimelineContent[Locale];
+  awards: AwardEntry[];
+  latestPublication?: PublicationEntry;
   copy: HomePageCopy[Locale];
 };
 
-export function HomeClient({
-  locale,
-  profile,
-  highlightProjects,
-  posts,
-  copy
-}: HomeClientProps) {
-  const base = `/${locale}`;
-
-  const highlightItems = [
-    { label: copy.highlights.focusLabel, value: copy.highlights.focusValue },
-    { label: copy.highlights.contactLabel, value: copy.highlights.contactValue, href: `${base}/contact` },
-    { label: copy.highlights.locationLabel, value: profile.location }
-  ];
-
-  const exploreItems = [
-    {
-      title: copy.sections.explore.research.title,
-      description: copy.sections.explore.research.description,
-      href: `${base}/research`
-    },
-    {
-      title: copy.sections.explore.projects.title,
-      description: copy.sections.explore.projects.description,
-      href: `${base}/projects`
-    },
-    {
-      title: copy.sections.explore.blog.title,
-      description: copy.sections.explore.blog.description,
-      href: `${base}/blog`
-    }
+export function HomeClient({ locale, profile, timeline, awards, latestPublication, copy }: HomeClientProps) {
+  const base = "/" + locale;
+  const outlineItems = [
+    { id: "intro", label: copy.outline.intro },
+    { id: "background", label: copy.outline.background },
+    { id: "honors", label: copy.outline.honors },
+    { id: "skills", label: copy.outline.skills }
   ];
 
   return (
-    <div className="space-y-16">
-      <section
-        id="intro"
-        className="space-y-6 rounded-3xl border border-white/70 bg-white/90 p-8 shadow-[0_32px_80px_-50px_rgba(15,23,42,0.55)] dark:border-slate-800 dark:bg-slate-900/70 print:border-none print:bg-transparent print:shadow-none"
-      >
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-600 dark:text-slate-300">
-          <span className="font-semibold text-slate-900 dark:text-slate-50">{profile.name}</span>
-          {profile.nativeName ? <span className="text-slate-500 dark:text-slate-400">{profile.nativeName}</span> : null}
-          {profile.pronouns ? <span className="text-slate-500 dark:text-slate-400">{profile.pronouns}</span> : null}
-        </div>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.9fr)]">
-          <div className="space-y-6">
-            <p className="max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
-              {copy.heroIntro}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {profile.keywords.map((keyword) => (
-                <Tag key={keyword} label={keyword} />
-              ))}
+    <div className="reading-layout">
+      <div className="reading-content">
+        <section id="intro" className="space-y-6">
+          <div className="flex items-start justify-between gap-5 sm:gap-8">
+            <div className="min-w-0 pt-2">
+              <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{profile.affiliation}</p>
+              <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-white">{profile.name}</h1>
+              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{profile.nativeName}{profile.aka ? " · " + profile.aka : ""}</p>
+              <p className="mt-4 text-sm font-medium text-slate-700 dark:text-slate-200">{profile.title}</p>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{profile.location}</p>
             </div>
-            <div className="flex flex-col gap-3 text-sm font-medium sm:flex-row sm:flex-wrap">
-              <Link
-                href={`${base}/research` as any}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-white hover:bg-slate-700 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900"
-              >
-                {copy.buttons.research}
-              </Link>
-              <Link
-                href={`${base}/projects` as any}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-5 py-2 text-slate-700 hover:border-slate-400 hover:text-brand dark:border-slate-600 dark:text-slate-200"
-              >
-                {copy.buttons.projects}
-              </Link>
-              <a
-                href={profile.cvLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 font-semibold text-white shadow-[0_12px_28px_-14px_rgba(37,99,235,0.9)] ring-1 ring-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-foreground hover:text-white hover:shadow-[0_16px_32px_-14px_rgba(37,99,235,0.95)]"
-              >
-                {copy.buttons.cv}
-                <ExternalLinkIcon
-                  aria-hidden="true"
-                  className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </div>
+            {profile.avatar ? (
+              <Image src={profile.avatar} alt={profile.name} width={168} height={196} priority className="h-36 w-28 shrink-0 rounded-xl object-cover object-top sm:h-44 sm:w-36" />
+            ) : null}
           </div>
-          <aside className="space-y-4 rounded-3xl border border-slate-200 bg-white/80 p-6 dark:border-slate-800 dark:bg-slate-900/60">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-600 dark:text-slate-300">
-              {copy.highlights.title}
-            </h2>
-            <dl className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              {highlightItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col gap-1 border-b border-slate-200 pb-3 last:border-b-0 last:pb-0 dark:border-slate-700"
-                >
-                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
-                    {item.label}
-                  </dt>
-                  <dd className="text-base font-medium text-slate-900 dark:text-slate-50">
-                    {item.href ? (
-                      <Link href={item.href as any} className="hover:text-brand dark:hover:text-brand">
-                        {item.value}
-                      </Link>
-                    ) : (
-                      item.value
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </aside>
-        </div>
-      </section>
-
-      <Section
-        id="explore"
-        title={copy.sections.explore.title}
-        eyebrow={copy.sections.explore.eyebrow}
-        description={copy.sections.explore.description}
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {exploreItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href as any}
-              className="group flex h-full flex-col justify-between gap-6 rounded-2xl border border-slate-200 bg-white/90 p-6 text-slate-700 shadow-[0_20px_45px_-38px_rgba(15,23,42,0.45)] transition hover:-translate-y-1 hover:border-brand/40 hover:text-slate-900 hover:shadow-[0_24px_50px_-36px_rgba(37,99,235,0.35)] dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-brand/50 dark:hover:text-white"
-            >
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.description}</p>
-              </div>
-              <ArrowRightIcon aria-hidden="true" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        id="projects"
-        title={copy.sections.projects.title}
-        eyebrow={copy.sections.projects.eyebrow}
-        actions={
-          <Link href={`${base}/projects` as any} className="text-sm font-medium text-brand hover:text-brand-foreground">
-            {copy.sections.projects.action}
-          </Link>
-        }
-      >
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {highlightProjects.map((item) => (
-            <ProjectCard key={item.name} project={item} />
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        id="writing"
-        title={copy.sections.writing.title}
-        eyebrow={copy.sections.writing.eyebrow}
-        actions={
-          <Link href={`${base}/blog` as any} className="text-sm font-medium text-brand hover:text-brand-foreground">
-            {copy.sections.writing.action}
-          </Link>
-        }
-      >
-        {posts.length ? (
-          <div className="grid gap-4 md:grid-cols-2">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`${base}/blog/${post.slug}` as any}
-                className="group flex h-full flex-col justify-between gap-6 rounded-2xl border border-slate-200 bg-white/90 p-6 text-slate-700 transition hover:border-brand/40 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-brand/50 dark:hover:text-white"
-              >
-                <div className="space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
-                    {post.date}
-                  </p>
-                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand dark:text-white">
-                    {post.title}
-                  </h3>
-                  {post.summary ? (
-                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{post.summary}</p>
-                  ) : null}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <Tag key={`${post.slug}-${tag}`} label={tag} />
-                  ))}
-                </div>
-              </Link>
+          <div className="space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
+            <p>{copy.heroIntro}</p>
+            <p>{copy.beyondResearch}</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+            <a href={profile.cvLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 font-semibold text-white shadow-sm hover:bg-blue-700 hover:text-white">
+              {copy.buttons.cv}<ExternalLinkIcon className="h-4 w-4" />
+            </a>
+            {profile.social.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-slate-600 underline-offset-4 hover:text-brand hover:underline dark:text-slate-300">{social.label}</a>
             ))}
+            <Link href={base + "/contact"} className="text-slate-600 underline-offset-4 hover:text-brand hover:underline dark:text-slate-300">{copy.buttons.contact}</Link>
           </div>
-        ) : (
-          <p className="text-sm text-slate-600 dark:text-slate-300">{copy.sections.writing.empty}</p>
-        )}
-      </Section>
+          {latestPublication ? (
+            <Link href={base + "/research#publication-" + latestPublication.id} className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-blue-800">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-medium text-brand dark:text-blue-400">{copy.latest} · {latestPublication.year}</p>
+                <p className="mt-1 font-medium text-slate-800 dark:text-slate-100">{latestPublication.venue}</p>
+                {latestPublication.notes ? <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{latestPublication.notes}</p> : null}
+              </div>
+              <ArrowRightIcon className="h-4 w-4 shrink-0 text-slate-400 group-hover:text-brand" />
+            </Link>
+          ) : null}
+        </section>
 
-      <section
-        id="contact"
-        className="flex flex-col gap-6 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 dark:border-slate-800 dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40 sm:flex-row sm:items-end sm:justify-between"
-      >
-        <div className="max-w-2xl space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-brand">{copy.sections.contact.eyebrow}</p>
-          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">{copy.sections.contact.title}</h2>
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            {copy.sections.contact.description}
-          </p>
-        </div>
-        <Link
-          href={`${base}/contact` as any}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-foreground hover:text-white"
-        >
-          {copy.sections.contact.action}
-          <ArrowRightIcon aria-hidden="true" className="h-4 w-4" />
-        </Link>
-      </section>
+        <Section id="background" title={copy.background.title}>
+          <div className="grid gap-8 sm:grid-cols-2">
+            <section id="education" className="space-y-5">
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">{copy.background.education}</h3>
+              <Timeline items={timeline.education} detailLabel={copy.background.details} />
+            </section>
+            <section id="experience" className="space-y-5">
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">{copy.background.experience}</h3>
+              <Timeline items={timeline.experience} detailLabel={copy.background.details} />
+            </section>
+          </div>
+        </Section>
+
+        <Section id="honors" title={copy.honors.title}>
+          <ul className="divide-y divide-slate-200/70 dark:divide-slate-800">
+            {awards.map((award) => (
+              <li key={award.title + award.year} className="flex items-baseline gap-4 py-3 first:pt-0 last:pb-0">
+                <span className="w-20 shrink-0 text-xs tabular-nums text-slate-500 dark:text-slate-400">{award.year}</span>
+                <div className="min-w-0 text-sm">
+                  <span className="font-medium text-slate-800 dark:text-slate-100">{award.title}</span>
+                  <span className="mt-0.5 block text-xs text-slate-500 sm:ml-2 sm:mt-0 sm:inline dark:text-slate-400">{award.issuer}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="skills" title={copy.skills.title}>
+          <dl className="space-y-3 text-sm">
+            {copy.skills.rows.map(([label, value]) => (
+              <div key={label} className="grid gap-1 sm:grid-cols-[112px_1fr] sm:gap-5">
+                <dt className="font-medium text-slate-800 dark:text-slate-100">{label}</dt>
+                <dd className="text-slate-600 dark:text-slate-300">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <Link href={base + "/research"} className="inline-flex items-center gap-2 text-sm font-medium">{copy.buttons.research}<ArrowRightIcon className="h-4 w-4" /></Link>
+        </Section>
+      </div>
+      <PageOutline label={copy.outline.label} items={outlineItems} locale={locale} />
     </div>
   );
 }

@@ -24,9 +24,9 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
 
   return (
     <article
-      className={`relative flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_20px_40px_-35px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/60 ${
+      className={`relative flex h-full flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60 ${
         primaryLink
-          ? "group cursor-pointer transition duration-150 hover:-translate-y-1 hover:shadow-[0_25px_45px_-35px_rgba(15,23,42,0.55)]"
+          ? "group cursor-pointer transition duration-150 hover:-translate-y-0.5 hover:border-blue-300 dark:hover:border-blue-800"
           : ""
       }`}
     >
@@ -42,11 +42,11 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
         />
       ) : null}
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
+        <p className="text-xs tabular-nums text-slate-500 dark:text-slate-400">
           {project.period}
         </p>
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{project.name}</h3>
-        <p className="text-sm text-slate-600 dark:text-slate-300">{project.summary}</p>
+        <h3 className="text-base font-semibold leading-6 text-slate-900 dark:text-slate-50">{project.name}</h3>
+        <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{project.summary}</p>
         {badges?.length ? (
           <div className="flex flex-wrap gap-2">
             {badges.map((badge) => (
@@ -67,7 +67,7 @@ export function ProjectCard({ project, badges }: ProjectCardProps) {
           {project.metrics?.stars !== undefined ? (
             <div className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
               <StarIcon aria-hidden="true" className="h-4 w-4" />
-              <span>{project.metrics.stars}</span>
+              <span aria-label={project.metrics.stars + " GitHub stars"}>{project.metrics.stars}</span>
             </div>
           ) : null}
           {otherMetrics.length ? (

@@ -2,97 +2,81 @@
 
 import { useEffect, useState } from "react";
 
-type PageOutlineItem = {
-  id: string;
-  label: string;
-};
+import type { Locale } from "@/lib/locale";
 
 type PageOutlineProps = {
   label: string;
-  items: PageOutlineItem[];
+  items: { id: string; label: string }[];
+  locale: Locale;
 };
 
-/**
- * In-page outline for long topic pages. It becomes a horizontal index on
- * smaller screens and a sticky rail on wide screens.
- */
-export function PageOutline({ label, items }: PageOutlineProps) {
+export function PageOutline({ label, items, locale }: PageOutlineProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
 
   useEffect(() => {
     const sections = items
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => Boolean(section));
+    const header = document.querySelector(".site-header");
+    let frame = 0;
 
-    if (!sections.length) {
-      return;
-    }
-
-    const updateFromHash = () => {
-      const id = window.location.hash.slice(1);
-      if (id && items.some((item) => item.id === id)) {
-        setActiveId(id);
-      }
+    const update = () => {
+      frame = 0;
+      const headerHeight = header?.getBoundingClientRect().height ?? 64;
+      document.documentElement.style.setProperty("--header-height", headerHeight + "px");
+      const offset = headerHeight + (window.innerWidth < 1024 ? 76 : 48);
+      const reached = sections.filter((section) => section.getBoundingClientRect().top <= offset);
+      const atEnd = window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      setActiveId((atEnd ? sections.at(-1) : reached.at(-1) ?? sections[0])?.id ?? "");
     };
-
-    updateFromHash();
-    window.addEventListener("hashchange", updateFromHash);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-
-        if (visible?.target.id) {
-          setActiveId(visible.target.id);
-        }
-      },
-      {
-        rootMargin: "-18% 0px -68% 0px",
-        threshold: [0, 0.1]
-      }
-    );
-
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    const observer = new ResizeObserver(schedule);
     sections.forEach((section) => observer.observe(section));
-
+    if (header) observer.observe(header);
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("hashchange", schedule);
     return () => {
-      window.removeEventListener("hashchange", updateFromHash);
+      window.cancelAnimationFrame(frame);
       observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("hashchange", schedule);
     };
   }, [items]);
 
   return (
-    <nav
-      aria-label={label}
-      className="order-first overflow-hidden rounded-2xl border border-slate-200 bg-white/80 p-3 shadow-[0_20px_45px_-40px_rgba(15,23,42,0.5)] backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/70 xl:order-none xl:sticky xl:top-28 xl:p-4"
-    >
-      <p className="px-2 pb-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
-        {label}
-      </p>
-      <ol className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide xl:flex-col xl:overflow-visible xl:pb-0">
-        {items.map((item, index) => {
-          const active = item.id === activeId;
-
-          return (
+    <nav aria-label={label} className="page-outline print:hidden">
+      <p className="mb-4 hidden text-xs font-medium text-slate-500 lg:block dark:text-slate-400">{label}</p>
+      <div className="flex items-center gap-3 lg:block">
+        <ol className="flex min-w-0 flex-1 gap-1 overflow-x-auto scrollbar-hide lg:block lg:space-y-1 lg:overflow-visible lg:border-l lg:border-slate-200 dark:lg:border-slate-800">
+          {items.map((item) => (
             <li key={item.id} className="shrink-0">
               <a
-                href={`#${item.id}`}
-                aria-current={active ? "location" : undefined}
-                onClick={() => setActiveId(item.id)}
-                className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition ${
-                  active
-                    ? "bg-slate-900 text-white hover:text-white dark:bg-white dark:text-slate-900 dark:hover:text-slate-900"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
-                }`}
+                href={"#" + item.id}
+                aria-current={activeId === item.id ? "location" : undefined}
+                className={`block whitespace-nowrap rounded-md px-3 py-2 text-xs leading-5 lg:rounded-none lg:border-l-2 lg:py-1.5 lg:text-sm lg:-ml-px ${activeId === item.id
+                  ? "border-brand bg-brand/5 font-medium text-brand dark:text-blue-400 lg:bg-transparent"
+                  : "border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"}`}
               >
-                <span className="text-xs opacity-60">{String(index + 1).padStart(2, "0")}</span>
-                <span>{item.label}</span>
+                {item.label}
               </a>
             </li>
-          );
-        })}
-      </ol>
+          ))}
+        </ol>
+        <div className="flex shrink-0 gap-1 border-l border-slate-200 pl-2 text-xs lg:mt-5 lg:flex-col lg:gap-3 lg:border-l-0 lg:pl-3 dark:border-slate-800">
+          <a href="#site-top" aria-label={locale === "zh" ? "↑ 回到顶部" : "↑ Back to top"} title={locale === "zh" ? "回到顶部" : "Back to top"} className="p-2 text-slate-500 hover:text-brand lg:p-0 dark:text-slate-400">
+            ↑ <span className="hidden lg:inline">{locale === "zh" ? "回到顶部" : "Back to top"}</span>
+          </a>
+          <a href="#page-end" aria-label={locale === "zh" ? "↓ 直达底部" : "↓ To the bottom"} title={locale === "zh" ? "直达底部" : "To the bottom"} className="p-2 text-slate-500 hover:text-brand lg:p-0 dark:text-slate-400">
+            ↓ <span className="hidden lg:inline">{locale === "zh" ? "直达底部" : "To the bottom"}</span>
+          </a>
+        </div>
+      </div>
     </nav>
   );
 }

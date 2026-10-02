@@ -4,129 +4,68 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { ThemeToggle } from "@/components/theme-toggle";
-import { LOCALE_COOKIE_NAME } from "@/lib/locale";
+import { LOCALE_COOKIE_NAME, type Locale } from "@/lib/locale";
 import type { NavItem } from "@/types/navigation";
-
-type Locale = "en" | "zh";
 
 type SiteHeaderProps = {
   navItems: NavItem[];
-  contactItem: NavItem;
-  profileName?: string;
-  currentLocale?: Locale;
+  profileName: string;
+  currentLocale: Locale;
 };
 
-function stripLocalePrefix(pathname: string) {
-  const match = pathname.match(/^\/(en|zh)(\/.*)?$/);
-  if (!match) return pathname;
-  return match[2] || "/";
-}
-
-/**
- * Global horizontal navigation bar with language toggle and theme switcher.
- * Sticks to the top across desktop and mobile.
- */
-export function SiteHeader({ navItems, contactItem, profileName, currentLocale = "en" }: SiteHeaderProps) {
-  const pathname = usePathname();
+export function SiteHeader({ navItems, profileName, currentLocale }: SiteHeaderProps) {
+  const pathname = usePathname() ?? "/";
   const router = useRouter();
-  const homeHref = navItems[0]?.href ?? "/";
-
-  const renderLink = (item: NavItem, variant: "desktop" | "mobile" | "contact") => {
-    const normalizedPathname = (pathname ?? "/").replace(/\/$/, "") || "/";
-    const normalizedHref = String(item.href).replace(/\/$/, "") || "/";
-    const isRootLike = normalizedHref === "/" || /^\/(en|zh)$/.test(normalizedHref);
-    const active = isRootLike
-      ? normalizedPathname === normalizedHref
-      : normalizedPathname === normalizedHref || normalizedPathname.startsWith(`${normalizedHref}/`);
-    const baseClasses =
-      variant === "desktop"
-        ? "rounded-full px-4 py-2 text-sm font-medium transition-colors"
-        : variant === "contact"
-          ? "whitespace-nowrap rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-foreground hover:text-white"
-          : "whitespace-nowrap rounded-full px-3 py-1 text-sm font-medium transition-colors";
-
-    const activeClasses =
-      variant === "contact"
-        ? ""
-        : variant === "desktop"
-          ? "bg-slate-900 text-white shadow-sm hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900"
-          : "bg-slate-900 text-white hover:bg-slate-900 hover:text-white dark:bg-white dark:text-slate-900 dark:hover:bg-white dark:hover:text-slate-900";
-
-    const inactiveClasses =
-      variant === "contact"
-        ? ""
-        : variant === "desktop"
-          ? "text-slate-600/80 hover:bg-slate-200/80 hover:text-slate-900 dark:text-slate-200/80 dark:hover:bg-white/10 dark:hover:text-white"
-          : "text-slate-600/80 hover:bg-slate-200/80 dark:text-slate-200/80 dark:hover:bg-white/10";
-
-    return (
-      <Link
-        key={item.href}
-        href={item.href as any}
-        aria-current={active ? "page" : undefined}
-        className={`${baseClasses} ${active ? activeClasses : inactiveClasses}`}
-      >
-        {item.label}
-      </Link>
-    );
-  };
+  const currentPath = pathname.replace(/\/$/, "") || "/";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 text-slate-700 shadow-[0_10px_40px_-30px_rgba(15,23,42,0.4)] backdrop-blur-lg dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-8 xl:max-w-7xl xl:px-10 2xl:max-w-[1500px] 2xl:px-12">
-        <div className="flex items-center gap-6">
-          <Link
-            href={homeHref as any}
-            className="inline-flex items-center text-sm font-semibold text-slate-700/90 hover:text-slate-900 dark:text-slate-200/90 dark:hover:text-white"
-            aria-label={profileName ?? "Rongqi Lu"}
-          >
-            <span className="whitespace-nowrap">{profileName ?? "Rongqi Lu"}</span>
-          </Link>
-          <nav className="hidden items-center gap-2 lg:flex">
-            {navItems.map((item) => renderLink(item, "desktop"))}
-          </nav>
-        </div>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden lg:block">{renderLink(contactItem, "contact")}</div>
-          <div className="flex items-center gap-1 rounded-full border border-slate-300 bg-white/70 p-1 text-xs font-semibold text-slate-600/80 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-200/80">
-            {(
-              [
-                { label: "EN", value: "en" as Locale },
-                { label: "中文", value: "zh" as Locale }
-              ] as const
-            ).map((option) => {
-              const active = currentLocale === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => {
-                    const current = pathname ?? "/";
-                    const stripped = stripLocalePrefix(current);
-                    const nextPath = stripped === "/" ? `/${option.value}` : `/${option.value}${stripped}`;
-
-                    // Persist user preference for proxy redirects and future visits.
-                    document.cookie = `${LOCALE_COOKIE_NAME}=${option.value}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
-                    router.push(nextPath as any);
-                  }}
-                  className={`rounded-full px-2.5 py-1 transition ${
-                    active
-                      ? "bg-slate-900 text-white shadow-sm dark:bg-white dark:text-slate-900"
-                      : "text-slate-600/80 hover:bg-slate-200/70 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
-                  }`}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
+    <header className="site-header sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95 print:hidden">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-5 py-3 sm:px-8 lg:px-10">
+        <Link href={"/" + currentLocale} className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+          {profileName}<span className="ml-1 text-brand" aria-hidden="true">.</span>
+        </Link>
+        <nav aria-label={currentLocale === "zh" ? "主导航" : "Main navigation"} className="order-last flex w-full items-center justify-between gap-1 border-t border-slate-200 pt-3 lg:order-none lg:w-auto lg:justify-start lg:border-0 lg:pt-0 dark:border-slate-800">
+          {navItems.map((item) => {
+            const active = item.href === "/" + currentLocale
+              ? currentPath === item.href
+              : currentPath === item.href || currentPath.startsWith(item.href + "/");
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-full px-2 py-2 text-xs font-medium transition-colors sm:px-3 sm:text-sm ${active
+                  ? "bg-slate-900 text-white hover:text-white dark:bg-slate-100 dark:text-slate-900 dark:hover:text-slate-900"
+                  : "text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+        <div className="flex items-center gap-2">
+          <div role="group" aria-label={currentLocale === "zh" ? "语言" : "Language"} className="flex items-center rounded-full border border-slate-200 p-0.5 text-xs font-medium dark:border-slate-700">
+            {(["en", "zh"] as const).map((locale) => (
+              <button
+                key={locale}
+                type="button"
+                aria-pressed={currentLocale === locale}
+                onClick={() => {
+                  const suffix = pathname.replace(/^\/(en|zh)(?=\/|$)/, "");
+                  document.cookie = `${LOCALE_COOKIE_NAME}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+                  router.push("/" + locale + suffix + window.location.hash);
+                }}
+                className={`rounded-full px-2.5 py-1.5 ${currentLocale === locale
+                  ? "bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white"
+                  : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"}`}
+              >
+                {locale === "en" ? "EN" : "中文"}
+              </button>
+            ))}
           </div>
           <ThemeToggle variant="subtle" />
         </div>
       </div>
-      <nav className="flex items-center gap-2 overflow-x-auto border-t border-slate-200 px-4 py-2 scrollbar-hide lg:hidden dark:border-slate-800">
-        {navItems.map((item) => renderLink(item, "mobile"))}
-        {renderLink(contactItem, "contact")}
-      </nav>
     </header>
   );
 }

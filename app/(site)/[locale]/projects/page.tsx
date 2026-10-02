@@ -8,7 +8,7 @@ import { normalizeLocale } from "@/lib/locale";
 import { buildLocaleMetadata } from "@/lib/seo";
 
 type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

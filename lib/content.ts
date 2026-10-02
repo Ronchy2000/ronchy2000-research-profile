@@ -10,7 +10,6 @@ import homePageJson from "@/content/pages/home.json";
 import researchPageJson from "@/content/pages/research.json";
 import projectsPageJson from "@/content/pages/projects.json";
 import publicationsPageJson from "@/content/pages/publications.json";
-import aboutPageJson from "@/content/pages/about.json";
 import contactPageJson from "@/content/pages/contact.json";
 
 import type {
@@ -26,7 +25,6 @@ import type {
   ResearchPageCopy,
   ProjectsPageCopy,
   PublicationsPageCopy,
-  AboutPageCopy,
   ContactPageCopy
 } from "./content-types";
 
@@ -92,11 +90,6 @@ export function getProjectsPageCopy(): ProjectsPageCopy {
 
 export function getPublicationsPageCopy(): PublicationsPageCopy {
   const { en, zh } = publicationsPageJson as unknown as PublicationsPageCopy;
-  return { en, zh };
-}
-
-export function getAboutPageCopy(): AboutPageCopy {
-  const { en, zh } = aboutPageJson as unknown as AboutPageCopy;
   return { en, zh };
 }
 

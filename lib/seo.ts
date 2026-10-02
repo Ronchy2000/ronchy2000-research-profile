@@ -96,7 +96,6 @@ export const SEO_STATIC_LOCALE_SUFFIXES = [
   "/research",
   "/projects",
   "/blog",
-  "/about",
   "/contact"
 ] as const;
 

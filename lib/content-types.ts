@@ -138,35 +138,17 @@ export type BlogPageCopy = Localized<{
 
 export type HomePageCopy = Localized<{
   heroIntro: string;
-  buttons: {
-    cv: string;
-    research: string;
-    projects: string;
-  };
-  highlights: {
-    title: string;
-    focusLabel: string;
-    focusValue: string;
-    contactLabel: string;
-    contactValue: string;
-    locationLabel: string;
-  };
-  sections: {
-    explore: {
-      title: string;
-      eyebrow: string;
-      description: string;
-      research: { title: string; description: string };
-      projects: { title: string; description: string };
-      blog: { title: string; description: string };
-    };
-    projects: { title: string; eyebrow: string; action: string };
-    writing: { title: string; eyebrow: string; action: string; empty: string };
-    contact: { title: string; eyebrow: string; description: string; action: string };
-  };
+  beyondResearch: string;
+  buttons: { cv: string; contact: string; research: string };
+  latest: string;
+  background: { title: string; education: string; experience: string; details: string };
+  honors: { title: string };
+  skills: { title: string; rows: string[][] };
+  outline: { label: string; intro: string; background: string; honors: string; skills: string };
 }>;
 
 export type ResearchPageCopy = Localized<{
+  detailsLabel: string;
   heroTitle: string;
   heroDescription: string;
   interestsTitle: string;
@@ -185,6 +167,8 @@ export type ResearchPageCopy = Localized<{
 }>;
 
 export type ProjectsPageCopy = Localized<{
+  showMore: string;
+  showLess: string;
   heroTitle: string;
   heroDescription: string;
   filters: {
@@ -234,37 +218,6 @@ export type PublicationsPageCopy = Localized<{
     S: string;
   };
   empty: string;
-}>;
-
-export type AboutPageCopy = Localized<{
-  intro: {
-    title: string;
-    description: string;
-    eyebrow: string;
-    download: string;
-    contactAction: string;
-  };
-  education: { title: string; eyebrow: string };
-  experience: { title: string; eyebrow: string };
-  honors: {
-    title: string;
-    eyebrow: string;
-    headers: string[];
-  };
-  skills: {
-    title: string;
-    eyebrow: string;
-    headers: string[];
-    rows: string[][];
-  };
-  outline: {
-    label: string;
-    overview: string;
-    education: string;
-    experience: string;
-    honors: string;
-    skills: string;
-  };
 }>;
 
 export type ContactPageCopy = Localized<{

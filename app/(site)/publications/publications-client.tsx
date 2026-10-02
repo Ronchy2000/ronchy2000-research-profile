@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 import { FilterToolbar } from "@/components/filter-toolbar";
 import { PublicationItem } from "@/components/publication-item";
 import { Section } from "@/components/section";
-import { Tag } from "@/components/tag";
 import type { PublicationEntry, PublicationsPageCopy } from "@/lib/content-types";
 
 type Locale = "en" | "zh";
@@ -51,7 +50,6 @@ export function PublicationsClient({ entries, locale, copy, sectionId }: Publica
         title={copy.section.title}
         description={copy.section.description}
         eyebrow={copy.section.eyebrow}
-        actions={<Tag label={copy.section.note} />}
       >
         <FilterToolbar
           groups={[
@@ -78,7 +76,11 @@ export function PublicationsClient({ entries, locale, copy, sectionId }: Publica
           ]}
         />
 
-        <div className="space-y-6">
+        <p className="text-xs text-slate-500 dark:text-slate-400" role="status">
+          {locale === "zh" ? "显示 " + filteredEntries.length + " 项成果" : filteredEntries.length + " entries"}
+          {" · " + copy.section.note}
+        </p>
+        <div className="divide-y divide-slate-200 dark:divide-slate-800">
           {filteredEntries.length ? (
             filteredEntries.map((entry) => <PublicationItem key={entry.id} item={entry} locale={locale} />)
           ) : (

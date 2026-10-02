@@ -31,8 +31,8 @@ Common fields (per locale):
 
 - `name`: Primary display name.
 - `nativeName`: Optional secondary name (e.g. Chinese name on English page).
-- `aka`: Optional preferred name. Currently rendered as `Call me {aka}!` under the avatar on English pages only.
-- `title`, `affiliation`, `location`: Short strings used in the sidebar and pages.
+- `aka`: Optional preferred name. Rendered beside the secondary name on the English home page.
+- `title`, `affiliation`, `location`: Short strings used in the home profile and contact page.
 - `keywords`: Array of short research keywords.
 - `social`: Array of `{ label, href }` links.
 - `avatar`: Optional path under `public/` (e.g. `/images/profile.jpeg`).
@@ -40,7 +40,6 @@ Common fields (per locale):
 
 Where it appears:
 
-- Desktop sidebar profile card
 - Header brand text
 - Home hero header line
 
@@ -53,6 +52,8 @@ If you only want to adjust wording, start here instead of editing TSX.
 ## Projects (`content/projects.json`)
 
 Projects are organized as `groups`, each with `title`, `kind`, and `items`.
+
+Each group shows four projects initially, ranked by stars, and can expand to show every entry. Year and label filters search all entries, including collapsed ones.
 
 A project item typically contains:
 
@@ -76,7 +77,7 @@ The scheduled workflow can run this daily:
 ## Publications (`content/publications.json`)
 
 Publications live in `entries`.
-They are rendered as the final catalogue on the consolidated Research page.
+They appear together on Research, before research experience. The home page links to the latest journal or conference entry without duplicating the catalogue.
 
 Key fields:
 
@@ -87,12 +88,12 @@ Key fields:
 
 ## Research (`content/research.json`)
 
-- `interests`: Cards on the Research page (`title`, `description`).
+- `interests`: Compact descriptions on the Research page (`title`, `description`).
 - `experiences`: A timeline-like list of research experiences (`title`, `period`, `role`, optional `advisor`/`funding`, `summary`, `bullets`, optional `tags`).
 
 ## Timeline (`content/timeline.json`)
 
-Used for the consolidated About page.
+Used once on the home page, under Education & Experience. Details expand in place. Legacy About, CV, and Experience URLs redirect here.
 
 - `education`: Array of timeline entries
 - `experience`: Array of timeline entries
@@ -104,7 +105,7 @@ Each entry has:
 
 ## Awards (`content/awards.json`)
 
-Awards live in `awards`.
+Awards live in `awards` and are shown only on Home.
 
 Each item has:
 
@@ -170,5 +171,7 @@ Before deploying:
 
 - `npm run lint`
 - `npm run build`
+- `npm run test:stars`
+- `EDGEONE=1 SITE_INDEXABLE=0 npm run build` (static mirror export)
 
-Last updated: 2026-02-15
+Last updated: 2026-10-03

@@ -123,8 +123,8 @@ export function ContactClient({ locale, profile, copy }: ContactClientProps) {
   const displayEmail = revealed ? contactEmail : obfuscatedEmail;
 
   return (
-    <div className="space-y-16">
-      <Section title={copy.title} description={copy.description} eyebrow={copy.eyebrow}>
+    <div className="max-w-4xl space-y-12">
+      <Section title={copy.title} description={copy.description} headingLevel="h1">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4 text-base text-slate-600 dark:text-slate-300">
             <p>
@@ -249,4 +249,3 @@ export function ContactClient({ locale, profile, copy }: ContactClientProps) {
     </div>
   );
 }
-

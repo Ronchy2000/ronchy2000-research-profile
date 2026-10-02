@@ -3,7 +3,7 @@
     "description": "Copy and labels for the Projects page."
   },
   "en": {
-    "heroTitle": "Project Portfolio",
+    "heroTitle": "Projects",
     "heroDescription": "Academic and open-source projects showcasing multi-agent systems, robotics, and software engineering.",
     "filters": {
       "year": "Year",
@@ -33,10 +33,12 @@
       "overview": "Overview",
       "catalogue": "Project Catalogue",
       "updates": "Recent Activity"
-    }
+    },
+    "showMore": "Show remaining projects",
+    "showLess": "Show fewer"
   },
   "zh": {
-    "heroTitle": "项目集锦",
+    "heroTitle": "项目",
     "heroDescription": "汇总多智能体系统、机器人与软件工程相关的科研成果与开源项目。",
     "filters": {
       "year": "年份",
@@ -66,6 +68,8 @@
       "overview": "项目概述",
       "catalogue": "项目目录",
       "updates": "近期动态"
-    }
+    },
+    "showMore": "展开其余项目",
+    "showLess": "收起"
   }
 }

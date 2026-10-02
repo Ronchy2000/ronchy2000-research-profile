@@ -5,47 +5,25 @@ import { LegacyPageRedirect } from "@/components/legacy-page-redirect";
 import { normalizeLocale } from "@/lib/locale";
 import { buildLocaleMetadata, buildNoIndexMetadata } from "@/lib/seo";
 
-type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-
-  return locale
-    ? {
-        ...buildLocaleMetadata(locale, "/about"),
-        ...buildNoIndexMetadata()
-      }
-    : {};
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  return locale ? { ...buildLocaleMetadata(locale), ...buildNoIndexMetadata() } : {};
 }
 
-export default async function CvRedirectPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-  if (!locale) {
-    notFound();
-  }
-
-  const copy = locale === "zh"
-    ? {
-        title: "网页简历已并入关于页面",
-        description: "正在前往整合后的个人履历页面；PDF 简历查看入口保持不变。",
-        action: "继续前往"
-      }
-    : {
-        title: "The web CV has moved",
-        description: "Taking you to the consolidated About page. The PDF viewing option remains available there.",
-        action: "Continue"
-      };
+export default async function RedirectPage({ params }: PageProps) {
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  if (!locale) notFound();
 
   return (
     <LegacyPageRedirect
-      href={`/${locale}/about`}
-      title={copy.title}
-      description={copy.description}
-      action={copy.action}
+      href={"/" + locale + "#background"}
+      title={locale === "zh" ? "网页简历已整合至主页" : "The web CV has moved to the home page"}
+      description={locale === "zh" ? "主页集中展示个人简介与履历，并保留查看 PDF 简历的入口。" : "The home page brings together my profile and background, with a link to view the PDF CV."}
+      action={locale === "zh" ? "继续前往" : "Continue"}
     />
   );
 }

@@ -6,7 +6,7 @@ Most routine updates (profile, publications, projects, blog posts) live in `cont
 ### Highlights
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - Content-driven: structured data in `content/*.json`, page copy in `content/pages/*.json`, and posts in `content/blog/{en,zh}/*.{md,mdx}`
-- Light/dark theme, responsive navigation, long-page outlines, and a downloadable PDF CV
+- Light/dark theme, independent page navigation, continuous sections, responsive outlines, and PDF CV viewing
 - Blog supports Markdown/MDX + math rendering (KaTeX)
 - Optional GitHub Actions automation for project activity and GitHub star sync
 
@@ -32,17 +32,28 @@ The site uses locale-prefixed routes for best performance and caching:
 
 Requests to `/` (and legacy paths like `/research`) are redirected to `/{locale}`. In middleware-capable builds this is handled by `proxy.ts`; in static-export builds it is handled by pages under `app/(redirects)` (client-side redirect).
 
+### Page structure
+
+Five independent pages: Home, Research, Projects, Blog, and Contact.
+
+- **Home**: biography, education, industry experience, honors, and skills. Recent work links to the full research entry.
+- **Research**: interests, publications and patents, and research experience. Methods and contributions expand on demand.
+- **Projects**: each group initially shows four projects ranked by GitHub stars, with an option to show all. Filters always search the full dataset.
+- **Blog / Contact**: independent pages retaining MDX, email reveal/copy, and local mail composition.
+
+Home, Research, and Projects use finite, continuous sections with a sticky desktop outline and a horizontal mobile outline. Top/bottom shortcuts are always available. Legacy About, CV, and Experience URLs redirect to Home sections; Publications redirects to the Research catalogue.
+
 ### Content Structure
 
 | File/Folder | What to edit |
 | --- | --- |
-| `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` shows `Call me ...!` under the avatar on English pages (desktop sidebar). |
-| `content/pages/*.json` | Page copy (Home/Research/Projects/About/Blog/Contact, plus publication catalogue labels). |
+| `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` appears next to the secondary name on the English home page. |
+| `content/pages/*.json` | Page copy (Home/Research/Projects/Blog/Contact, plus publication catalogue labels). |
 | `content/research.json` | Research interests + research experience timeline. |
 | `content/publications.json` | Publications & patents (supports type/year filters). |
 | `content/projects.json` | Project groups + items. GitHub stars are stored in `metrics.stars`. |
-| `content/timeline.json` | Education + industry timeline for the About page. |
-| `content/awards.json` | Honors & awards for the About page. |
+| `content/timeline.json` | Education + industry timeline on the home page. |
+| `content/awards.json` | Honors & awards on the home page. |
 | `content/updates.json` | Recent project activity shown on Projects (typically overwritten by automation). |
 | `content/blog/{en,zh}/*.{md,mdx}` | Blog posts (filename = slug). |
 
@@ -78,7 +89,7 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 
 ### Assets
 Defaults are configured via `content/profile.json`:
-- Avatar: `public/images/profile.jpeg` (`avatar`)
+- Avatar: `public/images/profile-2026.jpeg` (`avatar`)
 - CV PDF: `public/files/Ronchy_CV.pdf` (`cvLink`)
 
 ### GitHub Actions (Optional)

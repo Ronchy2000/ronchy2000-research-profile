@@ -3,50 +3,35 @@ import { notFound } from "next/navigation";
 
 import { HomeClient } from "./home-client";
 
-import {
-  getHomePageCopy,
-  getProfileContent,
-  getProjectsContent,
-} from "@/lib/content";
-import { getBlogPostMetas } from "@/lib/blog";
+import { getAwardsContent, getHomePageCopy, getProfileContent, getPublicationsContent, getTimelineContent } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
-import { compareProjectsByStars, deriveProject } from "@/lib/project-utils";
 import { buildLocaleMetadata } from "@/lib/seo";
 
-type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
   return locale ? buildLocaleMetadata(locale, "", { xDefaultPath: "/" }) : {};
 }
 
 export default async function HomePage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-  if (!locale) {
-    notFound();
-  }
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  if (!locale) notFound();
 
-  const profile = getProfileContent()[locale];
-  const highlightProjects = getProjectsContent()[locale].groups
-    .flatMap((group) => group.items)
-    .map((project, index) => deriveProject(project, index))
-    .sort(compareProjectsByStars)
-    .slice(0, 3);
-  const posts = (await getBlogPostMetas(locale)).slice(0, 2);
-  const copy = getHomePageCopy()[locale];
+  const latestPublication = getPublicationsContent()[locale].entries
+    .filter((entry) => entry.type === "J" || entry.type === "C")
+    .sort((a, b) => Number(b.year) - Number(a.year))[0];
 
   return (
     <HomeClient
       locale={locale}
-      profile={profile}
-      highlightProjects={highlightProjects}
-      posts={posts}
-      copy={copy}
+      profile={getProfileContent()[locale]}
+      timeline={getTimelineContent()[locale]}
+      awards={getAwardsContent()[locale].awards}
+      latestPublication={latestPublication}
+      copy={getHomePageCopy()[locale]}
     />
   );
 }

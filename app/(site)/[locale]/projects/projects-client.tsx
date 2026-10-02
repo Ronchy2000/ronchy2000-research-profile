@@ -7,9 +7,9 @@ import { PageOutline } from "@/components/page-outline";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
 import { ArrowRightIcon } from "@/components/icons";
-import type { ProjectEntry, ProjectGroup, ProjectsPageCopy, UpdateEntry } from "@/lib/content-types";
+import type { ProjectGroup, ProjectsPageCopy, UpdateEntry } from "@/lib/content-types";
 import type { Locale } from "@/lib/locale";
-import { decorateGroup, type DerivedProject, type ProjectGroupWithDerived } from "@/lib/project-utils";
+import { compareProjectsByStars, decorateGroup, type ProjectGroupWithDerived } from "@/lib/project-utils";
 
 type ProjectLabelFilter = "all" | "ongoing" | "featured";
 
@@ -30,8 +30,13 @@ const ALL_FILTER_VALUE = "all" as const;
 export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClientProps) {
   const [yearFilter, setYearFilter] = useState<string>(ALL_FILTER_VALUE);
   const [labelFilter, setLabelFilter] = useState<ProjectLabelFilter>(ALL_FILTER_VALUE);
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
 
-  const decoratedGroups = useMemo<ProjectGroupWithDerived[]>(() => groups.map(decorateGroup), [groups]);
+  const decoratedGroups = useMemo<ProjectGroupWithDerived[]>(() => groups.map((group) => {
+    const decorated = decorateGroup(group);
+    decorated.items.sort(compareProjectsByStars);
+    return decorated;
+  }), [groups]);
 
   const yearOptions = useMemo(() => {
     const uniqueYears = new Set<string>();
@@ -71,21 +76,20 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
   ];
 
   return (
-    <div className="grid items-start gap-10 xl:grid-cols-[minmax(0,1fr)_220px]">
-      <div className="space-y-7">
+    <div className="reading-layout">
+      <div className="reading-content">
         <section
           id="overview"
-          className="space-y-3 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 shadow-[0_24px_60px_-45px_rgba(30,64,175,0.45)] dark:border-slate-800 dark:bg-gradient-to-br dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40"
+          className="space-y-4"
         >
-          <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">{copy.heroTitle}</h1>
-          <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">{copy.heroTitle}</h1>
+          <p className="max-w-2xl text-[15px] leading-7 text-slate-600 dark:text-slate-300">
             {copy.heroDescription}
           </p>
         </section>
 
-        <div id="catalogue" className="space-y-6 scroll-mt-28">
+        <section id="catalogue" aria-label={copy.outline.catalogue} className="space-y-8">
           <FilterToolbar
-            className="shadow-[0_16px_40px_-38px_rgba(15,23,42,0.55)]"
             groups={[
               {
                 id: "year",
@@ -95,7 +99,7 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
                   value: year,
                   label: year === ALL_FILTER_VALUE ? copy.filters.all : year
                 })),
-                onChange: setYearFilter
+                onChange: (value) => { setYearFilter(value); setExpandedGroups({}); }
               },
               {
                 id: "tags",
@@ -106,10 +110,15 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
                   { value: "ongoing", label: copy.filters.ongoing },
                   { value: "featured", label: copy.filters.featured }
                 ],
-                onChange: (value) => setLabelFilter(value as ProjectLabelFilter)
+                onChange: (value) => { setLabelFilter(value as ProjectLabelFilter); setExpandedGroups({}); }
               }
             ]}
           />
+          <p role="status" className="text-xs text-slate-500 dark:text-slate-400">
+            {locale === "zh"
+              ? "符合筛选的项目：" + filteredGroups.reduce((sum, group) => sum + group.items.length, 0)
+              : filteredGroups.reduce((sum, group) => sum + group.items.length, 0) + " matching projects"}
+          </p>
 
           {filteredGroups.length ? (
             filteredGroups.map((group) => (
@@ -122,8 +131,8 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
                     : copy.groupLabels[group.kind as keyof typeof copy.groupLabels] ?? copy.groupLabels.default
                 }
               >
-                <div className="grid gap-6 md:grid-cols-2">
-                  {group.items.map((project) => {
+                <div id={"project-group-" + group.kind} className="grid gap-4 md:grid-cols-2">
+                  {(expandedGroups[group.kind] ? group.items : group.items.slice(0, 4)).map((project) => {
                     const badges: ProjectBadge[] = [];
                     if (project.derived.isFeatured) {
                       badges.push({ label: copy.badges.featured, variant: "accent" });
@@ -135,6 +144,19 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
                     return <ProjectCard key={project.name} project={project} badges={badges} />;
                   })}
                 </div>
+                {group.items.length > 4 ? (
+                  <button
+                    type="button"
+                    aria-expanded={Boolean(expandedGroups[group.kind])}
+                    aria-controls={"project-group-" + group.kind}
+                    onClick={() => setExpandedGroups((current) => ({ ...current, [group.kind]: !current[group.kind] }))}
+                    className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:border-brand hover:text-brand dark:border-slate-700 dark:text-slate-300"
+                  >
+                    {expandedGroups[group.kind]
+                      ? copy.showLess
+                      : copy.showMore + " (" + (group.items.length - 4) + ")"}
+                  </button>
+                ) : null}
               </Section>
             ))
           ) : (
@@ -142,7 +164,7 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
               {copy.empty}
             </div>
           )}
-        </div>
+        </section>
 
         <Section id="updates" title={copy.sections.updates.title} eyebrow={copy.sections.updates.eyebrow}>
           <div className="space-y-3">
@@ -150,16 +172,18 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
               <a
                 key={update.link || `${update.date}-${update.type}-${index}`}
                 href={update.link}
-                className="group flex items-start gap-4 rounded-xl px-4 py-3 transition-all hover:bg-slate-50 dark:hover:bg-slate-900/50"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-lg py-3 hover:bg-slate-100 dark:hover:bg-slate-900/50"
               >
                 <div className="w-20 flex-shrink-0 pt-0.5 text-xs font-medium text-slate-600 dark:text-slate-300">
                   {update.date}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-medium text-slate-900 transition-colors group-hover:text-brand dark:text-slate-50">
+                  <h3 className="break-words text-sm font-medium leading-6 text-slate-900 transition-colors group-hover:text-brand dark:text-slate-50">
                     {update.title}
                   </h3>
-                  <p className="mt-1 text-base text-slate-600 dark:text-slate-300">{update.summary}</p>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{update.summary}</p>
                 </div>
                 <ArrowRightIcon
                   aria-hidden="true"
@@ -171,7 +195,7 @@ export function ProjectsClient({ locale, groups, updates, copy }: ProjectsClient
         </Section>
       </div>
 
-      <PageOutline label={copy.outline.label} items={outlineItems} />
+      <PageOutline label={copy.outline.label} items={outlineItems} locale={locale} />
     </div>
   );
 }

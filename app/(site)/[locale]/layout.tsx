@@ -18,20 +18,15 @@ const NAV_ITEMS: Record<Locale, NavItem[]> = {
     { label: "Research", href: "/en/research" },
     { label: "Projects", href: "/en/projects" },
     { label: "Blog", href: "/en/blog" },
-    { label: "About", href: "/en/about" }
+    { label: "Contact", href: "/en/contact" }
   ],
   zh: [
     { label: "首页", href: "/zh" },
-    { label: "研究与成果", href: "/zh/research" },
-    { label: "项目实践", href: "/zh/projects" },
+    { label: "研究", href: "/zh/research" },
+    { label: "项目", href: "/zh/projects" },
     { label: "博客", href: "/zh/blog" },
-    { label: "关于", href: "/zh/about" }
+    { label: "联系", href: "/zh/contact" }
   ]
-};
-
-const CONTACT_ITEMS: Record<Locale, NavItem> = {
-  en: { label: "Contact", href: "/en/contact" },
-  zh: { label: "联系", href: "/zh/contact" }
 };
 
 export default async function LocaleLayout({
@@ -39,7 +34,7 @@ export default async function LocaleLayout({
   params
 }: Readonly<{
   children: ReactNode;
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 }>) {
   const resolvedParams = await params;
   const locale = normalizeLocale(resolvedParams.locale);
@@ -49,13 +44,11 @@ export default async function LocaleLayout({
 
   const profile = getProfileContent()[locale];
   const navItems = NAV_ITEMS[locale];
-  const contactItem = CONTACT_ITEMS[locale];
   const lastUpdated = getUpdatesContent()[locale]?.updates?.[0]?.date;
 
   return (
     <SiteShell
       navItems={navItems}
-      contactItem={contactItem}
       profile={profile}
       locale={locale}
       lastUpdated={lastUpdated}

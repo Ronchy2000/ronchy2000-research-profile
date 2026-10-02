@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --header-height: 112px;
   color-scheme: light;
   --font-sans-stack: var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans", Arial, sans-serif;
   font-family: var(--font-sans-stack);
@@ -66,7 +67,7 @@ body:lang(zh-Hans) {
   }
 
   p {
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   small {
@@ -79,11 +80,43 @@ a {
 }
 
 section {
-  @apply scroll-mt-24;
+  scroll-margin-top: calc(var(--header-height) + 72px);
+}
+
+.reading-layout {
+  display: grid;
+  align-items: start;
+  gap: 2rem;
+}
+
+.reading-content {
+  min-width: 0;
+}
+
+.reading-content > * + * {
+  margin-top: 2.75rem;
+}
+
+.page-outline {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 20;
+  order: -1;
+  min-width: 0;
+  padding: 0.5rem 0;
+  @apply border-b border-slate-200 bg-slate-50/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95;
+}
+
+@media (min-width: 1024px) {
+  :root { --header-height: 65px; }
+  section { scroll-margin-top: calc(var(--header-height) + 24px); }
+  .reading-layout { grid-template-columns: minmax(0, 1fr) 152px; gap: 3rem; }
+  .page-outline { order: 1; top: calc(var(--header-height) + 32px); border: 0; padding: 0; }
 }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+summary:focus-visible {
   @apply outline-none ring-2 ring-brand/60 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
 }
 
@@ -129,8 +162,8 @@ a:focus-visible {
     display: none !important;
   }
 
-  header,
-  nav,
+  .site-header,
+  .page-outline,
   footer {
     display: none !important;
   }
@@ -138,4 +171,10 @@ a:focus-visible {
   main {
     padding: 0 !important;
   }
+
+  .reading-layout { display: block; }
+  details::details-content { content-visibility: visible; }
+  details > * { display: block !important; }
+  details > summary { display: none !important; }
+  section, article { break-inside: avoid; }
 }

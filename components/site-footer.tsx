@@ -48,7 +48,7 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
   );
 
   return (
-    <footer className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300 print:hidden">
+    <footer id="page-end" tabIndex={-1} className="mt-16 scroll-mt-40 border-t border-slate-200 py-8 text-xs text-slate-500 outline-none dark:border-slate-800 dark:text-slate-400 print:hidden">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
