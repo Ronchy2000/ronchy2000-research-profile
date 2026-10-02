@@ -37,8 +37,8 @@ export default async function HomePage({ params }: PageProps) {
   const highlightProjects = getProjectsContent()[locale].groups
     .flatMap((group) => group.items)
     .map((project, index) => deriveProject(project, index))
-    .sort(compareProjectsByStars)
-    .slice(0, 4);
+    .filter((project) => (project.derived.starCount ?? 0) > 10)
+    .sort(compareProjectsByStars);
   const publications = [...getPublicationsContent()[locale].entries]
     .sort((a, b) => Number(b.year) - Number(a.year))
     .slice(0, 2);

@@ -50,7 +50,7 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
 | ---- | -------- | ---- |
 | Hero & 侧边名片 | `content/profile.json` | 修改姓名、职称、关键词、社交链接、头像、CV 路径；可选 `aka`（英文页头像下方显示 “Call me …!”）。 |
 | Recent Updates | `content/updates.json` | 首页最近动态（默认由 GitHub Action 脚本覆盖生成，不建议手动改）。 |
-| Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页取前 4 项，Projects 页完整展示。 |
+| Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页展示 GitHub stars 超过 10 的项目，Projects 页完整展示。 |
 | Latest Writing & Publications 页 | `content/publications.json` | `type` 取值 `C`(Conference) / `J`(Journal) / `P`(Patent) / `S`(In Submission)，会自动映射标签，支持 Type/Year 筛选；新增条目按 `year` 排序，首页自动展示最新两项。 |
 | Experience / CV 页 | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
 | Honors | `content/awards.json` | 年份倒序，首页取前 6 条；CV 页展示全部。 |

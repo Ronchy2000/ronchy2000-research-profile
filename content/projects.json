@@ -159,6 +159,46 @@
             }
           },
           {
+            "name": "ZYZ IELTS Reading PDF to HTML",
+            "summary": "Converts IELTS reading PDFs into structured HTML for browser-based practice and review.",
+            "period": "2026 – Present",
+            "role": "Developer",
+            "tags": [
+              "IELTS",
+              "HTML",
+              "PDF Processing"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/ZYZ-IELTS-Reading-Pdf2Html"
+              }
+            ],
+            "metrics": {
+              "stars": 34
+            }
+          },
+          {
+            "name": "Stable-Claude",
+            "summary": "Claude Code stability guide covering fixed browser profiles and network egress for fewer verification and authorization issues.",
+            "period": "2026 – Present",
+            "role": "Author",
+            "tags": [
+              "Claude Code",
+              "Shell",
+              "AI Tooling"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Stable-Claude"
+              }
+            ],
+            "metrics": {
+              "stars": 23
+            }
+          },
+          {
             "name": "Macintosh EFI 2026-01",
             "summary": "Hackintosh EFI maintenance record for a Comet Lake plus RX 6600 build, covering USB mapping, OpenCore updates, and OCLP patching.",
             "period": "2026",
@@ -522,6 +562,46 @@
             ],
             "metrics": {
               "stars": 254
+            }
+          },
+          {
+            "name": "ZYZ 雅思阅读 PDF 转 HTML",
+            "summary": "将雅思阅读 PDF 转换为结构化 HTML，便于在浏览器中练习与复盘。",
+            "period": "2026 – 至今",
+            "role": "开发者",
+            "tags": [
+              "雅思",
+              "HTML",
+              "PDF 处理"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/ZYZ-IELTS-Reading-Pdf2Html"
+              }
+            ],
+            "metrics": {
+              "stars": 34
+            }
+          },
+          {
+            "name": "Stable-Claude 稳定环境指南",
+            "summary": "整理 Claude Code 稳定使用方案，通过固定浏览器 Profile 与网络出口减少验证和授权异常。",
+            "period": "2026 – 至今",
+            "role": "作者",
+            "tags": [
+              "Claude Code",
+              "Shell",
+              "AI 工具链"
+            ],
+            "links": [
+              {
+                "label": "GitHub",
+                "href": "https://github.com/Ronchy2000/Stable-Claude"
+              }
+            ],
+            "metrics": {
+              "stars": 23
             }
           },
           {
