@@ -36,6 +36,10 @@ export type ResearchExperience = {
   summary: string;
   bullets: string[];
   tags?: string[];
+  links?: {
+    label: string;
+    href: string;
+  }[];
 };
 
 export type PublicationEntry = {

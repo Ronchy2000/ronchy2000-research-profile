@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { ArrowRightIcon } from "@/components/icons";
+import { ArrowRightIcon, ExternalLinkIcon } from "@/components/icons";
 import { PageOutline } from "@/components/page-outline";
 import { Section } from "@/components/section";
 import { getResearchContent, getResearchPageCopy } from "@/lib/content";
@@ -53,13 +53,22 @@ export default async function ResearchPage({ params }: PageProps) {
                 <details className="text-sm text-slate-600 dark:text-slate-300">
                   <summary className="w-fit cursor-pointer text-xs font-medium text-brand dark:text-blue-400">{t.detailsLabel}</summary>
                   <div className="mt-3 space-y-3 border-l border-slate-200 pl-4 dark:border-slate-700">
-                    <p className="text-xs leading-6 text-slate-500 dark:text-slate-400">{[item.advisor, item.funding].filter(Boolean).join(" · ")}</p>
+                    {item.advisor || item.funding ? <p className="text-xs leading-6 text-slate-500 dark:text-slate-400">{[item.advisor, item.funding].filter(Boolean).join(" · ")}</p> : null}
                     <ul className="list-disc space-y-1 pl-4 leading-6">
                       {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
                     </ul>
                     {item.tags?.length ? <p className="text-xs text-slate-500 dark:text-slate-400">{item.tags.join(" / ")}</p> : null}
                   </div>
                 </details>
+                {item.links?.length ? (
+                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
+                    {item.links.map((link) => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium dark:text-blue-400">
+                        {link.label}<ExternalLinkIcon aria-hidden="true" className="h-3 w-3" />
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>

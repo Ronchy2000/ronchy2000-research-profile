@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "description": "Research interests and experience timeline. Interests feed the Research page keywords; experiences populate the timeline component.",
+    "description": "Research interests shown on Home and research experiences shown on Research.",
     "fields": {
       "interests": "Array of { title, description } cards",
-      "experiences": "Array of items with title, period, role, advisor, funding, summary, bullets, tags"
+      "experiences": "Array of items with title, period, role, advisor, funding, summary, bullets, tags and optional related links"
     }
   },
   "en": {
@@ -26,6 +26,16 @@
       }
     ],
     "experiences": [
+      {
+        "title": "Multi-agent Reinforcement Learning with Communication",
+        "period": "2026",
+        "role": "Research Assistant (RA) · HKUST",
+        "summary": "Joined the Hong Kong University of Science and Technology as a research assistant after completing the master's degree, focusing on multi-agent reinforcement learning with communication.",
+        "bullets": [
+          "Research focus: the integration of inter-agent communication and multi-agent policy learning for cooperative decision-making."
+        ],
+        "tags": ["MARL", "Communication"]
+      },
       {
         "title": "Intelligent Swarm Pursuit-Evasion under Incomplete Information",
         "period": "2024 – 2026",
@@ -53,6 +63,23 @@
         "tags": ["Navigation", "ROS"]
       },
       {
+        "title": "Multi-UAV Formation Control and Simulation",
+        "period": "2025",
+        "role": "Graduate Researcher · Xidian University",
+        "summary": "Studied multi-UAV formation control during the master's programme, implementing square, circular and flocking formations with collision avoidance in MATLAB and Python simulations.",
+        "bullets": [
+          "Implemented 2D and 3D square formations using artificial potential fields and a leader–follower structure, and ring-topology formations using distributed consensus control.",
+          "Reproduced and extended an existing flocking implementation with target tracking, obstacle avoidance and trajectory visualisation, building on MSN-Flocking-Formation-Control.",
+          "Analysed simulated trajectories, velocity evolution, connectivity and centroid motion; published code and visualisation tools in three GitHub repositories."
+        ],
+        "tags": ["Formation Control", "MATLAB", "Python", "Simulation"],
+        "links": [
+          { "label": "Square formation", "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular" },
+          { "label": "Circular formation", "href": "https://github.com/Ronchy2000/Formation_control_Circular" },
+          { "label": "Flocking", "href": "https://github.com/Ronchy2000/Flocking-Formation-Control" }
+        ]
+      },
+      {
         "title": "Visual-Inertial SLAM for Autonomous UAVs",
         "period": "2022 – 2023",
         "role": "Team Lead",
@@ -64,6 +91,22 @@
           "Automated waypoint navigation through cluttered aisles."
         ],
         "tags": ["SLAM", "UAV", "Navigation"]
+      },
+      {
+        "title": "TOTAL: Multi-Corner Timing Optimisation with Transfer and Active Learning",
+        "period": "Jun. – Sep. 2022",
+        "role": "Research Assistant (RA) · Beihang University",
+        "advisor": "Advisor: Wei W. Xing",
+        "summary": "Contributed to TOTAL, a machine-learning framework for multi-corner static timing analysis and optimisation of integrated circuits, with work on data preprocessing, model validation and benchmark experiments.",
+        "bullets": [
+          "Supported Gaussian-process-based timing prediction using transfer and active learning, including experimental data preparation and model validation for the 15 nm technology node.",
+          "Ran experiments on the b17, b18 and b19 benchmarks, collected results and analysed critical-path prediction across timing optimisation iterations.",
+          "Contributed experimental data and validation results to “TOTAL: Multi-Corners Timing Optimization Based on Transfer and Active Learning”, published at ACM/IEEE DAC 2023."
+        ],
+        "tags": ["EDA", "Gaussian Processes", "Transfer Learning", "Active Learning"],
+        "links": [
+          { "label": "DAC 2023 paper", "href": "https://doi.org/10.1109/DAC56929.2023.10247914" }
+        ]
       }
     ]
   },
@@ -87,6 +130,16 @@
       }
     ],
     "experiences": [
+      {
+        "title": "融合通信机制的多智能体强化学习",
+        "period": "2026",
+        "role": "研究助理（RA）· 香港科技大学（HKUST）",
+        "summary": "硕士毕业后，在香港科技大学担任研究助理，研究方向为结合智能体通信的多智能体强化学习（MARL with Communication）。",
+        "bullets": [
+          "围绕协同决策，研究智能体间的通信机制与多智能体策略学习的结合。"
+        ],
+        "tags": ["MARL", "智能体通信"]
+      },
       {
         "title": "不完全信息条件下智能群体追逃博弈算法研究",
         "period": "2024 – 2026",
@@ -114,6 +167,23 @@
         "tags": ["导航", "ROS"]
       },
       {
+        "title": "多飞行器编队控制与仿真研究",
+        "period": "2025",
+        "role": "硕士研究生 · 西安电子科技大学",
+        "summary": "硕士期间围绕多无人机编队形成、协同运动与碰撞避免开展研究，使用 MATLAB 与 Python 实现四边形、环形及仿鸟群编队的控制与仿真。",
+        "bullets": [
+          "结合人工势场与领导者—跟随者结构实现二维、三维四边形编队，并基于环形拓扑与分布式一致性控制实现环形编队。",
+          "基于已有的 MSN-Flocking-Formation-Control 开源实现复现并改进 flocking 算法，完善目标跟踪、障碍物避碰与轨迹可视化。",
+          "通过仿真轨迹、速度变化、系统连通性与质心运动分析编队行为，在三个 GitHub 仓库中公开代码与可视化工具。"
+        ],
+        "tags": ["编队控制", "MATLAB", "Python", "仿真"],
+        "links": [
+          { "label": "四边形编队", "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular" },
+          { "label": "环形编队", "href": "https://github.com/Ronchy2000/Formation_control_Circular" },
+          { "label": "仿鸟群编队", "href": "https://github.com/Ronchy2000/Flocking-Formation-Control" }
+        ]
+      },
+      {
         "title": "面向仓储的视觉惯性 SLAM",
         "period": "2022 – 2023",
         "role": "项目负责人",
@@ -125,6 +195,22 @@
           "实现复杂货架通道内的自主航点巡航与避障。"
         ],
         "tags": ["SLAM", "四旋翼无人机","室内导航"]
+      },
+      {
+        "title": "TOTAL：基于迁移与主动学习的芯片多工况时序优化",
+        "period": "2022.06 – 2022.09",
+        "role": "研究助理（RA）· 北京航空航天大学",
+        "advisor": "导师：Wei W. Xing",
+        "summary": "参与面向集成电路多工况静态时序分析与优化的机器学习框架 TOTAL，承担数据预处理、模型验证与基准实验工作。",
+        "bullets": [
+          "参与基于高斯过程回归、迁移学习与主动学习的时序预测研究，支持 15 nm 工艺节点的实验数据准备与模型验证。",
+          "在 b17、b18、b19 基准电路上开展实验，收集并分析多轮时序优化中的关键路径预测结果。",
+          "为发表于 ACM/IEEE DAC 2023 的论文《TOTAL: Multi-Corners Timing Optimization Based on Transfer and Active Learning》提供实验数据与验证结果。"
+        ],
+        "tags": ["EDA", "高斯过程", "迁移学习", "主动学习"],
+        "links": [
+          { "label": "DAC 2023 论文", "href": "https://doi.org/10.1109/DAC56929.2023.10247914" }
+        ]
       }
     ]
   }

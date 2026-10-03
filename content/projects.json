@@ -59,7 +59,7 @@
           {
             "name": "Quadrangular Formation Control",
             "summary": "UAV square formation control using artificial potential fields with autonomous organization.",
-            "period": "2024",
+            "period": "2025",
             "role": "Developer",
             "tags": [
               "MATLAB",
@@ -79,7 +79,7 @@
           {
             "name": "Circular Formation Control",
             "summary": "Distributed UAV formation control based on ring topology for 2D/3D spatial formations.",
-            "period": "2024",
+            "period": "2025",
             "role": "Developer",
             "tags": [
               "MATLAB",
@@ -99,10 +99,10 @@
           {
             "name": "Flocking Formation Control",
             "summary": "Multi-UAV formation control with obstacle avoidance based on flocking algorithms.",
-            "period": "2024",
+            "period": "2025",
             "role": "Developer",
             "tags": [
-              "MATLAB",
+              "Python",
               "UAV",
               "Formation"
             ],
@@ -465,7 +465,7 @@
           {
             "name": "四边形编队控制",
             "summary": "利用人工势场实现无人机方阵的自主重构与保持，兼顾收敛速度与稳定性。",
-            "period": "2024",
+            "period": "2025",
             "role": "算法开发",
             "tags": [
               "MATLAB",
@@ -485,7 +485,7 @@
           {
             "name": "环形编队控制",
             "summary": "在二维/三维空间构建环形拓扑的分布式无人机编队控制策略，支持动态调整。",
-            "period": "2024",
+            "period": "2025",
             "role": "算法开发",
             "tags": [
               "MATLAB",
@@ -505,10 +505,10 @@
           {
             "name": "仿鸟群编队控制",
             "summary": "基于 flocking 模型实现多无人机自主编队与避障控制验证。",
-            "period": "2024",
+            "period": "2025",
             "role": "算法开发",
             "tags": [
-              "MATLAB",
+              "Python",
               "无人机",
               "编队控制"
             ],
