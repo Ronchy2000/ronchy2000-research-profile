@@ -3,8 +3,8 @@
     "description": "Home brings together the academic profile, research interests, publications, selected research projects and background."
   },
   "en": {
-    "heroIntro": "I am Rongqi Lu, with a master's degree in Control Engineering from Xidian University. My research focuses on multi-robot coordination and multi-agent reinforcement learning, with an emphasis on communication-efficient collaboration, reliable decision-making and autonomous exploration in complex environments.",
-    "beyondResearch": "Beyond research, I work on AI-assisted development and self-hosted systems, with interests in edge computing and index investing. I enjoy using engineering methods to understand complex systems and turn ideas into practical tools.",
+    "heroIntro": "Rongqi Lu holds a master's degree in Control Engineering from Xidian University. Lu's research focuses on multi-robot coordination and multi-agent reinforcement learning, with an emphasis on communication-efficient collaboration, reliable decision-making and autonomous exploration in complex environments.",
+    "beyondResearch": "Beyond research, Lu explores AI-assisted development and self-hosted systems, with interests in edge computing and index investing. This work applies engineering methods to understand complex systems, develop practical tools and refine them through hands-on experimentation.",
     "buttons": {
       "cv": "CV PDF",
       "research": "Research experience"
@@ -50,8 +50,8 @@
     }
   },
   "zh": {
-    "heroIntro": "我是陆荣琦，获西安电子科技大学控制工程硕士学位。研究方向为多机器人协同与多智能体强化学习，重点关注复杂环境下的高效通信、协同决策与自主探索，致力于提升多智能体系统的协作效率与可靠性。",
-    "beyondResearch": "研究之外，我持续探索 AI 辅助开发与自托管系统，关注边缘计算与指数化投资。喜欢用工程方法理解复杂系统，将想法转化为实用工具，并在实践中检验和改进。",
+    "heroIntro": "陆荣琦，获西安电子科技大学控制工程硕士学位。研究方向为多机器人协同与多智能体强化学习，重点关注复杂环境下的高效通信、协同决策与自主探索，致力于提升多智能体系统的协作效率与可靠性。",
+    "beyondResearch": "研究之外，持续探索 AI 辅助开发与自托管系统，关注边缘计算与指数化投资。注重以工程方法理解复杂系统，将想法转化为实用工具，并在实践中检验和改进。",
     "buttons": {
       "cv": "简历PDF",
       "research": "科研经历"

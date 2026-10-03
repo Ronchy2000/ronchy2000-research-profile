@@ -85,7 +85,7 @@ section {
 
 .site-container {
   width: calc(100% - clamp(2rem, 6vw, 7rem));
-  max-width: 100rem;
+  max-width: 70rem;
   margin-inline: auto;
 }
 
@@ -119,7 +119,7 @@ section {
 
 @media (min-width: 1280px) {
   section { scroll-margin-top: calc(var(--header-height) + 24px); }
-  .reading-layout { grid-template-columns: minmax(0, 1fr) 160px; gap: clamp(2rem, 4vw, 4rem); }
+  .reading-layout { grid-template-columns: minmax(0, 1fr) 160px; gap: 3rem; }
   .page-outline { order: 1; top: calc(var(--header-height) + 32px); border: 0; padding: 0; }
 }
 
