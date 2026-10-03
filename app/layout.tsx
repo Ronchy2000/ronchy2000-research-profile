@@ -6,6 +6,8 @@ import "katex/dist/katex.min.css";
 import { Providers } from "@/components/providers";
 import { getSiteRobotsMetadata, seoSiteConfig } from "@/lib/seo";
 
+const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -19,8 +21,8 @@ export const metadata: Metadata = {
     "Academic profile for Rongqi Lu showcasing research interests, publications, projects, and contact information.",
   robots: getSiteRobotsMetadata(),
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg"
+    icon: `${siteBasePath}/icon.svg`,
+    shortcut: `${siteBasePath}/icon.svg`
   },
   openGraph: {
     title: "Rongqi Lu | Research Profile",

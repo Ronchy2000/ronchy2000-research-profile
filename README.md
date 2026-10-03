@@ -109,6 +109,19 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 3. 使用默认 Next.js 构建命令（`npm run build`）和输出目录（`.next`）。
 4. 如需自定义域名，配置后重新触发部署。
 
+### 部署到 GitHub Pages
+
+仓库已包含 `.github/workflows/deploy-pages.yml`，会将 Next.js 静态导出自动发布到 GitHub Pages。首次使用时：
+
+1. 打开仓库的 **Settings → Pages**。
+2. 将 **Source** 改为 **GitHub Actions**（不要继续选择 “Deploy from a branch”）。
+3. 推送到 `master` 或 `feat/information-architecture-rebuild`，或在 **Actions → Deploy site to GitHub Pages → Run workflow** 手动运行。
+
+构建完成后，项目站点地址为：
+`https://ronchy2000.github.io/ronchy2000-research-profile/`
+
+GitHub Pages 是项目子路径部署，工作流会自动配置 `/ronchy2000-research-profile` 的资源路径；因此不要直接把仓库根目录作为 Pages 的分支源，否则 GitHub 会把 `README.md` 显示成首页。
+
 ### SEO / 多域名部署约定
 - **Google 主收录域名**：`https://ronchylu.com`
 - **国内镜像域名**：`https://ronchy2000.top`

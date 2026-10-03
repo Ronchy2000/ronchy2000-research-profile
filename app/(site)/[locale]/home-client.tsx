@@ -24,6 +24,8 @@ type HomeClientProps = {
 
 export function HomeClient({ locale, profile, timeline, awards, interests, publications, publicationsCopy, projects, copy }: HomeClientProps) {
   const base = "/" + locale;
+  const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const withSiteBasePath = (path: string) => path.startsWith("/") ? `${siteBasePath}${path}` : path;
   const outlineItems = [
     { id: "intro", label: copy.outline.intro },
     { id: "interests", label: copy.interests.title },
@@ -47,7 +49,7 @@ export function HomeClient({ locale, profile, timeline, awards, interests, publi
               <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{profile.location}</p>
             </div>
             {profile.avatar ? (
-              <Image src={profile.avatar} alt={profile.name} width={168} height={196} priority className="h-36 w-28 shrink-0 rounded-xl object-cover object-top sm:h-44 sm:w-36" />
+              <Image src={withSiteBasePath(profile.avatar)} alt={profile.name} width={168} height={196} priority className="h-36 w-28 shrink-0 rounded-xl object-cover object-top sm:h-44 sm:w-36" />
             ) : null}
           </div>
           <div className="max-w-[52rem] space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
@@ -55,7 +57,7 @@ export function HomeClient({ locale, profile, timeline, awards, interests, publi
             <p>{copy.beyondResearch}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-            <a href={profile.cvLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 font-semibold text-white shadow-sm hover:bg-blue-700 hover:text-white">
+            <a href={withSiteBasePath(profile.cvLink)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 font-semibold text-white shadow-sm hover:bg-blue-700 hover:text-white">
               {copy.buttons.cv}<ExternalLinkIcon className="h-4 w-4" />
             </a>
             {profile.social.map((social) => (

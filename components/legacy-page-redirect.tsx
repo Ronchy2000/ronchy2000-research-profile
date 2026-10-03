@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function withBasePath(path: string) {
+  return `${BASE_PATH}${path}`;
+}
+
 type LegacyPageRedirectProps = {
   href: string;
   title: string;
@@ -12,7 +18,7 @@ type LegacyPageRedirectProps = {
 
 export function LegacyPageRedirect({ href, title, description, action = "Continue" }: LegacyPageRedirectProps) {
   useEffect(() => {
-    window.location.replace(href);
+    window.location.replace(withBasePath(href));
   }, [href]);
 
   return (

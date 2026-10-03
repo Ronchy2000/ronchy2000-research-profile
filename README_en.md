@@ -106,6 +106,19 @@ The sync deduplicates repositories across locales; run `npm run test:stars` for 
 3. Use the default Next.js build command (`npm run build`) and output directory (`.next`).
 4. Set up a custom domain if desired, then trigger a deploy.
 
+### Deploying to GitHub Pages
+
+The repository includes `.github/workflows/deploy-pages.yml`, which builds and publishes the static Next.js export to GitHub Pages. On the first setup:
+
+1. Open **Settings → Pages** in the repository.
+2. Change **Source** to **GitHub Actions** (do not keep “Deploy from a branch”).
+3. Push to `master` or `feat/information-architecture-rebuild`, or run **Actions → Deploy site to GitHub Pages → Run workflow** manually.
+
+After the workflow finishes, the project site is available at:
+`https://ronchy2000.github.io/ronchy2000-research-profile/`
+
+GitHub Pages serves this project below a repository subpath. The workflow configures `/ronchy2000-research-profile` automatically; publishing the repository root directly would make GitHub render `README.md` as the homepage instead.
+
 ### SEO / Multi-domain Deployment Contract
 - **Google canonical domain**: `https://ronchylu.com`
 - **China-facing mirror**: `https://ronchy2000.top`

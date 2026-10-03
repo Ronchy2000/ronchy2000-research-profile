@@ -4,6 +4,12 @@ import { useEffect } from "react";
 
 import { DEFAULT_LOCALE, LOCALE_COOKIE_NAME, normalizeLocale, type Locale } from "@/lib/locale";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function withBasePath(path: string) {
+  return `${BASE_PATH}${path}`;
+}
+
 function readCookie(name: string): string | null {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : null;
@@ -43,7 +49,7 @@ export function LocaleRedirect({
 
     const suffix = pathAfterLocale ? (pathAfterLocale.startsWith("/") ? pathAfterLocale : `/${pathAfterLocale}`) : "";
     const target = suffix ? `/${locale}${suffix}` : `/${locale}`;
-    window.location.replace(target);
+    window.location.replace(withBasePath(target));
   }, [pathAfterLocale]);
 
   const suffix = pathAfterLocale ? (pathAfterLocale.startsWith("/") ? pathAfterLocale : `/${pathAfterLocale}`) : "";
@@ -54,7 +60,7 @@ export function LocaleRedirect({
       <h1 className="text-lg font-semibold">{title}</h1>
       <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
         If you are not redirected automatically,{" "}
-        <a className="underline underline-offset-4" href={fallbackTarget}>
+        <a className="underline underline-offset-4" href={withBasePath(fallbackTarget)}>
           continue
         </a>
         .
