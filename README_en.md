@@ -41,7 +41,7 @@ Four independent pages in the main navigation: Home, Research, Projects, and Blo
 - **Projects**: each group initially shows four projects ranked by GitHub stars, with an option to show all. Filters always search the full dataset.
 - **Blog / Contact**: independent pages retaining MDX, email reveal/copy, and local mail composition.
 
-Home, Research, and Projects use finite, continuous sections. The content area is centered at a maximum width of 1120px and shrinks to fit smaller viewports; the outline sits alongside content on large screens (≥1280px) and above it on tablets and phones. Top/bottom shortcuts are always available. Legacy About, CV, Experience, and Publications URLs redirect to Home sections. Home selects four projects by stars from the `academic` group and tools tagged `Academic` / `学术`, sharing the catalogue and star snapshots with Projects.
+Home, Research, and Projects use finite, continuous sections. The content area is centered at a maximum width of 1120px and shrinks to fit smaller viewports; the outline sits alongside content on large screens (≥1280px) and above it on tablets and phones. Top/bottom shortcuts are always available. Legacy About, CV, Experience, and Publications URLs redirect to Home sections. Home selects four projects by stars only from the `academic` research group. LaTeX and other academic tools remain on Projects, sharing the same catalogue and star snapshots.
 
 ### Content Structure
 

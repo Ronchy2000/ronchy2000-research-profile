@@ -79,7 +79,7 @@ export function HomeClient({ locale, profile, timeline, awards, interests, publi
 
         <PublicationsClient entries={publications} locale={locale} copy={publicationsCopy} sectionId="publications" />
 
-        <Section id="projects" title={copy.projects.title} description={copy.projects.description} actions={
+        <Section id="projects" title={copy.projects.title} actions={
           <Link href={base + "/projects"} className="inline-flex items-center gap-2 text-sm font-medium">{copy.projects.all}<ArrowRightIcon className="h-4 w-4" /></Link>
         }>
           <div className="grid gap-4 md:grid-cols-2">

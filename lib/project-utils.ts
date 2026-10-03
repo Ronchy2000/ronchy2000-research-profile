@@ -111,9 +111,8 @@ export function decorateGroup(group: ProjectGroup): ProjectGroupWithDerived {
 
 export function selectHomeProjects(groups: ProjectGroup[]): DerivedProject[] {
   return groups
-    .flatMap((group) => group.items.filter((project) =>
-      group.kind === "academic" || project.tags?.some((tag) => /^(academic|学术)$/i.test(tag))
-    ))
+    .filter((group) => group.kind === "academic")
+    .flatMap((group) => group.items)
     .map((project, index) => deriveProject(project, index))
     .sort(compareProjectsByStars)
     .slice(0, 4);

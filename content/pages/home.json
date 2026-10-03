@@ -12,7 +12,6 @@
     "interests": { "title": "Research interests" },
     "projects": {
       "title": "Selected research projects",
-      "description": "Research code and academic tools, selected by GitHub stars.",
       "all": "All projects"
     },
     "background": {
@@ -59,7 +58,6 @@
     "interests": { "title": "研究兴趣" },
     "projects": {
       "title": "精选科研项目",
-      "description": "从科研代码与学术工具中，按 GitHub 星数精选展示。",
       "all": "全部项目"
     },
     "background": {

@@ -145,7 +145,7 @@ export type HomePageCopy = Localized<{
   beyondResearch: string;
   buttons: { cv: string; research: string };
   interests: { title: string };
-  projects: { title: string; description: string; all: string };
+  projects: { title: string; all: string };
   background: { title: string; education: string; experience: string; details: string };
   honors: { title: string };
   skills: { title: string; rows: string[][] };
