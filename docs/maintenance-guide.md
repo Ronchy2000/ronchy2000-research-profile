@@ -85,12 +85,20 @@
     - `sitemap.xml` 返回空列表，不再给镜像域名喂 URL
 
 ### EdgeOne Pages 部署
+- **分支域名与合并注意事项**：
+  - `feat/information-architecture-rebuild` 当前部署在 `cv` 子域名，因此 `edgeone.json` 不启用 `$host` → `$wwwhost` 的 301 跳转，访问时保留当前域名。
+  - 合入 `master` 前，必须在合并结果的 `edgeone.json` 中恢复下面这条规则，并放在 `redirects` 数组首位；Git 合并不会自动恢复它。不要将 feat 的临时关闭配置直接用于 master 生产部署。
+
+    ```json
+    { "source": "$host", "destination": "$wwwhost", "statusCode": 301 }
+    ```
+
 - **静态导出模式**：`next.config.mjs` 在 `EDGEONE=1` 或 `CF_PAGES=1` 环境变量下使用 `output: "export"` + `trailingSlash: true`，生成纯静态站点到 `out/` 目录。
 - **配置文件**：
   - `edgeone.json` 的 `buildCommand` 已固定为：
     - `SITE_CANONICAL_ORIGIN=https://ronchylu.com SITE_INDEXABLE=0 EDGEONE=1 npm run build`
   - 作用：保证 `ronchy2000.top` 始终作为镜像站部署，保持访问速度，但不会与 `.com` 抢 canonical / 收录
-  - 包含 308 永久重定向规则：`/en` → `/en/`，`/zh` → `/zh/`
+  - 保留同域 308 永久重定向规则：`/` → `/en/`，`/en` → `/en/`，`/zh` → `/zh/`
 - **路径 `/en` vs `/en/` 的坑**：（熬到我2026年2月16日2:19am...
   - 静态托管中 `/en/` 会查找 `en/index.html`（✅ 能找到）
   - 但 `/en` 会查找文件 `en` 或 `en.html`（❌ 不存在）
