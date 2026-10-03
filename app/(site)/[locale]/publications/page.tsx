@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return locale
     ? {
-        ...buildLocaleMetadata(locale, "/research"),
+        ...buildLocaleMetadata(locale),
         ...buildNoIndexMetadata()
       }
     : {};
@@ -30,19 +30,19 @@ export default async function PublicationsRedirectPage({ params }: PageProps) {
 
   const copy = locale === "zh"
     ? {
-        title: "发表成果已并入研究页面",
-        description: "正在前往“研究与成果”页面的论文与专利章节。",
+        title: "发表成果已并入首页",
+        description: "正在前往首页的论文与专利章节。",
         action: "继续前往"
       }
     : {
         title: "Publications have moved",
-        description: "Taking you to the Publications & Patents section of the consolidated Research page.",
+        description: "Taking you to the Publications & Patents section on the home page.",
         action: "Continue"
       };
 
   return (
     <LegacyPageRedirect
-      href={`/${locale}/research#publications`}
+      href={`/${locale}#publications`}
       title={copy.title}
       description={copy.description}
       action={copy.action}

@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 
 import { HomeClient } from "./home-client";
 
-import { getAwardsContent, getHomePageCopy, getProfileContent, getPublicationsContent, getTimelineContent } from "@/lib/content";
+import { getAwardsContent, getHomePageCopy, getProfileContent, getProjectsContent, getPublicationsContent, getPublicationsPageCopy, getResearchContent, getTimelineContent } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
+import { selectHomeProjects } from "@/lib/project-utils";
 import { buildLocaleMetadata } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -20,17 +21,16 @@ export default async function HomePage({ params }: PageProps) {
   const locale = normalizeLocale(value);
   if (!locale) notFound();
 
-  const latestPublication = getPublicationsContent()[locale].entries
-    .filter((entry) => entry.type === "J" || entry.type === "C")
-    .sort((a, b) => Number(b.year) - Number(a.year))[0];
-
   return (
     <HomeClient
       locale={locale}
       profile={getProfileContent()[locale]}
       timeline={getTimelineContent()[locale]}
       awards={getAwardsContent()[locale].awards}
-      latestPublication={latestPublication}
+      interests={getResearchContent()[locale].interests}
+      publications={getPublicationsContent()[locale].entries}
+      publicationsCopy={getPublicationsPageCopy()[locale]}
+      projects={selectHomeProjects(getProjectsContent()[locale].groups)}
       copy={getHomePageCopy()[locale]}
     />
   );

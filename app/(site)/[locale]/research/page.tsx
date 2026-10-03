@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PublicationsClient } from "@/app/(site)/publications/publications-client";
 import { ArrowRightIcon } from "@/components/icons";
 import { PageOutline } from "@/components/page-outline";
 import { Section } from "@/components/section";
-import { getPublicationsContent, getPublicationsPageCopy, getResearchContent, getResearchPageCopy } from "@/lib/content";
+import { getResearchContent, getResearchPageCopy } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
 import { buildLocaleMetadata } from "@/lib/seo";
 
@@ -23,12 +22,10 @@ export default async function ResearchPage({ params }: PageProps) {
   const locale = normalizeLocale(value);
   if (!locale) notFound();
 
-  const { interests, experiences } = getResearchContent()[locale];
+  const { experiences } = getResearchContent()[locale];
   const t = getResearchPageCopy()[locale];
   const outlineItems = [
     { id: "overview", label: t.outline.overview },
-    { id: "interests", label: t.outline.interests },
-    { id: "publications", label: t.outline.publications },
     { id: "experience", label: t.outline.experience }
   ];
 
@@ -38,25 +35,11 @@ export default async function ResearchPage({ params }: PageProps) {
         <section id="overview" className="space-y-4">
           <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">{t.heroTitle}</h1>
           <p className="max-w-2xl text-[15px] leading-7 text-slate-600 dark:text-slate-300">{t.heroDescription}</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <Link id="interests" href={`/${locale}#interests`} className="inline-flex items-center gap-2 font-medium">{t.homeLinks.interests}<ArrowRightIcon className="h-4 w-4" /></Link>
+            <Link id="publications" href={`/${locale}#publications`} className="inline-flex items-center gap-2 font-medium">{t.homeLinks.publications}<ArrowRightIcon className="h-4 w-4" /></Link>
+          </div>
         </section>
-
-        <Section id="interests" title={t.interestsTitle}>
-          <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-            {interests.map((interest) => (
-              <div key={interest.title} className="space-y-2">
-                <dt className="text-sm font-semibold text-slate-900 dark:text-slate-100">{interest.title}</dt>
-                <dd className="text-sm leading-6 text-slate-600 dark:text-slate-300">{interest.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </Section>
-
-        <PublicationsClient
-          entries={getPublicationsContent()[locale].entries}
-          locale={locale}
-          copy={getPublicationsPageCopy()[locale]}
-          sectionId="publications"
-        />
 
         <Section id="experience" title={t.experienceTitle}>
           <div className="divide-y divide-slate-200 dark:divide-slate-800">
@@ -81,10 +64,6 @@ export default async function ResearchPage({ params }: PageProps) {
             ))}
           </div>
         </Section>
-        <p className="flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-slate-200 pt-6 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
-          {t.collaboration}
-          <Link href={"/" + locale + "/contact"} className="inline-flex items-center gap-1 font-medium">{t.collaborationAction}<ArrowRightIcon className="h-4 w-4" /></Link>
-        </p>
       </div>
       <PageOutline label={t.outline.label} items={outlineItems} locale={locale} />
     </div>

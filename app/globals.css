@@ -83,6 +83,12 @@ section {
   scroll-margin-top: calc(var(--header-height) + 72px);
 }
 
+.site-container {
+  width: calc(100% - clamp(2rem, 6vw, 7rem));
+  max-width: 100rem;
+  margin-inline: auto;
+}
+
 .reading-layout {
   display: grid;
   align-items: start;
@@ -109,8 +115,11 @@ section {
 
 @media (min-width: 1024px) {
   :root { --header-height: 65px; }
+}
+
+@media (min-width: 1280px) {
   section { scroll-margin-top: calc(var(--header-height) + 24px); }
-  .reading-layout { grid-template-columns: minmax(0, 1fr) 152px; gap: 3rem; }
+  .reading-layout { grid-template-columns: minmax(0, 1fr) 160px; gap: clamp(2rem, 4vw, 4rem); }
   .page-outline { order: 1; top: calc(var(--header-height) + 32px); border: 0; padding: 0; }
 }
 

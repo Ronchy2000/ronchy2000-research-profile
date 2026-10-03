@@ -139,8 +139,9 @@ export type BlogPageCopy = Localized<{
 export type HomePageCopy = Localized<{
   heroIntro: string;
   beyondResearch: string;
-  buttons: { cv: string; contact: string; research: string };
-  latest: string;
+  buttons: { cv: string; research: string };
+  interests: { title: string };
+  projects: { title: string; description: string; all: string };
   background: { title: string; education: string; experience: string; details: string };
   honors: { title: string };
   skills: { title: string; rows: string[][] };
@@ -151,18 +152,13 @@ export type ResearchPageCopy = Localized<{
   detailsLabel: string;
   heroTitle: string;
   heroDescription: string;
-  interestsTitle: string;
-  interestsEyebrow: string;
+  homeLinks: { interests: string; publications: string };
   experienceTitle: string;
   experienceEyebrow: string;
-  collaboration: string;
-  collaborationAction: string;
   outline: {
     label: string;
     overview: string;
-    interests: string;
     experience: string;
-    publications: string;
   };
 }>;
 

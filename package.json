@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint .",
     "test:stars": "node --test scripts/update-project-stars.test.mjs",
+    "test:home": "node --test scripts/home-projects.test.mjs",
     "new:post": "node scripts/new-post.mjs"
   },
   "dependencies": {

@@ -4,14 +4,14 @@
 
 ## 页面分工与阅读方式
 
-- **主页**：个人简介、教育/行业经历、荣誉、技能；查看 PDF 入口；最近论文的简短链接。
-- **研究**：研究方向、完整论文与专利目录、科研经历。方法与贡献可展开。
+- **主页**：个人简介、研究兴趣、完整论文与专利、四项精选科研项目，再展示教育/行业经历、荣誉、技能；保留“简历PDF”入口。
+- **研究**：详细科研经历，方法与贡献可展开；研究方向和成果链接回首页。
 - **项目**：学术与开源项目，保留 Stars、标签/年份筛选、项目链接与自动更新的动态。
-- **博客、联系**：各自独立页面，保持原有功能。
+- **博客、联系**：各自独立页面，保持原有功能；联系入口只放在全站页脚，不占顶部导航。
 
-主导航只切换独立页面。主页、研究、项目页内的目录才使用锚点，桌面固定在右侧，手机固定在导航下方；上下箭头分别到顶部与底部。正文宽度不会随滚动改变。页面采用有限的连续章节，不做无限加载。
+主导航只切换独立页面。主页、研究、项目页内的目录才使用锚点，≥1280px 的大屏固定在右侧，平板与手机固定在导航下方；上下箭头分别到顶部与底部。容器宽度随视口伸展，上限 1600px，不会随滚动改变。页面采用有限的连续章节，不做无限加载。
 
-个人履历只在主页维护一次。旧 `/{locale}/about`、`/cv`、`/experience` 分别进入主页的 `#intro`、`#background`、`#experience`；旧 `/publications` 进入研究页 `#publications`。跳转页 noindex，正式页面保留 canonical/hreflang。
+个人履历只在主页维护一次。旧 `/{locale}/about`、`/cv`、`/experience` 分别进入主页的 `#intro`、`#background`、`#experience`；旧 `/publications` 进入首页 `#publications`。跳转页 noindex，正式页面保留 canonical/hreflang。
 
 ## 内容维护速查表
 
@@ -21,9 +21,9 @@
 | 简介、章节标签、技能 | `content/pages/home.json` | 主页 |
 | 教育、行业经历 | `content/timeline.json` | 主页；详细条目可展开 |
 | 荣誉 | `content/awards.json` | 主页完整展示 |
-| 研究方向、科研经历 | `content/research.json` | 研究页 |
-| 论文、专利、录用说明 | `content/publications.json` | 研究页；主页只显示最近论文入口 |
-| 项目与 Stars | `content/projects.json` | 项目页 |
+| 研究方向、科研经历 | `content/research.json` | 首页展示方向，研究页展示经历 |
+| 论文、专利、录用说明 | `content/publications.json` | 首页完整展示 |
+| 项目与 Stars | `content/projects.json` | 首页精选；项目页完整展示 |
 | 自动项目动态 | `content/updates.json` | 项目页 |
 | 博客 | `content/blog/{en,zh}/*.{md,mdx}` | 博客页 |
 | 各页标签文案 | `content/pages/*.json` | 对应页面 |
@@ -31,6 +31,8 @@
 ## 项目与 Stars
 
 每组优先显示 Stars 最高的四项，可展开其余项目。筛选始终针对完整数据；改变筛选会重新收起长列表。项目数据与链接不因折叠而删除。只有带有效链接的项目卡片才有浮动和点击反馈。
+
+首页从 `academic` 分组和带 `Academic` / `学术` 标签的开源工具中按 Stars 取前四项，不会因非科研项目星数更高而将其选入。仍使用同一份项目数据；`npm run test:home` 验证选取规则及中英文一致性。
 
 `scripts/update-project-stars.mjs` 为中英文共用仓库去重请求，并写回两种语言的 `metrics.stars`。所有请求失败时保留原数据并返回错误。页面使用最近一次同步值，不在访客浏览器里请求 GitHub API。
 
@@ -116,7 +118,7 @@
   - `SITE_INDEXABLE=1`
 
 ## 常见修改场景
-- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Research 页的成果目录会自动更新。
+- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；首页的成果目录会自动更新。
 - **更新 Recent Updates**：若暂时不想依赖 GitHub Action，可手动编辑 `content/updates.json`。恢复自动化时重新触发 workflow 即可。
 - **编辑项目**：在 `content/projects.json` 中维护条目/分组；项目页按 Stars 排序，每组默认显示四项。
 - **调整导航顺序**：修改 `navItems` 数组，并确认对应页面文件存在。

@@ -5,36 +5,26 @@
   "en": {
     "heroTitle": "Research",
     "heroDescription": "My work blends multi-agent reinforcement learning, distributed robotics, and embedded autonomy, focusing on reliable coordination strategies for autonomous robot teams.",
-    "interestsTitle": "Research Interests",
-    "interestsEyebrow": "Focus Areas",
+    "homeLinks": { "interests": "Research interests on Home", "publications": "Publications & patents on Home" },
     "experienceTitle": "Research Experience",
     "experienceEyebrow": "Experience",
-    "collaboration": "For research discussions and collaboration:",
-    "collaborationAction": "Contact me",
     "outline": {
       "label": "On this page",
       "overview": "Overview",
-      "interests": "Focus Areas",
-      "experience": "Research Experience",
-      "publications": "Publications & Patents"
+      "experience": "Research Experience"
     },
     "detailsLabel": "Methods & contributions"
   },
   "zh": {
     "heroTitle": "研究",
     "heroDescription": "聚焦多智能体强化学习、分布式机器人与嵌入式自主系统，探索可稳定落地的协同策略，让自主系统在真实环境中保持可靠表现。",
-    "interestsTitle": "研究兴趣",
-    "interestsEyebrow": "关注方向",
+    "homeLinks": { "interests": "首页 · 研究兴趣", "publications": "首页 · 论文与专利" },
     "experienceTitle": "科研经历",
     "experienceEyebrow": "经历",
-    "collaboration": "欢迎就相关研究问题交流与合作。",
-    "collaborationAction": "联系我",
     "outline": {
       "label": "本页概览",
       "overview": "研究概述",
-      "interests": "关注方向",
-      "experience": "科研经历",
-      "publications": "论文与专利"
+      "experience": "科研经历"
     },
     "detailsLabel": "方法与贡献"
   }

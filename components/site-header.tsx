@@ -20,7 +20,7 @@ export function SiteHeader({ navItems, profileName, currentLocale }: SiteHeaderP
 
   return (
     <header className="site-header sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95 print:hidden">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-5 py-3 sm:px-8 lg:px-10">
+      <div className="site-container flex flex-wrap items-center justify-between gap-y-3 py-3">
         <Link href={"/" + currentLocale} className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-100">
           {profileName}<span className="ml-1 text-brand" aria-hidden="true">.</span>
         </Link>

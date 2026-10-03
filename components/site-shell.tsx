@@ -21,7 +21,7 @@ export function SiteShell({ children, navItems, profile, locale, lastUpdated }: 
         {locale === "zh" ? "跳至正文" : "Skip to content"}
       </a>
       <SiteHeader navItems={navItems} profileName={profile.name} currentLocale={locale} />
-      <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
+      <div className="site-container py-8 sm:py-12">
         <main id="main-content" tabIndex={-1} className="min-w-0 scroll-mt-48 outline-none lg:scroll-mt-24">
           {children}
         </main>

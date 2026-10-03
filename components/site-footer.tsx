@@ -18,6 +18,8 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
       viewSource: "View source on GitHub",
       lastUpdated: "Last updated:",
       tagline: "Always improving",
+      contact: "Get in touch",
+      contactNote: "For research discussions, collaboration and project feedback.",
       icpLabel: "ICP Licensing"
     },
     zh: {
@@ -25,11 +27,13 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
       viewSource: "GitHub 源码仓库",
       lastUpdated: "上次更新：",
       tagline: "无限进步",
+      contact: "联系我",
+      contactNote: "欢迎交流研究想法、探讨合作，或分享项目反馈。",
       icpLabel: "ICP备案号"
     }
   } satisfies Record<
     Locale,
-    { copyright: string; viewSource: string; lastUpdated: string; tagline: string; icpLabel: string }
+    { copyright: string; viewSource: string; lastUpdated: string; tagline: string; icpLabel: string; contact: string; contactNote: string }
   >;
   const t = copy[locale];
   const ICP_LICENSE = "晋ICP备2025068932号-1";
@@ -49,6 +53,12 @@ export function SiteFooter({ lastUpdated, locale = "en" }: SiteFooterProps) {
 
   return (
     <footer id="page-end" tabIndex={-1} className="mt-16 scroll-mt-40 border-t border-slate-200 py-8 text-xs text-slate-500 outline-none dark:border-slate-800 dark:text-slate-400 print:hidden">
+      <div className="mb-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+        <Link href={`/${locale}/contact`} className="inline-flex items-center gap-2 py-2 text-base font-semibold text-slate-900 hover:text-brand dark:text-slate-100 dark:hover:text-blue-400">
+          {t.contact}<span aria-hidden="true">↗</span>
+        </Link>
+        <p className="text-sm">{t.contactNote}</p>
+      </div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1">

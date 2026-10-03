@@ -108,3 +108,13 @@ export function decorateGroup(group: ProjectGroup): ProjectGroupWithDerived {
     items: group.items.map((project, index) => deriveProject(project, index)).sort(compareProjects)
   };
 }
+
+export function selectHomeProjects(groups: ProjectGroup[]): DerivedProject[] {
+  return groups
+    .flatMap((group) => group.items.filter((project) =>
+      group.kind === "academic" || project.tags?.some((tag) => /^(academic|学术)$/i.test(tag))
+    ))
+    .map((project, index) => deriveProject(project, index))
+    .sort(compareProjectsByStars)
+    .slice(0, 4);
+}

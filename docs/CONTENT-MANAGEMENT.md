@@ -77,7 +77,7 @@ The scheduled workflow can run this daily:
 ## Publications (`content/publications.json`)
 
 Publications live in `entries`.
-They appear together on Research, before research experience. The home page links to the latest journal or conference entry without duplicating the catalogue.
+They appear together on Home, after research interests and before selected projects. Research links to this section without duplicating the catalogue.
 
 Key fields:
 
@@ -88,7 +88,7 @@ Key fields:
 
 ## Research (`content/research.json`)
 
-- `interests`: Compact descriptions on the Research page (`title`, `description`).
+- `interests`: Compact descriptions on the home page (`title`, `description`).
 - `experiences`: A timeline-like list of research experiences (`title`, `period`, `role`, optional `advisor`/`funding`, `summary`, `bullets`, optional `tags`).
 
 ## Timeline (`content/timeline.json`)

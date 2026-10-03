@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PublicationsClient } from "@/app/(site)/publications/publications-client";
 import { ArrowRightIcon, ExternalLinkIcon } from "@/components/icons";
 import { PageOutline } from "@/components/page-outline";
+import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
 import { Timeline } from "@/components/timeline";
-import type { AwardEntry, HomePageCopy, LocaleProfile, PublicationEntry, TimelineContent } from "@/lib/content-types";
+import type { AwardEntry, HomePageCopy, LocaleProfile, ProjectEntry, PublicationEntry, PublicationsPageCopy, ResearchInterest, TimelineContent } from "@/lib/content-types";
 import type { Locale } from "@/lib/locale";
 
 type HomeClientProps = {
@@ -13,14 +15,20 @@ type HomeClientProps = {
   profile: LocaleProfile;
   timeline: TimelineContent[Locale];
   awards: AwardEntry[];
-  latestPublication?: PublicationEntry;
+  interests: ResearchInterest[];
+  publications: PublicationEntry[];
+  publicationsCopy: PublicationsPageCopy[Locale];
+  projects: ProjectEntry[];
   copy: HomePageCopy[Locale];
 };
 
-export function HomeClient({ locale, profile, timeline, awards, latestPublication, copy }: HomeClientProps) {
+export function HomeClient({ locale, profile, timeline, awards, interests, publications, publicationsCopy, projects, copy }: HomeClientProps) {
   const base = "/" + locale;
   const outlineItems = [
     { id: "intro", label: copy.outline.intro },
+    { id: "interests", label: copy.interests.title },
+    { id: "publications", label: publicationsCopy.section.title },
+    { id: "projects", label: copy.projects.title },
     { id: "background", label: copy.outline.background },
     { id: "honors", label: copy.outline.honors },
     { id: "skills", label: copy.outline.skills }
@@ -42,7 +50,7 @@ export function HomeClient({ locale, profile, timeline, awards, latestPublicatio
               <Image src={profile.avatar} alt={profile.name} width={168} height={196} priority className="h-36 w-28 shrink-0 rounded-xl object-cover object-top sm:h-44 sm:w-36" />
             ) : null}
           </div>
-          <div className="space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
+          <div className="max-w-[52rem] space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
             <p>{copy.heroIntro}</p>
             <p>{copy.beyondResearch}</p>
           </div>
@@ -53,19 +61,31 @@ export function HomeClient({ locale, profile, timeline, awards, latestPublicatio
             {profile.social.map((social) => (
               <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-slate-600 underline-offset-4 hover:text-brand hover:underline dark:text-slate-300">{social.label}</a>
             ))}
-            <Link href={base + "/contact"} className="text-slate-600 underline-offset-4 hover:text-brand hover:underline dark:text-slate-300">{copy.buttons.contact}</Link>
           </div>
-          {latestPublication ? (
-            <Link href={base + "/research#publication-" + latestPublication.id} className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-blue-800">
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-medium text-brand dark:text-blue-400">{copy.latest} · {latestPublication.year}</p>
-                <p className="mt-1 font-medium text-slate-800 dark:text-slate-100">{latestPublication.venue}</p>
-                {latestPublication.notes ? <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{latestPublication.notes}</p> : null}
-              </div>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 text-slate-400 group-hover:text-brand" />
-            </Link>
-          ) : null}
         </section>
+
+        <Section id="interests" title={copy.interests.title} actions={
+          <Link href={base + "/research"} className="inline-flex items-center gap-2 text-sm font-medium">{copy.buttons.research}<ArrowRightIcon className="h-4 w-4" /></Link>
+        }>
+          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {interests.map((interest) => (
+              <div key={interest.title} className="space-y-2">
+                <dt className="text-sm font-semibold text-slate-900 dark:text-slate-100">{interest.title}</dt>
+                <dd className="text-sm leading-6 text-slate-600 dark:text-slate-300">{interest.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </Section>
+
+        <PublicationsClient entries={publications} locale={locale} copy={publicationsCopy} sectionId="publications" />
+
+        <Section id="projects" title={copy.projects.title} description={copy.projects.description} actions={
+          <Link href={base + "/projects"} className="inline-flex items-center gap-2 text-sm font-medium">{copy.projects.all}<ArrowRightIcon className="h-4 w-4" /></Link>
+        }>
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((project) => <ProjectCard key={project.name} project={project} />)}
+          </div>
+        </Section>
 
         <Section id="background" title={copy.background.title}>
           <div className="grid gap-8 sm:grid-cols-2">
@@ -103,7 +123,6 @@ export function HomeClient({ locale, profile, timeline, awards, latestPublicatio
               </div>
             ))}
           </dl>
-          <Link href={base + "/research"} className="inline-flex items-center gap-2 text-sm font-medium">{copy.buttons.research}<ArrowRightIcon className="h-4 w-4" /></Link>
         </Section>
       </div>
       <PageOutline label={copy.outline.label} items={outlineItems} locale={locale} />

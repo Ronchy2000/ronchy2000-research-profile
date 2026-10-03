@@ -6,5 +6,5 @@ import { buildNoIndexMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildNoIndexMetadata();
 
 export default function LegacyPublicationsRedirectPage() {
-  return <LocaleRedirect pathAfterLocale="/research#publications" title="Redirecting to research results..." />;
+  return <LocaleRedirect pathAfterLocale="/#publications" title="Redirecting to publications on Home..." />;
 }

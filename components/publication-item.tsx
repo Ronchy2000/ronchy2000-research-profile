@@ -14,7 +14,7 @@ const TYPE_LABELS = {
 
 export function PublicationItem({ item, locale = "en" }: PublicationItemProps) {
   return (
-    <article id={"publication-" + item.id} className="scroll-mt-48 space-y-2 py-5 first:pt-0 last:pb-0 lg:scroll-mt-24">
+    <article id={"publication-" + item.id} className="scroll-mt-48 space-y-2 py-5 first:pt-0 last:pb-0 xl:scroll-mt-24">
       <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
         <span className="tabular-nums">{item.year}</span><span aria-hidden="true">·</span>
         <span>{TYPE_LABELS[locale][item.type]}</span>

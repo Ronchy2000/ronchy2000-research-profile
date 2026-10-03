@@ -34,14 +34,14 @@ Requests to `/` (and legacy paths like `/research`) are redirected to `/{locale}
 
 ### Page structure
 
-Five independent pages: Home, Research, Projects, Blog, and Contact.
+Four independent pages in the main navigation: Home, Research, Projects, and Blog. Contact remains a separate page, accessible from the global footer.
 
-- **Home**: biography, education, industry experience, honors, and skills. Recent work links to the full research entry.
-- **Research**: interests, publications and patents, and research experience. Methods and contributions expand on demand.
+- **Home**: biography, research interests, the complete publication catalogue, four selected research projects, then education, industry experience, honors, and skills.
+- **Research**: research experience, with methods and contributions expanding on demand. Interests and publications link back to Home.
 - **Projects**: each group initially shows four projects ranked by GitHub stars, with an option to show all. Filters always search the full dataset.
 - **Blog / Contact**: independent pages retaining MDX, email reveal/copy, and local mail composition.
 
-Home, Research, and Projects use finite, continuous sections with a sticky desktop outline and a horizontal mobile outline. Top/bottom shortcuts are always available. Legacy About, CV, and Experience URLs redirect to Home sections; Publications redirects to the Research catalogue.
+Home, Research, and Projects use finite, continuous sections. The layout grows with the viewport up to 1600px; the outline sits alongside content on large screens (≥1280px) and above it on tablets and phones. Top/bottom shortcuts are always available. Legacy About, CV, Experience, and Publications URLs redirect to Home sections. Home selects four projects by stars from the `academic` group and tools tagged `Academic` / `学术`, sharing the catalogue and star snapshots with Projects.
 
 ### Content Structure
 
