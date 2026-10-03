@@ -422,12 +422,200 @@ SITE_INDEXABLE: "0"
 
 例如，`https://ronchylu.github.io/en/` 仍可以作为入口，但当前会由 GitHub Pages 转到 `github.ronchylu.com/en/`。这不会改变前面介绍的仓库命名和 `basePath` 规则：用户站点仍然部署在根路径，项目站点仍然部署在 `/仓库名` 下。
 
-自定义域名需要同时完成：
+在填写 DNS 记录前，需要先分清 `A`、`AAAA` 和 `CNAME`。有时会口头说成“AAA”，但 DNS 标准记录类型中这里应写的是 **AAAA**，即四个字母 A。
 
-1. 在域名服务商处配置 GitHub Pages 要求的 DNS 记录；
-2. 在 Pages 设置中填写 Custom domain；
-3. 等待 DNS 与 TLS 证书生效；
-4. 证书就绪后启用 **Enforce HTTPS**。
+#### A、AAAA、CNAME 分别是什么
+
+DNS 的任务是把便于记忆的主机名转换为网络连接所需的信息。
+
+| 记录类型 | 记录保存的内容 | 常见用途 | GitHub Pages 中的典型用途 |
+| --- | --- | --- | --- |
+| `A` | 一个 IPv4 地址，例如 `185.199.108.153` | 让主机名直接指向 IPv4 服务器 | 根域名 `example.com` 无法使用普通 CNAME 时，指向 GitHub Pages IPv4 |
+| `AAAA` | 一个 IPv6 地址，例如 `2606:50c0:8000::153` | 让主机名直接指向 IPv6 服务器 | 为根域名补充 GitHub Pages IPv6 支持 |
+| `CNAME` | 另一个主机名，例如 `ronchylu.github.io` | 给一个主机名创建别名 | `github.ronchylu.com` 这类子域名指向 GitHub Pages 默认域名 |
+
+它们的关系可以简化为：
+
+```text
+A      : example.com ──→ 185.199.108.153
+AAAA   : example.com ──→ 2606:50c0:8000::153
+CNAME  : github.example.com ──→ username.github.io ──→ GitHub Pages IP
+```
+
+`A` 与 `AAAA` 的右侧必须是 IP 地址；`CNAME` 的右侧必须是主机名，不能填写协议、端口或路径。因此下面是错误写法：
+
+```text
+https://ronchylu.github.io
+ronchylu.github.io/en/
+ronchylu.github.io:443
+```
+
+正确目标只是：
+
+```text
+ronchylu.github.io
+```
+
+同一个名称如果已经存在 CNAME，通常不能再同时配置 A、AAAA 或其他互相冲突的记录。例如，`github.ronchylu.com` 使用 CNAME 后，不应再保留名称同为 `github` 的旧 A/AAAA 记录。
+
+#### 根域名与子域名应该选哪一种
+
+GitHub Pages 对两类自定义域名采用不同配置。
+
+**子域名**，例如 `github.ronchylu.com`、`blog.example.com`：
+
+```text
+Type   : CNAME
+Name   : github
+Target : ronchylu.github.io
+```
+
+这是本项目应该使用的方式。即使绑定的是项目站点，CNAME 目标也只写 `<用户名>.github.io`，不把仓库名或 `/en/` 路径写入 DNS。
+
+**根域名**，例如 `example.com`：可以使用 DNS 服务商提供的 ALIAS/ANAME 指向 `<用户名>.github.io`，或者使用 GitHub 官方公布的 A/AAAA 地址。当前官方地址为：
+
+```text
+# IPv4 / A
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+
+# IPv6 / AAAA
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
+这些地址在本教程中用于根域名的 GitHub Pages 配置，并应以 GitHub 官方文档的最新值为准。对于 `github.ronchylu.com` 这样的普通子域名，不需要手工填写这些 IP，直接使用 CNAME 更清楚，也便于 GitHub 验证。
+
+#### Cloudflare 橙云和灰云代表什么
+
+Cloudflare 的 Proxy status 决定它只做 DNS，还是同时充当网站反向代理。
+
+| 状态 | Cloudflare 界面 | 公共 DNS 通常返回 | HTTP 流量路径 | 对 GitHub Pages CNAME 检查的影响 |
+| --- | --- | --- | --- | --- |
+| Proxied | 橙色云朵，常称“橙云” | Cloudflare Anycast A/AAAA 地址 | 浏览器 → Cloudflare → GitHub Pages | GitHub 看不到原始 CNAME，可能报 `InvalidARecordError` |
+| DNS only | 灰色云朵，常称“灰云” | 原始 CNAME `ronchylu.github.io` | 浏览器 → GitHub Pages | GitHub 可以直接验证 CNAME，推荐用于此配置 |
+
+橙云并没有把 Cloudflare 控制台里的记录类型真的改成 A；它是在对外应答 DNS 查询时隐藏并扁平化 CNAME，返回 Cloudflare 自己的代理 IP。于是会出现一种看似矛盾的情况：
+
+```text
+Cloudflare 控制台：CNAME → ronchylu.github.io
+公共 DNS 查询：A → 104.21.x.x / 172.67.x.x
+GitHub Pages 判断：这是 A 记录，不是要求的 CNAME
+```
+
+这正是下面报错的典型原因：
+
+```text
+github.ronchylu.com is improperly configured
+InvalidARecordError
+```
+
+灰云则只使用 Cloudflare 的权威 DNS 服务，不经过 Cloudflare HTTP 代理。GitHub Pages 本身已经提供 CDN 和 HTTPS，因此这里保持灰云是简单、稳定的方案。不要在 GitHub 检查通过后立即切回橙云，否则 DNS Check、证书签发或后续续期仍可能重新受到影响。
+
+#### `github.ronchylu.com` 的最终正确配置
+
+Cloudflare 中应保留一条记录：
+
+| 字段 | 值 |
+| --- | --- |
+| Type | `CNAME` |
+| Name | `github` |
+| Target | `ronchylu.github.io` |
+| Proxy status | `DNS only`（灰云） |
+| TTL | `Auto` |
+
+同时确认：
+
+- 没有名称同为 `github` 的旧 A 或 AAAA 记录；
+- 没有为这条记录单独启用 CNAME Flattening；
+- Cloudflare DNS Settings 中没有启用 **CNAME flattening for all CNAME records**；
+- GitHub 仓库 **Settings → Pages → Custom domain** 填写的是 `github.ronchylu.com`。
+
+Cloudflare 默认只需要在根域名执行 CNAME Flattening。如果开启“Flatten all CNAME records”，即使已经切成灰云，外部仍可能只看到最终 A/AAAA 地址，导致 GitHub 无法完成 CNAME 检查。
+
+#### 推荐配置顺序
+
+为了降低子域名被他人抢占的风险，GitHub 建议先在 Pages 中声明自定义域名，再修改 DNS：
+
+1. 在仓库 **Settings → Pages → Custom domain** 填写 `github.ronchylu.com` 并保存；
+2. 在 Cloudflare 创建或修改 `github` 的 CNAME；
+3. Target 填写 `ronchylu.github.io`；
+4. 将 Proxy status 切换为 **DNS only（灰云）**；
+5. 保存后检查是否存在同名 A/AAAA 记录；
+6. 等待公共 DNS 返回正确 CNAME；
+7. 回到 GitHub Pages 点击 **Check again**；
+8. DNS Check 成功后等待 GitHub 签发 TLS 证书；
+9. **Enforce HTTPS** 可用后勾选它。
+
+使用 GitHub Actions 发布 Pages 时，不要求仓库中存在 `CNAME` 文件；GitHub 会保存 Pages 设置中的 Custom domain。不要为了修复 DNS 检查而手工向构建产物添加一个不必要的 `CNAME` 文件。
+
+#### 如何验证 DNS，而不是盲目等待
+
+先检查 Cloudflare 和 Google 公共解析器：
+
+```bash
+dig @1.1.1.1 github.ronchylu.com CNAME +short
+dig @8.8.8.8 github.ronchylu.com CNAME +short
+```
+
+两者都应该返回：
+
+```text
+ronchylu.github.io.
+```
+
+也可以查看完整答案：
+
+```bash
+dig github.ronchylu.com CNAME +noall +answer
+```
+
+预期结构为：
+
+```text
+github.ronchylu.com.  300  IN  CNAME  ronchylu.github.io.
+```
+
+如果 CNAME 查询为空，而 A 查询返回 `104.21.*`、`172.67.*` 或 `2606:4700:*` 等 Cloudflare 地址，说明橙云或 CNAME Flattening 仍在生效。此时继续等待不会自行变成正确 CNAME，应先修改 Cloudflare 配置。
+
+#### 本项目的实际排障结果
+
+本项目最初在 Cloudflare 中已经填写：
+
+```text
+CNAME github → ronchylu.github.io
+```
+
+但 Proxy status 为橙云。GitHub Pages 因而显示：
+
+```text
+DNS check unsuccessful
+InvalidARecordError
+```
+
+把同一条记录切换为灰云并保存后，公共解析器立即返回正确 CNAME，GitHub Pages 的检查也直接变为：
+
+```text
+DNS check successful
+```
+
+这说明当时的首要问题是 Cloudflare 代理隐藏了 CNAME，而不是必须等待很久的缓存。
+
+#### 缓存与等待时间
+
+DNS 修改后确实存在缓存，但应该先区分“配置尚未正确”和“配置正确、正在传播”：
+
+- 权威 DNS 仍返回 Cloudflare IP：配置问题，不是单纯缓存；
+- 权威 DNS 已返回 CNAME，但某些公共解析器仍返回旧值：递归 DNS 缓存；
+- 公共解析器都返回 CNAME，但 GitHub 页面仍显示旧错误：GitHub 检查结果可能尚未刷新。
+
+Cloudflare 的 Proxied 记录通常使用约 300 秒的自动 TTL，因此切换灰云后常见等待时间是 5–15 分钟；本项目实际是切换后立即检查成功。不同递归解析器可能保留旧值更久，GitHub 官方提示 DNS 传播最长可能需要 24 小时。
+
+HTTPS 是下一阶段：DNS Check 成功后，GitHub 还需要签发证书。**Enforce HTTPS** 可能在一小时左右可用，官方仍建议为异常情况预留最多 24 小时。如果 DNS 已正确但 HTTPS 长时间没有开始签发，可以在 Pages 设置中移除后重新添加 Custom domain，以重新触发证书流程。
 
 不要通过手工下载或复制网站来实现域名切换。域名只决定用户如何访问，构建和发布仍由同一个 GitHub Actions workflow 完成。
 
@@ -514,6 +702,10 @@ permissions:
 - [GitHub Pages：用户站点与项目站点](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 - [GitHub Pages：创建站点](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [GitHub Pages：配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- [GitHub Pages：管理自定义域名](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+- [GitHub Pages：排查自定义域名](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
 - [Next.js：Static Exports](https://nextjs.org/docs/app/guides/static-exports)
 - [Vercel：Next.js 部署](https://vercel.com/docs/frameworks/full-stack/nextjs)
 - [EdgeOne Pages：框架与构建配置](https://pages.edgeone.ai/document/framework-overview)
+- [Cloudflare：Proxied 与 DNS only](https://developers.cloudflare.com/dns/proxy-status/)
+- [Cloudflare：CNAME Flattening](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/)
