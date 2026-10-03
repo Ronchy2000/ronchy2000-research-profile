@@ -8,6 +8,27 @@
   "en": {
     "updates": [
       {
+        "date": "2026-10-02",
+        "type": "Commit",
+        "title": "fix: update accepted article authors",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2b28dff3c0ad145b890f1b4138806388a5a4c932"
+      },
+      {
+        "date": "2026-10-02",
+        "type": "Commit",
+        "title": "feat: mark UAV pursuit article accepted",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b74d7606abdbbb2bf5a1f1f43f2d802aceb01c6d"
+      },
+      {
+        "date": "2026-10-02",
+        "type": "Commit",
+        "title": "feat: add high-star GitHub projects",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5cd098531eb52c96286b12947212d93d3bccb4aa"
+      },
+      {
         "date": "2026-08-30",
         "type": "Commit",
         "title": "fix: prioritize EdgeOne www redirect",
@@ -34,33 +55,33 @@
         "title": "fix: clarify PDF resume action",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
-      },
-      {
-        "date": "2026-07-30",
-        "type": "Commit",
-        "title": "fix: make lifted cards clickable",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b990759405387d82c97f61e892050002e76e1264"
-      },
-      {
-        "date": "2026-07-30",
-        "type": "Commit",
-        "title": "Update profile avatar",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/62a3292a56c2978ed38ece3adb5df1a68eebb8b7"
-      },
-      {
-        "date": "2026-06-24",
-        "type": "Commit",
-        "title": "Refine CV page description",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/537bf8c44bf1146287faecfea4e9dcaa16d8f3c0"
       }
     ]
   },
   "zh": {
     "updates": [
       {
+        "date": "2026-10-02",
+        "type": "提交",
+        "title": "fix: update accepted article authors",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2b28dff3c0ad145b890f1b4138806388a5a4c932"
+      },
+      {
+        "date": "2026-10-02",
+        "type": "提交",
+        "title": "feat: mark UAV pursuit article accepted",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b74d7606abdbbb2bf5a1f1f43f2d802aceb01c6d"
+      },
+      {
+        "date": "2026-10-02",
+        "type": "提交",
+        "title": "feat: add high-star GitHub projects",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5cd098531eb52c96286b12947212d93d3bccb4aa"
+      },
+      {
         "date": "2026-08-30",
         "type": "提交",
         "title": "fix: prioritize EdgeOne www redirect",
@@ -87,27 +108,6 @@
         "title": "fix: clarify PDF resume action",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
-      },
-      {
-        "date": "2026-07-30",
-        "type": "提交",
-        "title": "fix: make lifted cards clickable",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b990759405387d82c97f61e892050002e76e1264"
-      },
-      {
-        "date": "2026-07-30",
-        "type": "提交",
-        "title": "Update profile avatar",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/62a3292a56c2978ed38ece3adb5df1a68eebb8b7"
-      },
-      {
-        "date": "2026-06-24",
-        "type": "提交",
-        "title": "Refine CV page description",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/537bf8c44bf1146287faecfea4e9dcaa16d8f3c0"
       }
     ]
   }
