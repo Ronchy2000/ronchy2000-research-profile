@@ -10,6 +10,20 @@
       {
         "date": "2026-10-22",
         "type": "Commit",
+        "title": "content: clarify long-term index fund investing in biography",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
+      },
+      {
+        "date": "2026-10-22",
+        "type": "Commit",
+        "title": "content: update bilingual homepage biography",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/f3491df89c268c31feb7c1eb2cdc3ebf5ea49a9a"
+      },
+      {
+        "date": "2026-10-22",
+        "type": "Commit",
         "title": "Merge feat/information-architecture-rebuild into master",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/dd3b29c1fc1aabff45fcd5ac5c0f4e40d2c985a6"
@@ -41,25 +55,25 @@
         "title": "docs: add GitHub Pages static deployment guide",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e4ac28102459915945dd7a14ca1e32d0911bf76e"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "Commit",
-        "title": "ci: deploy static site to GitHub Pages",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/266a75ceda2a64aa64b9cf55989e192dbf6b9825"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "Commit",
-        "title": "fix: keep EdgeOne feat deployment on cv host",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cfc79ecf4b8be14cb61ee7743a0128fa544b69fe"
       }
     ]
   },
   "zh": {
     "updates": [
+      {
+        "date": "2026-10-22",
+        "type": "提交",
+        "title": "content: clarify long-term index fund investing in biography",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
+      },
+      {
+        "date": "2026-10-22",
+        "type": "提交",
+        "title": "content: update bilingual homepage biography",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/f3491df89c268c31feb7c1eb2cdc3ebf5ea49a9a"
+      },
       {
         "date": "2026-10-22",
         "type": "提交",
@@ -94,20 +108,6 @@
         "title": "docs: add GitHub Pages static deployment guide",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e4ac28102459915945dd7a14ca1e32d0911bf76e"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "提交",
-        "title": "ci: deploy static site to GitHub Pages",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/266a75ceda2a64aa64b9cf55989e192dbf6b9825"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "提交",
-        "title": "fix: keep EdgeOne feat deployment on cv host",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/cfc79ecf4b8be14cb61ee7743a0128fa544b69fe"
       }
     ]
   }
