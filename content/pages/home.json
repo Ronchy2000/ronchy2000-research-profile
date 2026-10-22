@@ -4,7 +4,7 @@
   },
   "en": {
     "heroIntro": "Rongqi Lu holds an M.Eng. in Control Engineering from Xidian University. His research focuses on multi-robot coordination and multi-agent reinforcement learning, particularly efficient communication, cooperative decision-making, and autonomous exploration in complex environments.",
-    "beyondResearch": "Beyond research, his interests include LLM applications, workflow automation, and homelab infrastructure. He has developed and maintains several open-source projects, including reinforcement learning baselines, productivity tools, and LaTeX templates for academic writing. He is also interested in macroeconomics, asset allocation, and crypto assets, and practices index investing.",
+    "beyondResearch": "Beyond research, his interests include LLM applications, workflow automation, and homelab infrastructure. He has developed and maintains several open-source projects, including reinforcement learning baselines, productivity tools, and LaTeX templates for academic writing. He also studies macroeconomics, asset allocation, and cryptocurrency, and invests for the long term with index funds at the core of his portfolio.",
     "buttons": {
       "cv": "CV PDF",
       "research": "Research experience"
@@ -50,7 +50,7 @@
   },
   "zh": {
     "heroIntro": "陆荣琦，西安电子科技大学控制工程硕士。研究方向为多机器人协同与多智能体强化学习，关注复杂环境下的高效通信、协同决策与自主探索。",
-    "beyondResearch": "研究之外，关注大模型应用、工作流自动化与家庭网络架构，开发并维护多个开源项目，涵盖强化学习基线实现、效率工具和 LaTeX 模板；同时研究宏观经济、资产配置与加密货币，践行指数化投资。",
+    "beyondResearch": "研究之外，关注大模型应用、工作流自动化与家庭网络架构，开发并维护多个开源项目，涵盖强化学习基线实现、效率工具和 LaTeX 模板；同时研究宏观经济、资产配置与加密货币，坚持以指数基金为核心的长期投资。",
     "buttons": {
       "cv": "简历PDF",
       "research": "科研经历"
