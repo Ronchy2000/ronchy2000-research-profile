@@ -1,95 +1,51 @@
 # 维护手册（自用）
 
-如果希望用这个模板，可以直接：<https://github.com/Ronchy2000/Academic-Homepage-Template> 使用此模板即可。
+本项目使用 Next.js 16 + Tailwind CSS。内容由 `content/` 下的中英文 JSON 和 MDX 驱动。
 
-本项目基于 Next.js 16 + Tailwind CSS（App Router），采用「内容文件 + 页面壳层」模式。所有文案集中在 `content/`，页面只负责排版与组件组合。以下指南便于后续维护。
+## 页面分工与阅读方式
 
-## 目录结构速览
+- **主页**：个人简介、研究兴趣、完整论文与专利、四项精选科研项目，再展示教育/行业经历、荣誉、技能；保留“简历PDF”入口。
+- **研究**：详细科研经历，方法与贡献可展开；研究方向和成果链接回首页。
+- **项目**：学术与开源项目，保留 Stars、标签/年份筛选、项目链接与自动更新的动态。
+- **博客、联系**：各自独立页面，保持原有功能；联系入口只放在全站页脚，不占顶部导航。
 
-```
-app/
-  (site)/
-    layout.tsx        # 页面壳层：顶部导航 + 侧边名片 + Footer
-    page.tsx          # 首页（Hero / Updates / Projects / Publications / Honors）
-    research/page.tsx
-    publications/page.tsx
-    projects/page.tsx
-    experience/page.tsx
-    cv/page.tsx
-    blog/page.tsx          # 博客列表（MDX/Markdown 内容驱动）
-    blog/[slug]/page.tsx   # 博客详情（渲染 MDX）
-    contact/page.tsx
-components/
-  site-header.tsx     # 顶部横向导航（PC/移动共用）
-  side-profile-card.tsx
-  section.tsx         # 统一 Section 容器
-  project-card.tsx / publication-item.tsx / timeline.tsx / tag.tsx / table.tsx / callout.tsx
-  site-footer.tsx / site-shell.tsx / theme-toggle.tsx / mdx-content.tsx / providers.tsx
-content/
-  profile.json        # 个人信息（中英文）
-  research.json       # 研究兴趣 + 经历时间线
-  publications.json   # 论文 / 专利清单
-  projects.json       # 学术与开源项目分组
-  timeline.json       # 教育、实习时间线（Experience / CV 共用）
-  awards.json         # 荣誉奖项
-  updates.json        # 首页 Recent Updates 数据（可由 GitHub Action 自动刷新）
-  pages/              # 页面文案（中英文 JSON）
-  blog/
-    en/               # 博客文章（英文, .md/.mdx）
-    zh/               # 博客文章（中文, .md/.mdx）
-lib/content.ts        # 从 content/ 读取占位逻辑
-lib/content-types.ts  # 内容类型声明
-lib/blog.ts           # 博客文章解析（frontmatter + MDX）
-scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
-.github/workflows/update-content.yml # 定时任务配置
-```
+主导航只切换独立页面。主页、研究、项目页内的目录才使用锚点，≥1280px 的大屏固定在右侧，平板与手机固定在导航下方；上下箭头分别到顶部与底部。内容容器居中，上限 1120px，窄屏时自适应收缩；大屏不再继续拉宽，正文宽度不会随滚动改变。页面采用有限的连续章节，不做无限加载。
+
+个人履历只在主页维护一次。旧 `/{locale}/about`、`/cv`、`/experience` 分别进入主页的 `#intro`、`#background`、`#experience`；旧 `/publications` 进入首页 `#publications`。跳转页 noindex，正式页面保留 canonical/hreflang。
 
 ## 内容维护速查表
 
-| 模块 | 数据文件 | 说明 |
-| ---- | -------- | ---- |
-| Hero & 侧边名片 | `content/profile.json` | 修改姓名、职称、关键词、社交链接、头像、CV 路径；可选 `aka`（英文页头像下方显示 “Call me …!”）。 |
-| Recent Updates | `content/updates.json` | 首页最近动态（默认由 GitHub Action 脚本覆盖生成，不建议手动改）。 |
-| Highlighted Projects | `content/projects.json` | 分组字段 `kind`= `academic` 或 `open-source`；首页展示 GitHub stars 超过 10 的项目，Projects 页完整展示。 |
-| Latest Writing & Publications 页 | `content/publications.json` | `type` 取值 `C`(Conference) / `J`(Journal) / `P`(Patent) / `S`(In Submission)，会自动映射标签，支持 Type/Year 筛选；新增条目按 `year` 排序，首页自动展示最新两项。 |
-| Experience / CV 页 | `content/timeline.json` | `education`、`experience` 两个数组；每项的 `details` 为 bullet。 |
-| Honors | `content/awards.json` | 年份倒序，首页取前 6 条；CV 页展示全部。 |
-| 博客 | `content/blog/{en,zh}/*.{md,mdx}` | 内容驱动；frontmatter 提供标题/日期/摘要/标签；正文支持 Markdown/MDX。 |
+| 内容 | 数据文件 | 展示位置 |
+| --- | --- | --- |
+| 姓名、头像、社交链接、PDF | `content/profile.json` | 主页；姓名用于导航 |
+| 简介、章节标签、技能 | `content/pages/home.json` | 主页 |
+| 教育、行业经历 | `content/timeline.json` | 主页；详细条目可展开 |
+| 荣誉 | `content/awards.json` | 主页完整展示 |
+| 研究方向、科研经历 | `content/research.json` | 首页展示方向，研究页展示经历 |
+| 论文、专利、录用说明 | `content/publications.json` | 首页完整展示 |
+| 项目与 Stars | `content/projects.json` | 首页精选；项目页完整展示 |
+| 自动项目动态 | `content/updates.json` | 项目页 |
+| 博客 | `content/blog/{en,zh}/*.{md,mdx}` | 博客页 |
+| 各页标签文案 | `content/pages/*.json` | 对应页面 |
 
-> 所有 JSON 均带 `_meta` 字段，记录字段释义，方便回顾。
+## 项目与 Stars
 
-## 首页模块改动说明
+每组优先显示 Stars 最高的四项，可展开其余项目。筛选始终针对完整数据；改变筛选会重新收起长列表。项目数据与链接不因折叠而删除。只有带有效链接的项目卡片才有浮动和点击反馈。
 
-### Hero 区
-- 关键词来自 `profile.json` 的 `keywords`。
-- 主按钮为 `View CV`（跳转 `/cv` 页面查看/下载 PDF），其余入口分别指向 Publications / Projects。
-- 头像路径在 `profile.json` 中配置；尺寸在侧栏 `side-profile-card.tsx` 中调节（当前设为约 160px）。
+首页仅从 `academic` 科研分组中按 Stars 取前四项；LaTeX 等学术工具保留在项目页，不参与首页精选。仍使用同一份项目数据；`npm run test:home` 验证选取规则及中英文一致性。
 
-### Recent Updates
-- 数据源：`content/updates.json`。
-- 自动更新：`.github/workflows/update-content.yml` 每日 23:30 UTC 运行 `scripts/update-recent-updates.mjs`。
-  - 当前 workflow 依赖仓库 Secrets 中的 `GH_PAT`（classic token，建议 `repo` 权限）用于 checkout / GitHub API / push；未配置会直接失败。
-  - 脚本读取最新 commit，写入 `type=Commit`、`title`（提交首行）、`summary`（作者）；可自行改成抓取 Releases/Issues。
-  - 脚本会自动忽略由 `github-actions[bot]`、Dependabot 以及树莓派备份脚本（`Router Auto Backup`）生成的提交；如需扩展忽略名单，可通过环境变量 `IGNORED_COMMIT_AUTHORS`、`IGNORED_COMMIT_EMAILS`、`IGNORED_COMMIT_MESSAGE_KEYWORDS` 追加。
-- 手动编辑：直接修改 `updates.json` 中的 `updates` 数组，字段 `type`、`date`（YYYY-MM-DD）、`title`、`summary`、`link`。
+`scripts/update-project-stars.mjs` 为中英文共用仓库去重请求，并写回两种语言的 `metrics.stars`。所有请求失败时保留原数据并返回错误。页面使用最近一次同步值，不在访客浏览器里请求 GitHub API。
 
-### Highlighted Projects
-- 首页取项目分组的前四个条目；排序由 `content/projects.json` 中的顺序控制。
-- 如果需要展示某个具体开源仓库（如 `Multi-agent-RL`、`Raspi-ImmortalWrt`），确保其条目在 `Open-source & Personal Projects` 分组里靠前。
-- GitHub star 数据由 `scripts/update-project-stars.mjs` 获取并写回 `content/projects.json`，在 `.github/workflows/update-content.yml` 中与 Recent Updates 一起运行。
+`.github/workflows/update-content.yml` 保留每日 23:30 UTC 的同步计划，需要 `GH_PAT`。GitHub 仅自动调度默认分支中的定时工作流；要单独刷新 feat，可在 Actions 中手动选择 feat 分支运行，也可继续从 master 合并最新内容。不要把 feat 布局改动推到 master。
 
-### Latest Writing / Publications 页
-- `PublicationItem` 组件会根据 `type` 自动生成标签（In Submission / Conference / Journal / Patent），并显示年份 + 自定义标签列表。
-- 在 `content/publications.json` 中补充条目时：
-  - `type` 为 `C`、`J`、`P`、`S`（示例中已包含 3 个专利条目作为模板）。
-  - `tags` 用于补充主题标签，页面会显示在标题下。
-  - `links` 可放 DOI、PDF、代码仓库链接，文本会附带外链箭头。
-- 首页的 “Latest Writing” 自动按 `year` 倒序取最近 2 条，无需额外维护，Publications 页的 Type/Year 按钮可即时筛选当前列表（`All` 表示不过滤）。
+## 组件与排版
 
-## 顶部导航 & 响应式
-- 导航定义位于 `app/(site)/[locale]/layout.tsx` 中的 `NAV_ITEMS` 常量（`/en/*`、`/zh/*`），新增页面时在此添加即可。
-- `SiteHeader` 横向排布导航；桌面端显示完整菜单，移动端在第二行横向滚动。
-- 侧边名片（仅桌面端显示）由 `SideProfileCard` 渲染，已移除多余的 Download CV 按钮。
+- `components/site-shell.tsx`：固定内容宽度，无自动伸缩侧栏。
+- `components/site-header.tsx`：五页导航、中英文与主题切换。
+- `components/page-outline.tsx`：章节定位、滚动高亮与上下跳转；监听尺寸变化以适应筛选和展开。
+- `components/section.tsx`：简洁的标题与分隔线；页面标题使用 `headingLevel="h1"`。
+- `components/timeline.tsx`：紧凑履历与展开详情。
+- `app/globals.css`：响应式阅读布局、锚点偏移、减少动态效果与打印样式。
 
 ## Contact 邮箱防爬（零第三方）
 - 页面仅在客户端本地解码邮箱地址，通过 `mailto:` 打开访客的系统邮件客户端，没有任何服务器或第三方转发。
@@ -129,12 +85,20 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
     - `sitemap.xml` 返回空列表，不再给镜像域名喂 URL
 
 ### EdgeOne Pages 部署
+- **分支域名与合并注意事项**：
+  - `feat/information-architecture-rebuild` 当前部署在 `cv` 子域名，因此 `edgeone.json` 不启用 `$host` → `$wwwhost` 的 301 跳转，访问时保留当前域名。
+  - 合入 `master` 前，必须在合并结果的 `edgeone.json` 中恢复下面这条规则，并放在 `redirects` 数组首位；Git 合并不会自动恢复它。不要将 feat 的临时关闭配置直接用于 master 生产部署。
+
+    ```json
+    { "source": "$host", "destination": "$wwwhost", "statusCode": 301 }
+    ```
+
 - **静态导出模式**：`next.config.mjs` 在 `EDGEONE=1` 或 `CF_PAGES=1` 环境变量下使用 `output: "export"` + `trailingSlash: true`，生成纯静态站点到 `out/` 目录。
 - **配置文件**：
   - `edgeone.json` 的 `buildCommand` 已固定为：
     - `SITE_CANONICAL_ORIGIN=https://ronchylu.com SITE_INDEXABLE=0 EDGEONE=1 npm run build`
   - 作用：保证 `ronchy2000.top` 始终作为镜像站部署，保持访问速度，但不会与 `.com` 抢 canonical / 收录
-  - 包含 308 永久重定向规则：`/en` → `/en/`，`/zh` → `/zh/`
+  - 保留同域 308 永久重定向规则：`/` → `/en/`，`/en` → `/en/`，`/zh` → `/zh/`
 - **路径 `/en` vs `/en/` 的坑**：（熬到我2026年2月16日2:19am...
   - 静态托管中 `/en/` 会查找 `en/index.html`（✅ 能找到）
   - 但 `/en` 会查找文件 `en` 或 `en.html`（❌ 不存在）
@@ -162,12 +126,12 @@ scripts/update-recent-updates.mjs # 自动更新 Recent Updates 的脚本
   - `SITE_INDEXABLE=1`
 
 ## 常见修改场景
-- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；Homepage 与 Publications 页将自动更新。
+- **添加新专利/论文**：在 `content/publications.json` 追加条目，`type` 选择 `P`、`C`、`J` 或 `S`；首页的成果目录会自动更新。
 - **更新 Recent Updates**：若暂时不想依赖 GitHub Action，可手动编辑 `content/updates.json`。恢复自动化时重新触发 workflow 即可。
-- **编辑 Highlighted Projects**：通过调整 `content/projects.json` 中条目的顺序/分组，控制首页与 Projects 页的展示。
+- **编辑项目**：在 `content/projects.json` 中维护条目/分组；项目页按 Stars 排序，每组默认显示四项。
 - **调整导航顺序**：修改 `navItems` 数组，并确认对应页面文件存在。
 - **更换头像/简历**：优先在 `content/profile.json` 里改 `avatar` / `cvLink` 路径（对应 `public/` 下文件）。当前默认是：
-  - 头像：`public/images/profile.jpeg`
+  - 头像：`public/images/profile-2026.jpeg`
   - 简历：`public/files/Ronchy_CV.pdf`
 
 ## 开发 & 本地调试
@@ -176,7 +140,7 @@ nvm use --lts
 npm install
 npm run dev      # http://localhost:3000
 npm run lint     # 可选
-npm run build    # 发布前验证（postbuild 会自动复制 edgeone.json）
+npm run build    # 发布前验证
 ```
 
 ## 常见问题

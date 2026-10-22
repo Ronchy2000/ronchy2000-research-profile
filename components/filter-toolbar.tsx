@@ -27,13 +27,13 @@ export function FilterToolbar({ groups, className }: FilterToolbarProps) {
   return (
     <div
       className={clsx(
-        "grid gap-2 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 text-sm shadow-[0_18px_45px_-40px_rgba(15,23,42,0.45)] dark:border-slate-800 dark:bg-slate-900/70 sm:gap-3 sm:px-5 sm:py-4",
+        "grid gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-900/50",
         className
       )}
     >
       {groups.map((group) => (
-        <div key={group.id} className="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-center">
-          <span className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
+        <div role="group" aria-label={group.label} key={group.id} className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+          <span className="min-w-10 shrink-0 text-xs font-medium text-slate-500 dark:text-slate-400">
             {group.label}
           </span>
           <div className="flex flex-wrap items-center gap-2">

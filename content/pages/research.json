@@ -3,22 +3,29 @@
     "description": "Copy and labels for the Research page."
   },
   "en": {
-    "heroTitle": "Research Overview",
+    "heroTitle": "Research",
     "heroDescription": "My work blends multi-agent reinforcement learning, distributed robotics, and embedded autonomy, focusing on reliable coordination strategies for autonomous robot teams.",
-    "interestsTitle": "Research Interests",
-    "interestsEyebrow": "Focus Areas",
+    "homeLinks": { "interests": "Research interests on Home", "publications": "Publications & patents on Home" },
     "experienceTitle": "Research Experience",
     "experienceEyebrow": "Experience",
-    "collaboration": "Interested in collaboration? Feel free to reach out via the Contact page."
+    "outline": {
+      "label": "On this page",
+      "overview": "Overview",
+      "experience": "Research Experience"
+    },
+    "detailsLabel": "Methods & contributions"
   },
   "zh": {
-    "heroTitle": "科研概览",
+    "heroTitle": "研究",
     "heroDescription": "聚焦多智能体强化学习、分布式机器人与嵌入式自主系统，探索可稳定落地的协同策略，让自主系统在真实环境中保持可靠表现。",
-    "interestsTitle": "研究兴趣",
-    "interestsEyebrow": "关注方向",
+    "homeLinks": { "interests": "首页 · 研究兴趣", "publications": "首页 · 论文与专利" },
     "experienceTitle": "科研经历",
     "experienceEyebrow": "经历",
-    "collaboration": "欢迎通过联系页面与我交流合作设想。"
+    "outline": {
+      "label": "本页概览",
+      "overview": "研究概述",
+      "experience": "科研经历"
+    },
+    "detailsLabel": "方法与贡献"
   }
 }
-

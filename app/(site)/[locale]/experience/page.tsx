@@ -1,50 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Section } from "@/components/section";
-import { Timeline } from "@/components/timeline";
-import { getExperiencePageCopy, getTimelineContent } from "@/lib/content";
+import { LegacyPageRedirect } from "@/components/legacy-page-redirect";
 import { normalizeLocale } from "@/lib/locale";
-import { buildLocaleMetadata } from "@/lib/seo";
+import { buildLocaleMetadata, buildNoIndexMetadata } from "@/lib/seo";
 
-type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-
-  return locale ? buildLocaleMetadata(locale, "/experience") : {};
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  return locale ? { ...buildLocaleMetadata(locale), ...buildNoIndexMetadata() } : {};
 }
 
-export default async function ExperiencePage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-  if (!locale) {
-    notFound();
-  }
-
-  const { experience, education } = getTimelineContent()[locale];
-  const copy = getExperiencePageCopy()[locale];
+export default async function RedirectPage({ params }: PageProps) {
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  if (!locale) notFound();
 
   return (
-    <div className="space-y-16">
-      <Section
-        title={copy.experience.title}
-        description={copy.experience.description}
-        eyebrow={copy.experience.eyebrow}
-      >
-        <Timeline items={experience} />
-      </Section>
-
-      <Section
-        title={copy.education.title}
-        description={copy.education.description}
-        eyebrow={copy.education.eyebrow}
-      >
-        <Timeline items={education} />
-      </Section>
-    </div>
+    <LegacyPageRedirect
+      href={"/" + locale + "#experience"}
+      title={locale === "zh" ? "个人经历已整合至主页" : "Experience has moved to the home page"}
+      description={locale === "zh" ? "主页集中展示个人简介与履历，并保留查看 PDF 简历的入口。" : "The home page brings together my profile and background, with a link to view the PDF CV."}
+      action={locale === "zh" ? "继续前往" : "Continue"}
+    />
   );
 }

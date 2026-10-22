@@ -1,65 +1,80 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ArrowRightIcon, ExternalLinkIcon } from "@/components/icons";
+import { PageOutline } from "@/components/page-outline";
 import { Section } from "@/components/section";
-import { Timeline } from "@/components/timeline";
 import { getResearchContent, getResearchPageCopy } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
 import { buildLocaleMetadata } from "@/lib/seo";
 
-type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
   return locale ? buildLocaleMetadata(locale, "/research") : {};
 }
 
 export default async function ResearchPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-  if (!locale) {
-    notFound();
-  }
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  if (!locale) notFound();
 
-  const { interests, experiences } = getResearchContent()[locale];
+  const { experiences } = getResearchContent()[locale];
   const t = getResearchPageCopy()[locale];
+  const outlineItems = [
+    { id: "overview", label: t.outline.overview },
+    { id: "experience", label: t.outline.experience }
+  ];
 
   return (
-    <div className="space-y-16">
-      <section className="space-y-4 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-8 shadow-[0_24px_60px_-45px_rgba(30,64,175,0.45)] dark:border-slate-800 dark:bg-gradient-to-br dark:from-slate-900/80 dark:via-slate-900/60 dark:to-slate-900/40">
-        <h1 className="text-3xl font-semibold text-blue-900 dark:text-white">{t.heroTitle}</h1>
-        <p className="text-base leading-relaxed text-blue-900/70 dark:text-slate-300">{t.heroDescription}</p>
-      </section>
+    <div className="reading-layout">
+      <div className="reading-content">
+        <section id="overview" className="space-y-4">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">{t.heroTitle}</h1>
+          <p className="max-w-2xl text-[15px] leading-7 text-slate-600 dark:text-slate-300">{t.heroDescription}</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <Link id="interests" href={`/${locale}#interests`} className="inline-flex items-center gap-2 font-medium">{t.homeLinks.interests}<ArrowRightIcon className="h-4 w-4" /></Link>
+            <Link id="publications" href={`/${locale}#publications`} className="inline-flex items-center gap-2 font-medium">{t.homeLinks.publications}<ArrowRightIcon className="h-4 w-4" /></Link>
+          </div>
+        </section>
 
-      <Section title={t.interestsTitle} eyebrow={t.interestsEyebrow}>
-        <div className="grid gap-4 md:grid-cols-2">
-          {interests.map((interest) => (
-            <article
-              key={interest.title}
-              className="rounded-2xl border border-slate-200 bg-white/90 p-5 dark:border-slate-800 dark:bg-slate-900/70"
-            >
-              <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{interest.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">{interest.description}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section title={t.experienceTitle} eyebrow={t.experienceEyebrow}>
-        <Timeline
-          items={experiences.map((item) => ({
-            title: `${item.title} · ${item.role}`,
-            period: item.period,
-            location: [item.advisor, item.funding].filter(Boolean).join(" · ") || undefined,
-            details: [item.summary, ...item.bullets]
-          }))}
-        />
-        <p className="mt-6 text-base text-slate-600 dark:text-slate-300">{t.collaboration}</p>
-      </Section>
+        <Section id="experience" title={t.experienceTitle}>
+          <div className="divide-y divide-slate-200 dark:divide-slate-800">
+            {experiences.map((item) => (
+              <article key={item.title} className="space-y-3 py-6 first:pt-0 last:pb-0">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+                  <span>{item.role}</span><span className="tabular-nums">{item.period}</span>
+                </div>
+                <h3 className="text-base font-semibold leading-6 text-slate-900 dark:text-slate-100">{item.title}</h3>
+                <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{item.summary}</p>
+                <details className="text-sm text-slate-600 dark:text-slate-300">
+                  <summary className="w-fit cursor-pointer text-xs font-medium text-brand dark:text-blue-400">{t.detailsLabel}</summary>
+                  <div className="mt-3 space-y-3 border-l border-slate-200 pl-4 dark:border-slate-700">
+                    {item.advisor || item.funding ? <p className="text-xs leading-6 text-slate-500 dark:text-slate-400">{[item.advisor, item.funding].filter(Boolean).join(" · ")}</p> : null}
+                    <ul className="list-disc space-y-1 pl-4 leading-6">
+                      {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                    </ul>
+                    {item.tags?.length ? <p className="text-xs text-slate-500 dark:text-slate-400">{item.tags.join(" / ")}</p> : null}
+                  </div>
+                </details>
+                {item.links?.length ? (
+                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
+                    {item.links.map((link) => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium dark:text-blue-400">
+                        {link.label}<ExternalLinkIcon aria-hidden="true" className="h-3 w-3" />
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </Section>
+      </div>
+      <PageOutline label={t.outline.label} items={outlineItems} locale={locale} />
     </div>
   );
 }

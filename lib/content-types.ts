@@ -36,6 +36,10 @@ export type ResearchExperience = {
   summary: string;
   bullets: string[];
   tags?: string[];
+  links?: {
+    label: string;
+    href: string;
+  }[];
 };
 
 export type PublicationEntry = {
@@ -138,38 +142,33 @@ export type BlogPageCopy = Localized<{
 
 export type HomePageCopy = Localized<{
   heroIntro: string;
-  buttons: {
-    cv: string;
-    publications: string;
-    projects: string;
-  };
-  highlights: {
-    title: string;
-    focusLabel: string;
-    focusValue: string;
-    contactLabel: string;
-    contactValue: string;
-    locationLabel: string;
-  };
-  sections: {
-    updates: { title: string; eyebrow: string };
-    projects: { title: string; eyebrow: string; action: string };
-    publications: { title: string; eyebrow: string; action: string };
-    awards: { title: string; eyebrow: string; action: string };
-  };
+  beyondResearch: string;
+  buttons: { cv: string; research: string };
+  interests: { title: string };
+  projects: { title: string; all: string };
+  background: { title: string; education: string; experience: string; details: string };
+  honors: { title: string };
+  skills: { title: string; rows: string[][] };
+  outline: { label: string; intro: string; background: string; honors: string; skills: string };
 }>;
 
 export type ResearchPageCopy = Localized<{
+  detailsLabel: string;
   heroTitle: string;
   heroDescription: string;
-  interestsTitle: string;
-  interestsEyebrow: string;
+  homeLinks: { interests: string; publications: string };
   experienceTitle: string;
   experienceEyebrow: string;
-  collaboration: string;
+  outline: {
+    label: string;
+    overview: string;
+    experience: string;
+  };
 }>;
 
 export type ProjectsPageCopy = Localized<{
+  showMore: string;
+  showLess: string;
   heroTitle: string;
   heroDescription: string;
   filters: {
@@ -192,6 +191,12 @@ export type ProjectsPageCopy = Localized<{
     "open-source": string;
     default: string;
   };
+  outline: {
+    label: string;
+    overview: string;
+    catalogue: string;
+    updates: string;
+  };
 }>;
 
 export type PublicationsPageCopy = Localized<{
@@ -213,37 +218,6 @@ export type PublicationsPageCopy = Localized<{
     S: string;
   };
   empty: string;
-}>;
-
-export type CVPageCopy = Localized<{
-  intro: {
-    title: string;
-    description: string;
-    eyebrow: string;
-    download: string;
-    contactLabel: string;
-    contactAction: string;
-    locationLabel: string;
-  };
-  education: { title: string; eyebrow: string };
-  experience: { title: string; eyebrow: string };
-  honors: {
-    title: string;
-    eyebrow: string;
-    headers: string[];
-  };
-  skills: {
-    title: string;
-    eyebrow: string;
-    headers: string[];
-    rows: string[][];
-  };
-  links: {
-    title: string;
-    eyebrow: string;
-    publications: string;
-    projects: string;
-  };
 }>;
 
 export type ContactPageCopy = Localized<{
@@ -276,17 +250,4 @@ export type ContactPageCopy = Localized<{
     messagePlaceholder: string;
   };
   scholarLabel: string;
-}>;
-
-export type ExperiencePageCopy = Localized<{
-  experience: {
-    title: string;
-    description: string;
-    eyebrow: string;
-  };
-  education: {
-    title: string;
-    description: string;
-    eyebrow: string;
-  };
 }>;

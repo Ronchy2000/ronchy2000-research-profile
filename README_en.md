@@ -6,9 +6,9 @@ Most routine updates (profile, publications, projects, blog posts) live in `cont
 ### Highlights
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - Content-driven: structured data in `content/*.json`, page copy in `content/pages/*.json`, and posts in `content/blog/{en,zh}/*.{md,mdx}`
-- Light/dark theme, responsive navigation, print-friendly CV
+- Light/dark theme, independent page navigation, continuous sections, responsive outlines, and PDF CV viewing
 - Blog supports Markdown/MDX + math rendering (KaTeX)
-- Optional GitHub Actions automation for homepage updates and GitHub star sync
+- Optional GitHub Actions automation for project activity and GitHub star sync
 
 ### Getting Started
 ```bash
@@ -21,6 +21,7 @@ Useful commands:
 ```bash
 npm run lint
 npm run build
+npm run test:stars
 npm run start
 ```
 
@@ -31,18 +32,29 @@ The site uses locale-prefixed routes for best performance and caching:
 
 Requests to `/` (and legacy paths like `/research`) are redirected to `/{locale}`. In middleware-capable builds this is handled by `proxy.ts`; in static-export builds it is handled by pages under `app/(redirects)` (client-side redirect).
 
+### Page structure
+
+Four independent pages in the main navigation: Home, Research, Projects, and Blog. Contact remains a separate page, accessible from the global footer.
+
+- **Home**: biography, research interests, the complete publication catalogue, four selected research projects, then education, industry experience, honors, and skills.
+- **Research**: research experience, with methods and contributions expanding on demand. Interests and publications link back to Home.
+- **Projects**: each group initially shows four projects ranked by GitHub stars, with an option to show all. Filters always search the full dataset.
+- **Blog / Contact**: independent pages retaining MDX, email reveal/copy, and local mail composition.
+
+Home, Research, and Projects use finite, continuous sections. The content area is centered at a maximum width of 1120px and shrinks to fit smaller viewports; the outline sits alongside content on large screens (≥1280px) and above it on tablets and phones. Top/bottom shortcuts are always available. Legacy About, CV, Experience, and Publications URLs redirect to Home sections. Home selects four projects by stars only from the `academic` research group. LaTeX and other academic tools remain on Projects, sharing the same catalogue and star snapshots.
+
 ### Content Structure
 
 | File/Folder | What to edit |
 | --- | --- |
-| `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` shows `Call me ...!` under the avatar on English pages (desktop sidebar). |
-| `content/pages/*.json` | Page copy (Home/Research/Publications/Projects/Experience/CV/Blog/Contact). |
+| `content/profile.json` | Name/title/affiliation/location/keywords/social links + `avatar` + `cvLink`. `en.aka` appears next to the secondary name on the English home page. |
+| `content/pages/*.json` | Page copy (Home/Research/Projects/Blog/Contact, plus publication catalogue labels). |
 | `content/research.json` | Research interests + research experience timeline. |
 | `content/publications.json` | Publications & patents (supports type/year filters). |
 | `content/projects.json` | Project groups + items. GitHub stars are stored in `metrics.stars`. |
-| `content/timeline.json` | Education + industry timeline (Experience/CV). |
-| `content/awards.json` | Honors & awards (Home/CV). |
-| `content/updates.json` | Homepage "Recent Updates" feed (typically overwritten by automation). |
+| `content/timeline.json` | Education + industry timeline on the home page. |
+| `content/awards.json` | Honors & awards on the home page. |
+| `content/updates.json` | Recent project activity shown on Projects (typically overwritten by automation). |
 | `content/blog/{en,zh}/*.{md,mdx}` | Blog posts (filename = slug). |
 
 Accessors live in `lib/content.ts` (JSON) and `lib/blog.ts` (blog parsing).
@@ -77,7 +89,7 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 
 ### Assets
 Defaults are configured via `content/profile.json`:
-- Avatar: `public/images/profile.jpeg` (`avatar`)
+- Avatar: `public/images/profile-2026.jpeg` (`avatar`)
 - CV PDF: `public/files/Ronchy_CV.pdf` (`cvLink`)
 
 ### GitHub Actions (Optional)
@@ -86,12 +98,26 @@ The scheduled workflow `.github/workflows/update-content.yml` refreshes:
 - `content/projects.json` GitHub `metrics.stars`
 
 It expects a repository secret `GH_PAT` to call GitHub APIs and push updates.
+The sync deduplicates repositories across locales; run `npm run test:stars` for an offline regression check.
 
 ### Deploying to Vercel
 1. Push the repository to GitHub.
 2. Create a new project on [vercel.com](https://vercel.com) and import the repo.
 3. Use the default Next.js build command (`npm run build`) and output directory (`.next`).
 4. Set up a custom domain if desired, then trigger a deploy.
+
+### Deploying to GitHub Pages
+
+The repository includes `.github/workflows/deploy-pages.yml`, which builds and publishes the static Next.js export to GitHub Pages. On the first setup:
+
+1. Open **Settings → Pages** in the repository.
+2. Change **Source** to **GitHub Actions** (do not keep “Deploy from a branch”).
+3. Push to `master` or `feat/information-architecture-rebuild`, or run **Actions → Deploy site to GitHub Pages → Run workflow** manually.
+
+After the workflow finishes, the project site is available at:
+`https://ronchy2000.github.io/ronchy2000-research-profile/`
+
+GitHub Pages serves this project below a repository subpath. The workflow configures `/ronchy2000-research-profile` automatically; publishing the repository root directly would make GitHub render `README.md` as the homepage instead.
 
 ### SEO / Multi-domain Deployment Contract
 - **Google canonical domain**: `https://ronchylu.com`

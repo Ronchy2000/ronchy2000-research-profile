@@ -1,31 +1,51 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { PublicationsClient } from "@/app/(site)/publications/publications-client";
-import { getPublicationsContent, getPublicationsPageCopy } from "@/lib/content";
+import { LegacyPageRedirect } from "@/components/legacy-page-redirect";
 import { normalizeLocale } from "@/lib/locale";
-import { buildLocaleMetadata } from "@/lib/seo";
+import { buildLocaleMetadata, buildNoIndexMetadata } from "@/lib/seo";
 
 type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const locale = normalizeLocale(resolvedParams.locale);
 
-  return locale ? buildLocaleMetadata(locale, "/publications") : {};
+  return locale
+    ? {
+        ...buildLocaleMetadata(locale),
+        ...buildNoIndexMetadata()
+      }
+    : {};
 }
 
-export default async function PublicationsPage({ params }: PageProps) {
+export default async function PublicationsRedirectPage({ params }: PageProps) {
   const resolvedParams = await params;
   const locale = normalizeLocale(resolvedParams.locale);
   if (!locale) {
     notFound();
   }
 
-  const entries = getPublicationsContent()[locale].entries;
-  const copy = getPublicationsPageCopy()[locale];
+  const copy = locale === "zh"
+    ? {
+        title: "发表成果已并入首页",
+        description: "正在前往首页的论文与专利章节。",
+        action: "继续前往"
+      }
+    : {
+        title: "Publications have moved",
+        description: "Taking you to the Publications & Patents section on the home page.",
+        action: "Continue"
+      };
 
-  return <PublicationsClient entries={entries} locale={locale} copy={copy} />;
+  return (
+    <LegacyPageRedirect
+      href={`/${locale}#publications`}
+      title={copy.title}
+      description={copy.description}
+      action={copy.action}
+    />
+  );
 }

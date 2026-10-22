@@ -55,8 +55,8 @@ export function BlogClient({ copy, posts, locale }: BlogClientProps) {
   }));
 
   return (
-    <div className="space-y-16">
-      <Section title={copy.title} description={copy.description} eyebrow={copy.eyebrow}>
+    <div className="max-w-4xl space-y-12">
+      <Section title={copy.title} description={copy.description} headingLevel="h1">
         <FilterToolbar
           groups={[
             {
@@ -91,14 +91,14 @@ export function BlogClient({ copy, posts, locale }: BlogClientProps) {
                   <span aria-hidden="true">·</span>
                   <span>{copy.types[post.type]}</span>
                 </div>
-                <h3 className="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-50">
+                <h2 className="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-50">
                   <Link
                     href={`${base}/blog/${post.slug}` as any}
                     className="hover:text-brand"
                   >
                     {post.title}
                   </Link>
-                </h3>
+                </h2>
                 {post.summary ? <p className="mt-2 text-base text-slate-600 dark:text-slate-300">{post.summary}</p> : null}
                 {post.tags.length ? (
                   <div className="mt-3 flex flex-wrap gap-2">

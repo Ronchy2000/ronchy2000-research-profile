@@ -3,58 +3,35 @@ import { notFound } from "next/navigation";
 
 import { HomeClient } from "./home-client";
 
-import {
-  getAwardsContent,
-  getHomePageCopy,
-  getProfileContent,
-  getProjectsContent,
-  getPublicationsContent,
-  getUpdatesContent
-} from "@/lib/content";
+import { getAwardsContent, getHomePageCopy, getProfileContent, getProjectsContent, getPublicationsContent, getPublicationsPageCopy, getResearchContent, getTimelineContent } from "@/lib/content";
 import { normalizeLocale } from "@/lib/locale";
-import { compareProjectsByStars, deriveProject } from "@/lib/project-utils";
+import { selectHomeProjects } from "@/lib/project-utils";
 import { buildLocaleMetadata } from "@/lib/seo";
 
-type PageProps = {
-  params: { locale: string } | Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
   return locale ? buildLocaleMetadata(locale, "", { xDefaultPath: "/" }) : {};
 }
 
 export default async function HomePage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const locale = normalizeLocale(resolvedParams.locale);
-  if (!locale) {
-    notFound();
-  }
-
-  const profile = getProfileContent()[locale];
-  const highlightProjects = getProjectsContent()[locale].groups
-    .flatMap((group) => group.items)
-    .map((project, index) => deriveProject(project, index))
-    .filter((project) => (project.derived.starCount ?? 0) > 10)
-    .sort(compareProjectsByStars);
-  const publications = [...getPublicationsContent()[locale].entries]
-    .sort((a, b) => Number(b.year) - Number(a.year))
-    .slice(0, 2);
-  const updates = getUpdatesContent()[locale].updates.slice(0, 7);
-  const awards = getAwardsContent()[locale].awards.slice(0, 6);
-  const copy = getHomePageCopy()[locale];
+  const { locale: value } = await params;
+  const locale = normalizeLocale(value);
+  if (!locale) notFound();
 
   return (
     <HomeClient
       locale={locale}
-      profile={profile}
-      highlightProjects={highlightProjects}
-      publications={publications}
-      updates={updates}
-      awards={awards}
-      copy={copy}
+      profile={getProfileContent()[locale]}
+      timeline={getTimelineContent()[locale]}
+      awards={getAwardsContent()[locale].awards}
+      interests={getResearchContent()[locale].interests}
+      publications={getPublicationsContent()[locale].entries}
+      publicationsCopy={getPublicationsPageCopy()[locale]}
+      projects={selectHomeProjects(getProjectsContent()[locale].groups)}
+      copy={getHomePageCopy()[locale]}
     />
   );
 }

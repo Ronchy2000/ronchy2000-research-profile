@@ -16,22 +16,14 @@ const NAV_ITEMS: Record<Locale, NavItem[]> = {
   en: [
     { label: "Home", href: "/en" },
     { label: "Research", href: "/en/research" },
-    { label: "Publications", href: "/en/publications" },
     { label: "Projects", href: "/en/projects" },
-    { label: "Experience", href: "/en/experience" },
-    { label: "CV", href: "/en/cv" },
-    { label: "Blog", href: "/en/blog" },
-    { label: "Contact", href: "/en/contact" }
+    { label: "Blog", href: "/en/blog" }
   ],
   zh: [
     { label: "首页", href: "/zh" },
-    { label: "科研概览", href: "/zh/research" },
-    { label: "发表成果", href: "/zh/publications" },
-    { label: "项目集锦", href: "/zh/projects" },
-    { label: "经历", href: "/zh/experience" },
-    { label: "简历", href: "/zh/cv" },
-    { label: "博客", href: "/zh/blog" },
-    { label: "联系", href: "/zh/contact" }
+    { label: "研究", href: "/zh/research" },
+    { label: "项目", href: "/zh/projects" },
+    { label: "博客", href: "/zh/blog" }
   ]
 };
 
@@ -40,7 +32,7 @@ export default async function LocaleLayout({
   params
 }: Readonly<{
   children: ReactNode;
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 }>) {
   const resolvedParams = await params;
   const locale = normalizeLocale(resolvedParams.locale);
@@ -53,7 +45,12 @@ export default async function LocaleLayout({
   const lastUpdated = getUpdatesContent()[locale]?.updates?.[0]?.date;
 
   return (
-    <SiteShell navItems={navItems} profile={profile} locale={locale} lastUpdated={lastUpdated}>
+    <SiteShell
+      navItems={navItems}
+      profile={profile}
+      locale={locale}
+      lastUpdated={lastUpdated}
+    >
       {children}
     </SiteShell>
   );

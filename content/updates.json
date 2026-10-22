@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "description": "Recent updates shown on the Home page quick feed.",
+    "description": "Recent repository activity shown on the Projects page.",
     "fields": {
       "updates": "Array of { date, type, title, summary, link }"
     }

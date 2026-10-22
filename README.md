@@ -9,9 +9,9 @@
 ### 特性亮点
 - Next.js 16 (Turbopack) + React 19 + Tailwind CSS
 - 内容驱动：结构化数据在 `content/*.json`，页面文案在 `content/pages/*.json`，博客在 `content/blog/{en,zh}/*.{md,mdx}`
-- 支持明暗主题、响应式导航、打印友好的简历页面
+- 支持明暗主题、独立页面导航、连续章节阅读、响应式目录与 PDF 简历查看
 - 博客支持 Markdown/MDX + 数学公式渲染（KaTeX）
-- 可选 GitHub Actions 自动化：主页更新与 GitHub Star 同步
+- 可选 GitHub Actions 自动化：项目动态与 GitHub Stars 同步
 
 ### 快速开始
 ```bash
@@ -24,6 +24,7 @@ npm run dev
 ```bash
 npm run lint
 npm run build
+npm run test:stars
 npm run start
 ```
 
@@ -34,18 +35,29 @@ npm run start
 
 访问 `/`（以及 `/research` 这类旧路径）会重定向到 `/{locale}`。在支持中间件的构建中由 `proxy.ts` 处理；静态导出构建中由 `app/(redirects)` 下的页面处理（客户端跳转）。
 
+### 页面分工
+
+顶部保留四个独立页面：主页、研究、项目、博客。联系页由全站页脚进入。
+
+- **主页**：个人简介、研究兴趣、完整论文与专利、四项精选科研项目，再展示教育与行业经历、荣誉、技术背景。
+- **研究**：详细科研经历；方法与贡献按需展开，方向与成果链接回首页。
+- **项目**：每组按 GitHub Stars 优先显示 4 项，可展开全部；年份与标签筛选始终覆盖完整数据。
+- **博客 / 联系**：保持独立页面，保留 MDX、邮件显示与复制等原有功能。
+
+主页、研究和项目采用有终点的纵向章节布局。内容区域居中，上限 1120px，窄屏时自适应收缩；大屏（≥1280px）显示右侧目录，平板与手机显示顶部横向目录，均支持顶部/底部跳转。旧的 `/about`、`/cv`、`/experience` 地址进入主页对应章节，`/publications` 进入首页的成果章节，避免重复维护。首页项目仅从 `academic` 科研分组中按 Stars 选出前四项，LaTeX 等学术工具保留在项目页，与首页共享数据和星数同步。
+
 ### 内容结构
 
 | 文件/目录 | 主要修改内容 |
 | --- | --- |
-| `content/profile.json` | 姓名/标题/单位/地点/关键词/社交链接，以及 `avatar` 与 `cvLink`。`en.aka` 会在英文页头像下显示 `Call me ...!`（桌面端侧栏）。 |
-| `content/pages/*.json` | 页面文案（Home/Research/Publications/Projects/Experience/CV/Blog/Contact）。 |
+| `content/profile.json` | 姓名/标题/单位/地点/关键词/社交链接，以及 `avatar` 与 `cvLink`。`en.aka` 会在英文页姓名下显示昵称。 |
+| `content/pages/*.json` | 页面文案（Home/Research/Projects/Blog/Contact，以及论文目录文案）。 |
 | `content/research.json` | 研究兴趣与研究经历时间线。 |
 | `content/publications.json` | 论文与专利（支持按类型/年份筛选）。 |
 | `content/projects.json` | 项目分组与条目，GitHub Stars 存在 `metrics.stars`。 |
-| `content/timeline.json` | 教育与工作时间线（Experience/CV）。 |
-| `content/awards.json` | 荣誉与奖项（Home/CV）。 |
-| `content/updates.json` | 首页“Recent Updates”动态（通常由自动化覆盖）。 |
+| `content/timeline.json` | 主页的教育与行业经历时间线。 |
+| `content/awards.json` | 主页的荣誉与奖项。 |
+| `content/updates.json` | Projects 页的近期项目动态（通常由自动化覆盖）。 |
 | `content/blog/{en,zh}/*.{md,mdx}` | 博客文章（文件名即 slug）。 |
 
 读取逻辑在 `lib/content.ts`（JSON）与 `lib/blog.ts`（博客解析）。
@@ -80,7 +92,7 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 
 ### 资源文件
 默认路径在 `content/profile.json` 中配置：
-- 头像：`public/images/profile.jpeg`（`avatar`）
+- 头像：`public/images/profile-2026.jpeg`（`avatar`）
 - 简历 PDF：`public/files/Ronchy_CV.pdf`（`cvLink`）
 
 ### GitHub Actions（可选）
@@ -89,12 +101,26 @@ npm run new:post -- --locale en --slug my-first-post --title "My First Post"
 - 同步 `content/projects.json` 中的 GitHub `metrics.stars`
 
 该流程需要仓库密钥 `GH_PAT`，用于调用 GitHub API 并推送更新。
+同步脚本会按仓库去重请求并同时更新中英文项目；可用 `npm run test:stars` 做离线回归。
 
 ### 部署到 Vercel
 1. 将仓库推送到 GitHub。
 2. 在 [vercel.com](https://vercel.com) 新建项目并导入仓库。
 3. 使用默认 Next.js 构建命令（`npm run build`）和输出目录（`.next`）。
 4. 如需自定义域名，配置后重新触发部署。
+
+### 部署到 GitHub Pages
+
+仓库已包含 `.github/workflows/deploy-pages.yml`，会将 Next.js 静态导出自动发布到 GitHub Pages。首次使用时：
+
+1. 打开仓库的 **Settings → Pages**。
+2. 将 **Source** 改为 **GitHub Actions**（不要继续选择 “Deploy from a branch”）。
+3. 推送到 `master` 或 `feat/information-architecture-rebuild`，或在 **Actions → Deploy site to GitHub Pages → Run workflow** 手动运行。
+
+构建完成后，项目站点地址为：
+`https://ronchy2000.github.io/ronchy2000-research-profile/`
+
+GitHub Pages 是项目子路径部署，工作流会自动配置 `/ronchy2000-research-profile` 的资源路径；因此不要直接把仓库根目录作为 Pages 的分支源，否则 GitHub 会把 `README.md` 显示成首页。
 
 ### SEO / 多域名部署约定
 - **Google 主收录域名**：`https://ronchylu.com`

@@ -1,49 +1,97 @@
 {
   "_meta": {
-    "description": "Copy and labels for the Home page."
+    "description": "Home brings together the academic profile, research interests, publications, selected research projects and background."
   },
   "en": {
-    "heroIntro": "I am Rongqi Lu, an M.Eng. graduate in Control Engineering from Xidian University. My work focuses on multi-robot coordination and multi-agent reinforcement learning, helping agents communicate efficiently and explore robustly in complex environments. Beyond research, I practice AI-assisted software development and personal infrastructure engineering, from coding agents and model-service orchestration to self-hosted systems, while maintaining an engineering interest in edge devices and index-based markets.",
+    "heroIntro": "Rongqi Lu holds a master's degree in Control Engineering from Xidian University. Lu's research focuses on multi-robot coordination and multi-agent reinforcement learning, with an emphasis on communication-efficient collaboration, reliable decision-making and autonomous exploration in complex environments.",
+    "beyondResearch": "Beyond research, Lu explores AI-assisted development and self-hosted systems, with interests in edge computing and index investing. This work applies engineering methods to understand complex systems, develop practical tools and refine them through hands-on experimentation.",
     "buttons": {
-      "cv": "View CV",
-      "publications": "View Publications",
-      "projects": "Explore Projects"
+      "cv": "CV PDF",
+      "research": "Research experience"
     },
-    "highlights": {
-      "title": "At a Glance",
-      "focusLabel": "Current focus",
-      "focusValue": "MARL, pursuit-evasion, and AI-assisted engineering",
-      "contactLabel": "Email",
-      "contactValue": "Reveal email",
-      "locationLabel": "Based in"
+    "interests": { "title": "Research interests" },
+    "projects": {
+      "title": "Selected research projects",
+      "all": "All projects"
     },
-    "sections": {
-      "updates": { "title": "Recent Updates", "eyebrow": "Activity" },
-      "projects": { "title": "Highlighted Projects", "eyebrow": "Projects", "action": "All projects" },
-      "publications": { "title": "Selected Publications", "eyebrow": "Publications", "action": "All entries" },
-      "awards": { "title": "Honors & Awards", "eyebrow": "Recognition", "action": "Full CV" }
+    "background": {
+      "title": "Education & experience",
+      "education": "Education",
+      "experience": "Industry experience",
+      "details": "More details"
+    },
+    "honors": {
+      "title": "Honors & awards"
+    },
+    "skills": {
+      "title": "Technical background",
+      "rows": [
+        [
+          "Programming",
+          "Python, C/C++, MATLAB"
+        ],
+        [
+          "Frameworks",
+          "PyTorch, ROS, OpenCV"
+        ],
+        [
+          "Courses",
+          "Optimal Control, Multi-agent Systems, Embedded Systems"
+        ]
+      ]
+    },
+    "outline": {
+      "label": "On this page",
+      "intro": "Profile",
+      "background": "Background",
+      "honors": "Honors",
+      "skills": "Skills"
     }
   },
   "zh": {
-    "heroIntro": "陆荣琦，硕士，毕业于西安电子科技大学控制工程专业。关注多机器人协同与多智能体强化学习，帮助智能体在复杂环境中高效通信、稳健探索。研究之外，持续实践 AI 辅助软件开发与个人基础设施建设，关注从智能编码工具、模型服务编排到自托管系统的可靠落地；也长期跟踪边缘设备实验、指数化投资与加密资产，保持对技术系统和复杂市场的工程化理解。",
+    "heroIntro": "陆荣琦，获西安电子科技大学控制工程硕士学位。研究方向为多机器人协同与多智能体强化学习，重点关注复杂环境下的高效通信、协同决策与自主探索，致力于提升多智能体系统的协作效率与可靠性。",
+    "beyondResearch": "研究之外，持续探索 AI 辅助开发与自托管系统，关注边缘计算与指数化投资。注重以工程方法理解复杂系统，将想法转化为实用工具，并在实践中检验和改进。",
     "buttons": {
-      "cv": "查看简历",
-      "publications": "浏览论文",
-      "projects": "查看项目"
+      "cv": "简历PDF",
+      "research": "科研经历"
     },
-    "highlights": {
-      "title": "工作速览",
-      "focusLabel": "研究重点",
-      "focusValue": "多智能体强化学习、追逃博弈与 AI 辅助工程",
-      "contactLabel": "联系邮箱",
-      "contactValue": "点击显示邮箱",
-      "locationLabel": "常驻城市"
+    "interests": { "title": "研究兴趣" },
+    "projects": {
+      "title": "精选科研项目",
+      "all": "全部项目"
     },
-    "sections": {
-      "updates": { "title": "近期动态", "eyebrow": "动态" },
-      "projects": { "title": "精选项目", "eyebrow": "项目", "action": "全部项目" },
-      "publications": { "title": "代表成果", "eyebrow": "成果", "action": "查看全部" },
-      "awards": { "title": "荣誉与奖项", "eyebrow": "荣誉", "action": "完整简历" }
+    "background": {
+      "title": "教育与经历",
+      "education": "教育背景",
+      "experience": "行业经历",
+      "details": "查看详细经历"
+    },
+    "honors": {
+      "title": "荣誉与奖项"
+    },
+    "skills": {
+      "title": "技术背景",
+      "rows": [
+        [
+          "编程",
+          "Python、C/C++、MATLAB"
+        ],
+        [
+          "框架",
+          "PyTorch、ROS、OpenCV"
+        ],
+        [
+          "课程",
+          "最优控制、多智能体系统、嵌入式系统"
+        ]
+      ]
+    },
+    "outline": {
+      "label": "本页目录",
+      "intro": "个人简介",
+      "background": "教育与经历",
+      "honors": "荣誉与奖项",
+      "skills": "技术背景"
     }
   }
 }

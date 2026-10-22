@@ -13,7 +13,7 @@ Each `content/*.json` file contains a `_meta` section describing the current sch
 - Projects: `content/projects.json`
 - Education/industry timeline: `content/timeline.json`
 - Awards: `content/awards.json`
-- Homepage recent updates: `content/updates.json` (typically automated)
+- Recent project activity: `content/updates.json` (typically automated)
 - Blog posts: `content/blog/{en,zh}/*.{md,mdx}`
 
 ## Profile (`content/profile.json`)
@@ -31,8 +31,8 @@ Common fields (per locale):
 
 - `name`: Primary display name.
 - `nativeName`: Optional secondary name (e.g. Chinese name on English page).
-- `aka`: Optional preferred name. Currently rendered as `Call me {aka}!` under the avatar on English pages only.
-- `title`, `affiliation`, `location`: Short strings used in the sidebar and pages.
+- `aka`: Optional preferred name. Rendered beside the secondary name on the English home page.
+- `title`, `affiliation`, `location`: Short strings used in the home profile and contact page.
 - `keywords`: Array of short research keywords.
 - `social`: Array of `{ label, href }` links.
 - `avatar`: Optional path under `public/` (e.g. `/images/profile.jpeg`).
@@ -40,7 +40,6 @@ Common fields (per locale):
 
 Where it appears:
 
-- Desktop sidebar profile card
 - Header brand text
 - Home hero header line
 
@@ -54,6 +53,8 @@ If you only want to adjust wording, start here instead of editing TSX.
 
 Projects are organized as `groups`, each with `title`, `kind`, and `items`.
 
+Each group shows four projects initially, ranked by stars, and can expand to show every entry. Year and label filters search all entries, including collapsed ones.
+
 A project item typically contains:
 
 - `name`, `summary`, `period`, `role`
@@ -64,16 +65,19 @@ A project item typically contains:
 ### GitHub Stars Automation
 
 `scripts/update-project-stars.mjs` scans each project item for a GitHub link and writes `metrics.stars`.
+Repositories shared by the English and Chinese datasets are fetched once and applied to both locales. If every API request fails, the script exits with an error and leaves existing values untouched.
 
 The scheduled workflow can run this daily:
 
 - Workflow file: `.github/workflows/update-content.yml`
 - Schedule: `30 23 * * *` (23:30 UTC)
 - Required secret: `GH_PAT` (used for checkout, GitHub API calls, and pushing updates)
+- Offline regression check: `npm run test:stars`
 
 ## Publications (`content/publications.json`)
 
 Publications live in `entries`.
+They appear together on Home, after research interests and before selected projects. Research links to this section without duplicating the catalogue.
 
 Key fields:
 
@@ -84,12 +88,12 @@ Key fields:
 
 ## Research (`content/research.json`)
 
-- `interests`: Cards on the Research page (`title`, `description`).
+- `interests`: Compact descriptions on the home page (`title`, `description`).
 - `experiences`: A timeline-like list of research experiences (`title`, `period`, `role`, optional `advisor`/`funding`, `summary`, `bullets`, optional `tags`).
 
 ## Timeline (`content/timeline.json`)
 
-Used for Experience/CV pages.
+Used once on the home page, under Education & Experience. Details expand in place. Legacy About, CV, and Experience URLs redirect here.
 
 - `education`: Array of timeline entries
 - `experience`: Array of timeline entries
@@ -101,18 +105,19 @@ Each entry has:
 
 ## Awards (`content/awards.json`)
 
-Awards live in `awards`.
+Awards live in `awards` and are shown only on Home.
 
 Each item has:
 
 - `title`, `issuer`, `year`
 - Optional: `notes`
 
-## Recent Updates (`content/updates.json`)
+## Recent Project Activity (`content/updates.json`)
 
 This feed is designed to be automated.
 
 - `scripts/update-recent-updates.mjs` overwrites `en.updates` and `zh.updates` with recent commits.
+- The resulting feed is shown on the Projects page, while the homepage stays curated and compact.
 - If you want manual curation, disable the workflow or adjust the script to merge your own entries.
 
 ## Blog Posts (`content/blog/{en,zh}`)
@@ -166,5 +171,7 @@ Before deploying:
 
 - `npm run lint`
 - `npm run build`
+- `npm run test:stars`
+- `EDGEONE=1 SITE_INDEXABLE=0 npm run build` (static mirror export)
 
-Last updated: 2026-02-15
+Last updated: 2026-10-03

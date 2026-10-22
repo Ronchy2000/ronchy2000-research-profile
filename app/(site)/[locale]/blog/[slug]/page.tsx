@@ -18,7 +18,7 @@ import { buildLocaleMetadata } from "@/lib/seo";
 type PageParams = { locale: string; slug: string };
 
 type PageProps = {
-  params: PageParams | Promise<PageParams>;
+  params: Promise<PageParams>;
 };
 
 export const dynamicParams = false;
@@ -74,8 +74,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       : { prefix: "Return to the ", label: "blog index", suffix: " for more entries." };
 
   return (
-    <div className="space-y-16">
-      <Section title={post.title} description={post.summary} eyebrow={post.date}>
+    <div className="max-w-3xl space-y-12">
+      <p className="text-sm text-slate-500 dark:text-slate-400">{post.date}</p>
+      <Section title={post.title} description={post.summary} headingLevel="h1">
         <MDXContent>
           {content}
           <p className="pt-6">

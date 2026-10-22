@@ -2,40 +2,26 @@ import type { TimelineEntry } from "@/lib/content-types";
 
 type TimelineProps = {
   items: TimelineEntry[];
+  detailLabel: string;
 };
 
-/**
- * Vertical timeline used for education and professional experience.
- */
-export function Timeline({ items }: TimelineProps) {
+export function Timeline({ items, detailLabel }: TimelineProps) {
   return (
-    <ul className="relative space-y-8 pl-4 sm:pl-6">
-      <span className="pointer-events-none absolute left-1 top-2 bottom-2 hidden w-px bg-slate-200 dark:bg-slate-700 sm:block" aria-hidden="true" />
-      {items.map((item, index) => (
-        <li key={`${item.title}-${item.period}`} className="relative pl-6 sm:pl-9">
-          <span className="absolute left-0 top-1 h-2.5 w-2.5 rounded-full bg-brand/80 shadow-[0_0_0_6px_rgba(37,99,235,0.15)] dark:shadow-[0_0_0_6px_rgba(37,99,235,0.25)] sm:left-[-2px]" aria-hidden="true" />
-          {index < items.length - 1 ? (
-            <span className="pointer-events-none absolute left-[3px] top-4 bottom-[-2rem] hidden w-px bg-slate-200 dark:bg-slate-700 sm:block" aria-hidden="true" />
+    <ul className="space-y-6 border-l border-slate-200 dark:border-slate-700">
+      {items.map((item) => (
+        <li key={item.title + item.period} className="relative pl-5">
+          <span className="absolute -left-[3px] top-1.5 h-[5px] w-[5px] rounded-full bg-slate-400 dark:bg-slate-500" aria-hidden="true" />
+          <p className="text-xs tabular-nums text-slate-500 dark:text-slate-400">{item.period}</p>
+          <h4 className="mt-1.5 text-sm font-medium leading-6 text-slate-900 dark:text-slate-100">{item.title}</h4>
+          {item.location ? <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.location}</p> : null}
+          {item.details.length ? (
+            <details className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              <summary className="w-fit cursor-pointer text-xs text-brand dark:text-blue-400">{detailLabel}</summary>
+              <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-6">
+                {item.details.map((detail) => <li key={detail}>{detail}</li>)}
+              </ul>
+            </details>
           ) : null}
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{item.title}</h3>
-              {item.location ? (
-                <p className="text-sm text-slate-600 dark:text-slate-300">{item.location}</p>
-              ) : null}
-            </div>
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
-              {item.period}
-            </span>
-          </div>
-          <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            {item.details.map((detail, idx) => (
-              <li key={idx} className="flex gap-2">
-                <span aria-hidden="true">•</span>
-                <span>{detail}</span>
-              </li>
-            ))}
-          </ul>
         </li>
       ))}
     </ul>

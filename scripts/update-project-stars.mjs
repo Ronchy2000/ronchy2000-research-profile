@@ -17,7 +17,7 @@ if (token) {
   headers.Authorization = `Bearer ${token}`;
 }
 
-function extractRepo(link) {
+export function extractRepo(link) {
   try {
     const url = new URL(link);
     if (url.hostname !== "github.com") return null;
@@ -29,7 +29,7 @@ function extractRepo(link) {
   }
 }
 
-async function fetchStarCount(repo) {
+export async function fetchStarCount(repo) {
   const response = await fetch(`https://api.github.com/repos/${repo}`, { headers });
   if (!response.ok) {
     throw new Error(`GitHub API responded with ${response.status} ${response.statusText} for ${repo}`);
@@ -38,9 +38,17 @@ async function fetchStarCount(repo) {
   return data.stargazers_count ?? 0;
 }
 
-async function main() {
-  const projectsContent = JSON.parse(readFileSync(projectsPath, "utf8"));
+export async function updateProjectStars({
+  sourcePath = projectsPath,
+  fetchStarCountForRepo = fetchStarCount
+} = {}) {
+  const projectsContent = JSON.parse(readFileSync(sourcePath, "utf8"));
+  const requests = new Map();
+  const discoveredRepos = new Set();
+  const successfulRepos = new Set();
+  const failedRepos = new Set();
   let hasChanges = false;
+  let updatedItems = 0;
 
   // Handle both flat structure (groups) and locale structure (en.groups, zh.groups)
   const locales = projectsContent.en ? ["en", "zh"] : [null];
@@ -54,28 +62,54 @@ async function main() {
         const githubLink = item.links?.find((link) => link.href && extractRepo(link.href));
         const repo = githubLink ? extractRepo(githubLink.href) : null;
         if (!repo) continue;
+        discoveredRepos.add(repo);
 
         try {
-          const stars = await fetchStarCount(repo);
-          item.metrics = { ...(item.metrics ?? {}), stars };
-          hasChanges = true;
+          if (!requests.has(repo)) {
+            requests.set(repo, Promise.resolve(fetchStarCountForRepo(repo)));
+          }
+
+          const stars = await requests.get(repo);
+          successfulRepos.add(repo);
+
+          if (item.metrics?.stars !== stars) {
+            item.metrics = { ...(item.metrics ?? {}), stars };
+            hasChanges = true;
+            updatedItems += 1;
+          }
         } catch (error) {
-          process.stderr.write(
-            `[update-project-stars] Failed to update ${repo}: ${error instanceof Error ? error.message : String(error)}\n`
-          );
+          if (!failedRepos.has(repo)) {
+            failedRepos.add(repo);
+            process.stderr.write(
+              `[update-project-stars] Failed to update ${repo}: ${error instanceof Error ? error.message : String(error)}\n`
+            );
+          }
         }
       }
     }
   }
 
-  if (hasChanges) {
-    writeFileSync(projectsPath, `${JSON.stringify(projectsContent, null, 2)}\n`);
+  if (discoveredRepos.size > 0 && successfulRepos.size === 0) {
+    throw new Error(`Unable to refresh any of the ${discoveredRepos.size} GitHub repositories`);
   }
+
+  if (hasChanges) {
+    writeFileSync(sourcePath, `${JSON.stringify(projectsContent, null, 2)}\n`);
+  }
+
+  return {
+    repositories: discoveredRepos.size,
+    successful: successfulRepos.size,
+    failed: failedRepos.size,
+    updatedItems
+  };
 }
 
-main().catch((error) => {
-  process.stderr.write(
-    `[update-project-stars] Unexpected failure: ${error instanceof Error ? error.message : String(error)}\n`
-  );
-  process.exit(1);
-});
+if (process.argv[1] === __filename) {
+  updateProjectStars().catch((error) => {
+    process.stderr.write(
+      `[update-project-stars] Unexpected failure: ${error instanceof Error ? error.message : String(error)}\n`
+    );
+    process.exit(1);
+  });
+}

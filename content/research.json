@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "description": "Research interests and experience timeline. Interests feed the Research page keywords; experiences populate the timeline component.",
+    "description": "Research interests shown on Home and research experiences shown on Research.",
     "fields": {
       "interests": "Array of { title, description } cards",
-      "experiences": "Array of items with title, period, role, advisor, funding, summary, bullets, tags"
+      "experiences": "Array of items with title, period, role, advisor, funding, summary, bullets, tags and optional related links"
     }
   },
   "en": {
@@ -72,7 +72,12 @@
           "Reproduced and extended an existing flocking implementation with target tracking, obstacle avoidance and trajectory visualisation, building on MSN-Flocking-Formation-Control.",
           "Analysed simulated trajectories, velocity evolution, connectivity and centroid motion; published code and visualisation tools in three GitHub repositories."
         ],
-        "tags": ["Formation Control", "MATLAB", "Python", "Simulation"]
+        "tags": ["Formation Control", "MATLAB", "Python", "Simulation"],
+        "links": [
+          { "label": "Square formation", "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular" },
+          { "label": "Circular formation", "href": "https://github.com/Ronchy2000/Formation_control_Circular" },
+          { "label": "Flocking", "href": "https://github.com/Ronchy2000/Flocking-Formation-Control" }
+        ]
       },
       {
         "title": "Visual-Inertial SLAM for Autonomous UAVs",
@@ -98,7 +103,10 @@
           "Ran experiments on the b17, b18 and b19 benchmarks, collected results and analysed critical-path prediction across timing optimisation iterations.",
           "Contributed experimental data and validation results to “TOTAL: Multi-Corners Timing Optimization Based on Transfer and Active Learning”, published at ACM/IEEE DAC 2023."
         ],
-        "tags": ["EDA", "Gaussian Processes", "Transfer Learning", "Active Learning"]
+        "tags": ["EDA", "Gaussian Processes", "Transfer Learning", "Active Learning"],
+        "links": [
+          { "label": "DAC 2023 paper", "href": "https://doi.org/10.1109/DAC56929.2023.10247914" }
+        ]
       }
     ]
   },
@@ -168,7 +176,12 @@
           "基于已有的 MSN-Flocking-Formation-Control 开源实现复现并改进 flocking 算法，完善目标跟踪、障碍物避碰与轨迹可视化。",
           "通过仿真轨迹、速度变化、系统连通性与质心运动分析编队行为，在三个 GitHub 仓库中公开代码与可视化工具。"
         ],
-        "tags": ["编队控制", "MATLAB", "Python", "仿真"]
+        "tags": ["编队控制", "MATLAB", "Python", "仿真"],
+        "links": [
+          { "label": "四边形编队", "href": "https://github.com/Ronchy2000/Formation_Control_quadrangular" },
+          { "label": "环形编队", "href": "https://github.com/Ronchy2000/Formation_control_Circular" },
+          { "label": "仿鸟群编队", "href": "https://github.com/Ronchy2000/Flocking-Formation-Control" }
+        ]
       },
       {
         "title": "面向仓储的视觉惯性 SLAM",
@@ -194,7 +207,10 @@
           "在 b17、b18、b19 基准电路上开展实验，收集并分析多轮时序优化中的关键路径预测结果。",
           "为发表于 ACM/IEEE DAC 2023 的论文《TOTAL: Multi-Corners Timing Optimization Based on Transfer and Active Learning》提供实验数据与验证结果。"
         ],
-        "tags": ["EDA", "高斯过程", "迁移学习", "主动学习"]
+        "tags": ["EDA", "高斯过程", "迁移学习", "主动学习"],
+        "links": [
+          { "label": "DAC 2023 论文", "href": "https://doi.org/10.1109/DAC56929.2023.10247914" }
+        ]
       }
     ]
   }

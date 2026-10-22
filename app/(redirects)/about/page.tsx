@@ -1,0 +1,10 @@
+import type { Metadata } from "next";
+
+import { LocaleRedirect } from "@/components/locale-redirect";
+import { buildNoIndexMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildNoIndexMetadata();
+
+export default function LegacyAboutRedirectPage() {
+  return <LocaleRedirect pathAfterLocale="/about" title="Redirecting to profile..." />;
+}

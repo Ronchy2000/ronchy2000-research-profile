@@ -94,10 +94,7 @@ export function buildNoIndexMetadata(): Metadata {
 export const SEO_STATIC_LOCALE_SUFFIXES = [
   "",
   "/research",
-  "/publications",
   "/projects",
-  "/experience",
-  "/cv",
   "/blog",
   "/contact"
 ] as const;
