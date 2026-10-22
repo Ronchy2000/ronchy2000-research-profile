@@ -15,10 +15,19 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - master
+          - feat/information-architecture-rebuild
+    env:
+      CONTENT_BRANCH: ${{ matrix.branch }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
+          ref: ${{ matrix.branch }}
           token: ${{ secrets.GH_PAT }}
           persist-credentials: true
           fetch-depth: 0  # 获取完整历史，便于调试
@@ -81,7 +90,7 @@ jobs:
           fi
           
           # 先同步远端再提交/推送，降低冲突概率
-          git pull --rebase --autostash origin "${GITHUB_REF_NAME:-$(git rev-parse --abbrev-ref HEAD)}" || true
+          git pull --rebase --autostash origin "$CONTENT_BRANCH"
           
           # 智能生成提交信息
           UPDATES_CHANGED=$(git diff --staged --name-only | grep -c "content/updates.json" || true)
@@ -104,5 +113,5 @@ jobs:
           echo "📤 Committing: $COMMIT_MSG"
           git commit -m "$COMMIT_MSG"
           # 若偶发失败，重试一次
-          git push || (git pull --rebase --autostash && git push)
+          git push origin "HEAD:$CONTENT_BRANCH" || (git pull --rebase --autostash origin "$CONTENT_BRANCH" && git push origin "HEAD:$CONTENT_BRANCH")
           echo "✅ Changes pushed successfully"
