@@ -10,6 +10,13 @@
       {
         "date": "2026-10-22",
         "type": "Commit",
+        "title": "fix: refresh GitHub stars on both site branches",
+        "summary": "Authored by ronchy macbookAir",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2f65a4fda44a19ad2502be45a8a8ce68eedcf3c0"
+      },
+      {
+        "date": "2026-10-22",
+        "type": "Commit",
         "title": "content: clarify long-term index fund investing in biography",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
@@ -48,13 +55,6 @@
         "title": "docs: add GitHub Pages static deployment guide",
         "summary": "Authored by ronchy macbookAir",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1f6ca13805b6061f7c59de46f07ef7580c9effea"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "Commit",
-        "title": "docs: add GitHub Pages static deployment guide",
-        "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e4ac28102459915945dd7a14ca1e32d0911bf76e"
       }
     ]
   },
@@ -63,6 +63,13 @@
       {
         "date": "2026-10-22",
         "type": "提交",
+        "title": "fix: refresh GitHub stars on both site branches",
+        "summary": "由 ronchy macbookAir 提交",
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2f65a4fda44a19ad2502be45a8a8ce68eedcf3c0"
+      },
+      {
+        "date": "2026-10-22",
+        "type": "提交",
         "title": "content: clarify long-term index fund investing in biography",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
@@ -101,13 +108,6 @@
         "title": "docs: add GitHub Pages static deployment guide",
         "summary": "由 ronchy macbookAir 提交",
         "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1f6ca13805b6061f7c59de46f07ef7580c9effea"
-      },
-      {
-        "date": "2026-10-03",
-        "type": "提交",
-        "title": "docs: add GitHub Pages static deployment guide",
-        "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/e4ac28102459915945dd7a14ca1e32d0911bf76e"
       }
     ]
   }
