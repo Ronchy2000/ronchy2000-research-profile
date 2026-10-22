@@ -8,106 +8,106 @@
   "en": {
     "updates": [
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "Commit",
-        "title": "fix: update accepted article authors",
+        "title": "fix: refresh GitHub stars on both site branches",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2b28dff3c0ad145b890f1b4138806388a5a4c932"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2f65a4fda44a19ad2502be45a8a8ce68eedcf3c0"
       },
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "Commit",
-        "title": "feat: mark UAV pursuit article accepted",
+        "title": "content: clarify long-term index fund investing in biography",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b74d7606abdbbb2bf5a1f1f43f2d802aceb01c6d"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
       },
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "Commit",
-        "title": "feat: add high-star GitHub projects",
+        "title": "content: update bilingual homepage biography",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5cd098531eb52c96286b12947212d93d3bccb4aa"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/f3491df89c268c31feb7c1eb2cdc3ebf5ea49a9a"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-22",
         "type": "Commit",
-        "title": "fix: prioritize EdgeOne www redirect",
+        "title": "Merge feat/information-architecture-rebuild into master",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/29da1f2af9875becf5413b29392555e591f43c9e"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/dd3b29c1fc1aabff45fcd5ac5c0f4e40d2c985a6"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-03",
         "type": "Commit",
-        "title": "fix: keep www as EdgeOne canonical host",
+        "title": "docs: explain GitHub Pages custom domain DNS",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5a22d1b5d4f0f70408b722e18c3805cc4fc794fa"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/160f0da308919aa32a213d9367e60316ecb57b93"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-03",
         "type": "Commit",
-        "title": "perf: reduce EdgeOne entry redirects",
+        "title": "docs: explain GitHub Pages custom domain DNS",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2115fe3b8774c34d7369b4f84114e39bca7d1c3c"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/375a6541b586ff4766dac2d61c46e9b263df622c"
       },
       {
-        "date": "2026-08-28",
+        "date": "2026-10-03",
         "type": "Commit",
-        "title": "fix: clarify PDF resume action",
+        "title": "docs: add GitHub Pages static deployment guide",
         "summary": "Authored by ronchy macbookAir",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1f6ca13805b6061f7c59de46f07ef7580c9effea"
       }
     ]
   },
   "zh": {
     "updates": [
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "提交",
-        "title": "fix: update accepted article authors",
+        "title": "fix: refresh GitHub stars on both site branches",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2b28dff3c0ad145b890f1b4138806388a5a4c932"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2f65a4fda44a19ad2502be45a8a8ce68eedcf3c0"
       },
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "提交",
-        "title": "feat: mark UAV pursuit article accepted",
+        "title": "content: clarify long-term index fund investing in biography",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/b74d7606abdbbb2bf5a1f1f43f2d802aceb01c6d"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1eec799c1740f9b8e3a3b2566f222ac4c6011c1f"
       },
       {
-        "date": "2026-10-02",
+        "date": "2026-10-22",
         "type": "提交",
-        "title": "feat: add high-star GitHub projects",
+        "title": "content: update bilingual homepage biography",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5cd098531eb52c96286b12947212d93d3bccb4aa"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/f3491df89c268c31feb7c1eb2cdc3ebf5ea49a9a"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-22",
         "type": "提交",
-        "title": "fix: prioritize EdgeOne www redirect",
+        "title": "Merge feat/information-architecture-rebuild into master",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/29da1f2af9875becf5413b29392555e591f43c9e"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/dd3b29c1fc1aabff45fcd5ac5c0f4e40d2c985a6"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-03",
         "type": "提交",
-        "title": "fix: keep www as EdgeOne canonical host",
+        "title": "docs: explain GitHub Pages custom domain DNS",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/5a22d1b5d4f0f70408b722e18c3805cc4fc794fa"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/160f0da308919aa32a213d9367e60316ecb57b93"
       },
       {
-        "date": "2026-08-30",
+        "date": "2026-10-03",
         "type": "提交",
-        "title": "perf: reduce EdgeOne entry redirects",
+        "title": "docs: explain GitHub Pages custom domain DNS",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/2115fe3b8774c34d7369b4f84114e39bca7d1c3c"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/375a6541b586ff4766dac2d61c46e9b263df622c"
       },
       {
-        "date": "2026-08-28",
+        "date": "2026-10-03",
         "type": "提交",
-        "title": "fix: clarify PDF resume action",
+        "title": "docs: add GitHub Pages static deployment guide",
         "summary": "由 ronchy macbookAir 提交",
-        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/7407e86ecda6e431057352e9b4e6b3b8d2f9ef77"
+        "link": "https://github.com/Ronchy2000/ronchy2000-research-profile/commit/1f6ca13805b6061f7c59de46f07ef7580c9effea"
       }
     ]
   }
